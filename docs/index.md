@@ -17,8 +17,8 @@ FaaS makes use of application code comprising functions deployed on serverless c
  
 From here on, the consideration will refer specifically to FaaS when mentioning severless. This generalization suits how 60% of developers think about serverless as represented in the following table representing a recent poll:
  
-﻿![Poll where 58% of developers respond that serverless to them is FaaS](/assets/images/serverless_orchestration_narrative.png "Serverless Poll")
- 
+﻿![Poll where 58% of developers respond that serverless to them is FaaS](/assets/images/serverless_orchestration_narrative.png?raw=true "Serverless Poll")
+
 ### 1.3 AWS Lambda
  
 Amazon's FaaS offerings is AWS Lambda, and Serverless Framework which works with multiple cloud providers claims Lambda, "... is the most popular provider used with Serverless Framework". With reason special attention is going to be given to Lambda.
