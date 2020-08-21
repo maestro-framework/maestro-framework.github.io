@@ -214,7 +214,7 @@ After surveying existing solutions, consider Maestro, a purpose-built, lightweig
 ## 4 Maestro
 Maestro is an open source Node.js framework for AWS Step Functions built with ease of use in mind. It offers simple commands that facilitate common operations for applications that are suited for Step Functions including interactions with AWS.
  
-Maestro also has robust 'man' pages which contribute to its ease of use. A new project can quickly, easily be created with the |maestro new| command. Further, speed is prioritized as Maestro allows rapid deployment in just 3 seconds enabling quickly bootstrapping a new project or iterating on an existing one. Teardown can just as quickly be performed in as little as 2 seconds.
+Maestro also has robust 'man' pages which contribute to its ease of use. A new project can quickly, easily be created with the `maestro new` command. Further, speed is prioritized as Maestro allows rapid deployment in just 3 seconds enabling quickly bootstrapping a new project or iterating on an existing one. Teardown can just as quickly be performed in as little as 2 seconds.
  
 ### 4.1 Commands
 
@@ -260,7 +260,7 @@ Another possible future addition would be integration with the host logging syst
 
 Further, if a premise of Maestro is allowing rapid iteration on workflows, versioning comes into view. Much consideration must go into determining the point at which a workflow is ready for production, and due to innumerate circumstances, a team may resolve to look back at some previous version of their application. Ideally, a version of the workflow would be persisted and easily accessible every time a workflow was newly deployed.
 
-Which brings to mind another consideration left for the future: a |maestro redeploy| command. It would be helpful, especially for complex workflows, to intelligently re-deploy only elements of the workflow that have changed since the last version. If versioning were clearly outlined, then re-deploying could look back at a snapshot of the workflow to determine what changed and re-deploy accordingly. This would be helpful for preserving artifacts in AWS that provide auditability of long-standing components.
+Which brings to mind another consideration left for the future: a `maestro redeploy` command. It would be helpful, especially for complex workflows, to intelligently re-deploy only elements of the workflow that have changed since the last version. If versioning were clearly outlined, then re-deploying could look back at a snapshot of the workflow to determine what changed and re-deploy accordingly. This would be helpful for preserving artifacts in AWS that provide auditability of long-standing components.
 
 As clearly outlined, the current focus of Maestro are the ever popular AWS Lambdas. While much can be achieved, and often is, strictly using Lambdas, other services offer a broader range of development possibilities. Having encountered a starting point for development, integrating further AWS services into Maestro would amplify its potential.
 
