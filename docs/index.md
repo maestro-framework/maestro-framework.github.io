@@ -17,7 +17,7 @@ FaaS makes use of application code comprising functions deployed on serverless c
  
 From here on, the consideration will refer specifically to FaaS when mentioning severless. This generalization suits how 60% of developers think about serverless as represented in the following table representing a recent poll:
  
-﻿![58% of developers in one pole respond that serverless to them is FaaS](assets/images/serverless_orchestration_narrative.png "Serverless Poll")
+﻿![58% of developers in one pole respond that serverless to them is FaaS](assets/images/serverless-poll.png "Serverless Poll")
 
 ### 1.3 AWS Lambda
  
@@ -66,7 +66,8 @@ Certainly there are multiple considerations related to serverless orchestration,
  
 A request comes in to the manager who has the option of accepting or denying the request. If the manager approves, the resource is provisioned and the requester is granted access. If the manager denies, the requester is notified of the denial. The savvy developer may break down the problem into smaller components and generate a workflow:
  
-Diagram (thin workflow)
+![Initial components in workflow derived from task](assets/images/thin-workflow.png "Thin workflow")
+
   1. Request made
   2. Manager decision
       - Accept -> step 3
@@ -85,22 +86,26 @@ Presumably, the 'Manager' Lambda would receive an input indicating which type of
 Some form of error handling could prevent such an unfortunate occurrence, but should the 'Manager' validate its own input? It would be reasonable that a component performing a single responsibility of validating input could both provide clear separation of concerns and prevent the 'Manager' from failing.
  
 A common orchestration pattern known as the 'Proxy Lambda' to play the pivotal role of invoking the 'Manager' with proper input. The 'Proxy Lambda' nestles between two Lambdas, and invokes the second when appropriate. In this case, it handles a potential invalid input error.
- 
+
+![Inserting a proxy lambda in from of the Manager component](assets/images/proxy-lambda.png "Proxy Lambda")
+
 Thereafter, the choice exists between approving and denying which amounts to simple branching. If the decision is the main concern of the 'Manager', what's an appropriate way of branching?
- 
+
+![Branching step after the Manager makes a decision](assets/images/branch-step.png "Branching")
+
 Another pattern presents itself in this scenario: the 'Orchestrator Lambda'. The 'Orchestrator Lambda' plays the role of directing orchestration between multiple Lambdas. Since the 'Manager' Lambda is capable of invoking other Lambdas, it itself can handle branching.
  
 Since it's unlikely there will be an error at this stage, writing additional business logic is all that is required. Despite the 15 minute execution cap of a Lambda, as long as the 'Manager' doesn't take long to make the decision, there shouldn't be an issue. The 'Manager' is transformed to the affectionately named 'Fat Manager':
  
-Fat Manager diagram
+![Workflow with the Fat Manager Orchestrator Lambda](assets/images/fat-manager.png "Fat Manager")
  
 Branching resolved, a potential provisioning can be considered. The provisioning of a resource may, however, be risky. What if the attempt to provision a resource fails?
  
-Failed Provisioner Diagram
+![Failure depicted on the Provisioner component](assets/images/failed-provisioner.png "Failed Provisioner")
  
 If the 'Provisioner' component failed, it would be beneficial for another attempt to be made without the 'Requester' having to make another request. The 'Orchestrator Lambda' pattern can once again be applied, this time, adding additional logic to the 'Fat Manager' to monitor the output of the 'Provisioner'. Thereby, a retry can be attempted upon failure.
  
-Fat Manager with Retry
+![Addition of retry to the Fat Manager Orchertator Lambda](assets/images/retry-step "Fat Manager with Retry")
  
 Do any limitations exist with this implementation? It may be that the likeliness of the Lambda surpassing the execution limit is now increased if the 'Fat Manager' monitors the 'Provisioner' during extended retries. A delayed provisioning may cause the 'Fat Manager' to terminate before determining if a retry was necessary. Further, with the orchestration logic of the 'Manger' written alongside the business logic, the component is overloaded resulting in a poor separation of concerns.
  
@@ -110,7 +115,7 @@ Perhaps refactoring is in order. Maybe it would be wise to extract the orchestra
  
 It is actually possible to extract out an entire orchestration layer. The result would be a thin workflow of strictly business logic resembling the original workflow. The orchestration logic would be entirely on its own:
  
-Diagram
+![Diagram of only the orchestration layer in a workflow](assets/images/orchestration-layer.png "Orchestration Layer")
  
 Implementing things this way, error handling, retry, and branching can all be done in one place. One benefit is that when the business logic needs to be iterated on, the orchestration logic can likely stay the same. The result is more rapid iteration. It can also improve the ease of implementation. For a new application or one that simply hasn't reached a stable state, this proposal can be quite valuable.
  
