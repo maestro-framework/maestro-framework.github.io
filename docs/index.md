@@ -129,7 +129,7 @@ Simply put, AWS Lambdas lack persistent state, so introducing something to provi
  
 ## 3 AWS Step Functions
 
-![AWS Step Functions Logo](assests/images/step-functions-logo.png "Step Functions Logo")
+![AWS Step Functions Logo](assets/images/step-functions-logo.png "Step Functions Logo")
 
 Step Functions are the AWS version of an orchestration layer utilizing state machines to manage transitions between phases in a serverless application.
  
