@@ -1,5 +1,9 @@
-## 1 Introduction
-### 1.1 So You've Decided to Go Serverless
+---
+title: home
+---
+
+## <a id="1"></a>1 Introduction
+### <a id="2"></a>1.1 So You've Decided to Go Serverless
  
 Serverless is a computational architecture model where applications are deployed on servers that are managed in the cloud by a third party. Not provisioning servers locally but outsourcing management of computational resources reduces technical overhead. Energy otherwise expended on managing infrastructure can be reallocated to development.
  
@@ -9,7 +13,7 @@ A company may value the low technical overhead of a serverless architecture enou
  
 Despite the challenges, many companies continue to explore and develop in the serverless environment making cloud providers more and more popular. The most broadly adopted cloud service provider at the time of this writing is Amazon Web Services (AWS), so the focus of further discussion will be AWS [15].
  
-### 1.2 FaaS
+### <a id="3"></a>1.2 FaaS
  
 There's some ambiguity around this fairly new word "serverless", and it broadly refers to cloud offerings that do not require managing servers. Applications deployed on external, unowned servers take advantage of serverless infrastructure. However, the subset of serverless known as Function as a Service (FaaS) is so prevalent that it is often conflated with the term serverless itself [3].
  
@@ -19,7 +23,7 @@ From here on, the consideration will refer specifically to FaaS when mentioning 
  
 ﻿![58% of developers in one pole respond that serverless to them is FaaS](assets/images/serverless-poll.png "Serverless Poll")
 
-### 1.3 AWS Lambda
+### <a id="4"></a>1.3 AWS Lambda
  
 Amazon's FaaS offerings is AWS Lambda, and Serverless Framework which works with multiple cloud providers claims Lambda, "... is the most popular provider used with Serverless Framework". With reason special attention is going to be given to Lambda.
  
@@ -29,7 +33,7 @@ When invoked, a container is 'spun up' when needed which has historically taken 
  
 Users of AWS Lambda are charged for execution time of Lambda in 100 ms increments.
  
-### 1.4 Serverless Patterns
+### <a id="5"></a>1.4 Serverless Patterns
  
 Taking into consideration there are not yet many strict best practices for working in the field, how can growing interest in development in the area be reconciled? Efforts to facilitate development is evidenced by significant research in serverless. One research paper that surveyed the serverless landscape found in excess of 200 academic papers written on serverless technology between 2017 and 2019 [13]. Additionally, practitioners write blogs and develop other sources describing their experiences of working with Lambda daily.
  
@@ -47,10 +51,10 @@ The 'Authorization' grouping of patterns deals with issues related to user autho
  
 After encountering repeated mentions of issues with orchestration as well as experiencing some of their own, the focus of the Maestro team has been the grouping of serverless patterns around 'Orchestration'.
  
-## 2 Orchestration
+## <a id="6"></a>2 Orchestration
 Once an application moves beyond a single Lambda, a developer is required to orchestrate multiple serverless functions such that they execute in a meaningful way. Serverless orchestration, in a nutshell, is the act of managing the workflow and communication between multiple serverless services.
  
-### 2.1 Orchestration Challenges
+### <a id="7"></a>2.1 Orchestration Challenges
  
 Regarding their subscription fulfillment system [7], The Guardian reveals, "Orchestrating the data flow between our primary database system and all the third-party systems we use was very difficult,” says Paul Brown, senior developer manager at Guardian News and Media.
  
@@ -58,7 +62,7 @@ Notably, Brown goes on to cite 'reliability' as a non-trivial challenge having r
  
 Dealing with serverless orchestration, therefore, necessitates at minimum reliability, and auditability.
  
-### 2.2 Orchestration Patterns
+### <a id="8"></a>2.2 Orchestration Patterns
  
 A Lambda may execute and require the subsequent execution of another service which may in fact be parallel executions. A Lambda somewhere in the execution chain may require a particular input. Later, an output may require processing. At some point, some asynchronicity may be required to allow for some series of executions to perform tasks while a longer running function executes. At yet another stage, a single synchronous execution may require every Lambda in the workflow to wait until it terminates.
  
@@ -119,7 +123,7 @@ It is actually possible to extract out an entire orchestration layer. The result
  
 Implementing things this way, error handling, retry, and branching can all be done in one place. One benefit is that when the business logic needs to be iterated on, the orchestration logic can likely stay the same. The result is more rapid iteration. It can also improve the ease of implementation. For a new application or one that simply hasn't reached a stable state, this proposal can be quite valuable.
  
-#### 2.2.2 The State Machine Pattern
+#### <a id="9"></a>2.2.2 The State Machine Pattern
  
 How then does one abstract away an orchestration layer? Rolling a custom web of orchestration related components would require considerable overhead. However, another common orchestration pattern fits orchestration quite well: state machines.
  
@@ -127,7 +131,7 @@ A state machine stores a given state at a given time. In a workflow, a state mac
  
 Simply put, AWS Lambdas lack persistent state, so introducing something to provide state between Lambda executions is quite intuitive. AWS provides a service that utilizes state machines in AWS Step Functions.
  
-## 3 AWS Step Functions
+## <a id="10"></a>3 AWS Step Functions
 
 ![AWS Step Functions Logo](assets/images/step-functions-logo.png "Step Functions Logo")
 
@@ -156,8 +160,8 @@ Another feature of Step Functions is retry. It's difficult to express how challe
 
 To delve a bit more into the benefit of a singular workflow, consider the execution history mentioned early. The execution history accompanies the visualization of a workflow execution in the console and is interactive. Inputs and outputs of the transitions between states are displayed, and when a failed state is apparent, the execution history can be consulted to audit the failure. 
  
-### 3.1 Challenges of Step Functions
-#### 3.1.1 ASL
+### <a id="11"></a>3.1 Challenges of Step Functions
+#### <a id="12"></a>3.1.1 ASL
 
 Step Functions seems to address some crucial problems in the world of serverless orchestration, but it would be naive to overlook challenges it introduces.
  
@@ -172,7 +176,7 @@ Considering the reality of developer use of Step Functions in the current climat
 
 A template models the prospective workflow providing, at least, a useful starting point. For the experienced practitioner it's a nice convenience while for the uninitiated it may prove a necessity.
  
-#### 3.1.2 Deployment
+#### <a id="13"></a>3.1.2 Deployment
  
 Another challenge arises in an area that isn't unique to Step Functions: deploying to AWS. This is a notorious area of concern for developers that have to interface with a broad spectrum of AWS services to put their applications on the cloud.
 
@@ -192,7 +196,7 @@ Whether, implementing components in disparate AWS consoles, locally with the AWS
 
 It's easy to imagine why certain aspects of deployment could benefit from automation. Indeed, there are several frameworks that aim to help the developer perform tasks pertaining to deployment.
  
-3.2 Existing Solutions
+#### <a id="14"></a>3.2 Existing Solutions
 In order to understand the tools that currently exist to facilitate deployment, it's helpful to understand a bit about the AWS solutions on which those tools are built.
  
 One such AWS solution is called AWS CloudFormation; it's an AWS offering that allows creating a configuration file containing all of a serverless application's resources for deployment. Frameworks that interact with CloudFormation often guide a developer through a process of creating a framework-specific file. The file is then compiled down to CloudFormation and the whole stack is deployed at once.
@@ -219,12 +223,12 @@ However, adoption of Step, apparently, hasn't been very broad. Coinbase appears 
 
 After surveying existing solutions, consider Maestro, a purpose-built, lightweight framework that allows the developer to quickly iterate on workflows using Step Functions.
 
-## 4 Maestro
+## <a id="15"></a>4 Maestro
 Maestro is an open source Node.js framework for AWS Step Functions built with ease of use in mind. It offers simple commands that facilitate common operations for applications that are suited for Step Functions including interactions with AWS.
  
 Maestro also has robust 'man' pages which contribute to its ease of use. A new project can quickly, easily be created with the `maestro new` command. Further, speed is prioritized as Maestro allows rapid deployment in just 3 seconds enabling quickly bootstrapping a new project or iterating on an existing one. Teardown can just as quickly be performed in as little as 2 seconds.
  
-### 4.1 Commands
+### <a id="16"></a>4.1 Commands
 
 Given that templates can provide a useful mechanism for developing with Step Functions, Maestro interacts with an external template repository through the `maestro get-templates` command that creates a local version of the repo locally. Maestro itself is able to stay light by separating out the template repository which can then be utilized independently. Separation also provides a future basis for middleware to add templates. Included in the repository are several templates deemed foundational by AWS. However, the Maestro philosophy is, 'Bring Your Own Template', and any template placed in the local repository will be included for creation by the `new` command.
 
@@ -236,7 +240,7 @@ The `maestro deploy` command is the mechanism through which a practitioner's loc
 
 Development requires not only deploying code and auditing its execution on AWS but starting over with as few artifacts as possible when necessary. Tearing down in the AWS console requires navigating various interfaces hoping to identify every resource that was associated with a workflow. Missing just one could result in conflicts in future deployments and fees associated with lingering artifacts. `maestro teardown` allows the developer to remove all resources associated with a project in one command. Like deploying, tearing down is extremely fast, running in about 2 seconds. Flags allow the developer to distinguish just which resources to tear down in the event the intent is not to tear down everything. For instance, roles are left behind unless flags are included to indicate their destruction.
 
-### 4.2 Challenges
+### <a id="17"></a>4.2 Challenges
 
 One may now understand the value of working with a framework like Maestro, but, as with other projects, there were development challenges along the way.
 
@@ -258,7 +262,7 @@ Discussing the challenge of creating a Lambda or State Machine with the ability 
 
 A helpful pattern that allowed the team to work with asynchronous functions and Promises was the 'async / await' pattern. This allowed certain actions to be treated synchronously. However, the Maestro philosophy was not to completely remove Promise chains by dogmatically applying the 'async / await' pattern everywhere possible. Overuse of the pattern can cause code to be slow by essentially making every step synchronous [15]. To achieve relevant concurrency in creating resources, a mixture of 'Promise chains', 'async / await', and `Promise.all` was implemented. The result is a lightning fast framework.
 
-### 4.3 Future Work
+### <a id="18"></a>4.3 Future Work
 
 As with most endeavors, not all that was desired could be accomplished from the outset. Here, a few aspirations that are left yet for future work are recounted.
 
