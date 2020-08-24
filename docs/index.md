@@ -126,10 +126,11 @@ How then does one abstract away an orchestration layer? Rolling a custom web of 
 A state machine stores a given state at a given time. In a workflow, a state machine represents the state of the workflow at a given step. The state of a step is conditional on input, and the output determines the next state.  It's important to note that it's not a physical device but an abstract concept; in practice, state machines are all about inputs, outputs, transitions, and state. Sounds like orchestration.
  
 Simply put, AWS Lambdas lack persistent state, so introducing something to provide state between Lambda executions is quite intuitive. AWS provides a service that utilizes state machines in AWS Step Functions.
-
-Diagram / Table / Chart
  
 ## 3 AWS Step Functions
+
+![AWS Step Functions Logo](assests/images/step-functions-logo.png "Step Functions Logo")
+
 Step Functions are the AWS version of an orchestration layer utilizing state machines to manage transitions between phases in a serverless application.
  
 A developer can implement Step Functions with the help of a declarative language AWS created specifically for defining state machines: Amazon State Language (ASL). ASL is written in a JSON format where each step of a workflow is defined as a state corresponding to one of several types such as 'Choice', 'Task, 'Wait, and 'Error'.
@@ -137,6 +138,8 @@ A developer can implement Step Functions with the help of a declarative language
 All state machines have a required field called 'StartAt' which designates the state where execution will begin. A 'States' field specifies the states associated with a given workflow.
 
 A state with a type of 'Task' will perform some task associated with the 'Resource' field, and the above depicted state machine represents an AWS Lambda as a resource. The state will not terminate until the resource returns at which point the 'End' field indicates the next step. An end value of 'true' indicates that once the state is complete, the workflow itself must terminate.
+
+![Example of the ASL of a workflow for a Hello World Application](assets/images/hello-world-asl.png "Hello World ASL ")
 
 While the Step Functions language, ASL, is somewhat abstract, AWS facilitates visualizing workflows in a concrete way through visual representations of an ASL definition available in the AWS console. Not only can the sequence of a workflow be visualized, but if the resources are properly defined, the state machine can be executed in the console with the transitions visualized as the various components execute. The visualization is strictly a representation of the ASL definition provided, so no development can actually be done visually, but the visualization is informative. Also, by executing the workflow, a developer can see the outputs of executing each component in a toolbar.
 
