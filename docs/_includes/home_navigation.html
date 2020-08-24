@@ -1,0 +1,11 @@
+<nav>
+  <ul>
+    {% for section in site.data.write_up_sections %}
+      {% assign section_anchor = section | join: "-" %}
+      {% assign clean_anchor = section_anchor | replace: "'", "" %}
+      <li>
+        <a href={{ clean_anchor | prepend: "/"}} >{{ section }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
