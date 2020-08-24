@@ -105,7 +105,7 @@ Branching resolved, a potential provisioning can be considered. The provisioning
  
 If the 'Provisioner' component failed, it would be beneficial for another attempt to be made without the 'Requester' having to make another request. The 'Orchestrator Lambda' pattern can once again be applied, this time, adding additional logic to the 'Fat Manager' to monitor the output of the 'Provisioner'. Thereby, a retry can be attempted upon failure.
  
-![Addition of retry to the Fat Manager Orchertator Lambda](assets/images/retry-step "Fat Manager with Retry")
+![Addition of retry to the Fat Manager Orchertator Lambda](assets/images/retry-step.png "Fat Manager with Retry")
  
 Do any limitations exist with this implementation? It may be that the likeliness of the Lambda surpassing the execution limit is now increased if the 'Fat Manager' monitors the 'Provisioner' during extended retries. A delayed provisioning may cause the 'Fat Manager' to terminate before determining if a retry was necessary. Further, with the orchestration logic of the 'Manger' written alongside the business logic, the component is overloaded resulting in a poor separation of concerns.
  
