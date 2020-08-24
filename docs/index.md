@@ -2,8 +2,8 @@
 title: home
 ---
 
-## 1 Introduction
-### 1.1 So You've Decided to Go Serverless
+## <a id="0"></a>1 Introduction
+### <a id="1"></a>1.1 So You've Decided to Go Serverless
  
 Serverless is a computational architecture model where applications are deployed on servers that are managed in the cloud by a third party. Not provisioning servers locally but outsourcing management of computational resources reduces technical overhead. Energy otherwise expended on managing infrastructure can be reallocated to development.
  

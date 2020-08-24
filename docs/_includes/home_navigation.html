@@ -1,11 +1,9 @@
 <nav>
   <ul>
     {% for section in site.data.write_up_sections %}
-      {% assign section_anchor = section |  replace: " ", "-" %}
-      {% assign downcase_anchor = section_anchor | downcase %}
-      {% assign clean_anchor = downcase_anchor | replace: "'", "" %}
+      {% assign anchor = forloop.index %}
       <li>
-        <a href={{ clean_anchor | prepend: "/"}} >{{ section }}</a>
+        <a href={{ anchor | prepend: "/#"}} >{{ section }}</a>
       </li>
     {% endfor %}
   </ul>
