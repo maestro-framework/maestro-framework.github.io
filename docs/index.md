@@ -89,7 +89,7 @@ Presumably, the 'Manager' Lambda would receive an input indicating which type of
  
 Some form of error handling could prevent such an unfortunate occurrence, but should the 'Manager' validate its own input? It would be reasonable that a component performing a single responsibility of validating input could both provide clear separation of concerns and prevent the 'Manager' from failing.
  
-A common orchestration pattern known as the 'Proxy Lambda' to play the pivotal role of invoking the 'Manager' with proper input. The 'Proxy Lambda' nestles between two Lambdas, and invokes the second when appropriate. In this case, it handles a potential invalid input error.
+A common orchestration pattern known as the 'Proxy Lambda' could play the pivotal role of invoking the 'Manager' with proper input. The 'Proxy Lambda' nestles between two Lambdas, and invokes the second when appropriate. In this case, it handles a potential invalid input error.
 
 ![Inserting a proxy lambda in from of the Manager component](assets/images/proxy-lambda.png "Proxy Lambda")
 
@@ -186,40 +186,81 @@ Each deployed component, including the state machine itself, needs to be accompa
 
 All services have their own interface, so configuration on AWS cannot be performed in a single, shared location. Manual pre-deployment configuration, especially in the AWS console, can prove tedious and error-prone.
 
-Video of interacting w/ console or some kind of graph
+Consider the process of creating the example workflow previously discussed using the AWS Console.
 
-What if a developer has identified the components of an application and the transitions from one state to another? Would the implementation then be done by opening up the AWS console and writing an instance of a Lambda for each component? Then, open the Step Functions console and implement the ASL of the state machine? Would that mirror the typical development workflow of a software engineer who customarily works in a familiar local environment and later deploys?
+HAZY DIAGRAM
+
+There are 7 steps to go through to create a state machine.
+
+SIDE-BY-SIDE OF STEPS AND GIF of WORKFLOW
+
+Several of the steps comprise tedious clicking around the console rather than intellectual challenges. However, a couple of steps could cause real trouble. For example, step 4 in the accompanying diagram is where ASL needs to be provided to create a state machine. If a developer is familiar with ASL and knows what they want to create, this could take several minutes even when some elements of the code have been provided (like with a template) or previously written. For a developer unfamiliar with ASL, properly integrating ASL could take several hours.
+
+Subsequent to providing and modifying ASL, a developer may attempt to save the state machine to create other components of the application, thereafter. It makes sense intellectually to create the orchestration layer first as it serves as a map for the components to be integrated in development. Unfortunately, to the developer's chagrin, they may run into an error if they don't provide a valid ARN (Amazon Resource Name) for all associated state machine components. Most developers who aren't with writing a valid ARN would solve the error by navigating to the Lambda console, creating all of the necessary Lambdas while the Step Functions console remains open, and copy / pasting the ARNs of the created Lambdas into the state machine definition. For the experienced AWS developer, it's possible to write a valid ARN for each component, but it's another layer of tedium which requires exactitude to get right.
+
+GIF of failing state machine save
+
+What does navigating to the Lambda console and creating the pertinent Lambdas look like? It's another series of 5 steps the most difficult of which is providing the business logic for the Lambda. The difficulty regarding the AWS console is that every step, large and small, needs to be performed for each individual Lambda.
+
+SIDE-BY-SIDE of Steps and WORKFLOW
+
+Adding these 5 steps for each of the four Lambdas in our example workflow plus those required to create the state machine totals 28 steps. The time required to accomplish these steps with existing business logic and a template for the ASL would vary between several minutes and several hours depending on the developer's familiarity with the console.
+
+A question to note regarding developing in the AWS console is whether it would mirror the typical development workflow of a software engineer who customarily works in a familiar local environment and later deploys? Would a developer not prefer opening all application files in their local text editor and deploying through a single interface?
 
 What if a developer implements the components locally? There are tools like the AWS SDK and AWS CLI that allow the developer to create an interface between a local machine and the AWS cloud. Writing the necessary orchestration code and business logic using either or both of those tools takes time to learn, and deploying the components to AWS continues to pose configuration challenges like those previously mentioned.
 
 Whether, implementing components in disparate AWS consoles, locally with the AWS SDK, or AWS CLI, speed of development would certainly be impacted at least while getting accustomed to AWS development. There is a formidable learning curve.
 
 It's easy to imagine why certain aspects of deployment could benefit from automation. Indeed, there are several frameworks that aim to help the developer perform tasks pertaining to deployment.
- 
+
+3.1.3 Teardown
+It's unlikely that the first version of an application will be the version that stands the test of time, and in order for the application to evolve, old versions need to be torn down. This is especially true when working in a new, unfamiliar environment.
+
+To tear down in the AWS Console, isn't terribly challenging. It's just tedious. It mainly involves:
+
+Navigating to a service
+Clicking around a bit
+Selecting a resource
+Deleting
+Confirming
+
+Clicking around to delete the example workflow in IAM, Step Functions, and Lamda interfaces takes some 30 steps. Deletion is a risky business, and selecting the wrong component to delete anywhere along the way requires attention; one must go slowly. Otherwise, the wrong component could be deleted, possibly losing valuable execution data.
+
+GIF OF HEADBANGING AGAINST KEYOARD (caption: deleting the wrong component)
+
 #### <a id="14"></a>3.2 Existing Solutions
-In order to understand the tools that currently exist to facilitate deployment, it's helpful to understand a bit about the AWS solutions on which those tools are built.
+In order to understand the tools that currently exist to facilitate development, it's helpful to understand a bit about the AWS solutions on which those tools are built.
  
-One such AWS solution is called AWS CloudFormation; it's an AWS offering that allows creating a configuration file containing all of a serverless application's resources for deployment. Frameworks that interact with CloudFormation often guide a developer through a process of creating a framework-specific file. The file is then compiled down to CloudFormation and the whole stack is deployed at once.
+One such AWS solution is called AWS CloudFormation; it's an AWS offering that allows creating a configuration file containing all of a serverless application's resources for deployment. The entire offering is referred to as Infrastructure as Code.  Frameworks that interact with CloudFormation often guide a developer through a process of creating a framework-specific file. The file is then compiled down to CloudFormation and the whole stack is deployed at once.
  
 The other common tool is AWS Software Development Kits, or SDKs, which are APIs that allow a developer to work directly with individual resources from their language of choice.
- 
+
+Essentially, any framework in this space will use one of these two tools. However, it seems the design philosophy of the framework will often inform which of these tools will be employed. Frameworks that aim to be general purpose tools, will typically take the CloudFormation approach while frameworks for specific use cases or that are geared toward a particular language will often opt for the SDK approach.
+
 The frameworks of concern for the purposes of this consideration are those that allow deployment of Step Functions. Many excellent frameworks exist for certain use cases but don’t include Step Functions, so they lie outside the scope of this discussion.
 
-One popular framework is the aptly named Serverless Framework; it's the dominant player in this space. The approach to deployment taken by Serverless Framework is through compilation to CloudFormation, and it can be considered a general purpose tool. Regarding Step Functions, a plugin is provided that allows inclusion of Step Functions in a deployment.
+One popular framework is the aptly named Serverless Framework; it's the dominant player in this space. The approach to deployment taken by Serverless Framework is through compilation to CloudFormation, and it can be considered a general purpose tool. Regarding Step Functions, a plugin is provided that allows inclusion of Step Functions in a deployment. Also, since CloudFormation is used, teardown of the entire stack can be performed in the CloudFormation console, yet one cannot tear down from within the framework.
 
 One positive feature of Serverless Framework is that it supports multiple runtimes. Also, it automatically creates the permissions that are needed for the resources in an application's infrastructure.  Plus, having mentioned the value of templates, it provides  simple ASL templates.
 
 A drawback of Serverless Framework is that its templates require manual configuration of resources the state machine is meant to orchestrate. Further, the state machine definition must be written in YAML to accommodate Serverless Framework’s conventions. Imagine, ASL is written in JSON which must then be converted to YAML. How tedious. Finally, the general purpose functionality that Serverless Framework provides comes at a dependency cost of 535 node modules. Such heavy use of dependencies can hinder otherwise light applications.
- 
+
+__INCLUDE PROS / CONS TABLE__
+
 Another framework that deals with Step Functions was created by AWS: the Serverless Application Model or SAM. SAM added support for Step Functions just a few months  prior to this writing. SAM is similar to Serverless Framework both in being a general purpose tool and deploying through CloudFormation. Likewise, it supports multiple runtimes and automatically generates the required permissions for resources. Unlike Serverless Framework, a working state machine can be deployed straight from the command line using a template; there is no need to make manual configurations.
 
 However, only one template is offered, and deployment time is rather lengthy taking a couple of minutes. Additionally, there are several prompts to which a user must respond during the deployment. Unfortunately, once deployed no single command easily tears down, so teardown must be done manually.
+
+__INCLUDE PROS / CONS TABLE__
 
 As discussed, Serverless Framework and SAM are both general purpose tools, and neither was designed with Step Functions in mind. Support for Step Functions was added as an afterthought.
  
 What about more purpose-built frameworks? Unfortunately, there aren't many designed with Step Functions in mind. One called Step does happen to be Step Functions centric and was built by Coinbase. Step actually allows the user to create a state machine with a higher level language, namely Go.
 
 However, adoption of Step, apparently, hasn't been very broad. Coinbase appears to be the sole users of its framework. A non-Coinbase practitioner may, in fact, encounter difficulty configuring it. Understandably, the development status of the framework is listed as Beta. Further, a development drawback is that Step is not able to create a new state machine but only modify an existing one.
+
+__INCLUDE PROS / CONS TABLE__
 
 After surveying existing solutions, consider Maestro, a purpose-built, lightweight framework that allows the developer to quickly iterate on workflows using Step Functions.
 
