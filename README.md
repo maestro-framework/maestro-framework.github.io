@@ -1,2 +1,2 @@
-# bam-lambda
-website of BAM! serverless framework
+# Maestro
+website of MAESTRO serverless framework
