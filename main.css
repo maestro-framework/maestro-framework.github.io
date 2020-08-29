@@ -211,7 +211,7 @@ nav#site-navigation a {
 ------------------------------------ */
 
 header {
-  background-color: #9d9ea3;
+  background-color: #f5f7ff;
   color: #313133;
   height: 100vh;
 }
@@ -234,12 +234,13 @@ header figure {
 
 header figure p {
   font-family: RiftSoft, sans-serif;
-  font-size: 3.5rem;
+  font-weight: bold;
+  font-size: 2rem;
   letter-spacing: 0.3rem;
 }
 
 header figure img {
-  max-width: 80vw;
+  max-width: 40vw;
 }
 
 header figure span {
