@@ -1,7 +1,0 @@
-theme: jekyll-theme-architect
-
-title: maestro
-description: Rapid Iteration for Serverless Orchestration
-show_downloads: "true"
-github:
-  zip_url: https://github.com/maestro-framework/maestro

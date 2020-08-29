@@ -1,0 +1,857 @@
+/* ---------------------------------
+
+                general
+
+------------------------------------ */
+
+body {
+  background-color: #313133;
+  color: #f5f7ff;
+  font-family: 'Raleway', sans-serif;
+}
+
+main {
+  padding: 0 75px 0 350px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 4.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.7rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+main > section {
+  margin: 80px 0 100px 0;
+  width: 75%;
+}
+
+blockquote {
+  background: #696a6e;
+  border-left: 1rem solid #ccc;
+  color: #900c3f;
+  margin: 1.5rem 1rem;
+  padding: 0.5rem;
+}
+
+blockquote:before {
+  color: #ccc;
+  font-size: 4rem;
+  line-height: 0.1rem;
+  margin-right: 0.25rem;
+  vertical-align: -0.4rem;
+}
+
+i, em {
+  font-style: italic;
+}
+
+sup {
+  display: inline-block;
+  vertical-align: super;
+}
+
+sup a {
+  color: #777;
+  text-decoration: none;
+}
+
+sup a:hover {
+  color: #900c3f;
+}
+
+/* ---------------------------------
+
+               images
+
+------------------------------------ */
+
+img {
+  display: block;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+#maestro-logo {
+  cursor: pointer;
+  width: 50px;
+  position: fixed;
+  top: 20px;
+  right: 28px;
+  z-index: 4;
+}
+
+#github-logo {
+  cursor: pointer;
+  width: 35px;
+  position: fixed;
+  bottom: 85px;
+  right: 35px;
+}
+
+#medium-logo {
+  cursor: pointer;
+  width: 35px;
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+}
+
+/*#maestro-deploy {
+  background-color: #282828;
+  border: 10px solid #282828;
+  border-radius: 10px;
+  height: 300px;
+  width: auto;
+}*/
+
+#case-study img {
+  margin: 50px auto;
+  max-width: 50vw;
+  height: auto;
+}
+
+#root-proxy-path {
+  width: 300px;
+}
+
+#flowchart {
+  width: 600px;
+}
+
+/* ---------------------------------
+
+               code
+
+------------------------------------ */
+
+@font-face {
+  font-family: "Fira Code";
+  src: url(https://cdn.jsdelivr.net/npm/firacode@1.205.0/distr/woff2/FiraCode-Regular.woff2) format("truetype");
+}
+
+.container {
+  margin: 50px auto;
+  text-align: center;
+}
+
+pre {
+  display: inline-block;
+  max-width: 100%;
+  text-align: left;
+}
+
+pre code {
+  font-size: 0.6rem;
+}
+
+code {
+  color: #777;
+  font-family: "Fira Code", monospace;
+  font-size: 1rem;
+}
+
+code.gruvbox-code {
+  border: 15px solid #282828;
+  border-radius: 1rem;
+  padding: 0.5vh 1vw;
+}
+
+/* ---------------------------------
+
+               nav
+
+------------------------------------ */
+
+nav#site-navigation {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 2;
+}
+
+nav#site-navigation ul {
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+}
+
+nav#site-navigation ul li {
+  margin: 25px 20px 25px 40px;
+  float: left;
+}
+
+nav#site-navigation p {
+  font-size: 1.2rem;
+}
+
+nav#site-navigation a {
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ---------------------------------
+
+                intro
+
+------------------------------------ */
+
+header {
+  background-color: #9d9ea3;
+  color: #313133;
+  height: 100vh;
+}
+
+header h1 {
+ font-size: 3rem;
+ font-style: italic;
+ line-height: 3rem;
+ padding: 20px 20px;
+}
+
+header p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3.5rem;
+  left: 50%;
+  letter-spacing: 0.3rem;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 850px;
+}
+
+header span {
+  color: #900c3f;
+}
+
+/* ---------------------------------
+
+            case study
+
+------------------------------------ */
+
+#case-study nav {
+  display: none;
+  left: 1rem;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#case-study nav li {
+  color: #900c3f;
+  font-size: 2rem;
+  list-style: circle;
+  margin-bottom: 5vh;
+}
+
+#case-study nav li:last-of-type {
+  margin-bottom: 0;
+}
+
+#case-study nav a {
+  color: #f5f7ff;
+  font-size: 0.8rem;
+  margin-left: 1rem;
+  text-decoration: none;
+  vertical-align: 0.4rem;
+}
+
+#case-study nav a:hover {
+  color: #900c3f;
+}
+
+#case-study h3,
+#case-study h4,
+#case-study h5,
+#case-study p,
+#case-study pre,
+#case-study ul,
+#case-study ol {
+  margin-bottom: 20px;
+}
+
+#case-study h2 {
+  color: #9d9ea3;
+  margin: 75px auto 20px auto;
+}
+
+#case-study h2:first-of-type {
+  margin-top: 50px;
+}
+
+#case-study h2, h3 {
+  letter-spacing: 0.02rem;
+}
+
+#case-study h3,
+#case-study h4,
+#case-study h5 {
+  color: #696a6e;
+}
+
+#case-study p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}
+
+#case-study blockquote p {
+  font-size: 1.3rem;
+}
+
+#case-study blockquote p:first-of-type {
+  font-style: italic;
+}
+
+#case-study li {
+  font-size: 1rem;
+  line-height: 1.6rem;
+  list-style: disc;
+  margin-left: 2rem;
+}
+
+#case-study li code {
+  font-size: 0.8rem;
+}
+
+/* ---------------------------------
+
+              commands
+
+------------------------------------ */
+
+.command {
+  /*background-color: #eee;*/
+  border-radius: 2px;
+  color: #900c3f;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 0.2rem;
+}
+
+#list-command code {
+  color: #ebdbb2;
+}
+
+#list-command .heading {
+  color: #98971a;
+}
+
+#list-command .maestro-resource {
+  color: #b8bb26;
+}
+
+/* ---------------------------------
+
+              resources
+
+------------------------------------ */
+
+#resources h2 {
+  color: #f5f7ff;
+  font-size: 1.7rem;
+  margin-top: 75px;
+}
+
+#resources ol li {
+  color: #9d9ea3;
+  font-size: 0.9rem;
+}
+
+#resources ol li {
+  list-style: decimal;
+  color: #9d9ea3;
+}
+
+#resources a {
+  color: #9d9ea3;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+#resources a:hover {
+  color: #900c3f;
+}
+
+/* ---------------------------------
+
+            our team
+
+------------------------------------ */
+
+#our-team {
+  background-color: #9d9ea3;
+  color: #313133;
+  margin-top: 100px;
+  padding-bottom: 25px;
+}
+
+#our-team h1 {
+  padding-top: 100px;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 4rem;
+}
+
+#our-team > p {
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  margin-top: 30px;
+  text-align: center;
+  margin: 0 auto;
+  width: 45%;
+}
+
+#our-team > ul {
+  padding: 60px 0 80px;
+  text-align: center;
+}
+
+#our-team li,
+#our-team .social-icons li {
+  display: inline-block;
+  margin: 0 3%;
+  width: 20%;
+  vertical-align: top;
+}
+
+#our-team h3 {
+  margin-bottom: 10px;
+}
+
+#our-team a {
+  color: #900c3f;
+  text-decoration: none;
+}
+
+#our-team li > img {
+  border-radius: 100%;
+  margin: 0 auto 20px;
+  width: 15vw;
+  max-width: 250px;
+}
+
+#our-team .individual ul {
+  margin: 0;
+}
+
+#our-team .individual li img {
+  background-color: #f5f7ff;
+  border: 1px solid #f5f7ff;
+  border-radius: 25px;
+  padding: 2px;
+  margin-top: 10px;
+  width: 35px;
+}
+
+#our-team .individual li img:hover {
+  background-color: #900c3f;
+  border: 1px solid #900c3f;
+}
+
+#our-team .individual li {
+  margin: 10px 10px 0 10px;
+}
+
+#our-team .individual p {
+  font-size: 1rem;
+}
+
+small {
+  display: block;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.5;
+}
+
+#our-team small a {
+  color: #900c3f;
+}
+
+/* ---------------------------------
+
+              mobile
+
+------------------------------------ */
+
+@media (max-width: 1100px) {
+  #case-study nav {
+    display: none;
+  }
+
+  nav#case-study-mobile ul {
+    margin: 0;
+  }
+
+  nav#site-navigation #case-study-mobile li {
+    margin-left: 0;
+  }
+
+  nav#site-navigation #case-study-mobile li:last-child {
+    margin-bottom: 0;
+  }
+
+  main {
+    padding: 0 75px;
+  }
+
+  section#case-study {
+    margin: 70px auto;
+  }
+
+  #case-study h2:first-of-type {
+    margin-top: 20px;
+  }
+
+  #flowchart {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #our-team h1 {
+    padding-top: 70px;
+  }
+
+  /* Site Nav */
+
+  nav#site-navigation {
+    height: 100vh;
+    overflow: scroll;
+  }
+
+  nav#site-navigation > ul {
+    margin-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  nav#site-navigation ul li {
+    display: block;
+    float: none;
+    margin: 15px 20px 15px 40px;
+  }
+}
+
+@media (max-width: 1030px) {
+  #home p {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 90px;
+  }
+}
+
+@media (max-width: 975px) {
+
+  nav#site-navigation p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0 90px;
+  }
+
+  #our-team > p {
+    width: 60%;
+  }
+
+  #our-team .individual li {
+      margin: 10px 7px 0;
+  }
+
+  #our-team .individual li img {
+    width: 30px;
+  }
+}
+
+@media (min-width: 1100px) {
+  nav#case-study-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  /* General */
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2.0rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  /* Logos */
+
+  #maestro-logo {
+    width: 40px;
+    top: 18px;
+    right: 21px;
+  }
+
+  #github-logo {
+    cursor: pointer;
+    width: 28px;
+    position: fixed;
+    bottom: 75px;
+    right: 27px;
+  }
+
+  #medium-logo {
+    cursor: pointer;
+    width: 28px;
+    position: fixed;
+    bottom: 30px;
+    right: 27px;
+  }
+
+  /* Main */
+
+  header h1 {
+    font-size: 2.5rem;
+    padding: 18px 21px;
+    line-height: 2.3rem;
+  }
+
+  #home p {
+    font-size: 2.5rem;
+  }
+
+  section#case-study {
+    width: 100%;
+  }
+
+  #case-study p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  #case-study blockquote p {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+  }
+
+  code,
+  .command {
+    font-size: 0.9rem;
+  }
+
+  pre code {
+    font-size: 1.5vw;
+  }
+
+  #footnotes {
+    word-wrap: break-word;
+  }
+
+  /* Our Team */
+
+  #our-team > p {
+    width: 70%;
+  }
+
+  #our-team .individual li {
+      margin: 10px 5px 0;
+  }
+
+  #our-team .individual li img{
+    width: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* General */
+
+  h1 {
+    font-size: 2.7rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  /* Main */
+
+  #home p {
+    font-size: 2.3rem;
+    padding: 0 60px;
+  }
+
+  section#case-study {
+    margin: 40px auto;
+  }
+
+  /* Our Team */
+
+  #our-team h1 {
+    padding-top: 60px;
+  }
+
+  #our-team > p {
+    font-size: 1rem;
+    margin-top: 0;
+  }
+
+  #our-team > ul {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  #our-team  li {
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+  }
+
+  #our-team .individual {
+    padding: 50px 0;
+    border-bottom: 1px solid #fff;
+  }
+
+  #our-team .individual:last-of-type {
+    border-bottom: 0px;
+  }
+
+  #our-team .individual ul {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  #our-team .individual li {
+    margin: 10px 5px;
+  }
+
+  #our-team .individual li img {
+    width: 25px;
+    padding: 3px;
+  }
+
+  #our-team li > img {
+    width: 30vw;
+  }
+}
+
+@media (max-width: 500px) {
+  #home p {
+    font-size: 2.1rem;
+  }
+
+  #case-study img{
+    max-width: 60vw;
+  }
+
+  #our-team .individual ul {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #our-team .individual li {
+    margin: 10px 7px;
+  }
+
+  #our-team .individual li img {
+    width: 30px;
+    padding: 2px;
+  }
+
+  #our-team li > img {
+    width: 35vw;
+  }
+
+  nav#site-navigation ul {
+    font-size: 1.2rem;
+  }
+
+  nav#site-navigation ul li {
+    margin: 10px 0 10px 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  #maestro-logo {
+    width: 33px;
+    right: 15px;
+  }
+
+  #github-logo {
+    bottom: 60px;
+    right: 20px;
+    width: 23px;
+  }
+
+  #medium-logo {
+    bottom: 20px;
+    right: 20px;
+    width: 23px;
+  }
+
+  #home p {
+    font-size: 1.7rem;
+  }
+
+  main {
+    padding: 0 70px 0 25px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  nav#site-navigation ul {
+    font-size: 1.1rem;
+  }
+
+  nav#site-navigation > ul {
+    margin-top: 20px;
+    padding-bottom: 25px;
+  }
+
+  nav#site-navigation ul li {
+    margin-bottom: 3.5vh;
+  }
+
+  nav#case-study-mobile {
+    margin-top: 1.75vh;
+  }
+
+  #case-study img{
+    max-width: 65vw;
+  }
+
+  #our-team {
+    padding-bottom: 18px;
+  }
+
+  #our-team > p {
+    width: 57%;
+  }
+}
