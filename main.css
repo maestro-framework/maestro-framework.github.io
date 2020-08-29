@@ -7,7 +7,7 @@
 body {
   background-color: #313133;
   color: #f5f7ff;
-  font-family: 'Raleway', sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 main {
@@ -15,7 +15,7 @@ main {
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: Rift, sans-serif;
 }
 
 h1 {
@@ -186,7 +186,7 @@ nav#site-navigation {
 
 nav#site-navigation ul {
   display: inline-block;
-  font-family: 'Open Sans', sans-serif;
+  font-family: RiftSoft, sans-serif;
   font-size: 1.5rem;
 }
 
@@ -233,7 +233,7 @@ header figure {
 }
 
 header figure p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: RiftSoft, sans-serif;
   font-size: 3.5rem;
   letter-spacing: 0.3rem;
 }
