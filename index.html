@@ -86,10 +86,8 @@
           <ul></ul>
         </nav>
 
-        <h2 id="1-introduction"><a id="1"></a>1 Introduction</h2>
-        <h3 id="11-so-youve-decided-to-go-serverless">
-          <a id="2"></a>1.1 So You’ve Decided to Go Serverless
-        </h3>
+        <h2 id="introduction">1 Introduction</h2>
+        <h3>1.1 So You’ve Decided to Go Serverless</h3>
 
         <p>
           Serverless is a computational architecture model where applications
@@ -127,7 +125,7 @@
           discussion will be AWS [15].
         </p>
 
-        <h3 id="12-faas"><a id="3"></a>1.2 FaaS</h3>
+        <h3>1.2 FaaS</h3>
 
         <p>
           There’s some ambiguity around this fairly new word “serverless”, and
@@ -163,7 +161,7 @@
           />
         </p>
 
-        <h3 id="13-aws-lambda"><a id="4"></a>1.3 AWS Lambda</h3>
+        <h3>1.3 AWS Lambda</h3>
 
         <p>
           Amazon’s FaaS offerings is AWS Lambda, and Serverless Framework which
@@ -196,9 +194,7 @@
           increments.
         </p>
 
-        <h3 id="14-serverless-patterns">
-          <a id="5"></a>1.4 Serverless Patterns
-        </h3>
+        <h3>1.4 Serverless Patterns</h3>
 
         <p>
           Taking into consideration there are not yet many strict best practices
@@ -268,7 +264,7 @@
           has been the grouping of serverless patterns around ‘Orchestration’.
         </p>
 
-        <h2 id="2-orchestration"><a id="6"></a>2 Orchestration</h2>
+        <h2 id="orchestration">2 Orchestration</h2>
         <p>
           Once an application moves beyond a single Lambda, a developer is
           required to orchestrate multiple serverless functions such that they
@@ -277,9 +273,7 @@
           serverless services.
         </p>
 
-        <h3 id="21-orchestration-challenges">
-          <a id="7"></a>2.1 Orchestration Challenges
-        </h3>
+        <h3>2.1 Orchestration Challenges</h3>
 
         <p>
           Regarding their subscription fulfillment system [7], The Guardian
@@ -302,9 +296,7 @@
           minimum reliability, and auditability.
         </p>
 
-        <h3 id="22-orchestration-patterns">
-          <a id="8"></a>2.2 Orchestration Patterns
-        </h3>
+        <h3>2.2 Orchestration Patterns</h3>
 
         <p>
           A Lambda may execute and require the subsequent execution of another
@@ -523,9 +515,7 @@
           reached a stable state, this proposal can be quite valuable.
         </p>
 
-        <h4 id="222-the-state-machine-pattern">
-          <a id="9"></a>2.2.2 The State Machine Pattern
-        </h4>
+        <h4>2.2.2 The State Machine Pattern</h4>
 
         <p>
           How then does one abstract away an orchestration layer? Rolling a
@@ -550,7 +540,7 @@
           Step Functions.
         </p>
 
-        <h2 id="3-aws-step-functions"><a id="10"></a>3 AWS Step Functions</h2>
+        <h2 id="aws-step-functions">3 AWS Step Functions</h2>
 
         <p>
           <img
@@ -668,10 +658,8 @@
           execution history can be consulted to audit the failure.
         </p>
 
-        <h3 id="31-challenges-of-step-functions">
-          <a id="11"></a>3.1 Challenges of Step Functions
-        </h3>
-        <h4 id="311-asl"><a id="12"></a>3.1.1 ASL</h4>
+        <h3>3.1 Challenges of Step Functions</h3>
+        <h4>3.1.1 ASL</h4>
 
         <p>
           Step Functions seems to address some crucial problems in the world of
@@ -722,7 +710,7 @@
           convenience while for the uninitiated it may prove a necessity.
         </p>
 
-        <h4 id="312-deployment"><a id="13"></a>3.1.2 Deployment</h4>
+        <h4>3.1.2 Deployment</h4>
 
         <p>
           Another challenge arises in an area that isn’t unique to Step
@@ -876,9 +864,8 @@
           component)
         </p>
 
-        <h4 id="32-existing-solutions">
-          <a id="14"></a>3.2 Existing Solutions
-        </h4>
+        <h4>3.2 Existing Solutions</h4>
+
         <p>
           In order to understand the tools that currently exist to facilitate
           development, it’s helpful to understand a bit about the AWS solutions
@@ -1003,7 +990,7 @@
           workflows using Step Functions.
         </p>
 
-        <h2 id="4-maestro"><a id="15"></a>4 Maestro</h2>
+        <h2 id="maestro">4 Maestro</h2>
         <p>
           Maestro is an open source Node.js framework for AWS Step Functions
           built with ease of use in mind. It offers simple commands that
@@ -1021,7 +1008,7 @@
           performed in as little as 2 seconds.
         </p>
 
-        <h3 id="41-commands"><a id="16"></a>4.1 Commands</h3>
+        <h3>4.1 Commands</h3>
 
         <p>
           Given that templates can provide a useful mechanism for developing
@@ -1091,7 +1078,7 @@
           are included to indicate their destruction.
         </p>
 
-        <h3 id="42-challenges"><a id="17"></a>4.2 Challenges</h3>
+        <h3>4.2 Challenges</h3>
 
         <p>
           One may now understand the value of working with a framework like
@@ -1189,7 +1176,7 @@
           implemented. The result is a lightning fast framework.
         </p>
 
-        <h3 id="43-future-work"><a id="18"></a>4.3 Future Work</h3>
+        <h3>4.3 Future Work</h3>
 
         <p>
           As with most endeavors, not all that was desired could be accomplished
@@ -1257,7 +1244,7 @@
         </p>
 
         <section id="resources">
-          <h2>Resources</h2>
+          <h2 id="references">5 References</h2>
 
           <ol>
             <li>
