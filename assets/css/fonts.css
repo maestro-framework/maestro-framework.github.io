@@ -9,7 +9,7 @@
   font-weight: 200;
   font-display: swap;
   src: local("Roboto Thin"), local("Roboto-Thin"),
-    url(fonts/Roboto-Thin.ttf) format("truetype");
+    url(../fonts/Roboto-Thin.ttf) format("truetype");
 }
 @font-face {
   font-family: "Roboto";
@@ -17,7 +17,7 @@
   font-weight: 200;
   font-display: swap;
   src: local("Roboto ThinItalic"), local("Roboto-ThinItalic"),
-    url(fonts/Roboto-ThinItalic.ttf) format("truetype");
+    url(../fonts/Roboto-ThinItalic.ttf) format("truetype");
 }
 
 /* Roboto Light (300) with italic variant */
@@ -27,7 +27,7 @@
   font-weight: 300;
   font-display: swap;
   src: local("Roboto Light"), local("Roboto-Light"),
-    url(fonts/Roboto-Light.ttf) format("truetype");
+    url(../fonts/Roboto-Light.ttf) format("truetype");
 }
 @font-face {
   font-family: "Roboto";
@@ -35,7 +35,7 @@
   font-weight: 300;
   font-display: swap;
   src: local("Roboto LightItalic"), local("Roboto-LightItalic"),
-    url(fonts/Roboto-LightItalic.ttf) format("truetype");
+    url(../fonts/Roboto-LightItalic.ttf) format("truetype");
 }
 
 /* Roboto Regular (400) with italic variant */
@@ -45,7 +45,7 @@
   font-weight: 400;
   font-display: swap;
   src: local("Roboto Regular"), local("Roboto-Regular"),
-    url(fonts/Roboto-Regular.ttf) format("truetype");
+    url(../fonts/Roboto-Regular.ttf) format("truetype");
 }
 @font-face {
   font-family: "Roboto";
@@ -53,7 +53,7 @@
   font-weight: 400;
   font-display: swap;
   src: local("Roboto Italic"), local("Roboto-Italic"),
-    url(fonts/Roboto-Italic.ttf) format("truetype");
+    url(../fonts/Roboto-Italic.ttf) format("truetype");
 }
 
 /* Roboto Medium (500) with italic variant */
@@ -63,7 +63,7 @@
   font-weight: 500;
   font-display: swap;
   src: local("Roboto Medium"), local("Roboto-Medium"),
-    url(fonts/Roboto-Medium.ttf) format("truetype");
+    url(../fonts/Roboto-Medium.ttf) format("truetype");
 }
 @font-face {
   font-family: "Roboto";
@@ -71,7 +71,7 @@
   font-weight: 500;
   font-display: swap;
   src: local("Roboto MediumItalic"), local("Roboto-MediumItalic"),
-    url(fonts/Roboto-MediumItalic.ttf) format("truetype");
+    url(../fonts/Roboto-MediumItalic.ttf) format("truetype");
 }
 
 /* Roboto Bold (700) with italic variant */
@@ -81,7 +81,7 @@
   font-weight: 700;
   font-display: swap;
   src: local("Roboto Bold"), local("Roboto-Bold"),
-    url(fonts/Roboto-Bold.ttf) format("truetype");
+    url(../fonts/Roboto-Bold.ttf) format("truetype");
 }
 @font-face {
   font-family: "Roboto";
@@ -89,7 +89,7 @@
   font-weight: 700;
   font-display: swap;
   src: local("Roboto BoldItalic"), local("Roboto-BoldItalic"),
-    url(fonts/Roboto-BoldItalic.ttf) format("truetype");
+    url(../fonts/Roboto-BoldItalic.ttf) format("truetype");
 }
 
 /* Roboto Black (900) with italic variant */
@@ -99,7 +99,7 @@
   font-weight: 900;
   font-display: swap;
   src: local("Roboto Black"), local("Roboto-Black"),
-    url(fonts/Roboto-Black.ttf) format("truetype");
+    url(../fonts/Roboto-Black.ttf) format("truetype");
 }
 @font-face {
   font-family: "Roboto";
@@ -107,7 +107,7 @@
   font-weight: 900;
   font-display: swap;
   src: local("Roboto BlackItalic"), local("Roboto-BlackItalic"),
-    url(fonts/Roboto-BlackItalic.ttf) format("truetype");
+    url(../fonts/Roboto-BlackItalic.ttf) format("truetype");
 }
 
 /********
@@ -121,7 +121,7 @@
   font-weight: 300;
   font-display: swap;
   src: local("Rift Light"), local("Rift-Light"),
-    url(fonts/Rift-Light.otf) format("opentype");
+    url(../fonts/Rift-Light.otf) format("opentype");
 }
 @font-face {
   font-family: "Rift";
@@ -129,7 +129,7 @@
   font-weight: 300;
   font-display: swap;
   src: local("Rift Light Italic"), local("Rift-Light-Italic"),
-    url(fonts/Rift-Light-Italic.otf) format("opentype");
+    url(../fonts/Rift-Light-Italic.otf) format("opentype");
 }
 
 /* Rift Regular (400) with italic variant */
@@ -139,7 +139,7 @@
   font-weight: 400;
   font-display: swap;
   src: local("Rift Regular"), local("Rift-Regular"),
-    url(fonts/Rift-Regular.otf) format("opentype");
+    url(../fonts/Rift-Regular.otf) format("opentype");
 }
 @font-face {
   font-family: "Rift";
@@ -147,7 +147,7 @@
   font-weight: 400;
   font-display: swap;
   src: local("Rift Italic"), local("Rift-Italic"),
-    url(fonts/Rift-Italic.otf) format("opentype");
+    url(../fonts/Rift-Italic.otf) format("opentype");
 }
 
 /* Rift Medium (500) with italic variant */
@@ -157,7 +157,7 @@
   font-weight: 500;
   font-display: swap;
   src: local("Rift Medium"), local("Rift-Medium"),
-    url(fonts/Rift-Medium.otf) format("opentype");
+    url(../fonts/Rift-Medium.otf) format("opentype");
 }
 @font-face {
   font-family: "Rift";
@@ -165,7 +165,7 @@
   font-weight: 500;
   font-display: swap;
   src: local("Rift Medium Italic"), local("Rift-Medium-Italic"),
-    url(fonts/Rift-Medium-Italic.otf) format("opentype");
+    url(../fonts/Rift-Medium-Italic.otf) format("opentype");
 }
 
 /* Rift Demi (600) with italic variant */
@@ -175,7 +175,7 @@
   font-weight: 600;
   font-display: swap;
   src: local("Rift Demi"), local("Rift-Demi"),
-    url(fonts/Rift-Demi.otf) format("opentype");
+    url(../fonts/Rift-Demi.otf) format("opentype");
 }
 @font-face {
   font-family: "Rift";
@@ -183,7 +183,7 @@
   font-weight: 600;
   font-display: swap;
   src: local("Rift Demi Italic"), local("Rift-Demi-Italic"),
-    url(fonts/Rift-Demi-Italic.otf) format("opentype");
+    url(../fonts/Rift-Demi-Italic.otf) format("opentype");
 }
 
 /* Rift Bold (700) with italic variant */
@@ -193,7 +193,7 @@
   font-weight: 700;
   font-display: swap;
   src: local("Rift Bold"), local("Rift-Bold"),
-    url(fonts/Rift-Bold.otf) format("opentype");
+    url(../fonts/Rift-Bold.otf) format("opentype");
 }
 @font-face {
   font-family: "Rift";
@@ -201,7 +201,7 @@
   font-weight: 700;
   font-display: swap;
   src: local("Rift Bold Italic"), local("Rift-Bold-Italic"),
-    url(fonts/Rift-Bold-Italic.otf) format("opentype");
+    url(../fonts/Rift-Bold-Italic.otf) format("opentype");
 }
 
 /************
@@ -215,7 +215,7 @@
   font-weight: 300;
   font-display: swap;
   src: local("RiftSoft Light"), local("RiftSoft-Light"),
-    url(fonts/RiftSoft-Light.otf) format("opentype");
+    url(../fonts/RiftSoft-Light.otf) format("opentype");
 }
 @font-face {
   font-family: "RiftSoft";
@@ -223,7 +223,7 @@
   font-weight: 300;
   font-display: swap;
   src: local("Rift-Soft Light Italic"), local("Rift-Soft-Light-Italic"),
-    url(fonts/Rift-Soft-Light-Italic.otf) format("opentype");
+    url(../fonts/Rift-Soft-Light-Italic.otf) format("opentype");
 }
 
 /* RiftSoft Regular (400) with italic variant */
@@ -233,7 +233,7 @@
   font-weight: 400;
   font-display: swap;
   src: local("RiftSoft Regular"), local("RiftSoft-Regular"),
-    url(fonts/RiftSoft-Regular.otf) format("opentype");
+    url(../fonts/RiftSoft-Regular.otf) format("opentype");
 }
 @font-face {
   font-family: "RiftSoft";
@@ -241,7 +241,7 @@
   font-weight: 400;
   font-display: swap;
   src: local("Rift-Soft Italic"), local("Rift-Soft-Italic"),
-    url(fonts/Rift-Soft-Italic.otf) format("opentype");
+    url(../fonts/Rift-Soft-Italic.otf) format("opentype");
 }
 
 /* RiftSoft Medium (500) with italic variant */
@@ -251,7 +251,7 @@
   font-weight: 500;
   font-display: swap;
   src: local("RiftSoft Medium"), local("RiftSoft-Medium"),
-    url(fonts/RiftSoft-Medium.otf) format("opentype");
+    url(../fonts/RiftSoft-Medium.otf) format("opentype");
 }
 @font-face {
   font-family: "RiftSoft";
@@ -259,7 +259,7 @@
   font-weight: 500;
   font-display: swap;
   src: local("Rift-Soft Medium Italic"), local("Rift-Soft-Medium-Italic"),
-    url(fonts/Rift-Soft-Medium-Italic.otf) format("opentype");
+    url(../fonts/Rift-Soft-Medium-Italic.otf) format("opentype");
 }
 
 /* RiftSoft Demi (600) with italic variant */
@@ -269,7 +269,7 @@
   font-weight: 600;
   font-display: swap;
   src: local("RiftSoft Demi"), local("RiftSoft-Demi"),
-    url(fonts/RiftSoft-Demi.otf) format("opentype");
+    url(../fonts/RiftSoft-Demi.otf) format("opentype");
 }
 @font-face {
   font-family: "RiftSoft";
@@ -277,7 +277,7 @@
   font-weight: 600;
   font-display: swap;
   src: local("Rift-Soft Demi Italic"), local("Rift-Soft-Demi-Italic"),
-    url(fonts/Rift-Soft-Demi-Italic.otf) format("opentype");
+    url(../fonts/Rift-Soft-Demi-Italic.otf) format("opentype");
 }
 
 /* RiftSoft Bold (700) with italic variant */
@@ -287,7 +287,7 @@
   font-weight: 700;
   font-display: swap;
   src: local("RiftSoft Bold"), local("RiftSoft-Bold"),
-    url(fonts/RiftSoft-Bold.otf) format("opentype");
+    url(../fonts/RiftSoft-Bold.otf) format("opentype");
 }
 @font-face {
   font-family: "RiftSoft";
@@ -295,5 +295,5 @@
   font-weight: 700;
   font-display: swap;
   src: local("Rift-Soft Bold Italic"), local("Rift-Soft-Bold-Italic"),
-    url(fonts/Rift-Soft-Bold-Italic.otf) format("opentype");
+    url(../fonts/Rift-Soft-Bold-Italic.otf) format("opentype");
 }
