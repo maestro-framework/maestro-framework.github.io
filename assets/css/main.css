@@ -267,7 +267,7 @@ header figure span {
 }
 
 #case-study nav li {
-  color: #900c3f;
+  color: #9d9ea3;
   font-size: 2rem;
   list-style: circle;
   margin-bottom: 5vh;
@@ -278,15 +278,17 @@ header figure span {
 }
 
 #case-study nav a {
-  color: #f5f7ff;
-  font-size: 0.8rem;
+  color: #9d9ea3;
+  font-family: Rift, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
   margin-left: 1rem;
   text-decoration: none;
   vertical-align: 0.4rem;
 }
 
 #case-study nav a:hover {
-  color: #900c3f;
+  color: #f5f7ff;
 }
 
 #case-study h3,
