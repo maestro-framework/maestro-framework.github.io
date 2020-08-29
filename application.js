@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const isNarrowScreen = () => getWindowWidth() < 1100;
 
   const logos = [...document.querySelectorAll('.logo-links img')]
-    .filter(logo => !(/maestro/.test(logo.id)))
+    // .filter(logo => !(/maestro/.test(logo.id)))
     .map(logo => logo.id.split('-')[0]);
+
 
   const snakeCaseify = text => text.toLowerCase().split(' ').join('-');
 
@@ -79,6 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const logoUrls = {
+    maestroWhite: 'assets/images/logo/Maestro_logo-mark-ondark.png',
+    maestroBlack: 'assets/images/logo/Maestro_logo-mark-onlight.png',
     githubWhite: 'assets/images/github_white.png',
     githubBlack: 'assets/images/github_black.png',
     mediumWhite: 'assets/images/medium_white.png',
@@ -114,9 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const onTeam = isOnTeamSection(logo);
 
       if (onHeader || onTeam) {
-        changeImgSrc(`${logo}-logo`, logoUrls[`${logo}White`]);
-      } else {
         changeImgSrc(`${logo}-logo`, logoUrls[`${logo}Black`]);
+      } else {
+        changeImgSrc(`${logo}-logo`, logoUrls[`${logo}White`]);
       }
     });
   };
@@ -186,10 +189,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isWideScreen && !onMain && topNavVisible) {
       styleNavColors('#313133', '#900c3f', '#9d9ea3');
-      changeImgSrc('maestro-logo', 'assets/images/logo/Maestro_logo-mark-onlight.png');
+      // changeImgSrc('maestro-logo', 'assets/images/logo/Maestro_logo-mark-ondark.png');
     } else {
       styleNavColors('#696a6e', '#f5f7ff', '#900c3f');
-      changeImgSrc('maestro-logo', 'assets/images/logo/Maestro_logo-mark-ondark.png');
+      // changeImgSrc('maestro-logo', 'assets/images/logo/Maestro_logo-mark-onlight.png');
     }
   };
 
