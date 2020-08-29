@@ -223,19 +223,26 @@ header h1 {
  padding: 20px 20px;
 }
 
-header p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 3.5rem;
+header figure {
   left: 50%;
-  letter-spacing: 0.3rem;
   position: absolute;
   text-align: center;
   top: 50%;
   transform: translateY(-50%) translateX(-50%);
-  width: 850px;
+  max-width: 850px;
 }
 
-header span {
+header figure p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 0.3rem;
+}
+
+header figure img {
+  max-width: 80vw;
+}
+
+header figure span {
   color: #900c3f;
 }
 
