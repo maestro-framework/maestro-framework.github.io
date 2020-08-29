@@ -14,7 +14,10 @@ main {
   padding: 0 75px 0 350px;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: Rift, sans-serif;
 }
 
@@ -55,7 +58,8 @@ blockquote:before {
   vertical-align: -0.4rem;
 }
 
-i, em {
+i,
+em {
   font-style: italic;
 }
 
@@ -102,7 +106,6 @@ img {
   right: 35px;
 }
 
-
 /*#medium-logo {
   cursor: pointer;
   width: 35px;
@@ -141,7 +144,8 @@ img {
 
 @font-face {
   font-family: "Fira Code";
-  src: url(https://cdn.jsdelivr.net/npm/firacode@1.205.0/distr/woff2/FiraCode-Regular.woff2) format("truetype");
+  src: url(https://cdn.jsdelivr.net/npm/firacode@1.205.0/distr/woff2/FiraCode-Regular.woff2)
+    format("truetype");
 }
 
 .container {
@@ -218,10 +222,10 @@ header {
 }
 
 header h1 {
- font-size: 3rem;
- font-style: italic;
- line-height: 3rem;
- padding: 20px 20px;
+  font-size: 3rem;
+  font-style: italic;
+  line-height: 3rem;
+  padding: 20px 20px;
 }
 
 header figure {
@@ -304,7 +308,8 @@ header figure span {
   margin-top: 50px;
 }
 
-#case-study h2, h3 {
+#case-study h2,
+h3 {
   letter-spacing: 0.02rem;
 }
 
@@ -567,7 +572,6 @@ small {
 }
 
 @media (max-width: 975px) {
-
   nav#site-navigation p {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -579,7 +583,7 @@ small {
   }
 
   #our-team .individual li {
-      margin: 10px 7px 0;
+    margin: 10px 7px 0;
   }
 
   #our-team .individual li img {
@@ -601,7 +605,7 @@ small {
   }
 
   h2 {
-    font-size: 2.0rem;
+    font-size: 2rem;
   }
 
   h3 {
@@ -682,10 +686,10 @@ small {
   }
 
   #our-team .individual li {
-      margin: 10px 5px 0;
+    margin: 10px 5px 0;
   }
 
-  #our-team .individual li img{
+  #our-team .individual li img {
     width: 25px;
   }
 }
@@ -736,7 +740,7 @@ small {
     padding: 0;
   }
 
-  #our-team  li {
+  #our-team li {
     display: block;
     margin: 0 auto;
     width: 60%;
@@ -775,7 +779,7 @@ small {
     font-size: 2.1rem;
   }
 
-  #case-study img{
+  #case-study img {
     max-width: 60vw;
   }
 
@@ -853,7 +857,7 @@ small {
     margin-top: 1.75vh;
   }
 
-  #case-study img{
+  #case-study img {
     max-width: 65vw;
   }
 
