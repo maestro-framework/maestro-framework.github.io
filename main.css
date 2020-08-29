@@ -315,7 +315,8 @@ header figure span {
 
 #case-study p {
   font-size: 1.2rem;
-  line-height: 1.8rem;
+  font-weight: 300;
+  line-height: 2rem;
 }
 
 #case-study blockquote p {
