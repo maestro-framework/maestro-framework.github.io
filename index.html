@@ -87,6 +87,10 @@
         </nav>
 
         <h2 id="introduction">1 Introduction</h2>
+
+        <p>
+          Maestro is a framework that enables rapid iteration for serverless orchestration. The rise of serverless architectures and FaaS offerings such as AWS Lambda has revolutionized how companies are developing modern apps. The need for an orchestration layer over these architectures has brought about services such as AWS Step Functions. However, deploying apps that use Step Functions can be tedious and error-prone. Maestro prioritizes speed and developer productivity by automating this process so that the developer’s focus stays on developing their application's business logic.
+        </p>
         <h3>1.1 So You’ve Decided to Go Serverless</h3>
 
         <p>
@@ -147,10 +151,7 @@
         </p>
 
         <p>
-          From here on, the consideration will refer specifically to FaaS when
-          mentioning severless. This generalization suits how 60% of developers
-          think about serverless as represented in the following table
-          representing a recent poll:
+          From here on, the consideration will FaaS focused when mentioning severless; thereby, suiting how 60% of developers think about serverless.
         </p>
 
         <p>
@@ -180,21 +181,14 @@
         </p>
 
         <p>
-          When invoked, a container is ‘spun up’ when needed which has
-          historically taken hundreds of milliseconds if the container hadn’t
-          already been operating; this contributed to a notion of a ‘cold start’
-          meaning that a first invocation of a given Lambda signified a period
-          of extended latency. AWS has recently offered a feature to address
-          ‘cold start’ through sub 100 millisecond spin up of certain function
-          containers for an added cost.
-        </p>
-
-        <p>
-          Users of AWS Lambda are charged for execution time of Lambda in 100 ms
-          increments.
+          When invoked, a container is 'spun up' when needed which has historically taken hundreds of milliseconds for a container hadn't already been operating. Hence the notion of a 'cold start' meaning that a first invocation of a given Lambda required a period of extended latency. AWS has recently offered a feature to address 'cold start' through sub 100 millisecond spin up of certain function containers. The drawback of this new feature is an added cost, so it doesn't seem to be a great fit for use with all Lambdas ins a workflow since users of AWS Lambda are already charged for execution time of Lambda in 100 ms increments.
         </p>
 
         <h3>1.4 Serverless Patterns</h3>
+
+        <p>
+          Serverless development is a new area with AWS Lambda having been released just some 6 years prior to this writing. In the short time that's trsanspired since their release, there have not yet been developed a set of broadly accepted best practices. This can be challenging since new practitioners must seemingly start from scratch when it comes to creating an application in this paradigm.
+        </p>
 
         <p>
           Taking into consideration there are not yet many strict best practices
@@ -215,20 +209,13 @@
         </p>
 
         <p>
-          ‘Availability’ patterns ensure that the service is available when
+          ‘Availability’ patterns ensure that a service is available when
           needed. Lambdas can be unavailable due to a number of limitations. For
           example, due to cold start a Lambda may initially be unavailable; a
           request that demands a quick response may not receive it. Another
           limitation that affects availability is the 15 minute execution cap
           meaning that a Lambda may be unavailable after being terminated. Also,
-          incorporating other services introduces other sets of limitations
-          necessitating yet further approaches to reconcile.
-        </p>
-
-        <p>
-          Whether a Lambda is available may be impacted by failures beyond those
-          related to limitations. Other sources of failure may need separate
-          patterns altogether.
+          incorporating other services introduces other sets of limitations regarding availability.
         </p>
 
         <p>
@@ -259,8 +246,7 @@
         </p>
 
         <p>
-          After encountering repeated mentions of issues with orchestration as
-          well as experiencing some of their own, the focus of the Maestro team
+          The focus of the Maestro team
           has been the grouping of serverless patterns around ‘Orchestration’.
         </p>
 
@@ -273,30 +259,7 @@
           serverless services.
         </p>
 
-        <h3>2.1 Orchestration Challenges</h3>
-
-        <p>
-          Regarding their subscription fulfillment system [7], The Guardian
-          reveals, “Orchestrating the data flow between our primary database
-          system and all the third-party systems we use was very difficult,”
-          says Paul Brown, senior developer manager at Guardian News and Media.
-        </p>
-
-        <p>
-          Notably, Brown goes on to cite ‘reliability’ as a non-trivial
-          challenge having real consequences for users. In addition to
-          reliability, a representative engineer at Yelp described another
-          difficulty in peering into and understanding a system so as to fix
-          problems [8]. The ability to peer into and understand a system can be
-          termed ‘auditability’.
-        </p>
-
-        <p>
-          Dealing with serverless orchestration, therefore, necessitates at
-          minimum reliability, and auditability.
-        </p>
-
-        <h3>2.2 Orchestration Patterns</h3>
+        <h3>2.1 Orchestration Patterns</h3>
 
         <p>
           A Lambda may execute and require the subsequent execution of another
@@ -370,8 +333,8 @@
           which type of resource to provision and for whom. How would the
           ‘Manager’ respond if the input was somehow malformed perhaps
           indicating a non-existing resource type or non-existent ‘Requester’?
-          An error could occur. An error may lead to the ‘Manager’ failing.
-          Unhandled, the error could send our entire workflow to a screeching
+          An error could occur leading lead to the ‘Manager’ failing.
+          Unhandled, the failure could send the entire workflow to a screeching
           halt.
         </p>
 
@@ -437,7 +400,7 @@
         </p>
 
         <p>
-          Branching resolved, a potential provisioning can be considered. The
+          Branching resolved, an attempt to provision the desired resource can be made. The
           provisioning of a resource may, however, be risky. What if the attempt
           to provision a resource fails?
         </p>
@@ -454,7 +417,7 @@
           If the ‘Provisioner’ component failed, it would be beneficial for
           another attempt to be made without the ‘Requester’ having to make
           another request. The ‘Orchestrator Lambda’ pattern can once again be
-          applied, this time, adding additional logic to the ‘Fat Manager’ to
+          applied, this time, adding additional logic to the ‘Fatter Manager’ to
           monitor the output of the ‘Provisioner’. Thereby, a retry can be
           attempted upon failure.
         </p>
@@ -507,7 +470,7 @@
         </p>
 
         <p>
-          Implementing things this way, error handling, retry, and branching can
+          Implementing the application in this way, error handling, retry, and branching can
           all be done in one place. One benefit is that when the business logic
           needs to be iterated on, the orchestration logic can likely stay the
           same. The result is more rapid iteration. It can also improve the ease
@@ -622,7 +585,7 @@
           can proceed to the either ‘Notifier’ or the ‘Provisioner’.
           Understanding the technical reference to the previous output and
           comparing factors for determining the next step requires familiarity
-          with ASL, yet such assessment is a feature of the language.
+          with ASL, yet the ability to make such an assessment is amongst the facilities ASL provides.
         </p>
 
         <p>
@@ -707,7 +670,7 @@
         <p>
           A template models the prospective workflow providing, at least, a
           useful starting point. For the experienced practitioner it’s a nice
-          convenience while for the uninitiated it may prove a necessity.
+          convenience while for new practitioners it may prove a necessity.
         </p>
 
         <h4>3.1.2 Deployment</h4>
@@ -759,7 +722,7 @@
           where ASL needs to be provided to create a state machine. If a
           developer is familiar with ASL and knows what they want to create,
           this could take several minutes even when some elements of the code
-          have been provided (like with a template) or previously written. For a
+          have been provided (like with a template). For a
           developer unfamiliar with ASL, properly integrating ASL could take
           several hours.
         </p>
@@ -767,12 +730,12 @@
         <p>
           Subsequent to providing and modifying ASL, a developer may attempt to
           save the state machine to create other components of the application,
-          thereafter. It makes sense intellectually to create the orchestration
+          thereafter. It makes sense to create the orchestration
           layer first as it serves as a map for the components to be integrated
           in development. Unfortunately, to the developer’s chagrin, they may
           run into an error if they don’t provide a valid ARN (Amazon Resource
           Name) for all associated state machine components. Most developers who
-          aren’t with writing a valid ARN would solve the error by navigating to
+          aren’t familiar with writing a valid ARN would solve the error by navigating to
           the Lambda console, creating all of the necessary Lambdas while the
           Step Functions console remains open, and copy / pasting the ARNs of
           the created Lambdas into the state machine definition. For the
@@ -798,7 +761,7 @@
           workflow plus those required to create the state machine totals 28
           steps. The time required to accomplish these steps with existing
           business logic and a template for the ASL would vary between several
-          minutes and several hours depending on the developer’s familiarity
+          minutes and several hours depending on the developer’s skill working
           with the console.
         </p>
 
@@ -953,8 +916,7 @@
           However, only one template is offered, and deployment time is rather
           lengthy taking a couple of minutes. Additionally, there are several
           prompts to which a user must respond during the deployment.
-          Unfortunately, once deployed no single command easily tears down, so
-          teardown must be done manually.
+          Unfortunately, once deployed no single command easily tears down.
         </p>
 
         <p><strong>INCLUDE PROS / CONS TABLE</strong></p>
@@ -1043,7 +1005,7 @@
           list of templates from which to base the new project otherwise a
           skeleton will be provided. Creating the new project locally allows a
           developer to access the project files with their preferred text
-          editor.
+          editor. No longer is one restricted to mind-numbingly clicking around the AWS console.
         </p>
 
         <p>
@@ -1056,10 +1018,7 @@
           tasks, creation of Lambdas associated with the project, and creation
           of the Step Functions state machine. The creation of resources like
           the Lambdas and state machine takes place concurrently such that
-          deployment is faster. If the roles associated with a deployment
-          already exist in an AWS account, deployment takes about 3 seconds
-          while a deployment that requires creating the roles takes around 15
-          seconds.
+          deployment is faster.  If the roles associated with a deployment already exist in an AWS account, deployment takes about 3 seconds, and even a deployment that requires creating the roles takes only around 15 seconds.
         </p>
 
         <p>
@@ -1180,8 +1139,7 @@
 
         <p>
           As with most endeavors, not all that was desired could be accomplished
-          from the outset. Here, a few aspirations that are left yet for future
-          work are recounted.
+          from the outset. Here are a few aspirations that are left yet for future work.
         </p>
 
         <p>
