@@ -89,7 +89,15 @@
         <h2 id="introduction">1 Introduction</h2>
 
         <p>
-          Maestro is a framework that enables rapid iteration for serverless orchestration. The rise of serverless architectures and FaaS offerings such as AWS Lambda has revolutionized how companies are developing modern apps. The need for an orchestration layer over these architectures has brought about services such as AWS Step Functions. However, deploying apps that use Step Functions can be tedious and error-prone. Maestro prioritizes speed and developer productivity by automating this process so that the developer’s focus stays on developing their application's business logic.
+          Maestro is a framework that enables rapid iteration for serverless
+          orchestration. The rise of serverless architectures and FaaS offerings
+          such as AWS Lambda has revolutionized how companies are developing
+          modern apps. The need for an orchestration layer over these
+          architectures has brought about services such as AWS Step Functions.
+          However, deploying apps that use Step Functions can be tedious and
+          error-prone. Maestro prioritizes speed and developer productivity by
+          automating this process so that the developer’s focus stays on
+          developing their application's business logic.
         </p>
         <h3>1.1 So You’ve Decided to Go Serverless</h3>
 
@@ -106,7 +114,7 @@
           center lays outside of tech. With a serverless infrastructure, they
           can maintain a smaller technical staff while still providing resilient
           technology that their business purposes require. They benefit from low
-          development overhead with minimum devops and maintenance while
+          development overhead with minimum DevOps and maintenance while
           building additional features. Low overhead allows for quickly
           iterating on workflows [2].
         </p>
@@ -135,7 +143,7 @@
           There’s some ambiguity around this fairly new word “serverless”, and
           it broadly refers to cloud offerings that do not require managing
           servers. Applications deployed on external, unowned servers take
-          advantage of serverless infrastructure. However, the subset of
+          advantage of a serverless infrastructure. However, the subset of
           serverless known as Function as a Service (FaaS) is so prevalent that
           it is often conflated with the term serverless itself [3].
         </p>
@@ -151,7 +159,9 @@
         </p>
 
         <p>
-          From here on, the consideration will FaaS focused when mentioning severless; thereby, suiting how 60% of developers think about serverless.
+          From here on, the consideration will be FaaS focused when mentioning
+          severless; thereby, suiting how almost 60% of developers think about
+          serverless.
         </p>
 
         <p>
@@ -165,29 +175,36 @@
         <h3>1.3 AWS Lambda</h3>
 
         <p>
-          Amazon’s FaaS offerings is AWS Lambda, and Serverless Framework which
-          works with multiple cloud providers claims Lambda, “… is the most
-          popular provider used with Serverless Framework”. With reason special
-          attention is going to be given to Lambda.
+          Amazon’s FaaS offering is known as AWS Lambda. AWS Lambdas are small
+          applications or ‘functions’ of up to 250 MB deployed on containers
+          that support runtimes in seven languages [6]. The Lambdas can be
+          invoked by a number of AWS services including other Lambdas. They are
+          ephemeral in that they have a limited execution time maxing out at 15
+          minutes, and any state associated with the execution is lost.
         </p>
 
         <p>
-          AWS Lambda are small applications or ‘functions’ of up to 250 mb
-          deployed on containers that support runtimes in 7 languages [6]. The
-          Lambda can be invoked by a number of AWS services including other
-          Lambda. They are ephemeral in that they have a limited execution time
-          maxing out at 15 minutes, and any state associated with the execution
-          is lost.
-        </p>
-
-        <p>
-          When invoked, a container is 'spun up' when needed which has historically taken hundreds of milliseconds for a container hadn't already been operating. Hence the notion of a 'cold start' meaning that a first invocation of a given Lambda required a period of extended latency. AWS has recently offered a feature to address 'cold start' through sub 100 millisecond spin up of certain function containers. The drawback of this new feature is an added cost, so it doesn't seem to be a great fit for use with all Lambdas ins a workflow since users of AWS Lambda are already charged for execution time of Lambda in 100 ms increments.
+          When invoked, a container is 'spun up' when needed which has
+          historically taken hundreds of milliseconds for a container hadn't
+          already been operating. Hence the notion of a 'cold start' meaning
+          that a first invocation of a given Lambda required a period of
+          extended latency. AWS has recently offered a feature to address 'cold
+          start' through sub 100 millisecond spin up of certain function
+          containers. The drawback of this new feature is an added cost, so it
+          doesn't seem to be a great fit for use with all Lambdas ins a workflow
+          since users of AWS Lambda are already charged for execution time of
+          Lambda in 100 ms increments.
         </p>
 
         <h3>1.4 Serverless Patterns</h3>
 
         <p>
-          Serverless development is a new area with AWS Lambda having been released just some 6 years prior to this writing. In the short time that's trsanspired since their release, there have not yet been developed a set of broadly accepted best practices. This can be challenging since new practitioners must seemingly start from scratch when it comes to creating an application in this paradigm.
+          Serverless development is a new area with AWS Lambda having been
+          released just some 6 years prior to this writing. In the short time
+          that's trsanspired since their release, there have not yet been
+          developed a set of broadly accepted best practices. This can be
+          challenging since new practitioners must seemingly start from scratch
+          when it comes to creating an application in this paradigm.
         </p>
 
         <p>
@@ -215,7 +232,8 @@
           request that demands a quick response may not receive it. Another
           limitation that affects availability is the 15 minute execution cap
           meaning that a Lambda may be unavailable after being terminated. Also,
-          incorporating other services introduces other sets of limitations regarding availability.
+          incorporating other services introduces other sets of limitations
+          regarding availability.
         </p>
 
         <p>
@@ -246,8 +264,8 @@
         </p>
 
         <p>
-          The focus of the Maestro team
-          has been the grouping of serverless patterns around ‘Orchestration’.
+          The focus of the Maestro team has been the grouping of serverless
+          patterns around ‘Orchestration’.
         </p>
 
         <h2 id="orchestration">2 Orchestration</h2>
@@ -333,9 +351,8 @@
           which type of resource to provision and for whom. How would the
           ‘Manager’ respond if the input was somehow malformed perhaps
           indicating a non-existing resource type or non-existent ‘Requester’?
-          An error could occur leading lead to the ‘Manager’ failing.
-          Unhandled, the failure could send the entire workflow to a screeching
-          halt.
+          An error could occur leading lead to the ‘Manager’ failing. Unhandled,
+          the failure could send the entire workflow to a screeching halt.
         </p>
 
         <p>
@@ -400,9 +417,9 @@
         </p>
 
         <p>
-          Branching resolved, an attempt to provision the desired resource can be made. The
-          provisioning of a resource may, however, be risky. What if the attempt
-          to provision a resource fails?
+          Branching resolved, an attempt to provision the desired resource can
+          be made. The provisioning of a resource may, however, be risky. What
+          if the attempt to provision a resource fails?
         </p>
 
         <p>
@@ -470,12 +487,13 @@
         </p>
 
         <p>
-          Implementing the application in this way, error handling, retry, and branching can
-          all be done in one place. One benefit is that when the business logic
-          needs to be iterated on, the orchestration logic can likely stay the
-          same. The result is more rapid iteration. It can also improve the ease
-          of implementation. For a new application or one that simply hasn’t
-          reached a stable state, this proposal can be quite valuable.
+          Implementing the application in this way, error handling, retry, and
+          branching can all be done in one place. One benefit is that when the
+          business logic needs to be iterated on, the orchestration logic can
+          likely stay the same. The result is more rapid iteration. It can also
+          improve the ease of implementation. For a new application or one that
+          simply hasn’t reached a stable state, this proposal can be quite
+          valuable.
         </p>
 
         <h4>2.2.2 The State Machine Pattern</h4>
@@ -585,7 +603,8 @@
           can proceed to the either ‘Notifier’ or the ‘Provisioner’.
           Understanding the technical reference to the previous output and
           comparing factors for determining the next step requires familiarity
-          with ASL, yet the ability to make such an assessment is amongst the facilities ASL provides.
+          with ASL, yet the ability to make such an assessment is amongst the
+          facilities ASL provides.
         </p>
 
         <p>
@@ -722,21 +741,20 @@
           where ASL needs to be provided to create a state machine. If a
           developer is familiar with ASL and knows what they want to create,
           this could take several minutes even when some elements of the code
-          have been provided (like with a template). For a
-          developer unfamiliar with ASL, properly integrating ASL could take
-          several hours.
+          have been provided (like with a template). For a developer unfamiliar
+          with ASL, properly integrating ASL could take several hours.
         </p>
 
         <p>
           Subsequent to providing and modifying ASL, a developer may attempt to
           save the state machine to create other components of the application,
-          thereafter. It makes sense to create the orchestration
-          layer first as it serves as a map for the components to be integrated
-          in development. Unfortunately, to the developer’s chagrin, they may
-          run into an error if they don’t provide a valid ARN (Amazon Resource
-          Name) for all associated state machine components. Most developers who
-          aren’t familiar with writing a valid ARN would solve the error by navigating to
-          the Lambda console, creating all of the necessary Lambdas while the
+          thereafter. It makes sense to create the orchestration layer first as
+          it serves as a map for the components to be integrated in development.
+          Unfortunately, to the developer’s chagrin, they may run into an error
+          if they don’t provide a valid ARN (Amazon Resource Name) for all
+          associated state machine components. Most developers who aren’t
+          familiar with writing a valid ARN would solve the error by navigating
+          to the Lambda console, creating all of the necessary Lambdas while the
           Step Functions console remains open, and copy / pasting the ARNs of
           the created Lambdas into the state machine definition. For the
           experienced AWS developer, it’s possible to write a valid ARN for each
@@ -1005,7 +1023,8 @@
           list of templates from which to base the new project otherwise a
           skeleton will be provided. Creating the new project locally allows a
           developer to access the project files with their preferred text
-          editor. No longer is one restricted to mind-numbingly clicking around the AWS console.
+          editor. No longer is one restricted to mind-numbingly clicking around
+          the AWS console.
         </p>
 
         <p>
@@ -1018,7 +1037,10 @@
           tasks, creation of Lambdas associated with the project, and creation
           of the Step Functions state machine. The creation of resources like
           the Lambdas and state machine takes place concurrently such that
-          deployment is faster.  If the roles associated with a deployment already exist in an AWS account, deployment takes about 3 seconds, and even a deployment that requires creating the roles takes only around 15 seconds.
+          deployment is faster. If the roles associated with a deployment
+          already exist in an AWS account, deployment takes about 3 seconds, and
+          even a deployment that requires creating the roles takes only around
+          15 seconds.
         </p>
 
         <p>
@@ -1139,7 +1161,8 @@
 
         <p>
           As with most endeavors, not all that was desired could be accomplished
-          from the outset. Here are a few aspirations that are left yet for future work.
+          from the outset. Here are a few aspirations that are left yet for
+          future work.
         </p>
 
         <p>
@@ -1297,7 +1320,10 @@
       </p>
       <ul>
         <li class="individual">
-          <img src="assets/images/team/torrel_moseley.png" alt="Torrel Moseley" />
+          <img
+            src="assets/images/team/torrel_moseley.png"
+            alt="Torrel Moseley"
+          />
           <h3>Torrel Moseley</h3>
           <p>New York, NY</p>
           <ul class="social-icons">
@@ -1312,7 +1338,9 @@
               /></a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/torrelmoseley/" target="_blank"
+              <a
+                href="https://www.linkedin.com/in/torrelmoseley/"
+                target="_blank"
                 ><img
                   src="assets/images/icons/linkedin_icon.png"
                   alt="linkedin_icon"
