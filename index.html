@@ -167,11 +167,17 @@
           serverless.
         </p>
 
-        <img
-          src="assets/images/serverless-poll.png"
-          alt="58% of developers in one pole respond that serverless to them is FaaS"
-          title="Serverless Poll"
-        />
+        <figure>
+          <img
+            src="assets/images/serverless-poll.png"
+            alt="58% of developers in one poll respond that serverless to them is FaaS"
+            title="Serverless Poll"
+          />
+          <figcaption>
+            Figure 1: Recent Poll from Philipp Leitner et al. [INSERT FOOTNOTE
+            NUMBER]
+          </figcaption>
+        </figure>
 
         <h3>2.3 AWS Lambda</h3>
 
@@ -311,11 +317,14 @@
           workflow:
         </p>
 
-        <img
-          src="assets/images/workflow/thin-workflow.png"
-          alt="Initial components in workflow derived from task"
-          title="Thin workflow"
-        />
+        <figure>
+          <img
+            src="assets/images/workflow/thin-workflow.png"
+            alt="Initial components in workflow derived from task"
+            title="Thin workflow"
+          />
+          <figcaption>Figure 2:</figcaption>
+        </figure>
 
         <ol>
           <li>Request made</li>
@@ -370,11 +379,14 @@
           error.
         </p>
 
-        <img
-          src="assets/images/workflow/proxy-lambda.png"
-          alt="Inserting a proxy lambda in from of the Manager component"
-          title="Proxy Lambda"
-        />
+        <figure>
+          <img
+            src="assets/images/workflow/proxy-lambda.png"
+            alt="Inserting a proxy lambda in from of the Manager component"
+            title="Proxy Lambda"
+          />
+          <figcaption>Figure 3:</figcaption>
+        </figure>
 
         <p>
           Thereafter, the choice exists between approving and denying which
@@ -382,11 +394,14 @@
           the ‘Manager’, what’s an appropriate way of branching?
         </p>
 
-        <img
-          src="assets/images/workflow/branch-step.png"
-          alt="Branching step after the Manager makes a decision"
-          title="Branching"
-        />
+        <figure>
+          <img
+            src="assets/images/workflow/branch-step.png"
+            alt="Branching step after the Manager makes a decision"
+            title="Branching"
+          />
+          <figcaption>Figure 4:</figcaption>
+        </figure>
 
         <p>
           Another pattern presents itself in this scenario: the ‘Orchestrator
@@ -403,11 +418,14 @@
           ‘Manager’ is transformed to the affectionately named ‘Fat Manager’:
         </p>
 
-        <img
-          src="assets/images/workflow/fat-manager.png"
-          alt="Workflow with the Fat Manager Orchestrator Lambda"
-          title="Fat Manager"
-        />
+        <figure>
+          <img
+            src="assets/images/workflow/fat-manager.png"
+            alt="Workflow with the Fat Manager Orchestrator Lambda"
+            title="Fat Manager"
+          />
+          <figcaption>Figure 5:</figcaption>
+        </figure>
 
         <p>
           Branching resolved, an attempt to provision the desired resource can
@@ -415,11 +433,14 @@
           if the attempt to provision a resource fails?
         </p>
 
-        <img
-          src="assets/images/workflow/failed-provisioner.png"
-          alt="Failure depicted on the Provisioner component"
-          title="Failed Provisioner"
-        />
+        <figure>
+          <img
+            src="assets/images/workflow/failed-provisioner.png"
+            alt="Failure depicted on the Provisioner component"
+            title="Failed Provisioner"
+          />
+          <figcaption>Figure 6:</figcaption>
+        </figure>
 
         <p>
           If the ‘Provisioner’ component failed, it would be beneficial for
@@ -430,11 +451,14 @@
           attempted upon failure.
         </p>
 
-        <img
-          src="assets/images/workflow/retry-step.png"
-          alt="Addition of retry to the Fat Manager Orchertator Lambda"
-          title="Fat Manager with Retry"
-        />
+        <figure>
+          <img
+            src="assets/images/workflow/retry-step.png"
+            alt="Addition of retry to the Fat Manager Orchertator Lambda"
+            title="Fat Manager with Retry"
+          />
+          <figcaption>Figure 7:</figcaption>
+        </figure>
 
         <p>
           Do any limitations exist with this implementation? It may be that the
@@ -467,11 +491,14 @@
           entirely on its own:
         </p>
 
-        <img
-          src="assets/images/orchestration-layer.png"
-          alt="Diagram of only the orchestration layer in a workflow"
-          title="Orchestration Layer"
-        />
+        <figure>
+          <img
+            src="assets/images/orchestration-layer.png"
+            alt="Diagram of only the orchestration layer in a workflow"
+            title="Orchestration Layer"
+          />
+          <figcaption>Figure 8:</figcaption>
+        </figure>
 
         <p>
           Implementing the application in this way, error handling, retry, and
@@ -509,13 +536,16 @@
         </p>
 
         <h2 id="aws-step-functions">4 AWS Step Functions</h2>
-        <h3>4.1 Defining Step Functions</h2>
+        <h3>4.1 Defining Step Functions</h3>
 
-        <img
-          src="assets/images/logos/aws/step-functions.png"
-          alt="AWS Step Functions Logo"
-          title="Step Functions Logo"
-        />
+        <figure>
+          <img
+            src="assets/images/logos/aws/step-functions.png"
+            alt="AWS Step Functions Logo"
+            title="Step Functions Logo"
+          />
+          <figcaption>Figure 9:</figcaption>
+        </figure>
 
         <p>
           Step Functions are the AWS version of an orchestration layer utilizing
@@ -546,11 +576,14 @@
           complete, the workflow itself must terminate.
         </p>
 
-        <img
-          src="assets/images/hello-world-asl.png"
-          alt="Example of the ASL of a workflow for a Hello World Application"
-          title="Hello World ASL "
-        />
+        <figure>
+          <img
+            src="assets/images/hello-world-asl.png"
+            alt="Example of the ASL of a workflow for a Hello World Application"
+            title="Hello World ASL "
+          />
+          <figcaption>Figure 10:</figcaption>
+        </figure>
 
         <p>
           While the Step Functions language, ASL, is somewhat abstract, AWS
@@ -802,10 +835,10 @@
         MAKE BELOW A NEW SECTION? - TEARDOWN
 
         <p>
-          It’s unlikely that the first version of an application
-          will be the version that stands the test of time, and in order for the
-          application to evolve, old versions need to be torn down. This is
-          especially true when working in a new, unfamiliar environment.
+          It’s unlikely that the first version of an application will be the
+          version that stands the test of time, and in order for the application
+          to evolve, old versions need to be torn down. This is especially true
+          when working in a new, unfamiliar environment.
         </p>
 
         <p>
@@ -1350,7 +1383,9 @@
               /></a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/zac-klammer-b4b7741b/" target="_blank"
+              <a
+                href="https://www.linkedin.com/in/zac-klammer-b4b7741b/"
+                target="_blank"
                 ><img
                   src="assets/images/icons/linkedin_icon.png"
                   alt="linkedin"
@@ -1359,7 +1394,10 @@
           </ul>
         </li>
         <li class="individual">
-          <img src="assets/images/team/john_isom.jpg" alt="Picture of John Isom" />
+          <img
+            src="assets/images/team/john_isom.jpg"
+            alt="Picture of John Isom"
+          />
           <h3>John Isom</h3>
 
           <p>New York, NY</p>

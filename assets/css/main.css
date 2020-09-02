@@ -123,7 +123,6 @@ img {
 }*/
 
 #case-study img {
-  margin: 50px auto;
   max-width: 50vw;
   height: auto;
 }
@@ -344,6 +343,17 @@ h3 {
 
 #case-study li code {
   font-size: 0.8rem;
+}
+
+#case-study figure {
+  margin: 50px auto;
+}
+
+#case-study figcaption {
+  color: #9d9ea3;
+  font-style: italic;
+  margin-top: 25px;
+  text-align: center;
 }
 
 /* ---------------------------------
