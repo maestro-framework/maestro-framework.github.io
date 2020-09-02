@@ -356,6 +356,15 @@ h3 {
   text-align: center;
 }
 
+#serverless-patterns {
+  font-weight: 300;
+}
+
+#orchestration {
+  font-weight: 500;
+  color: #900c3f;
+}
+
 /* ---------------------------------
 
               commands
