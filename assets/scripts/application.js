@@ -80,8 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const logoUrls = {
-    maestroWhite: "assets/images/logo/Maestro_logo-mark-ondark.png",
-    maestroBlack: "assets/images/logo/Maestro_logo-mark-onlight.png",
+    maestroWhite: "assets/images/logos/maestro/mark-on-dark.png",
+    maestroBlack: "assets/images/logos/maestro/mark-on-light.png",
     githubWhite: "assets/images/icons/github_white.png",
     githubBlack: "assets/images/icons/github_black.png",
     mediumWhite: "assets/images/icons/medium_white.png",
@@ -197,10 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (isWideScreen && !onMain && topNavVisible) {
       styleNavColors("#313133", "#900c3f", "#9d9ea3");
-      // changeImgSrc('maestro-logo', 'assets/images/logo/Maestro_logo-mark-ondark.png');
+      // changeImgSrc('maestro-logo', 'assets/images/logos/maestro/mark-on-dark.png');
     } else {
       styleNavColors("#696a6e", "#f5f7ff", "#900c3f");
-      // changeImgSrc('maestro-logo', 'assets/images/logo/Maestro_logo-mark-onlight.png');
+      // changeImgSrc('maestro-logo', 'assets/images/logos/maestro/mark-on-light.png');
     }
   };
 
