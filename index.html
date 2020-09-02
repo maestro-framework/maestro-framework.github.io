@@ -167,13 +167,11 @@
           serverless.
         </p>
 
-        <p>
-          <img
-            src="assets/images/serverless-poll.png"
-            alt="58% of developers in one pole respond that serverless to them is FaaS"
-            title="Serverless Poll"
-          />
-        </p>
+        <img
+          src="assets/images/serverless-poll.png"
+          alt="58% of developers in one pole respond that serverless to them is FaaS"
+          title="Serverless Poll"
+        />
 
         <h3>2.3 AWS Lambda</h3>
 
@@ -313,13 +311,11 @@
           workflow:
         </p>
 
-        <p>
-          <img
-            src="assets/images/workflow/thin-workflow.png"
-            alt="Initial components in workflow derived from task"
-            title="Thin workflow"
-          />
-        </p>
+        <img
+          src="assets/images/workflow/thin-workflow.png"
+          alt="Initial components in workflow derived from task"
+          title="Thin workflow"
+        />
 
         <ol>
           <li>Request made</li>
@@ -374,13 +370,11 @@
           error.
         </p>
 
-        <p>
-          <img
-            src="assets/images/workflow/proxy-lambda.png"
-            alt="Inserting a proxy lambda in from of the Manager component"
-            title="Proxy Lambda"
-          />
-        </p>
+        <img
+          src="assets/images/workflow/proxy-lambda.png"
+          alt="Inserting a proxy lambda in from of the Manager component"
+          title="Proxy Lambda"
+        />
 
         <p>
           Thereafter, the choice exists between approving and denying which
@@ -388,13 +382,11 @@
           the ‘Manager’, what’s an appropriate way of branching?
         </p>
 
-        <p>
-          <img
-            src="assets/images/workflow/branch-step.png"
-            alt="Branching step after the Manager makes a decision"
-            title="Branching"
-          />
-        </p>
+        <img
+          src="assets/images/workflow/branch-step.png"
+          alt="Branching step after the Manager makes a decision"
+          title="Branching"
+        />
 
         <p>
           Another pattern presents itself in this scenario: the ‘Orchestrator
@@ -411,13 +403,11 @@
           ‘Manager’ is transformed to the affectionately named ‘Fat Manager’:
         </p>
 
-        <p>
-          <img
-            src="assets/images/workflow/fat-manager.png"
-            alt="Workflow with the Fat Manager Orchestrator Lambda"
-            title="Fat Manager"
-          />
-        </p>
+        <img
+          src="assets/images/workflow/fat-manager.png"
+          alt="Workflow with the Fat Manager Orchestrator Lambda"
+          title="Fat Manager"
+        />
 
         <p>
           Branching resolved, an attempt to provision the desired resource can
@@ -425,13 +415,11 @@
           if the attempt to provision a resource fails?
         </p>
 
-        <p>
-          <img
-            src="assets/images/workflow/failed-provisioner.png"
-            alt="Failure depicted on the Provisioner component"
-            title="Failed Provisioner"
-          />
-        </p>
+        <img
+          src="assets/images/workflow/failed-provisioner.png"
+          alt="Failure depicted on the Provisioner component"
+          title="Failed Provisioner"
+        />
 
         <p>
           If the ‘Provisioner’ component failed, it would be beneficial for
@@ -442,13 +430,11 @@
           attempted upon failure.
         </p>
 
-        <p>
-          <img
-            src="assets/images/workflow/retry-step.png"
-            alt="Addition of retry to the Fat Manager Orchertator Lambda"
-            title="Fat Manager with Retry"
-          />
-        </p>
+        <img
+          src="assets/images/workflow/retry-step.png"
+          alt="Addition of retry to the Fat Manager Orchertator Lambda"
+          title="Fat Manager with Retry"
+        />
 
         <p>
           Do any limitations exist with this implementation? It may be that the
@@ -481,13 +467,11 @@
           entirely on its own:
         </p>
 
-        <p>
-          <img
-            src="assets/images/orchestration-layer.png"
-            alt="Diagram of only the orchestration layer in a workflow"
-            title="Orchestration Layer"
-          />
-        </p>
+        <img
+          src="assets/images/orchestration-layer.png"
+          alt="Diagram of only the orchestration layer in a workflow"
+          title="Orchestration Layer"
+        />
 
         <p>
           Implementing the application in this way, error handling, retry, and
@@ -527,13 +511,11 @@
         <h2 id="aws-step-functions">4 AWS Step Functions</h2>
         <h3>4.1 Defining Step Functions</h2>
 
-        <p>
-          <img
-            src="assets/images/logos/aws/step-functions.png"
-            alt="AWS Step Functions Logo"
-            title="Step Functions Logo"
-          />
-        </p>
+        <img
+          src="assets/images/logos/aws/step-functions.png"
+          alt="AWS Step Functions Logo"
+          title="Step Functions Logo"
+        />
 
         <p>
           Step Functions are the AWS version of an orchestration layer utilizing
@@ -564,13 +546,11 @@
           complete, the workflow itself must terminate.
         </p>
 
-        <p>
-          <img
-            src="assets/images/hello-world-asl.png"
-            alt="Example of the ASL of a workflow for a Hello World Application"
-            title="Hello World ASL "
-          />
-        </p>
+        <img
+          src="assets/images/hello-world-asl.png"
+          alt="Example of the ASL of a workflow for a Hello World Application"
+          title="Hello World ASL "
+        />
 
         <p>
           While the Step Functions language, ASL, is somewhat abstract, AWS
