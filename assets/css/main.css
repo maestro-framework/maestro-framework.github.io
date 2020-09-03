@@ -391,33 +391,42 @@ h3 {
 
 /* ---------------------------------
 
-              resources
+              references
 
 ------------------------------------ */
-
-#resources h2 {
-  color: #9d9ea3;
-  font-size: 1.7rem;
-  margin-top: 75px;
-}
-
-#resources ol li {
-  color: #9d9ea3;
-  font-size: 0.9rem;
-}
-
-#resources ol li {
-  list-style: decimal;
-  color: #9d9ea3;
-}
-
-#resources a {
+.reference {
   color: #9d9ea3;
   font-size: 0.9rem;
   text-decoration: none;
 }
 
-#resources a:hover {
+.reference:hover {
+  color: #900c3f;
+}
+
+#references h2 {
+  color: #9d9ea3;
+  font-size: 1.7rem;
+  margin-top: 75px;
+}
+
+#references ol li {
+  color: #9d9ea3;
+  font-size: 0.9rem;
+}
+
+#references ol li {
+  list-style: decimal;
+  color: #9d9ea3;
+}
+
+#references a {
+  color: #9d9ea3;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+#references a:hover {
   color: #900c3f;
 }
 
