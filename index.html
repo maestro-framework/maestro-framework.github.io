@@ -637,7 +637,7 @@
         <figure>
           <div class="flex">
             <pre>
-                <code class="js dark">
+              <code class="js dark">
 {
   "Comment": "State machine orchestration pattern",
   "StartAt": "Requester",
@@ -653,10 +653,10 @@
 }
               </code>
             </pre>
-          <img
-            src="assets/images/step-functions-console/example-workflow.png"
-            alt="Visualization of example workflow in AWS Console"
-          />
+            <img
+              src="assets/images/step-functions-console/example-workflow.png"
+              alt="Visualization of example workflow in AWS Console"
+            />
           </div>
           <figcaption>Example Workflow written in ASL</figcaption>
         </figure>
@@ -670,7 +670,27 @@
         </p>
 
         <figure>
-          <img src="" alt="code snippet of ManagerChoice state" />
+          <div class="flex">
+            <pre>
+              <code class="js dark">
+"ManagerChoice": {
+  "Type": "Choice",
+  "Choices": [
+    {
+      "Variable": "$.decision",
+      "StringEquals": "accept",
+      "Next": "Provisioner"
+    },
+    {
+      "Variable": "$.decision",
+      "StringEquals": "accept",
+      "Next": "Provisioner"
+    }
+  ]
+},
+              </code>
+            </pre>
+          </div>
           <figcaption>ASL of ManagerChoice State</figcaption>
         </figure>
 
@@ -711,8 +731,26 @@
         </p>
 
         <figure>
-          <img src="" alt="code snippet showing retry logic in ASL" />
-          <figcaption>Retry logic in ASL</figcaption>
+          <div class="flex">
+            <pre>
+              <code class="js dark">
+"Provisioner": {
+  "Type": "Task",
+  "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:provisioner",
+  "Next": "AccessGranter",
+  "Retry": [
+    {
+      "ErrorEquals": ["States.ALL"],
+      "IntervalSeconds": 2,
+      "BackoffRate": 1.5,
+      "MaxAttempts": 5
+    }
+  ]
+},
+              </code>
+            </pre>
+          </div>
+          <figcaption>Provisioner state showing retry logic in ASL</figcaption>
         </figure>
 
         <p>
