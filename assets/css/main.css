@@ -300,8 +300,12 @@ header figure span {
   margin-bottom: 20px;
 }
 
+#case-study h1 {
+  color: #900c3f;
+}
+
 #case-study h2 {
-  color: #9d9ea3;
+  color: #f5f7ff;
   margin: 75px auto 20px auto;
 }
 
@@ -314,7 +318,10 @@ h3 {
   letter-spacing: 0.02rem;
 }
 
-#case-study h3,
+#case-study h3 {
+  color: #9d9ea3;
+}
+
 #case-study h4,
 #case-study h5 {
   color: #696a6e;
