@@ -164,7 +164,7 @@
         <p>
           From here on, the consideration will be FaaS focused when mentioning
           severless; thereby, suiting how almost 60% of developers think about
-          serverless.
+          serverless[INSERT FOOTNOTE FOR STUDY].
         </p>
 
         <figure>
@@ -174,8 +174,7 @@
             title="Serverless Poll"
           />
           <figcaption>
-            Figure 1: Recent Poll from Philipp Leitner et al. [INSERT FOOTNOTE
-            NUMBER]
+            Figure 1: Recent poll about the term "serverless"
           </figcaption>
         </figure>
 
@@ -192,22 +191,22 @@
 
         <p>
           When invoked, a container is 'spun up' when needed which has
-          historically taken hundreds of milliseconds for a container hadn't
-          already been operating. Hence the notion of a 'cold start' meaning
-          that a first invocation of a given Lambda required a period of
-          extended latency. AWS has recently offered a feature to address 'cold
-          start' through sub 100 millisecond spin up of certain function
+          historically taken hundreds of milliseconds for a container that
+          hasn't already been operating. Hence the notion of a 'cold start'
+          meaning that a first invocation of a given Lambda required a period of
+          extended latency. AWS has recently offered a feature to address this
+          'cold start' through a sub 100 millisecond spin up of certain function
           containers. The drawback of this new feature is an added cost, so it
-          doesn't seem to be a great fit for use with all Lambdas ins a workflow
-          since users of AWS Lambda are already charged for execution time of
-          Lambda in 100 ms increments.
+          doesn't seem to be a great fit for use with all Lambdas in a workflow
+          since users of AWS Lambda are already charged for execution time in
+          100 ms increments.
         </p>
 
         <h3>2.4 Serverless Patterns</h3>
 
         <p>
           Serverless development is a new area with AWS Lambda having been
-          released just some 6 years prior to this writing. In the short time
+          released just some six years prior to this writing. In the short time
           that's trsanspired since their release, there have not yet been
           developed a set of broadly accepted best practices. This can be
           challenging since new practitioners must seemingly start from scratch
@@ -228,9 +227,16 @@
         <p>
           Common patterns can be derived from continual work with serverless
           architectures. Patterns for working with serverless can be grouped in
-          5 categories 1) Availability 2) Event Management 3) Communication 4)
-          Authorization 5) Orchestration.
+          five categories:
         </p>
+
+        <ul id="serverless-patterns">
+          <li>Availability</li>
+          <li>Event Management</li>
+          <li>Communication</li>
+          <li>Authorization</li>
+          <li id="orchestration-grouping">Orchestration</li>
+        </ul>
 
         <p>
           ‘Availability’ patterns ensure that a service is available when
@@ -271,8 +277,8 @@
         </p>
 
         <p>
-          The focus of the Maestro team has been the grouping of serverless
-          patterns around ‘Orchestration’.
+          The focus of the Maestro team is the grouping of serverless patterns
+          around ‘Orchestration’.
         </p>
 
         <h2 id="orchestration">3 Orchestration</h2>
@@ -323,22 +329,8 @@
             alt="Initial components in workflow derived from task"
             title="Thin workflow"
           />
-          <figcaption>Figure 2:</figcaption>
+          <figcaption>Figure 2: Example Workflow</figcaption>
         </figure>
-
-        <ol>
-          <li>Request made</li>
-          <li>
-            Manager decision
-            <ul>
-              <li>Accept -&gt; step 3</li>
-              <li>Deny -&gt; step 5</li>
-            </ul>
-          </li>
-          <li>Provision resource</li>
-          <li>Grant access</li>
-          <li>Notify requester of decision</li>
-        </ol>
 
         <p>
           The workflow can be implemented with each component representing an
@@ -359,12 +351,15 @@
           which type of resource to provision and for whom. How would the
           ‘Manager’ respond if the input was somehow malformed perhaps
           indicating a non-existing resource type or non-existent ‘Requester’?
-          An error could occur leading to the ‘Manager’ failing. Unhandled,
-          the failure could send the entire workflow to a screeching halt.
+          An error could occur leading to the ‘Manager’ failing. Unhandled, the
+          failure could send the entire workflow to a screeching halt.
         </p>
 
         <figure>
-          <img src="assets/images/workflow/validation.png" alt="Invalid input">
+          <img
+            src="assets/images/workflow/validation.png"
+            alt="Invalid input"
+          />
           <figcaption>Figure 3: What if there's an invalid input?</figcaption>
         </figure>
 
@@ -394,7 +389,7 @@
         </figure>
 
         <p>
-          Thereafter, the choice exists between approving and denying which
+          Thereafter, the choice exists between approving and denying, which
           amounts to simple branching. If the decision is the main concern of
           the ‘Manager’, what’s an appropriate way of branching?
         </p>
@@ -405,7 +400,7 @@
             alt="Branching step after the Manager makes a decision"
             title="Branching"
           />
-          <figcaption>Figure 5:</figcaption>
+          <figcaption>Figure 5: How to handle branching logic?</figcaption>
         </figure>
 
         <p>
@@ -429,7 +424,7 @@
             alt="Workflow with the Fat Manager Orchestrator Lambda"
             title="Fat Manager"
           />
-          <figcaption>Figure 6:</figcaption>
+          <figcaption>Figure 6: The Fat Manager</figcaption>
         </figure>
 
         <p>
@@ -444,7 +439,7 @@
             alt="Failure depicted on the Provisioner component"
             title="Failed Provisioner"
           />
-          <figcaption>Figure 7:</figcaption>
+          <figcaption>Figure 7: Provisioning step fails...</figcaption>
         </figure>
 
         <p>
@@ -462,7 +457,7 @@
             alt="Addition of retry to the Fat Manager Orchertator Lambda"
             title="Fat Manager with Retry"
           />
-          <figcaption>Figure 8:</figcaption>
+          <figcaption>Figure 8: The Fatter Manager</figcaption>
         </figure>
 
         <p>
@@ -475,6 +470,16 @@
           business logic, the component is overloaded resulting in a poor
           separation of concerns.
         </p>
+
+        <figure>
+          <img
+            src="assets/images/workflow/thick.png"
+            alt="Overloaded Workflow"
+          />
+          <figcaption>
+            Figure 9: Workflow overloaded with orchestration logic
+          </figcaption>
+        </figure>
 
         <p>
           The consequences of a lack of separation of concerns would be felt
@@ -493,7 +498,7 @@
           It is actually possible to extract out an entire orchestration layer.
           The result would be a thin workflow of strictly business logic
           resembling the original workflow. The orchestration logic would be
-          entirely on its own:
+          entirely on its own.
         </p>
 
         <figure>
@@ -502,16 +507,18 @@
             alt="Diagram of only the orchestration layer in a workflow"
             title="Orchestration Layer"
           />
-          <figcaption>Figure 9:</figcaption>
+          <figcaption>
+            Figure 10: An orchestration layer abstracted from the workflow
+          </figcaption>
         </figure>
 
         <p>
-          Implementing the application in this way, error handling, retry, and
-          branching can all be done in one place. One benefit is that when the
-          business logic needs to be iterated on, the orchestration logic can
-          likely stay the same. The result is more rapid iteration. It can also
-          improve the ease of implementation. For a new application or one that
-          simply hasn’t reached a stable state, this proposal can be quite
+          By implementing the application in this way, error handling, retry,
+          and branching can all be done in one place. One benefit is that when
+          the business logic needs to be iterated on, the orchestration logic
+          can likely stay the same. The result is more rapid iteration. It can
+          also improve the ease of implementation. For a new application or one
+          that simply hasn’t reached a stable state, this proposal can be quite
           valuable.
         </p>
 
