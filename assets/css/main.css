@@ -363,7 +363,8 @@ h3 {
   text-align: center;
 }
 
-#serverless-patterns {
+#serverless-patterns,
+#deletion-steps {
   font-weight: 300;
 }
 
