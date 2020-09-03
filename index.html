@@ -580,6 +580,13 @@
           specifies the states associated with a given workflow.
         </p>
 
+        <figure>
+          <img src="" alt="code snippet of hello world state machine" />
+          <figcaption>
+            A "Hello World" state machine written in ASL
+          </figcaption>
+        </figure>
+
         <p>
           A state with a type of ‘Task’ will perform some task associated with
           the ‘Resource’ field, and the above depicted state machine represents
@@ -591,11 +598,13 @@
 
         <figure>
           <img
-            src="assets/images/hello-world-asl.png"
+            src="assets/images/step-functions-console/hello-world.png"
             alt="Example of the ASL of a workflow for a Hello World Application"
             title="Hello World ASL "
           />
-          <figcaption></figcaption>
+          <figcaption>
+            A "Hello World" state machine visual workflow in the AWS Console
+          </figcaption>
         </figure>
 
         <p>
@@ -607,15 +616,26 @@
           the console with the transitions visualized as the various components
           execute. The visualization is strictly a representation of the ASL
           definition provided, so no development can actually be done visually,
-          but the visualization is informative. Also, by executing the workflow,
-          a developer can see the outputs of executing each component in a
-          toolbar.
+          but the visualization is informative.
         </p>
 
         <p>
           The relatively complex workflow described earlier can be represented
           in ASL and deployed with Step Functions.
         </p>
+
+        <figure>
+          <img src="" alt="code snippet of example workflow in ASL" />
+          <figcaption>Example Workflow written in ASL</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="assets/images/step-functions-console/example-workflow.png"
+            alt="Visualization of example workflow in AWS Console"
+          />
+          <figcaption>Example Workflow in AWS Console</figcaption>
+        </figure>
 
         <p>
           In the workflow, each step represents a state which may or may not be
@@ -625,12 +645,17 @@
           of the previous state in the workflow.
         </p>
 
+        <figure>
+          <img src="" alt="code snippet of ManagerChoice state">
+          <figcaption>ASL of ManagerChoice State</figcaption>
+        </figure>
+
         <p>
           For example, the ‘ManagerChoice’ state is of type ‘Choice’ which is
           the ASL designated state type for branching; no Lambda is associated.
           The output of the ‘Manager’ state provides input to the
           ‘ManagerChoice’ state, and based on acceptance or denial, the workflow
-          can proceed to the either ‘Notifier’ or the ‘Provisioner’.
+          can proceed to either the ‘Notifier’ or the ‘Provisioner’.
           Understanding the technical reference to the previous output and
           comparing factors for determining the next step requires familiarity
           with ASL, yet the ability to make such an assessment is amongst the
@@ -661,14 +686,35 @@
           machine as there is no higher order notion of a singular workflow.
         </p>
 
+        <figure>
+          <img src="" alt="code snippet showing retry logic in ASL">
+          <figcaption>Retry logic in ASL</figcaption>
+        </figure>
+
         <p>
           To delve a bit more into the benefit of a singular workflow, consider
-          the execution history mentioned early. The execution history
+          the execution history mentioned earlier. The execution history
           accompanies the visualization of a workflow execution in the console
           and is interactive. Inputs and outputs of the transitions between
           states are displayed, and when a failed state is apparent, the
           execution history can be consulted to audit the failure.
         </p>
+
+        <figure>
+          <img src="assets/images/step-functions-console/logs.png" alt="Execution event history">
+          <figcaption>Execution Event History in the AWS Console</figcaption>
+        </figure>
+
+        <p>
+          Also, by executing the workflow,
+          a developer can see the outputs of executing each component in a
+          toolbar.
+        </p>
+
+        <figure>
+          <img src="assets/images/step-functions-console/execution.png" alt="Visualization of an executed state machine in the AWS Console">
+          <figcaption>An executed state machine in the AWS Console</figcaption>
+        </figure>
 
         <h3>4.2 Challenges of Step Functions</h3>
         <h4>4.2.1 ASL</h4>
