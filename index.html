@@ -581,20 +581,20 @@
         </p>
 
         <figure>
-          <div id="hello-world-flex">
+          <div class="flex">
             <pre>
               <code class="js dark">
-  {
-    "Comment": "A Hello World example of the Amazon States Language",
-    "StartAt": "Hello World",
-    "States": {
-      "Hello World": {
-        "Type": "Task",
-        "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_hello",
-        "End": true
-      }
+{
+  "Comment": "A Hello World example of the Amazon States Language",
+  "StartAt": "Hello World",
+  "States": {
+    "Hello World": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_hello",
+      "End": true
     }
   }
+}
               </code>
             </pre>
             <img
@@ -635,16 +635,30 @@
         </p>
 
         <figure>
-          <img src="" alt="code snippet of example workflow in ASL" />
-          <figcaption>Example Workflow written in ASL</figcaption>
-        </figure>
-
-        <figure>
+          <div class="flex">
+            <pre>
+                <code class="js dark">
+{
+  "Comment": "State machine orchestration pattern",
+  "StartAt": "Requester",
+  "States": {
+    "Requester": {...},
+    "Validator": {...},
+    "Manager": {...},
+    "ManagerChoice": {...},
+    "Provisioner": {...},
+    "AccessGranter": {...},
+    "Notifier": {...}
+  }
+}
+              </code>
+            </pre>
           <img
             src="assets/images/step-functions-console/example-workflow.png"
             alt="Visualization of example workflow in AWS Console"
           />
-          <figcaption>Example Workflow in AWS Console</figcaption>
+          </div>
+          <figcaption>Example Workflow written in ASL</figcaption>
         </figure>
 
         <p>

@@ -111,10 +111,16 @@ img {
   height: auto;
 }
 
-#hello-world-flex {
+.flex {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+}
+
+.flex * {
+  margin: 0;
 }
 
 /* ---------------------------------
@@ -276,7 +282,6 @@ header figure span {
 #case-study h4,
 #case-study h5,
 #case-study p,
-#case-study pre,
 #case-study ul,
 #case-study ol {
   margin-bottom: 20px;
