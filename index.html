@@ -455,6 +455,11 @@
           separation of concerns.
         </p>
 
+        <figure>
+          <img src="assets/images/workflow/thick.png" alt="Overloaded Workflow">
+          <figcaption>Figure 9: Workflow overloaded with orchestration logic</figcaption>
+        </figure>
+
         <p>
           The consequences of a lack of separation of concerns would be felt
           every time it’s necessary to iterate on the workflow. Business logic
@@ -472,7 +477,7 @@
           It is actually possible to extract out an entire orchestration layer.
           The result would be a thin workflow of strictly business logic
           resembling the original workflow. The orchestration logic would be
-          entirely on its own:
+          entirely on its own.
         </p>
 
         <figure>
@@ -481,11 +486,11 @@
             alt="Diagram of only the orchestration layer in a workflow"
             title="Orchestration Layer"
           />
-          <figcaption>Figure 9:</figcaption>
+          <figcaption>Figure 10: An orchestration layer abstracted from the workflow</figcaption>
         </figure>
 
         <p>
-          Implementing the application in this way, error handling, retry, and
+          By implementing the application in this way, error handling, retry, and
           branching can all be done in one place. One benefit is that when the
           business logic needs to be iterated on, the orchestration logic can
           likely stay the same. The result is more rapid iteration. It can also
