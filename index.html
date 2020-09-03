@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="assets/css/fonts.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/gruvbox-dark.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/dark.min.css"
       charset="utf-8"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -581,7 +581,28 @@
         </p>
 
         <figure>
-          <img src="" alt="code snippet of hello world state machine" />
+          <div id="hello-world-flex">
+            <pre>
+              <code class="js dark">
+  {
+    "Comment": "A Hello World example of the Amazon States Language",
+    "StartAt": "Hello World",
+    "States": {
+      "Hello World": {
+        "Type": "Task",
+        "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_hello",
+        "End": true
+      }
+    }
+  }
+              </code>
+            </pre>
+            <img
+              src="assets/images/step-functions-console/hello-world.png"
+              alt="Example of the ASL of a workflow for a Hello World Application"
+              title="Hello World ASL "
+            />
+          </div>
           <figcaption>
             A "Hello World" state machine written in ASL
           </figcaption>
@@ -595,17 +616,6 @@
           step. An end value of ‘true’ indicates that once the state is
           complete, the workflow itself must terminate.
         </p>
-
-        <figure>
-          <img
-            src="assets/images/step-functions-console/hello-world.png"
-            alt="Example of the ASL of a workflow for a Hello World Application"
-            title="Hello World ASL "
-          />
-          <figcaption>
-            A "Hello World" state machine visual workflow in the AWS Console
-          </figcaption>
-        </figure>
 
         <p>
           While the Step Functions language, ASL, is somewhat abstract, AWS

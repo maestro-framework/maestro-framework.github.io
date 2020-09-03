@@ -106,18 +106,15 @@ img {
   right: 35px;
 }
 
-
 #case-study img {
   max-width: 45vw;
   height: auto;
 }
 
-#root-proxy-path {
-  width: 300px;
-}
-
-#flowchart {
-  width: 600px;
+#hello-world-flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 /* ---------------------------------
@@ -153,8 +150,8 @@ code {
   font-size: 1rem;
 }
 
-code.gruvbox-code {
-  border: 15px solid #282828;
+code.dark {
+  border: 15px solid #313133;
   border-radius: 1rem;
   padding: 0.5vh 1vw;
 }
