@@ -1348,20 +1348,20 @@
 
         <p>
           In order to make an initial determination of which basic capabilities
-          the components in a standard Lambda centric workflow required, the
-          Maestro team created some mock components and observed which default
-          policies AWS attaches by default. Later a composite of these policies
-          was applied to Maestro Lambdas.
+          the components in a standard Lambda-centric workflow required, the
+          Maestro team created some mock components and observed which policies
+          AWS attached by default. Later, a composite of these policies was
+          applied to Maestro Lambdas.
         </p>
 
         <p>
-          Assuming roles can be created and have the proper permissions with
-          appropriate policies attached, sequencing the creation of services
-          such that the roles and policies are accessible before attempting to
-          associate them with a service comprises a subsequent challenge.
-          Notice, the Maestro team established the creation of roles with
-          policies but took for granted that those roles would be accessible to
-          other services whence created.
+          Assuming that roles can be created and have the proper permissions
+          with appropriate policies attached, sequencing the creation of
+          services such that the roles and policies are accessible before
+          attempting to associate them with a service comprises a subsequent
+          challenge. Notice, the Maestro team established the creation of roles
+          with policies but took for granted that those roles would be
+          accessible to other services whence created.
         </p>
 
         <p>
@@ -1377,28 +1377,29 @@
         </p>
 
         <p>
-          Therefore, in order to create Lambdas and State Machines with
+          Therefore, in order to create Lambdas and state machines with
           associated roles, the Maestro team resolved to implement retry in the
           chain of role creation and subsequent creation of services. Built in
-          retry does exist in SDKs but such retry is for atomic retry of a
-          service interaction not the retry of business logic of an interservice
-          framework. In other words, if creating a role in IAM failed, there
-          would be an AWS means of retrying that interaction, but since the
-          current problem is not a failed role creation but its propagation to
-          other services, the Maestro team had to roll its own retry.
+          retry does exist in SDKs, but such retry is for atomic retry of a
+          service interaction, not the retry of business logic of an
+          interservice framework. In other words, if creating a role in IAM
+          failed, there would be an AWS means of retrying that interaction, but
+          since the current problem is not a failed role creation but its
+          propagation to other services, the Maestro team had to roll its own
+          retry.
         </p>
 
         <p>
           The process of retrial was fraught with its own challenges since the
           error messages of unsuccessful attempts to attach a policy to a Lambda
-          or State Machine were quite cryptic. The AWS documentation for role
+          or state machine were quite cryptic. The AWS documentation for role
           association was not as robust as the team would have hoped, but in the
           end retry with appropriate initial sleep and backoff rates was
           achieved.
         </p>
 
         <p>
-          Discussing the challenge of creating a Lambda or State Machine with
+          Discussing the challenge of creating a Lambda or state machine with
           the ability to properly interact with AWS depending on another service
           touches on an overarching challenge that would need to be reconciled
           in developing Maestro: asynchronicity. Maestro is able to offer quick
@@ -1408,14 +1409,14 @@
 
         <p>
           A helpful pattern that allowed the team to work with asynchronous
-          functions and Promises was the ‘async / await’ pattern. This allowed
+          functions and Promises was the ‘async/await’ pattern. This allowed
           certain actions to be treated synchronously. However, the Maestro
           philosophy was not to completely remove Promise chains by dogmatically
-          applying the ‘async / await’ pattern everywhere possible. Overuse of
+          applying the ‘async/await’ pattern everywhere possible. Overuse of
           the pattern can cause code to be slow by essentially making every step
           synchronous [<a href="#reference_16" class="reference">16</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
-          ‘Promise chains’, ‘async / await’, and
+          ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
           implemented. The result is a lightning fast framework.
         </p>
@@ -1424,8 +1425,8 @@
 
         <p>
           As with most endeavors, not all that was desired could be accomplished
-          from the outset. Here are a few aspirations that are left yet for
-          future work.
+          from the outset. Here are a few aspirations that are left for future
+          work.
         </p>
 
         <p>
@@ -1450,7 +1451,7 @@
           Further, if a premise of Maestro is allowing rapid iteration on
           workflows, versioning comes into view. Much consideration must go into
           determining the point at which a workflow is ready for production, and
-          due to innumerate circumstances, a team may resolve to look back at
+          due to innumerable circumstances, a team may resolve to look back at
           some previous version of their application. Ideally, a version of the
           workflow would be persisted and easily accessible every time a
           workflow was newly deployed.
@@ -1463,7 +1464,7 @@
           intelligently re-deploy only elements of the workflow that have
           changed since the last version. If versioning were clearly outlined,
           then re-deploying could look back at a snapshot of the workflow to
-          determine what changed and re-deploy accordingly. This would be
+          determine what changed and then re-deploy accordingly. This would be
           helpful for preserving artifacts in AWS that provide auditability of
           long-standing components.
         </p>
@@ -1479,12 +1480,11 @@
 
         <p>
           Currently, the Maestro configuration depends on a single configuration
-          file referenced in numerous projects. As a developer used Maestro more
-          extensively, it would be beneficial to have a unique config file for
-          each project allowing deployment in various regions and even to
-          different AWS accounts. On a similar note, a developer may use
-          different Node.js runtimes, so support for various versions could be
-          added.
+          file referenced in numerous projects. It would be beneficial to have a
+          unique config file for each project allowing deployment in various
+          regions and even to different AWS accounts. On a similar note, a
+          developer may use different Node.js runtimes, so support for various
+          versions could be added.
         </p>
 
         <section id="references">
