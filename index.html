@@ -277,8 +277,8 @@
         </p>
 
         <p>
-          The focus of the Maestro team is the grouping of serverless
-          patterns around ‘Orchestration’.
+          The focus of the Maestro team is the grouping of serverless patterns
+          around ‘Orchestration’.
         </p>
 
         <h2 id="orchestration">3 Orchestration</h2>
@@ -351,12 +351,15 @@
           which type of resource to provision and for whom. How would the
           ‘Manager’ respond if the input was somehow malformed perhaps
           indicating a non-existing resource type or non-existent ‘Requester’?
-          An error could occur leading to the ‘Manager’ failing. Unhandled,
-          the failure could send the entire workflow to a screeching halt.
+          An error could occur leading to the ‘Manager’ failing. Unhandled, the
+          failure could send the entire workflow to a screeching halt.
         </p>
 
         <figure>
-          <img src="assets/images/workflow/validation.png" alt="Invalid input">
+          <img
+            src="assets/images/workflow/validation.png"
+            alt="Invalid input"
+          />
           <figcaption>Figure 3: What if there's an invalid input?</figcaption>
         </figure>
 
@@ -469,8 +472,13 @@
         </p>
 
         <figure>
-          <img src="assets/images/workflow/thick.png" alt="Overloaded Workflow">
-          <figcaption>Figure 9: Workflow overloaded with orchestration logic</figcaption>
+          <img
+            src="assets/images/workflow/thick.png"
+            alt="Overloaded Workflow"
+          />
+          <figcaption>
+            Figure 9: Workflow overloaded with orchestration logic
+          </figcaption>
         </figure>
 
         <p>
@@ -499,16 +507,18 @@
             alt="Diagram of only the orchestration layer in a workflow"
             title="Orchestration Layer"
           />
-          <figcaption>Figure 10: An orchestration layer abstracted from the workflow</figcaption>
+          <figcaption>
+            Figure 10: An orchestration layer abstracted from the workflow
+          </figcaption>
         </figure>
 
         <p>
-          By implementing the application in this way, error handling, retry, and
-          branching can all be done in one place. One benefit is that when the
-          business logic needs to be iterated on, the orchestration logic can
-          likely stay the same. The result is more rapid iteration. It can also
-          improve the ease of implementation. For a new application or one that
-          simply hasn’t reached a stable state, this proposal can be quite
+          By implementing the application in this way, error handling, retry,
+          and branching can all be done in one place. One benefit is that when
+          the business logic needs to be iterated on, the orchestration logic
+          can likely stay the same. The result is more rapid iteration. It can
+          also improve the ease of implementation. For a new application or one
+          that simply hasn’t reached a stable state, this proposal can be quite
           valuable.
         </p>
 
