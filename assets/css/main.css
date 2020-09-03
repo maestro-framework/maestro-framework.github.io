@@ -123,7 +123,7 @@ img {
 }*/
 
 #case-study img {
-  max-width: 33vw;
+  max-width: 45vw;
   height: auto;
 }
 
@@ -565,6 +565,10 @@ small {
     padding-top: 70px;
   }
 
+  #case-study img {
+    max-width: 70vw;
+  }
+
   /* Site Nav */
 
   nav#site-navigation {
@@ -590,6 +594,10 @@ small {
     width: 100%;
     padding: 0 90px;
   }
+
+  #case-study img {
+    max-width: 70vw;
+  }
 }
 
 @media (max-width: 975px) {
@@ -609,6 +617,10 @@ small {
 
   #our-team .individual li img {
     width: 30px;
+  }
+
+  #case-study img {
+    max-width: 60vw;
   }
 }
 
@@ -698,6 +710,10 @@ small {
 
   #footnotes {
     word-wrap: break-word;
+  }
+
+  #case-study img {
+    max-width: 65vw;
   }
 
   /* Our Team */
@@ -793,6 +809,10 @@ small {
   #our-team li > img {
     width: 30vw;
   }
+
+  #case-study img {
+    max-width: 70vw;
+  }
 }
 
 @media (max-width: 500px) {
@@ -801,7 +821,7 @@ small {
   }
 
   #case-study img {
-    max-width: 60vw;
+    max-width: 75vw;
   }
 
   #our-team .individual ul {
