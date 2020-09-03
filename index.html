@@ -646,7 +646,7 @@
         </p>
 
         <figure>
-          <img src="" alt="code snippet of ManagerChoice state">
+          <img src="" alt="code snippet of ManagerChoice state" />
           <figcaption>ASL of ManagerChoice State</figcaption>
         </figure>
 
@@ -687,7 +687,7 @@
         </p>
 
         <figure>
-          <img src="" alt="code snippet showing retry logic in ASL">
+          <img src="" alt="code snippet showing retry logic in ASL" />
           <figcaption>Retry logic in ASL</figcaption>
         </figure>
 
@@ -701,18 +701,23 @@
         </p>
 
         <figure>
-          <img src="assets/images/step-functions-console/logs.png" alt="Execution event history">
+          <img
+            src="assets/images/step-functions-console/logs.png"
+            alt="Execution event history"
+          />
           <figcaption>Execution Event History in the AWS Console</figcaption>
         </figure>
 
         <p>
-          Also, by executing the workflow,
-          a developer can see the outputs of executing each component in a
-          toolbar.
+          Also, by executing the workflow, a developer can see the outputs of
+          executing each component in a toolbar.
         </p>
 
         <figure>
-          <img src="assets/images/step-functions-console/execution.png" alt="Visualization of an executed state machine in the AWS Console">
+          <img
+            src="assets/images/step-functions-console/execution.png"
+            alt="Visualization of an executed state machine in the AWS Console"
+          />
           <figcaption>An executed state machine in the AWS Console</figcaption>
         </figure>
 
@@ -736,8 +741,8 @@
           JSON was designed as a data serialization format not a programming
           language. It was meant to be a representation of data not a
           development platform. That said, the awkwardness of programming in ASL
-          for a developer is not simply restricted to the structure, syntax of
-          the language but the declarative nature of ASL programming. A
+          for a developer is not simply restricted to the structure and syntax
+          of the language, but also the declarative nature of ASL programming. A
           developer may have some familiarity with declarative programming
           having worked with SQL, yet it’s unlikely one has frequently used a
           declarative paradigm to orchestrate components. It’s one thing to
@@ -804,41 +809,56 @@
           discussed using the AWS Console.
         </p>
 
-        <p>HAZY DIAGRAM</p>
-
-        <p>There are 7 steps to go through to create a state machine.</p>
-
-        <p>SIDE-BY-SIDE OF STEPS AND GIF of WORKFLOW</p>
+        <figure>
+          <img
+            src="assets/images/hazy-diagrams/full.png"
+            alt="Resources to be provisioned manually"
+          />
+          <figcaption>Resources to be provisioned</figcaption>
+        </figure>
 
         <p>
-          Several of the steps comprise tedious clicking around the console
-          rather than intellectual challenges. However, a couple of steps could
-          cause real trouble. For example, step 4 in the accompanying diagram is
-          where ASL needs to be provided to create a state machine. If a
-          developer is familiar with ASL and knows what they want to create,
-          this could take several minutes even when some elements of the code
-          have been provided (like with a template). For a developer unfamiliar
-          with ASL, properly integrating ASL could take several hours.
+          There are seven steps to go through to create a state machine. Several
+          of the steps comprise tedious clicking around the console rather than
+          intellectual challenges. However, a couple of steps could cause real
+          trouble. For example, step 4 in the accompanying diagram is where ASL
+          needs to be provided to create a state machine.
+        </p>
+
+        <figure>
+          <img src="" alt="gif of steps to create state machine" />
+          <figcaption>Steps to create state machine</figcaption>
+        </figure>
+
+        <p>
+          If a developer is familiar with ASL and knows what they want to
+          create, this could take several minutes even when some elements of the
+          code have been provided (as) with a template). For a developer
+          unfamiliar with ASL, properly integrating ASL could take several
+          hours.
         </p>
 
         <p>
           Subsequent to providing and modifying ASL, a developer may attempt to
-          save the state machine to create other components of the application,
-          thereafter. It makes sense to create the orchestration layer first as
-          it serves as a map for the components to be integrated in development.
+          save the state machine to create other components of the application.
+          It makes sense to create the orchestration layer first as it serves as
+          a map for the components to be integrated in development.
           Unfortunately, to the developer’s chagrin, they may run into an error
           if they don’t provide a valid ARN (Amazon Resource Name) for all
           associated state machine components. Most developers who aren’t
           familiar with writing a valid ARN would solve the error by navigating
           to the Lambda console, creating all of the necessary Lambdas while the
-          Step Functions console remains open, and copy / pasting the ARNs of
+          Step Functions console remains open, and copying/pasting the ARNs of
           the created Lambdas into the state machine definition. For the
           experienced AWS developer, it’s possible to write a valid ARN for each
           component, but it’s another layer of tedium which requires exactitude
           to get right.
         </p>
 
-        <p>GIF of failing state machine save</p>
+        <figure>
+          <img src="" alt="State machine creation failing">
+          <figcaption>State machine creation failing</figcaption>
+        </figure>
 
         <p>
           What does navigating to the Lambda console and creating the pertinent
