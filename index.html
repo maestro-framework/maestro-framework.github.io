@@ -189,6 +189,19 @@
           minutes, and any state associated with the execution is lost.
         </p>
 
+        <p>
+          When invoked, a container is 'spun up' when needed which has
+          historically taken hundreds of milliseconds for a container that
+          hasn't already been operating. Hence the notion of a 'cold start'
+          meaning that a first invocation of a given Lambda required a period of
+          extended latency. AWS has recently offered a feature to address this
+          'cold start' through a sub 100 millisecond spin up of certain function
+          containers. The drawback of this new feature is an added cost, so it
+          doesn't seem to be a great fit for use with all Lambdas in a workflow
+          since users of AWS Lambda are already charged for execution time in
+          100 ms increments.
+        </p>
+
         <h3>2.4 Serverless Patterns</h3>
 
         <p>
