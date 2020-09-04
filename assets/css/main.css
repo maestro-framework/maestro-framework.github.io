@@ -147,7 +147,7 @@ pre {
 }
 
 pre code {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
 }
 
 code {
@@ -706,10 +706,6 @@ small {
   code,
   .command {
     font-size: 0.9rem;
-  }
-
-  pre code {
-    font-size: 1.5vw;
   }
 
   #footnotes {
