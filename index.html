@@ -216,14 +216,14 @@
         </p>
 
         <p>
-          When invoked, a container is 'spun up' when needed which has
+          When invoked, a container is “spun up” when needed which has
           historically taken hundreds of milliseconds for a container that
-          hasn't already been operating. Hence the notion of a 'cold start'
+          hasn’t already been operating. Hence the notion of a “cold start”
           meaning that a first invocation of a given Lambda required a period of
           extended latency. AWS has recently offered a feature to address this
-          'cold start' through a sub 100 millisecond spin up of certain function
+          “cold start” through a sub 100 millisecond spin up of certain function
           containers. The drawback of this new feature is an added cost, so it
-          doesn't seem to be a great fit for use with all Lambdas in a workflow
+          doesn’t seem to be a great fit for use with all Lambdas in a workflow
           since users of AWS Lambda are already charged for execution time in
           100 ms increments.
         </p>
@@ -233,7 +233,7 @@
         <p>
           Serverless development is a new area with AWS Lambda having been
           released just some six years prior to this writing. In the short time
-          that's trsanspired since their release, there have not yet been
+          that’s trsanspired since their release, there have not yet been
           developed a set of broadly accepted best practices. This can be
           challenging since new practitioners must seemingly start from scratch
           when it comes to creating an application in this paradigm.
@@ -389,7 +389,7 @@
             src="assets/images/workflow/validation.png"
             alt="Invalid input"
           />
-          <figcaption>What if there's an invalid input?</figcaption>
+          <figcaption>What if there’s an invalid input?</figcaption>
         </figure>
 
         <p>
