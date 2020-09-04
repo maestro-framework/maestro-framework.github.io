@@ -90,15 +90,30 @@
         <h3>1.1 What is Maestro?</h3>
 
         <p>
-          Maestro is a framework that enables rapid iteration for serverless
-          orchestration. The rise of serverless architectures and FaaS offerings
-          such as AWS Lambda has revolutionized how companies are developing
-          modern apps. The need for an orchestration layer over these
-          architectures has brought about services such as AWS Step Functions.
-          However, deploying apps that use Step Functions can be tedious and
-          error-prone. Maestro prioritizes speed and developer productivity by
-          automating this process so that the developer’s focus stays on
-          developing their application’s business logic.
+          Maestro is an open-source easy-to-use framework for quickly
+          bootstrapping, deploying, and rapidly iterating your serverless
+          orchestration (hence the name) workflows and applications using
+          Node.js® and AWS Step Functions.
+        </p>
+
+        <p>
+          Maestro makes it easy to get started developing serverless
+          orchestration workflows. Plus, deploying is a breeze with Maestro.
+          Since Maestro also offers frictionless teardown, re-deploying is as
+          simple as tearing down and deploying again. Using Maestro aids
+          development not only in the initial phase of a project but throughout
+          maintaining and iterating on a project.
+        </p>
+
+        <p>
+          The rise of serverless architectures and FaaS offerings such as AWS
+          Lambda has revolutionized how companies are developing modern apps.
+          The need for an orchestration layer over these architectures has
+          brought about services such as AWS Step Functions. However, deploying
+          apps that use Step Functions can be tedious and error-prone. Maestro
+          prioritizes speed and developer productivity by automating this
+          process so that the developer’s focus stays on developing their
+          application's business logic.
         </p>
 
         <h2 id="serverless">2 Serverless</h2>
@@ -1146,6 +1161,8 @@
           Functions, so they lie outside the scope of this discussion.
         </p>
 
+        <h4>4.4.1 Serverless Framework</h4>
+
         <p>
           One popular framework is the aptly named Serverless Framework [<a
             href="#reference_12"
@@ -1187,6 +1204,8 @@
           use of dependencies can hinder otherwise light applications.
         </p>
 
+        <h4>4.4.2 AWS SAM</h4>
+
         <p>
           Another framework that deals with Step Functions was created by AWS:
           the Serverless Application Model or SAM [<a
@@ -1224,6 +1243,8 @@
           for Step Functions was added as an afterthought.
         </p>
 
+        <h4>4.4.3 Step</h4>
+
         <p>
           What about more purpose-built frameworks? Unfortunately, there aren’t
           many designed with Step Functions in mind. One called Step does happen
@@ -1256,6 +1277,8 @@
           workflows using Step Functions.
         </p>
 
+        <h2 id="maestro">5 Maestro</h2>
+
         <figure>
           <img
             src="assets/images/logos/maestro/mark-on-dark.png"
@@ -1264,7 +1287,6 @@
           <figcaption>Maestro</figcaption>
         </figure>
 
-        <h2 id="maestro">5 Maestro</h2>
         <p>
           Maestro is an open source Node.js framework for AWS Step Functions
           built with ease of use in mind. It offers simple commands that
@@ -1377,6 +1399,8 @@
           challenges along the way.
         </p>
 
+        <h4>5.2.1 AWS IAM</h4>
+
         <p>
           One source of difficulty was dealing with IAM [<a
             href="#reference_15"
@@ -1449,6 +1473,8 @@
           achieved.
         </p>
 
+        <h4>5.2.2 Asynchronicity</h4>
+
         <p>
           Discussing the challenge of creating a Lambda or state machine with
           the ability to properly interact with AWS depending on another service
@@ -1472,6 +1498,19 @@
           implemented. The result is a lightning fast framework.
         </p>
 
+        <h4>5.2.3 Domain</h4>
+
+        <p>
+          Serverless orchestration is a very niche topic. Although AWS Lambda is
+          a popular service, orchestration is often done company by company
+          without adhering to a common set of shared best practices. Navigating
+          common approaches required extensive, in depth inquiry. Further, AWS
+          Step Functions offers many benefits but is not broadly used; as a
+          result, few frameworks or solutions exist to provide insight into
+          development. Therefore, the Maestro team had to be quite innovative to
+          provide a framework in this space.
+        </p>
+
         <h3>5.3 Future Work</h3>
 
         <p>
@@ -1479,6 +1518,8 @@
           from the outset. Here are a few aspirations that are left for future
           work.
         </p>
+
+        <h4>5.3.1 ASL</h4>
 
         <p>
           Ultimately, a framework that works with ASL could be benefited by
@@ -1491,12 +1532,16 @@
           helpful.
         </p>
 
+        <h4>5.3.2 Logging</h4>
+
         <p>
           Another possible future addition would be integration with the host
           logging system. More robust logging is helpful in the event something
           goes wrong with the deployment of an individual component or an entire
           workflow.
         </p>
+
+        <h4>5.3.3 Versioning</h4>
 
         <p>
           Further, if a premise of Maestro is allowing rapid iteration on
@@ -1507,6 +1552,8 @@
           workflow would be persisted and easily accessible every time a
           workflow was newly deployed.
         </p>
+
+        <h4>5.3.4 Redploy Command</h4>
 
         <p>
           Which brings to mind another consideration left for the future: a
@@ -1520,6 +1567,8 @@
           long-standing components.
         </p>
 
+        <h4>5.3.5 Other AWS Services</h4>
+
         <p>
           As clearly outlined, the current focus of Maestro are the ever popular
           AWS Lambdas. While much can be achieved, and often is, strictly using
@@ -1528,6 +1577,8 @@
           integrating further AWS services into Maestro would amplify its
           potential.
         </p>
+
+        <h4>5.3.6 Per-Project Configuration</h4>
 
         <p>
           Currently, the Maestro configuration depends on a single configuration
