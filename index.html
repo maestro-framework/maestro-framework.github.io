@@ -324,28 +324,28 @@
 
         <p>
           A Lambda may execute and require the subsequent execution of another
-          service which may in fact be parallel executions. A Lambda somewhere
+          service which may occur in parallel. A Lambda somewhere
           in the execution chain may require a particular input. Later, an
           output may require processing. At some point, some asynchronicity may
           be required to allow for some series of executions to perform tasks
-          while a longer running function executes. At yet another stage, a
+          while a funciton of longer duration executes. At yet another stage, a
           single synchronous execution may require every Lambda in the workflow
           to wait until it terminates.
         </p>
 
         <p>
-          Certainly there are multiple considerations related to serverless
-          orchestration, and patterns have arisen for addressing a number of
-          common concerns. However, imagining what orchestration actually looks
+          Certainly, there are multiple considerations related to serverless
+          orchestration, and patterns have arisen for addressing numerous
+          common concerns. However, imagining what orchestration looks
           like in the wild without a concrete example may be difficult. In order
-          to visualize what real world orchestration may look like, consider the
+          to visualize what real-world orchestration may look like, consider the
           following hypothetical situation: the sole developer in a startup is
-          tasked with creating an internal tool for provisioning some resource
+          tasked with creating an internal tool for provisioning resources
           per managerial approval.
         </p>
 
         <p>
-          A request comes in to the manager who has the option of accepting or
+          A request comes into the manager who has the option of accepting or
           denying the request. If the manager approves, the resource is
           provisioned and the requester is granted access. If the manager
           denies, the requester is notified of the denial. The savvy developer
@@ -397,14 +397,14 @@
           Some form of error handling could prevent such an unfortunate
           occurrence, but should the ‘Manager’ validate its own input? It would
           be reasonable that a component performing a single responsibility of
-          validating input could both provide clear separation of concerns and
+          validating input could both provide a clear separation of concerns and
           prevent the ‘Manager’ from failing.
         </p>
 
         <p>
           A common orchestration pattern known as the ‘Proxy Lambda’ could play
           the pivotal role of invoking the ‘Manager’ with proper input. The
-          ‘Proxy Lambda’ nestles between two Lambdas, and invokes the second
+          ‘Proxy Lambda’ nestles between two Lambdas and invokes the second
           when appropriate. In this case, it handles a potential invalid input
           error.
         </p>
@@ -442,8 +442,8 @@
 
         <p>
           Since it’s unlikely there will be an error at this stage, writing
-          additional business logic is all that is required. Despite the 15
-          minute execution cap of a Lambda, as long as the ‘Manager’ doesn’t
+          additional business logic is all that is required. Despite the
+          15-minute execution cap of a Lambda, as long as the ‘Manager’ doesn’t
           take long to make the decision, there shouldn’t be an issue. The
           ‘Manager’ is transformed to the affectionately named ‘Fat Manager’:
         </p>
@@ -494,10 +494,10 @@
           Do any limitations exist with this implementation? It may be that the
           likeliness of the Lambda surpassing the execution limit is now
           increased if the ‘Fat Manager’ monitors the ‘Provisioner’ during
-          extended retries. A delayed provisioning may cause the ‘Fat Manager’
+          extended retries. Delayed provisioning may cause the ‘Fat Manager’
           to terminate before determining if a retry was necessary. Further,
           with the orchestration logic of the ‘Manger’ written alongside the
-          business logic, the component is overloaded resulting in a poor
+          business logic, the component is overloaded resulting in poor
           separation of concerns.
         </p>
 
@@ -523,7 +523,7 @@
         </p>
 
         <p>
-          It is actually possible to extract out an entire orchestration layer.
+          It is possible to extract out an entire orchestration layer.
           The result would be a thin workflow of strictly business logic
           resembling the original workflow. The orchestration logic would be
           entirely on its own.
@@ -544,7 +544,7 @@
           By implementing the application in this way, error handling, retry,
           and branching can all be done in one place. One benefit is that when
           the business logic needs to be iterated on, the orchestration logic
-          can likely stay the same. The result is more rapid iteration. It can
+          can likely stay the same. The result is a more rapid iteration. It can
           also improve the ease of implementation. For a new application or one
           that simply hasn’t reached a stable state, this proposal can be quite
           valuable.
