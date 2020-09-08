@@ -911,7 +911,6 @@ small {
   }
 }
 
-
 @media (max-height: 750px) {
   header figure img {
     max-width: 100vh;
