@@ -1328,7 +1328,7 @@
           repository through the
           <code class="command language-plaintext">maestro get-templates</code>
           command that creates a local version of the repo locally. Maestro
-          itself is able to stay light by separating out the template repository
+          stays light by separating the template repository
           which can then be utilized independently. Separation also provides a
           future basis for middleware to add templates. Included in the
           repository are several templates deemed foundational by AWS. However,
@@ -1338,12 +1338,12 @@
         </p>
 
         <p>
-          Since configuration of Lambda and Step Functions can be cumbersome, a
+          Since the configuration of Lambda and Step Functions can be cumbersome, a
           convenience method for configuring a practitioner’s AWS region and
           account number is provided (
           <code class="command language-plaintext">maestro config</code>). The
           pertinent account information is made available to any maestro project
-          and automatically included for deployment of resources that would
+          and automatically included for the deployment of resources that would
           otherwise require manual configuration.
         </p>
 
@@ -1369,7 +1369,7 @@
           tasks, creation of Lambdas associated with the project, and creation
           of the Step Functions state machine. The creation of resources like
           the Lambdas and state machine takes place concurrently such that
-          deployment is faster. If the roles associated with a deployment
+          deployment is faster. If the roles associated with deployment
           already exist in an AWS account, deployment takes about 3 seconds, and
           even a deployment that requires creating the roles takes only around
           15 seconds.
@@ -1406,7 +1406,7 @@
             href="#reference_15"
             class="reference"
             >15</a
-          >]. IAM is the AWS service that allows for the creation of roles which
+          >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
           challenge in most programming environments, and AWS is no exception.
@@ -1422,7 +1422,7 @@
         </p>
 
         <p>
-          In order to make an initial determination of which basic capabilities
+          To initially determine which basic capabilities
           the components in a standard Lambda-centric workflow required, the
           Maestro team created some mock components and observed which policies
           AWS attached by default. Later, a composite of these policies was
@@ -1441,8 +1441,8 @@
 
         <p>
           Role creation synchronously preceded any attempt to create subsequent
-          resources which would need those roles, but confirming the creation of
-          a role in IAM did not indicate availability of the role for
+          resources that needed  those roles, but confirming the creation of
+          a role in IAM did not indicate the availability of the role for
           association with another service. Further, the most straightforward
           mechanism for determining a role’s availability in another service
           requires attempting to associate it with that service from within the
@@ -1452,11 +1452,11 @@
         </p>
 
         <p>
-          Therefore, in order to create Lambdas and state machines with
+          Therefore, to create Lambdas and state machines with
           associated roles, the Maestro team resolved to implement retry in the
-          chain of role creation and subsequent creation of services. Built in
+          chain of role creation and subsequent creation of services. Built-in
           retry does exist in SDKs, but such retry is for atomic retry of a
-          service interaction, not the retry of business logic of an
+          service interaction, not the retry of the business logic of an
           interservice framework. In other words, if creating a role in IAM
           failed, there would be an AWS means of retrying that interaction, but
           since the current problem is not a failed role creation but its
@@ -1465,11 +1465,11 @@
         </p>
 
         <p>
-          The process of retrial was fraught with its own challenges since the
+          The retry process was fraught with further challenges since the
           error messages of unsuccessful attempts to attach a policy to a Lambda
           or state machine were quite cryptic. The AWS documentation for role
           association was not as robust as the team would have hoped, but in the
-          end retry with appropriate initial sleep and backoff rates was
+          end, retry with appropriate initial sleep and backoff rates was
           achieved.
         </p>
 
@@ -1479,8 +1479,8 @@
           Discussing the challenge of creating a Lambda or state machine with
           the ability to properly interact with AWS depending on another service
           touches on an overarching challenge that would need to be reconciled
-          in developing Maestro: asynchronicity. Maestro is able to offer quick
-          deployment based on concurrent creation and deployment of resources
+          in developing Maestro: asynchronicity. Maestro offers quick
+          deployment thanks to concurrent creation and deployment of resources
           which requires navigating numerous issues related to synchronicity.
         </p>
 
@@ -1495,7 +1495,7 @@
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
-          implemented. The result is a lightning fast framework.
+          implemented. The result is a lightning-fast framework.
         </p>
 
         <h4>5.2.3 Domain</h4>
@@ -1504,7 +1504,7 @@
           Serverless orchestration is a very niche topic. Although AWS Lambda is
           a popular service, orchestration is often done company by company
           without adhering to a common set of shared best practices. Navigating
-          common approaches required extensive, in depth inquiry. Further, AWS
+          common approaches required extensive, in-depth inquiry. Further, AWS
           Step Functions offers many benefits but is not broadly used; as a
           result, few frameworks or solutions exist to provide insight into
           development. Therefore, the Maestro team had to be quite innovative to
@@ -1527,7 +1527,7 @@
           the objective of Maestro is to facilitate working with ASL through
           templates. However, no set of templates can be comprehensive, and any
           developer working extensively with Step Functions will eventually
-          require writing their own ASL. Having an ASL ‘wrapper’ to imperatively
+          require writing ASL. Having an ASL ‘wrapper’ to imperatively
           write ASL, in effect, mirroring common procedural coding would be
           helpful.
         </p>
@@ -1553,7 +1553,7 @@
           workflow was newly deployed.
         </p>
 
-        <h4>5.3.4 Redploy Command</h4>
+        <h4>5.3.4 Redeploy Command</h4>
 
         <p>
           Which brings to mind another consideration left for the future: a
@@ -1563,14 +1563,14 @@
           changed since the last version. If versioning were clearly outlined,
           then re-deploying could look back at a snapshot of the workflow to
           determine what changed and then re-deploy accordingly. This would be
-          helpful for preserving artifacts in AWS that provide auditability of
+          help preserve artifacts in AWS that provide auditability of
           long-standing components.
         </p>
 
         <h4>5.3.5 Other AWS Services</h4>
 
         <p>
-          As clearly outlined, the current focus of Maestro are the ever popular
+          As clearly outlined, the current focus of Maestro is the ever-popular
           AWS Lambdas. While much can be achieved, and often is, strictly using
           Lambdas, other services offer a broader range of development
           possibilities. Having encountered a starting point for development,
