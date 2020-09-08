@@ -649,13 +649,13 @@
 
         <p>
           While the Step Functions language, ASL, is somewhat abstract, AWS
-          facilitates visualizing workflows in a concrete way through visual
+          facilitates concretely visualizing workflows through
           representations of an ASL definition available in the AWS console. Not
           only can the sequence of a workflow be visualized, but if the
           resources are properly defined, the state machine can be executed in
           the console with the transitions visualized as the various components
           execute. The visualization is strictly a representation of the ASL
-          definition provided, so no development can actually be done visually,
+          definition provided, so no development can be done visually,
           but the visualization is informative.
         </p>
 
@@ -739,9 +739,9 @@
         <p>
           The salient point is that a separation is made between those states
           that are introduced only for purposes of orchestration and states
-          performing some task associated with the business logic of an
+          performing tasks associated with the business logic of an
           application. Even though the visualization represents business and
-          orchestration steps in one place, the business logic actually lies far
+          orchestration steps in one place, the business logic lies far
           from the state machine. The ‘Resource’ field of the ‘Task’ state
           represents the location of the components where the business logic is
           defined while the ASL represents the orchestration logic in a single
@@ -751,13 +751,13 @@
         <p>
           Another feature of Step Functions is retry. It’s difficult to express
           how challenging it is to implement retry without it. Part of the
-          challenge is the lack of shared state when dealing with Lambda and
-          auditability of execution in real time. When working with Step
+          challenge is the lack of a shared state when dealing with Lambda and
+          auditability of execution in real-time. When working with Step
           Functions, however, there is an ‘Error’ state which has a field for
           ‘Retry’. The developer simply indicates the type of error to retry as
           well as details like interval retry attempts, and max attempts. Some
           of these features are difficult to reconcile outside of a state
-          machine as there is no higher order notion of a singular workflow.
+          machine as there is no higher-order notion of a singular workflow.
         </p>
 
         <figure>
@@ -818,7 +818,7 @@
 
         <p>
           Step Functions seems to address some crucial problems in the world of
-          serverless orchestration, but it would be naive to overlook challenges
+          serverless orchestration, but it would be naive to overlook the challenges
           it introduces.
         </p>
 
@@ -832,8 +832,8 @@
         </p>
 
         <p>
-          JSON was designed as a data serialization format not a programming
-          language. It was meant to be a representation of data not a
+          JSON was designed as a data serialization format, not a programming
+          language. It was meant to be a representation of data, not a
           development platform. That said, the awkwardness of programming in ASL
           for a developer is not simply restricted to the structure and syntax
           of the language, but also the declarative nature of ASL programming. A
@@ -849,7 +849,7 @@
         <p>
           Tools exist to try to provide a higher-level abstraction that compiles
           down to ASL, but these are not widely adopted as of yet and there is
-          still much unsettled debate regarding the characteristics of these
+          still much-unsettled debate regarding the characteristics of these
           tools. Therefore, attempting to provide this proposed layer of
           abstraction at this stage of Step Functions’ life-cycle may prove to
           be folly.
@@ -863,7 +863,7 @@
 
         <p>
           A template models the prospective workflow providing, at least, a
-          useful starting point. For the experienced practitioner it’s a nice
+          useful starting point. For the experienced practitioner, it’s a nice
           convenience while for new practitioners it may prove a necessity.
         </p>
 
@@ -887,12 +887,12 @@
         <p>
           Each deployed component, including the state machine itself, needs to
           be accompanied by an appropriate region and account number for a
-          successful deployment. Further, the proper permissions must be
+          successful deployment. Further, proper permissions must be
           configured.
         </p>
 
         <p>
-          All services have their own interface, so configuration on AWS cannot
+          Further, there are individual interfaces for each service, so configuration on AWS cannot
           be performed in a single, shared location. Manual pre-deployment
           configuration, especially in the AWS console, can prove tedious and
           error-prone.
@@ -936,10 +936,10 @@
         </p>
 
         <p>
-          Subsequent to providing and modifying ASL, a developer may attempt to
+          After providing and modifying ASL, a developer may attempt to
           save the state machine to create other components of the application.
           It makes sense to create the orchestration layer first as it serves as
-          a map for the components to be integrated in development.
+          a map for integrating components during development.
           Unfortunately, to the developer’s chagrin, they may run into an error
           if they don’t provide a valid ARN (Amazon Resource Name) for all
           associated state machine components. Most developers who aren’t
@@ -978,7 +978,7 @@
 
         <p>
           The difficulty regarding the AWS console is that every step, large and
-          small, needs to be performed for each individual Lambda.
+          small, needs to be performed for each Lambda.
         </p>
 
         <figure>
@@ -1043,27 +1043,27 @@
         </figure>
 
         <p>
-          Whether implementing components in disparate AWS consoles, locally
-          with the AWS SDK, or AWS CLI, speed of development would certainly be
+          Whether implementing components in disparate AWS consoles or locally
+          with the AWS SDK or AWS CLI, speed of development would certainly be
           impacted at least while getting accustomed to AWS development. There
           is a formidable learning curve.
         </p>
 
         <p>
           It’s easy to imagine why certain aspects of deployment could benefit
-          from automation. Indeed, there are several frameworks that aim to help
-          the developer perform tasks pertaining to deployment.
+          from automation. Indeed, several frameworks aim to help
+          the developer perform deployment related tasks.
         </p>
 
         <p>
           It’s unlikely that the first version of an application will be the
-          version that stands the test of time, and in order for the application
+          version that stands the test of time, and for the application
           to evolve, old versions need to be torn down. This is especially true
           when working in a new, unfamiliar environment.
         </p>
 
         <p>
-          To tear down in the AWS Console isn’t terribly challenging. It’s just
+          Tearing down in the AWS Console isn’t challenging. It’s just
           tedious. It mainly involves:
         </p>
 
@@ -1102,7 +1102,7 @@
         <h3>4.3 AWS Tools</h3>
 
         <p>
-          In order to understand the tools that currently exist to facilitate
+          To understand the tools that currently exist to facilitate
           development, it’s helpful to understand a bit about the AWS solutions
           on which those tools are built.
         </p>
@@ -1147,7 +1147,7 @@
           Essentially, any framework in this space will use one of these two
           tools. However, it seems the design philosophy of the framework will
           often inform which of these tools will be employed. Frameworks that
-          aim to be general purpose tools will typically take the CloudFormation
+          aim to be general-purpose tools will typically take the CloudFormation
           approach while frameworks for specific use cases or that are geared
           toward a particular language will often opt for the SDK approach.
         </p>
@@ -1155,8 +1155,8 @@
         <h3>4.4 Existing Solutions</h3>
 
         <p>
-          The frameworks of concern for the purposes of this consideration are
-          those that allow deployment of Step Functions. Many excellent
+          The frameworks of concern for this consideration are
+          those that allow the deployment of Step Functions. Many excellent
           frameworks exist for certain use cases but don’t include Step
           Functions, so they lie outside the scope of this discussion.
         </p>
@@ -1170,9 +1170,9 @@
             >12</a
           >]; it’s the dominant player in this space. The approach to deployment
           taken by Serverless Framework is through compilation to
-          CloudFormation, and it can be considered a general purpose tool.
-          Regarding Step Functions, a plugin is provided that allows inclusion
-          of Step Functions in a deployment. Also, since CloudFormation is used,
+          CloudFormation, and it can be considered a general-purpose tool.
+          Regarding Step Functions, a plugin is provided that allows the inclusion
+          of Step Functions in a deployment. Also, since CloudFormation is used, the
           teardown of the entire stack can be performed in the CloudFormation
           console, yet one cannot tear down from within the framework.
         </p>
@@ -1199,7 +1199,7 @@
           orchestrate. Further, the state machine definition must be written in
           YAML to accommodate Serverless Framework’s conventions. Imagine, ASL
           is written in JSON which must then be converted to YAML. How tedious.
-          Finally, the general purpose functionality that Serverless Framework
+          Finally, the general-purpose functionality that Serverless Framework
           provides comes at a dependency cost of 535 node modules. Such heavy
           use of dependencies can hinder otherwise light applications.
         </p>
@@ -1222,7 +1222,7 @@
         </figure>
 
         <p>
-          SAM is similar to Serverless Framework both in being a general purpose
+          SAM is similar to Serverless Framework both in being a general-purpose
           tool and deploying through CloudFormation. Likewise, it supports
           multiple runtimes and automatically generates the required permissions
           for resources. Unlike Serverless Framework, a working state machine
@@ -1238,7 +1238,7 @@
         </p>
 
         <p>
-          As discussed, Serverless Framework and SAM are both general purpose
+          As discussed, Serverless Framework and SAM are both general-purpose
           tools, and neither was designed with Step Functions in mind. Support
           for Step Functions was added as an afterthought.
         </p>
@@ -1252,8 +1252,8 @@
             href="#reference_14"
             class="reference"
             >14</a
-          >]. Step actually allows the user to create a state machine with a
-          higher level language, namely Go.
+          >]. Step allows the user to create a state machine with a
+          higher-level language, namely Go.
         </p>
 
         <figure>
@@ -1264,7 +1264,7 @@
         <p>
           However, adoption of Step, apparently, hasn’t been very broad.
           Coinbase appears to be one of the only users of its framework. A
-          non-Coinbase practitioner may, in fact, encounter difficulty
+          non-Coinbase practitioner may encounter difficulty
           configuring it. Understandably, the development status of the
           framework is listed as Beta. Further, a development drawback is that
           Step is not able to create a new state machine but only modify an
@@ -1288,7 +1288,7 @@
         </figure>
 
         <p>
-          Maestro is an open source Node.js framework for AWS Step Functions
+          Maestro is an open-source Node.js framework for AWS Step Functions
           built with ease of use in mind. It offers simple commands that
           facilitate common operations for applications that are suited for Step
           Functions, including interactions with AWS.
