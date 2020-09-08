@@ -198,7 +198,7 @@
             alt="58% of developers in one poll respond that serverless to them is FaaS"
             title="Serverless Poll"
           />
-          <figcaption>Recent poll about the term "serverless"</figcaption>
+          <figcaption>A recent poll about the term "serverless"</figcaption>
         </figure>
 
         <h3>2.3 AWS Lambda</h3>
@@ -234,7 +234,7 @@
         <p>
           Serverless development is a new area with AWS Lambda having been
           released just some six years prior to this writing. In the short time
-          that’s transspired since their release, there have not yet been
+          that’s transpired since their release, there have not yet been
           developed a set of broadly accepted best practices. This can be
           challenging since new practitioners must seemingly start from scratch
           when it comes to creating an application in this paradigm.
@@ -324,11 +324,11 @@
 
         <p>
           A Lambda may execute and require the subsequent execution of another
-          service which may occur in parallel. A Lambda somewhere
+          service that may occur in parallel. A Lambda somewhere
           in the execution chain may require a particular input. Later, an
           output may require processing. At some point, some asynchronicity may
           be required to allow for some series of executions to perform tasks
-          while a funciton of longer duration executes. At yet another stage, a
+          while a function of longer duration executes. At yet another stage, a
           single synchronous execution may require every Lambda in the workflow
           to wait until it terminates.
         </p>
@@ -469,7 +469,7 @@
             alt="Failure depicted on the Provisioner component"
             title="Failed Provisioner"
           />
-          <figcaption>Provisioning step fails...</figcaption>
+          <figcaption>The provisioning step fails...</figcaption>
         </figure>
 
         <p>
@@ -496,7 +496,7 @@
           increased if the ‘Fat Manager’ monitors the ‘Provisioner’ during
           extended retries. Delayed provisioning may cause the ‘Fat Manager’
           to terminate before determining if a retry was necessary. Further,
-          with the orchestration logic of the ‘Manger’ written alongside the
+          with the orchestration logic of the ‘Manager’ written alongside the
           business logic, the component is overloaded resulting in poor
           separation of concerns.
         </p>
@@ -922,9 +922,9 @@
         <figure>
           <img
             src="assets/images/step-functions-console/console-diagram-1.gif"
-            alt="gif of steps to create state machine"
+            alt="gif of steps to create the state machine"
           />
-          <figcaption>Steps to create state machine</figcaption>
+          <figcaption>Steps to create the state machine</figcaption>
         </figure>
 
         <p>
@@ -1564,7 +1564,7 @@
           intelligently re-deploy only elements of the workflow that have
           changed since the last version. If versioning were clearly outlined,
           then re-deploying could look back at a snapshot of the workflow to
-          determine what changed and then re-deploy accordingly. This would be
+          determine what changed and then re-deploy accordingly. This would
           help preserve artifacts in AWS that provide auditability of
           long-standing components.
         </p>
