@@ -210,23 +210,23 @@
             href="#reference_5"
             class="reference"
             >5</a
-          >]. The Lambdas can be invoked by many AWS services including
-          other Lambdas. They are ephemeral in that they have a limited
-          execution time maxing out at 15 minutes, and any state associated with
-          the execution is lost.
+          >]. The Lambdas can be invoked by many AWS services including other
+          Lambdas. They are ephemeral in that they have a limited execution time
+          maxing out at 15 minutes, and any state associated with the execution
+          is lost.
         </p>
 
         <p>
           When invoked, a container is “spun up” when needed which has
           historically taken hundreds of milliseconds for a container that
           hasn’t already been operating. Hence the notion of a “cold start”
-          meaning that the first invocation of a given Lambda required a period of
-          extended latency. AWS has recently offered a feature to address this
-          “cold start” through a sub 100 millisecond spin up of certain function
-          containers. The drawback of this new feature is an added cost, so it
-          doesn’t seem to be a great fit for use with all Lambdas in a workflow
-          since users of AWS Lambda are already charged for execution time in
-          100 ms increments.
+          meaning that the first invocation of a given Lambda required a period
+          of extended latency. AWS has recently offered a feature to address
+          this “cold start” through a sub 100 millisecond spin up of certain
+          function containers. The drawback of this new feature is an added
+          cost, so it doesn’t seem to be a great fit for use with all Lambdas in
+          a workflow since users of AWS Lambda are already charged for execution
+          time in 100 ms increments.
         </p>
 
         <h3>2.4 Serverless Patterns</h3>
@@ -256,8 +256,8 @@
 
         <p>
           Common patterns can be derived from continual work with serverless
-          architectures. Patterns for working with serverless can be grouped into
-          five categories:
+          architectures. Patterns for working with serverless can be grouped
+          into five categories:
         </p>
 
         <ul id="serverless-patterns">
@@ -324,24 +324,24 @@
 
         <p>
           A Lambda may execute and require the subsequent execution of another
-          service that may occur in parallel. A Lambda somewhere
-          in the execution chain may require a particular input. Later, an
-          output may require processing. At some point, some asynchronicity may
-          be required to allow for some series of executions to perform tasks
-          while a function of longer duration executes. At yet another stage, a
-          single synchronous execution may require every Lambda in the workflow
-          to wait until it terminates.
+          service that may occur in parallel. A Lambda somewhere in the
+          execution chain may require a particular input. Later, an output may
+          require processing. At some point, some asynchronicity may be required
+          to allow for some series of executions to perform tasks while a
+          function of longer duration executes. At yet another stage, a single
+          synchronous execution may require every Lambda in the workflow to wait
+          until it terminates.
         </p>
 
         <p>
           Certainly, there are multiple considerations related to serverless
-          orchestration, and patterns have arisen for addressing numerous
-          common concerns. However, imagining what orchestration looks
-          like in the wild without a concrete example may be difficult. In order
-          to visualize what real-world orchestration may look like, consider the
-          following hypothetical situation: the sole developer in a startup is
-          tasked with creating an internal tool for provisioning resources
-          per managerial approval.
+          orchestration, and patterns have arisen for addressing numerous common
+          concerns. However, imagining what orchestration looks like in the wild
+          without a concrete example may be difficult. In order to visualize
+          what real-world orchestration may look like, consider the following
+          hypothetical situation: the sole developer in a startup is tasked with
+          creating an internal tool for provisioning resources per managerial
+          approval.
         </p>
 
         <p>
@@ -404,9 +404,8 @@
         <p>
           A common orchestration pattern known as the ‘Proxy Lambda’ could play
           the pivotal role of invoking the ‘Manager’ with proper input. The
-          ‘Proxy Lambda’ nestles between two Lambdas and invokes the second
-          when appropriate. In this case, it handles a potential invalid input
-          error.
+          ‘Proxy Lambda’ nestles between two Lambdas and invokes the second when
+          appropriate. In this case, it handles a potential invalid input error.
         </p>
 
         <figure>
@@ -494,9 +493,9 @@
           Do any limitations exist with this implementation? It may be that the
           likeliness of the Lambda surpassing the execution limit is now
           increased if the ‘Fat Manager’ monitors the ‘Provisioner’ during
-          extended retries. Delayed provisioning may cause the ‘Fat Manager’
-          to terminate before determining if a retry was necessary. Further,
-          with the orchestration logic of the ‘Manager’ written alongside the
+          extended retries. Delayed provisioning may cause the ‘Fat Manager’ to
+          terminate before determining if a retry was necessary. Further, with
+          the orchestration logic of the ‘Manager’ written alongside the
           business logic, the component is overloaded resulting in poor
           separation of concerns.
         </p>
@@ -523,10 +522,10 @@
         </p>
 
         <p>
-          It is possible to extract out an entire orchestration layer.
-          The result would be a thin workflow of strictly business logic
-          resembling the original workflow. The orchestration logic would be
-          entirely on its own.
+          It is possible to extract out an entire orchestration layer. The
+          result would be a thin workflow of strictly business logic resembling
+          the original workflow. The orchestration logic would be entirely on
+          its own.
         </p>
 
         <figure>
@@ -649,14 +648,14 @@
 
         <p>
           While the Step Functions language, ASL, is somewhat abstract, AWS
-          facilitates concretely visualizing workflows through
-          representations of an ASL definition available in the AWS console. Not
-          only can the sequence of a workflow be visualized, but if the
-          resources are properly defined, the state machine can be executed in
-          the console with the transitions visualized as the various components
-          execute. The visualization is strictly a representation of the ASL
-          definition provided, so no development can be done visually,
-          but the visualization is informative.
+          facilitates concretely visualizing workflows through representations
+          of an ASL definition available in the AWS console. Not only can the
+          sequence of a workflow be visualized, but if the resources are
+          properly defined, the state machine can be executed in the console
+          with the transitions visualized as the various components execute. The
+          visualization is strictly a representation of the ASL definition
+          provided, so no development can be done visually, but the
+          visualization is informative.
         </p>
 
         <p>
@@ -739,13 +738,13 @@
         <p>
           The salient point is that a separation is made between those states
           that are introduced only for purposes of orchestration and states
-          performing tasks associated with the business logic of an
-          application. Even though the visualization represents business and
-          orchestration steps in one place, the business logic lies far
-          from the state machine. The ‘Resource’ field of the ‘Task’ state
-          represents the location of the components where the business logic is
-          defined while the ASL represents the orchestration logic in a single
-          place. True separation.
+          performing tasks associated with the business logic of an application.
+          Even though the visualization represents business and orchestration
+          steps in one place, the business logic lies far from the state
+          machine. The ‘Resource’ field of the ‘Task’ state represents the
+          location of the components where the business logic is defined while
+          the ASL represents the orchestration logic in a single place. True
+          separation.
         </p>
 
         <p>
@@ -818,8 +817,8 @@
 
         <p>
           Step Functions seems to address some crucial problems in the world of
-          serverless orchestration, but it would be naive to overlook the challenges
-          it introduces.
+          serverless orchestration, but it would be naive to overlook the
+          challenges it introduces.
         </p>
 
         <p>
@@ -887,15 +886,14 @@
         <p>
           Each deployed component, including the state machine itself, needs to
           be accompanied by an appropriate region and account number for a
-          successful deployment. Further, proper permissions must be
-          configured.
+          successful deployment. Further, proper permissions must be configured.
         </p>
 
         <p>
-          Further, there are individual interfaces for each service, so configuration on AWS cannot
-          be performed in a single, shared location. Manual pre-deployment
-          configuration, especially in the AWS console, can prove tedious and
-          error-prone.
+          Further, there are individual interfaces for each service, so
+          configuration on AWS cannot be performed in a single, shared location.
+          Manual pre-deployment configuration, especially in the AWS console,
+          can prove tedious and error-prone.
         </p>
 
         <p>
@@ -936,20 +934,19 @@
         </p>
 
         <p>
-          After providing and modifying ASL, a developer may attempt to
-          save the state machine to create other components of the application.
-          It makes sense to create the orchestration layer first as it serves as
-          a map for integrating components during development.
-          Unfortunately, to the developer’s chagrin, they may run into an error
-          if they don’t provide a valid ARN (Amazon Resource Name) for all
-          associated state machine components. Most developers who aren’t
-          familiar with writing a valid ARN would solve the error by navigating
-          to the Lambda console, creating all of the necessary Lambdas while the
-          Step Functions console remains open, and copying/pasting the ARNs of
-          the created Lambdas into the state machine definition. For the
-          experienced AWS developer, it’s possible to write a valid ARN for each
-          component, but it’s another layer of tedium which requires exactitude
-          to get right.
+          After providing and modifying ASL, a developer may attempt to save the
+          state machine to create other components of the application. It makes
+          sense to create the orchestration layer first as it serves as a map
+          for integrating components during development. Unfortunately, to the
+          developer’s chagrin, they may run into an error if they don’t provide
+          a valid ARN (Amazon Resource Name) for all associated state machine
+          components. Most developers who aren’t familiar with writing a valid
+          ARN would solve the error by navigating to the Lambda console,
+          creating all of the necessary Lambdas while the Step Functions console
+          remains open, and copying/pasting the ARNs of the created Lambdas into
+          the state machine definition. For the experienced AWS developer, it’s
+          possible to write a valid ARN for each component, but it’s another
+          layer of tedium which requires exactitude to get right.
         </p>
 
         <figure>
@@ -1052,20 +1049,20 @@
 
         <p>
           It’s easy to imagine why certain aspects of deployment could benefit
-          from automation. Indeed, several frameworks aim to help
-          the developer perform deployment related tasks.
+          from automation. Indeed, several frameworks aim to help the developer
+          perform deployment related tasks.
         </p>
 
         <p>
           It’s unlikely that the first version of an application will be the
-          version that stands the test of time, and for the application
-          to evolve, old versions need to be torn down. This is especially true
+          version that stands the test of time, and for the application to
+          evolve, old versions need to be torn down. This is especially true
           when working in a new, unfamiliar environment.
         </p>
 
         <p>
-          Tearing down in the AWS Console isn’t challenging. It’s just
-          tedious. It mainly involves:
+          Tearing down in the AWS Console isn’t challenging. It’s just tedious.
+          It mainly involves:
         </p>
 
         <ul id="deletion-steps">
@@ -1156,10 +1153,10 @@
         <h3>4.4 Existing Solutions</h3>
 
         <p>
-          The frameworks of concern for this consideration are
-          those that allow the deployment of Step Functions. Many excellent
-          frameworks exist for certain use cases but don’t include Step
-          Functions, so they lie outside the scope of this discussion.
+          The frameworks of concern for this consideration are those that allow
+          the deployment of Step Functions. Many excellent frameworks exist for
+          certain use cases but don’t include Step Functions, so they lie
+          outside the scope of this discussion.
         </p>
 
         <h4>4.4.1 Serverless Framework</h4>
@@ -1172,10 +1169,11 @@
           >]; it’s the dominant player in this space. The approach to deployment
           taken by Serverless Framework is through compilation to
           CloudFormation, and it can be considered a general-purpose tool.
-          Regarding Step Functions, a plugin is provided that allows the inclusion
-          of Step Functions in a deployment. Also, since CloudFormation is used, the
-          teardown of the entire stack can be performed in the CloudFormation
-          console, yet one cannot tear down from within the framework.
+          Regarding Step Functions, a plugin is provided that allows the
+          inclusion of Step Functions in a deployment. Also, since
+          CloudFormation is used, the teardown of the entire stack can be
+          performed in the CloudFormation console, yet one cannot tear down from
+          within the framework.
         </p>
 
         <figure>
@@ -1253,8 +1251,8 @@
             href="#reference_14"
             class="reference"
             >14</a
-          >]. Step allows the user to create a state machine with a
-          higher-level language, namely Go.
+          >]. Step allows the user to create a state machine with a higher-level
+          language, namely Go.
         </p>
 
         <figure>
@@ -1265,11 +1263,10 @@
         <p>
           However, adoption of Step, apparently, hasn’t been very broad.
           Coinbase appears to be one of the only users of its framework. A
-          non-Coinbase practitioner may encounter difficulty
-          configuring it. Understandably, the development status of the
-          framework is listed as Beta. Further, a development drawback is that
-          Step is not able to create a new state machine but only modify an
-          existing one.
+          non-Coinbase practitioner may encounter difficulty configuring it.
+          Understandably, the development status of the framework is listed as
+          Beta. Further, a development drawback is that Step is not able to
+          create a new state machine but only modify an existing one.
         </p>
 
         <p>
@@ -1306,7 +1303,7 @@
         <figure>
           <img
             src="assets/images/step-functions-console/console-diagram-7.gif"
-            style="max-height: 50vh"
+            style="max-height: 50vh;"
             alt="deploying with maestro"
           />
           <figcaption>Deploying with Maestro</figcaption>
@@ -1330,19 +1327,19 @@
           repository through the
           <code class="command language-plaintext">maestro get-templates</code>
           command that creates a local version of the repo locally. Maestro
-          stays light by separating the template repository
-          which can then be utilized independently. Separation also provides a
-          future basis for middleware to add templates. Included in the
-          repository are several templates deemed foundational by AWS. However,
-          the Maestro philosophy is, ‘Bring Your Own Template’, and any template
-          placed in the local repository will be included for creation by the
+          stays light by separating the template repository which can then be
+          utilized independently. Separation also provides a future basis for
+          middleware to add templates. Included in the repository are several
+          templates deemed foundational by AWS. However, the Maestro philosophy
+          is, ‘Bring Your Own Template’, and any template placed in the local
+          repository will be included for creation by the
           <code class="command language-plaintext">new</code> command.
         </p>
 
         <p>
-          Since the configuration of Lambda and Step Functions can be cumbersome, a
-          convenience method for configuring a practitioner’s AWS region and
-          account number is provided (
+          Since the configuration of Lambda and Step Functions can be
+          cumbersome, a convenience method for configuring a practitioner’s AWS
+          region and account number is provided (
           <code class="command language-plaintext">maestro config</code>). The
           pertinent account information is made available to any maestro project
           and automatically included for the deployment of resources that would
@@ -1371,10 +1368,10 @@
           tasks, creation of Lambdas associated with the project, and creation
           of the Step Functions state machine. The creation of resources like
           the Lambdas and state machine takes place concurrently such that
-          deployment is faster. If the roles associated with deployment
-          already exist in an AWS account, deployment takes about 3 seconds, and
-          even a deployment that requires creating the roles takes only around
-          15 seconds.
+          deployment is faster. If the roles associated with deployment already
+          exist in an AWS account, deployment takes about 3 seconds, and even a
+          deployment that requires creating the roles takes only around 15
+          seconds.
         </p>
 
         <p>
@@ -1424,11 +1421,11 @@
         </p>
 
         <p>
-          To initially determine which basic capabilities
-          the components in a standard Lambda-centric workflow required, the
-          Maestro team created some mock components and observed which policies
-          AWS attached by default. Later, a composite of these policies was
-          applied to Maestro Lambdas.
+          To initially determine which basic capabilities the components in a
+          standard Lambda-centric workflow required, the Maestro team created
+          some mock components and observed which policies AWS attached by
+          default. Later, a composite of these policies was applied to Maestro
+          Lambdas.
         </p>
 
         <p>
@@ -1443,8 +1440,8 @@
 
         <p>
           Role creation synchronously preceded any attempt to create subsequent
-          resources that needed  those roles, but confirming the creation of
-          a role in IAM did not indicate the availability of the role for
+          resources that needed those roles, but confirming the creation of a
+          role in IAM did not indicate the availability of the role for
           association with another service. Further, the most straightforward
           mechanism for determining a role’s availability in another service
           requires attempting to associate it with that service from within the
@@ -1454,22 +1451,21 @@
         </p>
 
         <p>
-          Therefore, to create Lambdas and state machines with
-          associated roles, the Maestro team resolved to implement retry in the
-          chain of role creation and subsequent creation of services. Built-in
-          retry does exist in SDKs, but such retry is for atomic retry of a
-          service interaction, not the retry of the business logic of an
-          interservice framework. In other words, if creating a role in IAM
-          failed, there would be an AWS means of retrying that interaction, but
-          since the current problem is not a failed role creation but its
-          propagation to other services, the Maestro team had to roll its own
-          retry.
+          Therefore, to create Lambdas and state machines with associated roles,
+          the Maestro team resolved to implement retry in the chain of role
+          creation and subsequent creation of services. Built-in retry does
+          exist in SDKs, but such retry is for atomic retry of a service
+          interaction, not the retry of the business logic of an interservice
+          framework. In other words, if creating a role in IAM failed, there
+          would be an AWS means of retrying that interaction, but since the
+          current problem is not a failed role creation but its propagation to
+          other services, the Maestro team had to roll its own retry.
         </p>
 
         <p>
-          The retry process was fraught with further challenges since the
-          error messages of unsuccessful attempts to attach a policy to a Lambda
-          or state machine were quite cryptic. The AWS documentation for role
+          The retry process was fraught with further challenges since the error
+          messages of unsuccessful attempts to attach a policy to a Lambda or
+          state machine were quite cryptic. The AWS documentation for role
           association was not as robust as the team would have hoped, but in the
           end, retry with appropriate initial sleep and backoff rates was
           achieved.
@@ -1481,9 +1477,9 @@
           Discussing the challenge of creating a Lambda or state machine with
           the ability to properly interact with AWS depending on another service
           touches on an overarching challenge that would need to be reconciled
-          in developing Maestro: asynchronicity. Maestro offers quick
-          deployment thanks to concurrent creation and deployment of resources
-          which requires navigating numerous issues related to synchronicity.
+          in developing Maestro: asynchronicity. Maestro offers quick deployment
+          thanks to concurrent creation and deployment of resources which
+          requires navigating numerous issues related to synchronicity.
         </p>
 
         <p>
@@ -1529,9 +1525,8 @@
           the objective of Maestro is to facilitate working with ASL through
           templates. However, no set of templates can be comprehensive, and any
           developer working extensively with Step Functions will eventually
-          require writing ASL. Having an ASL ‘wrapper’ to imperatively
-          write ASL, in effect, mirroring common procedural coding would be
-          helpful.
+          require writing ASL. Having an ASL ‘wrapper’ to imperatively write
+          ASL, in effect, mirroring common procedural coding would be helpful.
         </p>
 
         <h4>5.3.2 Logging</h4>
@@ -1564,9 +1559,9 @@
           intelligently re-deploy only elements of the workflow that have
           changed since the last version. If versioning were clearly outlined,
           then re-deploying could look back at a snapshot of the workflow to
-          determine what changed and then re-deploy accordingly. This would
-          help preserve artifacts in AWS that provide auditability of
-          long-standing components.
+          determine what changed and then re-deploy accordingly. This would help
+          preserve artifacts in AWS that provide auditability of long-standing
+          components.
         </p>
 
         <h4>5.3.5 Other AWS Services</h4>
