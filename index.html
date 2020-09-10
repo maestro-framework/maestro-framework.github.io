@@ -218,32 +218,24 @@
         <h3>2.4 Serverless Patterns</h3>
 
         <p>
-          Serverless development is a new area with AWS Lambda having been
-          released just some six years prior to this writing. In the short time
-          that’s transpired since their release, there have not yet been
-          developed a set of broadly accepted best practices. This can be
-          challenging since new practitioners must seemingly start from scratch
-          when it comes to creating an application in this paradigm.
+          In the short time since the release of AWS Lambda, there have not yet
+          been developed a set of broadly accepted best practices. This can be
+          challenging since those new to the field must seemingly start from
+          scratch when it comes to creating an application. However, common
+          patterns can be derived from continual work with serverless
+          architectures.
         </p>
 
         <p>
-          Taking into consideration there are not yet many strict best practices
-          for working in the field, how can growing interest in development in
-          the area be reconciled? Efforts to facilitate development is evidenced
-          by significant research in serverless. One research paper that
-          surveyed the serverless landscape found more than 200 academic papers
-          written on serverless technology between 2017 and 2019 [<a
+          For example, due to a “cold start”, a Lambda may initially be
+          unavailable; a request that demands a quick response may not receive
+          it. To address this issue, there is a pattern called the Function
+          Warmer, which keeps the Lambda available. Patterns for working with
+          serverless can be grouped into five categories[<a
             href="#reference_6"
             class="reference"
             >6</a
-          >]. Additionally, practitioners write blogs and develop other sources
-          describing their experiences of working with Lambda daily.
-        </p>
-
-        <p>
-          Common patterns can be derived from continual work with serverless
-          architectures. Patterns for working with serverless can be grouped
-          into five categories:
+          >].:
         </p>
 
         <ul id="serverless-patterns">
@@ -253,44 +245,6 @@
           <li>Authorization</li>
           <li id="orchestration-grouping">Orchestration</li>
         </ul>
-
-        <p>
-          ‘Availability’ patterns ensure that a service is available when
-          needed. Lambdas can be unavailable due to several limitations. For
-          example, due to ‘cold start’ a Lambda may initially be unavailable; a
-          request that demands a quick response may not receive it. Another
-          limitation that affects availability is the 15-minute execution cap
-          meaning that a Lambda may be unavailable after being terminated. Also,
-          incorporating other services introduces other sets of limitations
-          regarding availability.
-        </p>
-
-        <p>
-          Another group of patterns deals with communication problems related to
-          an event. The responsibilities of ‘Event management’ patterns include
-          but are not limited to dealing with messages that need to be
-          communicated, invoking services in response to events, and monitoring
-          whether a scheduled event occurs.
-        </p>
-
-        <p>
-          A related grouping of patterns addresses problems that pertain to
-          communication between Lambdas functions. There is bleed over from the
-          ‘Event Management’ patterns as some ‘Communication’ patterns also deal
-          with events and vice versa. The fact that such a blurry distinction
-          occurs, substantiates the lack of clear standards in serverless, on
-          the one hand. On the other hand, the classification of a given pattern
-          may be grouped according to divergent criteria depending on the exact
-          architecture of a practitioner.
-        </p>
-
-        <p>
-          The ‘Authorization’ grouping of patterns deals with issues related to
-          user authorization. Information about a request may be utilized in the
-          processing of some other information to authorize the user. The
-          pattern may utilize multiple functions for processing or blocking
-          access until authorization is effected.
-        </p>
 
         <p>
           The focus of the Maestro team is the grouping of serverless patterns
