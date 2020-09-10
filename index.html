@@ -133,7 +133,7 @@
           cost. Also, flexible provisioning facilitates scaling up and down
           according to demand. FaaS is so prevalent that it is often equated
           with the term “serverless“ itself, as shown in the below poll[<a
-            href="#reference_4"
+            href="#reference_1"
             class="reference"
             >1</a
           >].
@@ -163,7 +163,7 @@
           Amazon’s FaaS offering is known as AWS Lambda. AWS Lambdas are small
           applications or ‘functions’ of up to 250 MB deployed on containers
           that support runtimes in seven languages [<a
-            href="#reference_5"
+            href="#reference_2"
             class="reference"
             >2</a
           >]. The Lambdas can be invoked by many AWS services including other
@@ -202,7 +202,7 @@
           it. To address this issue, there is a pattern called the Function
           Warmer, which keeps the Lambda available. Patterns for working with
           serverless can be grouped into five categories [<a
-            href="#reference_6"
+            href="#reference_3"
             class="reference"
             >3</a
           >]...
@@ -451,7 +451,7 @@
 
         <p>
           A state machine stores a given state at a given time [<a
-            href="#reference_7"
+            href="#reference_4"
             class="reference"
             >4</a
           >]. In a workflow, a state machine represents the state of the
@@ -485,7 +485,7 @@
         <p>
           Step Functions are the AWS version of an orchestration layer utilizing
           state machines to manage transitions between phases in a serverless
-          application [<a href="#reference_8" class="reference">5</a>].
+          application [<a href="#reference_5" class="reference">5</a>].
         </p>
 
         <p>
@@ -709,7 +709,7 @@
         <p>
           One of the common complaints with Step Functions is that ASL is not
           very intuitive. It’s a JSON based language that’s optimized for
-          machines rather than humans [<a href="#reference_9" class="reference"
+          machines rather than humans [<a href="#reference_6" class="reference"
             >6</a
           >]. And some state machines can get quite complex with dozens or even
           hundreds of states.
@@ -977,7 +977,7 @@
 
         <p>
           One such AWS solution is called AWS CloudFormation [<a
-            href="#reference_10"
+            href="#reference_7"
             class="reference"
             >7</a
           >]; it’s an AWS offering that allows creating a configuration file
@@ -999,7 +999,7 @@
 
         <p>
           The other common tool is AWS Software Development Kits, or SDKs [<a
-            href="#reference_11"
+            href="#reference_8"
             class="reference"
             >8</a
           >], which are APIs that allow a developer to work directly with
@@ -1033,7 +1033,7 @@
 
         <p>
           One popular framework is the aptly named Serverless Framework [<a
-            href="#reference_12"
+            href="#reference_9"
             class="reference"
             >9</a
           >]; it’s the dominant player in this space. The approach to deployment
@@ -1078,7 +1078,7 @@
         <p>
           Another framework that deals with Step Functions was created by AWS:
           the Serverless Application Model or SAM [<a
-            href="#reference_13"
+            href="#reference_10"
             class="reference"
             >10</a
           >]. SAM added support for Step Functions just a few months prior to
@@ -1118,7 +1118,7 @@
           What about more purpose-built frameworks? Unfortunately, there aren’t
           many designed with Step Functions in mind. One called Step does happen
           to be Step Functions centric and was built by Coinbase [<a
-            href="#reference_14"
+            href="#reference_11"
             class="reference"
             >11</a
           >]. Step allows the user to create a state machine with a higher-level
@@ -1272,7 +1272,7 @@
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_15"
+            href="#reference_12"
             class="reference"
             >12</a
           >]. IAM is the AWS service that allows for the creation of roles that
@@ -1359,7 +1359,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_16" class="reference">13</a>]. To
+          synchronous [<a href="#reference_13" class="reference">13</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
