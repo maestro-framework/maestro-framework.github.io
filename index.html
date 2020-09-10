@@ -306,23 +306,18 @@
         <h3>3.1 Orchestration Patterns</h3>
 
         <p>
-          Certainly, there are multiple considerations related to serverless
-          orchestration, and patterns have arisen for addressing numerous common
-          concerns. However, imagining what orchestration looks like in the wild
-          without a concrete example may be difficult. In order to visualize
-          what real-world orchestration may look like, consider the following
-          hypothetical situation: the sole developer in a startup is tasked with
-          creating an internal tool for provisioning resources per managerial
-          approval.
+          In order to visualize what serverless orchestration might look like,
+          consider the following hypothetical situation: the sole developer in a
+          startup is tasked with creating an internal tool for provisioning
+          resources per managerial approval.
         </p>
 
         <p>
-          A request comes into the manager who has the option of accepting or
-          denying the request. If the manager approves, the resource is
-          provisioned and the requester is granted access. If the manager
-          denies, the requester is notified of the denial. The savvy developer
-          may break down the problem into smaller components and generate a
-          workflow:
+          A request is sent to the manager who has the option of approving or
+          denying. If the manager approves, the resource is provisioned and the
+          requester is granted access. If the manager denies, the requester is
+          notified of the denial. The savvy developer may break down the problem
+          into smaller components and generate a workflow:
         </p>
 
         <figure>
