@@ -135,7 +135,7 @@
           with the term “serverless“ itself, as shown in the below poll[<a
             href="#reference_4"
             class="reference"
-            >4</a
+            >1</a
           >].
         </p>
 
@@ -165,7 +165,7 @@
           that support runtimes in seven languages [<a
             href="#reference_5"
             class="reference"
-            >5</a
+            >2</a
           >]. The Lambdas can be invoked by many AWS services including other
           Lambdas. They are ephemeral in that they have a limited execution time
           maxing out at 15 minutes, and any state associated with the execution
@@ -204,7 +204,7 @@
           serverless can be grouped into five categories [<a
             href="#reference_6"
             class="reference"
-            >6</a
+            >3</a
           >]...
         </p>
 
@@ -453,7 +453,7 @@
           A state machine stores a given state at a given time [<a
             href="#reference_7"
             class="reference"
-            >7</a
+            >4</a
           >]. In a workflow, a state machine represents the state of the
           workflow at a given step. The state of a step is conditional on input,
           and the output determines the next state. It’s important to note that
@@ -485,7 +485,7 @@
         <p>
           Step Functions are the AWS version of an orchestration layer utilizing
           state machines to manage transitions between phases in a serverless
-          application [<a href="#reference_8" class="reference">8</a>].
+          application [<a href="#reference_8" class="reference">5</a>].
         </p>
 
         <p>
@@ -710,7 +710,7 @@
           One of the common complaints with Step Functions is that ASL is not
           very intuitive. It’s a JSON based language that’s optimized for
           machines rather than humans [<a href="#reference_9" class="reference"
-            >9</a
+            >6</a
           >]. And some state machines can get quite complex with dozens or even
           hundreds of states.
         </p>
@@ -979,7 +979,7 @@
           One such AWS solution is called AWS CloudFormation [<a
             href="#reference_10"
             class="reference"
-            >10</a
+            >7</a
           >]; it’s an AWS offering that allows creating a configuration file
           containing all of a serverless application’s resources for deployment.
           The entire offering is referred to as Infrastructure as Code.
@@ -1001,7 +1001,7 @@
           The other common tool is AWS Software Development Kits, or SDKs [<a
             href="#reference_11"
             class="reference"
-            >11</a
+            >8</a
           >], which are APIs that allow a developer to work directly with
           individual resources from their language of choice.
         </p>
@@ -1035,7 +1035,7 @@
           One popular framework is the aptly named Serverless Framework [<a
             href="#reference_12"
             class="reference"
-            >12</a
+            >9</a
           >]; it’s the dominant player in this space. The approach to deployment
           taken by Serverless Framework is through compilation to
           CloudFormation, and it can be considered a general-purpose tool.
@@ -1080,7 +1080,7 @@
           the Serverless Application Model or SAM [<a
             href="#reference_13"
             class="reference"
-            >13</a
+            >10</a
           >]. SAM added support for Step Functions just a few months prior to
           this writing.
         </p>
@@ -1120,7 +1120,7 @@
           to be Step Functions centric and was built by Coinbase [<a
             href="#reference_14"
             class="reference"
-            >14</a
+            >11</a
           >]. Step allows the user to create a state machine with a higher-level
           language, namely Go.
         </p>
@@ -1274,7 +1274,7 @@
           One source of difficulty was dealing with IAM [<a
             href="#reference_15"
             class="reference"
-            >15</a
+            >12</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1359,7 +1359,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_16" class="reference">16</a>]. To
+          synchronous [<a href="#reference_16" class="reference">13</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
@@ -1462,82 +1462,67 @@
           <ol>
             <li id="reference_1">
               <a
-                href="https://medium.com/a-tale-of-2-from-data-to-information/serverless-smart-radio-1cabcab8de30"
-                >Serverless Smart Radio</a
-              >
-            </li>
-            <li id="reference_2">
-              <a
-                href="https://hackernoon.com/what-is-serverless-architecture-what-are-its-pros-and-cons-cc4b804022e9"
-                >What is Serverless Architecture? What are its Pros and Cons?</a
-              >
-            </li>
-            <li id="reference_3">
-              <a href="https://aws.amazon.com/what-is-aws/">What is AWS?</a>
-            </li>
-            <li id="reference_4">
-              <a
                 href="https://research.chalmers.se/publication/508147/file/508147_Fulltext.pdf"
                 >A mixed-method empirical study of Function-as-a-Service
                 software development in industrial practice</a
               >
             </li>
-            <li id="reference_5">
+            <li id="reference_2">
               <a href="https://www.serverless.com/aws-lambda"
                 >AWS Lambda - The Ultimate Guide</a
               >
             </li>
 
-            <li id="reference_6">
+            <li id="reference_3">
               <a
                 href="https://www.researchgate.net/publication/340121613_Patterns_for_Serverless_Functions_Function-as-a-Service_A_Multivocal_Literature_Review"
                 >Patterns for Serverless Functions</a
               >
             </li>
-            <li id="reference_7">
+            <li id="reference_4">
               <a href="https://www.serverlesschats.com/16/"
                 >Serverless Workflows using Step Functions</a
               >
             </li>
-            <li id="reference_8">
+            <li id="reference_5">
               <a
                 href="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html"
                 >What Is AWS Step Functions?</a
               >
             </li>
-            <li id="reference_9">
+            <li id="reference_6">
               <a href="https://www.serverless.com/aws-step-functions#drawbacks"
                 >AWS Step Functions - The Ultimate Guide</a
               >
             </li>
-            <li id="reference_10">
+            <li id="reference_7">
               <a href="https://aws.amazon.com/cloudformation/"
                 >AWS Cloud Formation</a
               >
             </li>
-            <li id="reference_11">
+            <li id="reference_8">
               <a href="https://aws.amazon.com/getting-started/tools-sdks/"
                 >Start building with SDKs and tools</a
               >
             </li>
-            <li id="reference_12">
+            <li id="reference_9">
               <a href="https://www.serverless.com/">Serverless Framework</a>
             </li>
-            <li id="reference_13">
+            <li id="reference_10">
               <a href="https://aws.amazon.com/serverless/sam/"
                 >AWS Serverless Application Model</a
               >
             </li>
-            <li id="reference_14">
+            <li id="reference_11">
               <a href="https://github.com/coinbase/step">Step</a>
             </li>
-            <li id="reference_15">
+            <li id="reference_12">
               <a
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_16">
+            <li id="reference_13">
               <a
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"
                 >Async / await</a
@@ -1589,6 +1574,21 @@
               >
             </li>
             <li><a href="https://github.com/sosw/sosw">SOSW</a></li>
+            <li>
+              <a
+                href="https://medium.com/a-tale-of-2-from-data-to-information/serverless-smart-radio-1cabcab8de30"
+                >Serverless Smart Radio</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://hackernoon.com/what-is-serverless-architecture-what-are-its-pros-and-cons-cc4b804022e9"
+                >What is Serverless Architecture? What are its Pros and Cons?</a
+              >
+            </li>
+            <li>
+              <a href="https://aws.amazon.com/what-is-aws/">What is AWS?</a>
+            </li>
           </ol>
         </section>
       </section>
