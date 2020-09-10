@@ -105,57 +105,38 @@
         <h2 id="serverless">2 Serverless</h2>
 
         <p>
-          Serverless is a computational architecture model where applications
-          are deployed on servers that are managed in the cloud by a third
-          party. Not provisioning servers locally but outsourcing management of
-          computational resources reduces technical overhead. Energy otherwise
-          expended on managing infrastructure can be reallocated to development.
+          The popularity of developing applications with a serverless approach
+          is relatively new. The term “serverless“ seems to imply that servers
+          are not involved in an application's architecture. But that's not
+          really true. The reason for the term "serverless" is not because
+          there's an absence of servers, but because the control and management
+          of the servers has been abstracted away and made the responsibility of
+          the cloud provider. So from the perspective of the developer, there's
+          less need to worry about maintaining and scaling servers, effectively
+          making their architecture serverless.
         </p>
 
         <p>
-          Companies who’ve chosen to go serverless include those whose profit
-          center lays outside of tech. With a serverless infrastructure, they
-          can maintain a smaller technical staff while still providing resilient
-          technology that their business purposes require. They benefit from low
-          development overhead with minimum DevOps and maintenance while
-          building additional features. Low overhead allows for quickly
-          iterating on workflows [<a href="#reference_1" class="reference">1</a
-          >].
-        </p>
-
-        <p>
-          A company may value the low technical overhead of a serverless
-          architecture enough to sacrifice overall control of their
-          infrastructure. The lack of control may pose challenges regarding
-          performing local testing, execution caps dictated by the cloud
-          provider, and limited tools provided by the cloud provider. Further,
-          since serverless is a relatively new construct, a lack of established
-          best practices and clarity in development impede productivity [<a
-            href="#reference_2"
-            class="reference"
-            >2</a
-          >].
-        </p>
-
-        <p>
-          Despite the challenges, many companies continue to explore and develop
-          in the serverless environment making cloud providers more and more
-          popular. The most broadly adopted cloud service provider at the time
-          of this writing is Amazon Web Services (AWS), so the focus of further
-          discussion will be AWS [<a href="#reference_3" class="reference">3</a
-          >].
+          Besides being a bit of a misnomer, the term "serverless" is also a bit
+          overloaded. It can actually refer to several ideas. One of these is
+          what is known as Function as a Service, or FaaS.
         </p>
 
         <h3>2.1 FaaS</h3>
 
         <p>
-          There’s some ambiguity around this fairly new word “serverless”, and
-          it broadly refers to cloud offerings that do not require managing
-          servers. Applications deployed on external, unowned servers take
-          advantage of a serverless infrastructure. However, the subset of
-          serverless known as Function as a Service (FaaS) is so prevalent that
-          it is often equated with the term “serverless” itself, as seen in the
-          below poll [<a href="#reference_4" class="reference">4</a>].
+          FaaS makes use of application code comprising functions deployed on
+          serverless containers managed by a cloud provider. The distinction
+          with FaaS is that said containers are provisioned in response to
+          events. Spinning up only when needed allows an organization to pay
+          only for actual use of the resources which can lead to a reduction in
+          cost. Also, flexible provisioning facilitates scaling up and down
+          according to demand. FaaS is so prevalent that it is often equated
+          with the term "serverless" itself, as shown in the below poll[<a
+            href="#reference_4"
+            class="reference"
+            >4</a
+          >].
         </p>
 
         <figure>
@@ -171,17 +152,9 @@
 
         <p>
           From here on, when we discuss “serverless”, we will be specifically
-          referring to FaaS.
-        </p>
-
-        <p>
-          FaaS makes use of application code comprising functions deployed on
-          serverless containers managed by a cloud provider. The distinction
-          with FaaS is that said containers are provisioned in response to
-          events. Spinning up only when needed allows an organization to pay
-          only for actual use of the resources which can lead to a reduction in
-          cost. Also, flexible provisioning facilitates scaling up and down
-          according to demand.
+          referring to FaaS. We'll also be limiting our discussion to a specific
+          cloud provider, Amazon Web Services (AWS), as it is by far the most
+          popular provider at this time.
         </p>
 
         <h3>2.2 AWS Lambda</h3>
