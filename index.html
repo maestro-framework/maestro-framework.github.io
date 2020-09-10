@@ -306,17 +306,6 @@
         <h3>3.1 Orchestration Patterns</h3>
 
         <p>
-          A Lambda may execute and require the subsequent execution of another
-          service that may occur in parallel. A Lambda somewhere in the
-          execution chain may require a particular input. Later, an output may
-          require processing. At some point, some asynchronicity may be required
-          to allow for some series of executions to perform tasks while a
-          function of longer duration executes. At yet another stage, a single
-          synchronous execution may require every Lambda in the workflow to wait
-          until it terminates.
-        </p>
-
-        <p>
           Certainly, there are multiple considerations related to serverless
           orchestration, and patterns have arisen for addressing numerous common
           concerns. However, imagining what orchestration looks like in the wild
