@@ -48,11 +48,6 @@
           id="github-logo"
         />
       </a>
-      <!--      TODO: delete if no blog is written
- <a href="" target="_blank">
-          <img src="assets/images/icons/medium_white.png" alt="medium logo"
-          id="medium-logo"/>
-      </a> -->
     </div>
     <nav id="site-navigation">
       <ul>
@@ -101,80 +96,33 @@
         </p>
 
         <p>
-          Maestro is an open-source easy-to-use framework for quickly
-          bootstrapping, deploying, and rapidly iterating serverless
-          orchestration (hence the name) workflows and applications using
-          Node.js® and AWS Step Functions.
-        </p>
-
-        <p>
-          Maestro makes it easy to get started developing serverless
-          orchestration workflows. Plus, deploying is a breeze with Maestro.
-          Since Maestro also offers frictionless teardown, re-deploying is as
-          simple as tearing down and deploying again. Using Maestro aids
-          development not only in the initial phase of a project but throughout
-          maintaining and iterating on a project.
+          Maestro is an open-source, easy-to-use framework for deploying
+          serverless workflows using Node.js® and AWS Step Functions. Using
+          Maestro aids development not only in the initial phase of a project
+          but throughout the ongoing maintenance as well.
         </p>
 
         <h2 id="serverless">2 Serverless</h2>
-        <h3>2.1 So You’ve Decided to Go Serverless</h3>
 
         <p>
-          Serverless is a computational architecture model where applications
-          are deployed on servers that are managed in the cloud by a third
-          party. Not provisioning servers locally but outsourcing management of
-          computational resources reduces technical overhead. Energy otherwise
-          expended on managing infrastructure can be reallocated to development.
+          The popularity of developing applications with a serverless approach
+          is relatively new. The term “serverless“ seems to imply that servers
+          are not involved in an application's architecture. But that's not
+          really true. The reason for the term “serverless“ is not because
+          there's an absence of servers, but because the control and management
+          of the servers has been abstracted away and made the responsibility of
+          the cloud provider. So from the perspective of the developer, there's
+          less need to worry about maintaining and scaling servers, effectively
+          making their architecture serverless.
         </p>
 
         <p>
-          Companies who’ve chosen to go serverless include those whose profit
-          center lays outside of tech. With a serverless infrastructure, they
-          can maintain a smaller technical staff while still providing resilient
-          technology that their business purposes require. They benefit from low
-          development overhead with minimum DevOps and maintenance while
-          building additional features. Low overhead allows for quickly
-          iterating on workflows [<a href="#reference_1" class="reference">1</a
-          >].
+          Besides being a bit of a misnomer, the term “serverless“ is also a bit
+          overloaded. It can actually refer to several ideas. One of these is
+          what is known as Function as a Service, or FaaS.
         </p>
 
-        <p>
-          A company may value the low technical overhead of a serverless
-          architecture enough to sacrifice overall control of their
-          infrastructure. The lack of control may pose challenges regarding
-          performing local testing, execution caps dictated by the cloud
-          provider, and limited tools provided by the cloud provider. Further,
-          since serverless is a relatively new construct, a lack of established
-          best practices and clarity in development impede productivity [<a
-            href="#reference_2"
-            class="reference"
-            >2</a
-          >].
-        </p>
-
-        <p>
-          Despite the challenges, many companies continue to explore and develop
-          in the serverless environment making cloud providers more and more
-          popular. The most broadly adopted cloud service provider at the time
-          of this writing is Amazon Web Services (AWS), so the focus of further
-          discussion will be AWS [<a href="#reference_3" class="reference">3</a
-          >].
-        </p>
-
-        <h3>2.2 FaaS</h3>
-
-        <p>
-          There’s some ambiguity around this fairly new word “serverless”, and
-          it broadly refers to cloud offerings that do not require managing
-          servers. Applications deployed on external, unowned servers take
-          advantage of a serverless infrastructure. However, the subset of
-          serverless known as Function as a Service (FaaS) is so prevalent that
-          it is often conflated with the term serverless itself [<a
-            href="#reference_4"
-            class="reference"
-            >4</a
-          >].
-        </p>
+        <h3>2.1 FaaS</h3>
 
         <p>
           FaaS makes use of application code comprising functions deployed on
@@ -183,13 +131,12 @@
           events. Spinning up only when needed allows an organization to pay
           only for actual use of the resources which can lead to a reduction in
           cost. Also, flexible provisioning facilitates scaling up and down
-          according to demand.
-        </p>
-
-        <p>
-          From here on, the consideration will be FaaS focused when mentioning
-          serverless; thereby, suiting how almost 60% of developers think about
-          serverless.
+          according to demand. FaaS is so prevalent that it is often equated
+          with the term “serverless“ itself, as shown in the below poll[<a
+            href="#reference_4"
+            class="reference"
+            >4</a
+          >].
         </p>
 
         <figure>
@@ -198,10 +145,19 @@
             alt="58% of developers in one poll respond that serverless to them is FaaS"
             title="Serverless Poll"
           />
-          <figcaption>A recent poll about the term "serverless"</figcaption>
+          <figcaption>
+            A recent poll of how developers view the term “serverless“
+          </figcaption>
         </figure>
 
-        <h3>2.3 AWS Lambda</h3>
+        <p>
+          From here on, when we discuss “serverless”, we will be specifically
+          referring to FaaS. We'll also be limiting our discussion to a specific
+          cloud provider, Amazon Web Services (AWS), as it is by far the most
+          popular provider at this time.
+        </p>
+
+        <h3>2.2 AWS Lambda</h3>
 
         <p>
           Amazon’s FaaS offering is known as AWS Lambda. AWS Lambdas are small
@@ -229,35 +185,27 @@
           time in 100 ms increments.
         </p>
 
-        <h3>2.4 Serverless Patterns</h3>
+        <h3>2.3 Serverless Patterns</h3>
 
         <p>
-          Serverless development is a new area with AWS Lambda having been
-          released just some six years prior to this writing. In the short time
-          that’s transpired since their release, there have not yet been
-          developed a set of broadly accepted best practices. This can be
-          challenging since new practitioners must seemingly start from scratch
-          when it comes to creating an application in this paradigm.
+          In the short time since the release of AWS Lambda, there have not yet
+          been developed a set of broadly accepted best practices. This can be
+          challenging since those new to the field must seemingly start from
+          scratch when it comes to creating an application. However, common
+          patterns can be derived from continual work with serverless
+          architectures.
         </p>
 
         <p>
-          Taking into consideration there are not yet many strict best practices
-          for working in the field, how can growing interest in development in
-          the area be reconciled? Efforts to facilitate development is evidenced
-          by significant research in serverless. One research paper that
-          surveyed the serverless landscape found more than 200 academic papers
-          written on serverless technology between 2017 and 2019 [<a
+          For example, due to a “cold start”, a Lambda may initially be
+          unavailable; a request that demands a quick response may not receive
+          it. To address this issue, there is a pattern called the Function
+          Warmer, which keeps the Lambda available. Patterns for working with
+          serverless can be grouped into five categories [<a
             href="#reference_6"
             class="reference"
             >6</a
-          >]. Additionally, practitioners write blogs and develop other sources
-          describing their experiences of working with Lambda daily.
-        </p>
-
-        <p>
-          Common patterns can be derived from continual work with serverless
-          architectures. Patterns for working with serverless can be grouped
-          into five categories:
+          >]...
         </p>
 
         <ul id="serverless-patterns">
@@ -269,88 +217,31 @@
         </ul>
 
         <p>
-          ‘Availability’ patterns ensure that a service is available when
-          needed. Lambdas can be unavailable due to several limitations. For
-          example, due to ‘cold start’ a Lambda may initially be unavailable; a
-          request that demands a quick response may not receive it. Another
-          limitation that affects availability is the 15-minute execution cap
-          meaning that a Lambda may be unavailable after being terminated. Also,
-          incorporating other services introduces other sets of limitations
-          regarding availability.
-        </p>
-
-        <p>
-          Another group of patterns deals with communication problems related to
-          an event. The responsibilities of ‘Event management’ patterns include
-          but are not limited to dealing with messages that need to be
-          communicated, invoking services in response to events, and monitoring
-          whether a scheduled event occurs.
-        </p>
-
-        <p>
-          A related grouping of patterns addresses problems that pertain to
-          communication between Lambdas functions. There is bleed over from the
-          ‘Event Management’ patterns as some ‘Communication’ patterns also deal
-          with events and vice versa. The fact that such a blurry distinction
-          occurs, substantiates the lack of clear standards in serverless, on
-          the one hand. On the other hand, the classification of a given pattern
-          may be grouped according to divergent criteria depending on the exact
-          architecture of a practitioner.
-        </p>
-
-        <p>
-          The ‘Authorization’ grouping of patterns deals with issues related to
-          user authorization. Information about a request may be utilized in the
-          processing of some other information to authorize the user. The
-          pattern may utilize multiple functions for processing or blocking
-          access until authorization is effected.
-        </p>
-
-        <p>
           The focus of the Maestro team is the grouping of serverless patterns
           around ‘Orchestration’.
         </p>
 
         <h2 id="orchestration">3 Orchestration</h2>
         <p>
-          Once an application moves beyond a single Lambda, a developer is
-          required to orchestrate multiple serverless functions such that they
-          execute in a meaningful way. Serverless orchestration, in a nutshell,
-          is the act of managing the workflow and communication between multiple
-          serverless services.
+          Serverless orchestration, in a nutshell, is the act of managing the
+          workflow and communication between multiple serverless resources.
         </p>
 
         <h3>3.1 Orchestration Patterns</h3>
 
         <p>
-          A Lambda may execute and require the subsequent execution of another
-          service that may occur in parallel. A Lambda somewhere in the
-          execution chain may require a particular input. Later, an output may
-          require processing. At some point, some asynchronicity may be required
-          to allow for some series of executions to perform tasks while a
-          function of longer duration executes. At yet another stage, a single
-          synchronous execution may require every Lambda in the workflow to wait
-          until it terminates.
+          In order to visualize what serverless orchestration might look like,
+          consider the following hypothetical situation: the sole developer in a
+          startup is tasked with creating an internal tool for provisioning
+          resources per managerial approval.
         </p>
 
         <p>
-          Certainly, there are multiple considerations related to serverless
-          orchestration, and patterns have arisen for addressing numerous common
-          concerns. However, imagining what orchestration looks like in the wild
-          without a concrete example may be difficult. In order to visualize
-          what real-world orchestration may look like, consider the following
-          hypothetical situation: the sole developer in a startup is tasked with
-          creating an internal tool for provisioning resources per managerial
-          approval.
-        </p>
-
-        <p>
-          A request comes into the manager who has the option of accepting or
-          denying the request. If the manager approves, the resource is
-          provisioned and the requester is granted access. If the manager
-          denies, the requester is notified of the denial. The savvy developer
-          may break down the problem into smaller components and generate a
-          workflow:
+          A request is sent to the manager who has the option of approving or
+          denying. If the manager approves, the resource is provisioned and the
+          requester is granted access. If the manager denies, the requester is
+          notified of the denial. The savvy developer may break down the problem
+          into smaller components and generate a workflow:
         </p>
 
         <figure>
@@ -816,12 +707,6 @@
         <h4>4.2.1 ASL</h4>
 
         <p>
-          Step Functions seems to address some crucial problems in the world of
-          serverless orchestration, but it would be naive to overlook the
-          challenges it introduces.
-        </p>
-
-        <p>
           One of the common complaints with Step Functions is that ASL is not
           very intuitive. It’s a JSON based language that’s optimized for
           machines rather than humans [<a href="#reference_9" class="reference"
@@ -831,24 +716,17 @@
         </p>
 
         <p>
-          JSON was designed as a data serialization format, not a programming
-          language. It was meant to be a representation of data, not a
-          development platform. That said, the awkwardness of programming in ASL
-          for a developer is not simply restricted to the structure and syntax
-          of the language, but also the declarative nature of ASL programming. A
+          The awkwardness of ASL is not restricted to the structure and syntax
+          of the language, but is also due to its declarative nature. A
           developer may have some familiarity with declarative programming
-          having worked with SQL, yet it’s unlikely one has frequently used a
-          declarative paradigm to orchestrate components. It’s one thing to
-          separate business logic from orchestration logic which if programmed
-          in unison would be implemented in a shared language, but shifting
-          paradigms while extracting the orchestration logic can be
-          intellectually difficult to reconcile.
+          having worked with SQL, but it’s unlikely one has frequently used a
+          declarative paradigm to orchestrate components.
         </p>
 
         <p>
           Tools exist to try to provide a higher-level abstraction that compiles
           down to ASL, but these are not widely adopted as of yet and there is
-          still much-unsettled debate regarding the characteristics of these
+          still much unsettled debate regarding the characteristics of these
           tools. Therefore, attempting to provide this proposed layer of
           abstraction at this stage of Step Functions’ life-cycle may prove to
           be folly.
@@ -1088,14 +966,6 @@
           requires attention; one must go slowly. Otherwise, the wrong component
           could be deleted, possibly losing valuable execution data.
         </p>
-
-        <figure>
-          <img
-            src="assets/images/banging-head-on-keyboard.gif"
-            alt="gif of banging head against keyboard"
-          />
-          <figcaption>Ouch...</figcaption>
-        </figure>
 
         <h3>4.3 AWS Tools</h3>
 
