@@ -258,23 +258,25 @@
         <p>
           We could introduce a component that has the single responsibility of
           validating input. This would provide a clear separation of concerns
-          and would prevent the ‘Manager’ from failing.
-        </p>
-
-        <p>
-          A common orchestration pattern known as the ‘Proxy Lambda’ could play
-          the pivotal role of invoking the ‘Manager’ with proper input. The
-          ‘Proxy Lambda’ nestles between two Lambdas and invokes the second when
-          appropriate. In this case, it handles a potential invalid input error.
+          and would prevent the ‘Manager’ from failing. A common orchestration
+          pattern that could be helpful here is known as the ‘Proxy Lambda’ [<a
+            href="#reference_3"
+            class="reference"
+            >3</a
+          >]. The ‘Proxy Lambda’ sits between two other Lambdas and invokes the
+          second one when appropriate. In this case, it would help handle
+          invalid inputs.
         </p>
 
         <figure>
           <img
             src="assets/images/workflow/proxy-lambda.png"
-            alt="Inserting a proxy lambda in from of the Manager component"
+            alt="Inserting a proxy lambda in front of the Manager component"
             title="Proxy Lambda"
           />
-          <figcaption>Proxy Lambda</figcaption>
+          <figcaption>
+            Using the ‘Proxy Lambda’ pattern for validating input
+          </figcaption>
         </figure>
 
         <p>
