@@ -297,7 +297,9 @@
           There's another pattern we could use called the the ‘Router’, which
           simply distributes the execution based on payload. Since the ‘Manager’
           Lambda has the ability to invoke other Lambdas, we can implement the
-          ‘Router’ pattern by placing the branching logic there. Because we've now written orchestration logic alongside business logic, the ‘Manager’ has become a bit bloated.
+          ‘Router’ pattern by placing the branching logic there. Because we've
+          now written orchestration logic alongside business logic, the
+          ‘Manager’ has become a bit bloated.
         </p>
 
         <figure>
@@ -306,13 +308,15 @@
             alt="Workflow with the Fat Manager Lambda"
             title="Fat Manager"
           />
-          <figcaption>‘Manager’ Lambda bloated with orchestration logic</figcaption>
+          <figcaption>
+            ‘Manager’ Lambda bloated with orchestration logic
+          </figcaption>
         </figure>
 
         <p>
-          Now that we've taken care of branching, an attempt to provision the desired resource can
-          be made. However, the provisioning of a resource may be risky. What
-          if the attempt fails for some reason?
+          Now that we've taken care of branching, an attempt to provision the
+          desired resource can be made. However, the provisioning of a resource
+          may be risky. What if the attempt fails for some reason?
         </p>
 
         <figure>
@@ -325,12 +329,14 @@
         </figure>
 
         <p>
-          If the ‘Provisioner’ component failed, it would be beneficial for
-          another attempt to be made without the ‘Requester’ having to make
-          another request. The ‘Orchestrator Lambda’ pattern can once again be
-          applied, this time, adding additional logic to the ‘Fatter Manager’ to
-          monitor the output of the ‘Provisioner’. Thereby, a retry can be
-          attempted upon failure.
+          We'd like to prevent the employee from having to repeat their request
+          such that the workflow has to start over. To address this, we could
+          once again apply the ‘Router’ pattern. This time, we'll add logic to
+          the ‘Manager’ so that it monitors the output of the ‘Provisioner’. If
+          the ‘Manager’ detects that the provisioning failed, we can have it
+          invoke the ‘Provisioner’ again. But how many retries do we want to
+          allow? How quickly do we want to retry? This is further orchestration
+          logic that we'll have to write into the ‘Manager’.
         </p>
 
         <figure>
@@ -339,7 +345,7 @@
             alt="Addition of retry to the Fat Manager Orchertator Lambda"
             title="Fat Manager with Retry"
           />
-          <figcaption>The Fatter Manager</figcaption>
+          <figcaption>The ‘Manager’ Lambda bloated even further</figcaption>
         </figure>
 
         <p>
