@@ -210,10 +210,13 @@
         <h3>3.1 Orchestration Patterns</h3>
 
         <p>
-          To visualize what serverless orchestration might look like, let's consider
-          a hypothetical situation. Let's say that a developer has been assigned a project to create an internal application for their company. The app allows an employee to send a request to their manager, asking that a certain resource be provisioned.
-          If the manager approves, the resource is provisioned and the
-          employee is granted access. If not, then the employee is notified that their request has been denied.
+          To visualize what serverless orchestration might look like, let's
+          consider a hypothetical situation. Let's say that we've been assigned
+          a project to create an internal application for our company. The app
+          will allow an employee to send a request to their manager, asking that
+          a certain resource be provisioned. If the manager approves, the
+          resource is provisioned and the employee is granted access. Otherwise,
+          the employee is notified that their request has been denied.
         </p>
 
         <figure>
@@ -228,17 +231,10 @@
         </figure>
 
         <p>
-          The workflow can be implemented with each component representing an
-          individual AWS Lambda. Ideally, each component would do one simple
-          thing in isolation. Yet, a Lambda couldn’t fulfill its role in a
-          meaningful way if it were to execute arbitrarily, independent of the
-          rest of the workflow. The work of each Lambda must be orchestrated for
-          the application to execute in a meaningful sequence.
-        </p>
-
-        <p>
-          What factors must be considered for the workflow to proceed
-          seamlessly?
+          Let's say that the workflow can be implemented by representing each
+          component as a Lambda. The work of each Lambda must then be
+          orchestrated to ensure that the workflow executes in a meaningful way.
+          How will we make sure this workflow proceeds as desired?
         </p>
 
         <p>
