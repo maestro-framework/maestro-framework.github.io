@@ -407,14 +407,17 @@
           or one that simply hasn’t reached a stable state.
         </p>
 
-        <h3>3.2 The State Machine Pattern</h3>
-
         <p>
-          How then does one abstract away an orchestration layer? Rolling a
-          custom web of orchestration related components would require
-          considerable overhead. However, another common orchestration pattern
-          fits orchestration quite well: state machines.
+          So how would we go about extracting an orchestration layer? Creating
+          and maintaining custom logic would require considerable overhead.
+          Let's explore another pattern called the ‘State Machine’ [<a
+            href="#reference_3"
+            class="reference"
+            >3</a
+          >] to see whether it might be suitable for our needs.
         </p>
+
+        <h3>3.2 The State Machine Pattern</h3>
 
         <p>
           A state machine stores a given state at a given time [<a
