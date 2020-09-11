@@ -259,13 +259,13 @@
           We could introduce a component that has the single responsibility of
           validating input. This would provide a clear separation of concerns
           and would prevent the ‘Manager’ from failing. A common orchestration
-          pattern that could be helpful here is known as the ‘Proxy Lambda’ [<a
+          pattern that could be helpful here is known as the ‘Proxy’ [<a
             href="#reference_3"
             class="reference"
             >3</a
-          >]. The ‘Proxy Lambda’ sits between two other Lambdas and invokes the
-          second one when appropriate. In this case, it would help handle
-          invalid inputs.
+          >]. The ‘Proxy’ is a Lambda that sits between two other Lambdas and
+          invokes the second one when appropriate. In this case, it would help
+          handle invalid inputs.
         </p>
 
         <figure>
@@ -275,7 +275,7 @@
             title="Proxy Lambda"
           />
           <figcaption>
-            Using the ‘Proxy Lambda’ pattern for validating input
+            Using the ‘Proxy’ pattern for validating input
           </figcaption>
         </figure>
 
@@ -294,18 +294,10 @@
         </figure>
 
         <p>
-          Another pattern presents itself in this scenario: the ‘Orchestrator
-          Lambda’. The ‘Orchestrator Lambda’ plays the role of directing
-          orchestration between multiple Lambdas. Since the ‘Manager’ Lambda is
-          capable of invoking other Lambdas, it can handle branching.
-        </p>
-
-        <p>
-          Since it’s unlikely there will be an error at this stage, writing
-          additional business logic is all that is required. Despite the
-          15-minute execution cap of a Lambda, as long as the ‘Manager’ doesn’t
-          take long to make the decision, there shouldn’t be an issue. The
-          ‘Manager’ is transformed to the affectionately named ‘Fat Manager’:
+          There's another pattern we could use called the the ‘Router’, which
+          simply distributes the execution based on payload. Since the ‘Manager’
+          Lambda has the ability to invoke other Lambdas, we can implement the
+          ‘Router’ pattern by placing the branching logic there. Because we've now written orchestration logic alongside business logic, the ‘Manager’ has become a bit bloated.
         </p>
 
         <figure>
@@ -314,7 +306,7 @@
             alt="Workflow with the Fat Manager Orchestrator Lambda"
             title="Fat Manager"
           />
-          <figcaption>The Fat Manager</figcaption>
+          <figcaption>‘Manager’ Lambda bloated with orchestration logic</figcaption>
         </figure>
 
         <p>
