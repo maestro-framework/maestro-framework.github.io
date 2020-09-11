@@ -367,14 +367,9 @@ h3 {
 ------------------------------------ */
 
 .command {
-  /*background-color: #eee;*/
-  /*border-radius: 2px;*/
   color: #900c3f;
-  /*display: inline-block;*/
   font-size: 1.2rem;
   font-weight: bold;
-  /*margin-bottom: 20px;*/
-  /*padding: 0.2rem;*/
 }
 
 #list-command code {
@@ -669,14 +664,6 @@ small {
     right: 27px;
   }
 
-  /*#medium-logo {
-    cursor: pointer;
-    width: 28px;
-    position: fixed;
-    bottom: 75px;
-    right: 27px;
-  }*/
-
   /* Main */
 
   header h1 {
@@ -862,12 +849,6 @@ small {
     right: 20px;
     width: 23px;
   }
-
-  /*#medium-logo {
-    bottom: 60px;
-    right: 20px;
-    width: 23px;
-  }*/
 
   #home p {
     font-size: 1.7rem;

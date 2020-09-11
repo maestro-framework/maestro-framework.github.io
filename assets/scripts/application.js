@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const isNarrowScreen = () => getWindowWidth() < 1100;
 
   const logos = [...document.querySelectorAll(".logo-links img")]
-    // .filter(logo => !(/maestro/.test(logo.id)))
     .map((logo) => logo.id.split("-")[0]);
 
   const snakeCaseify = (text) => text.toLowerCase().split(" ").join("-");
@@ -44,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const highlightSection = (li, a) => {
     li.style.listStyle = "disc";
     li.style.fontWeight = "bold";
-    // TODO: Test updated colors
     li.style.color = "#900c3f";
     a.style.color = "#900c3f";
   };
@@ -197,10 +195,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (isWideScreen && !onMain && topNavVisible) {
       styleNavColors("#313133", "#900c3f", "#9d9ea3");
-      // changeImgSrc('maestro-logo', 'assets/images/logos/maestro/mark-on-dark.png');
     } else {
       styleNavColors("#696a6e", "#f5f7ff", "#900c3f");
-      // changeImgSrc('maestro-logo', 'assets/images/logos/maestro/mark-on-light.png');
     }
   };
 
@@ -218,7 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const showSite = () => {
     const siteElements = [header, main, ourTeam, document.body];
-    // remove "display = 'none'" set when small nav was displayed
     siteElements.forEach((el) => el.removeAttribute("style"));
   };
 
