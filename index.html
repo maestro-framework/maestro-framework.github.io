@@ -352,14 +352,13 @@
         </figure>
 
         <p>
-          Do any limitations exist with this implementation? It may be that the
-          likeliness of the Lambda surpassing the execution limit is now
-          increased if the ‘Fat Manager’ monitors the ‘Provisioner’ during
-          extended retries. Delayed provisioning may cause the ‘Fat Manager’ to
-          terminate before determining if a retry was necessary. Further, with
-          the orchestration logic of the ‘Manager’ written alongside the
-          business logic, the component is overloaded resulting in poor
-          separation of concerns.
+          Do any limitations exist with this implementation? The probability of
+          the Lambda surpassing the execution limit is now increased if the
+          ‘Manager’ monitors the ‘Provisioner’ during extended retries. Delayed
+          provisioning may cause the ‘Manager’ to terminate before determining
+          if a retry was necessary. Further, with the orchestration logic of the
+          ‘Manager’ written alongside the business logic, the component is
+          overloaded resulting in poor separation of concerns.
         </p>
 
         <figure>
@@ -371,23 +370,23 @@
         </figure>
 
         <p>
-          The consequences of a lack of separation of concerns would be felt
-          every time it’s necessary to iterate on the workflow. Business logic
-          as well as orchestration logic may need to be evaluated and adapted
-          for the application to grow.
+          The consequences of not separating concerns would be felt every time it’s
+          necessary to iterate on the workflow. Business logic as well as
+          orchestration logic may need to be evaluated and adapted for the
+          application to grow.
         </p>
 
         <p>
           Perhaps refactoring is in order. Maybe it would be wise to extract the
-          orchestration logic to a separate component from the ‘Fat Manager’. If
-          that intuition seems natural, can more be done?
+          orchestration logic to a separate component other than the ‘Manager’.
+          If that intuition seems natural, can more be done?
         </p>
 
         <p>
-          It is possible to extract out an entire orchestration layer. The
-          result would be a thin workflow of strictly business logic resembling
-          the original workflow. The orchestration logic would be entirely on
-          its own.
+          Why not extract out an entire orchestration layer? The result
+          would be a thin workflow of strictly business logic resembling the
+          original workflow. The orchestration logic would be entirely on its
+          own.
         </p>
 
         <figure>
@@ -402,13 +401,11 @@
         </figure>
 
         <p>
-          By implementing the application in this way, error handling, retry,
-          and branching can all be done in one place. One benefit is that when
-          the business logic needs to be iterated on, the orchestration logic
-          can likely stay the same. The result is a more rapid iteration. It can
-          also improve the ease of implementation. For a new application or one
-          that simply hasn’t reached a stable state, this proposal can be quite
-          valuable.
+          By implementing the application in this way, we're able to orchestrate
+          error handling, retry, and branching all in one place. When the
+          business logic needs to be modified, the orchestration logic can
+          likely stay the same. This can be quite valuable for a new application
+          or one that simply hasn’t reached a stable state.
         </p>
 
         <h3>3.2 The State Machine Pattern</h3>
