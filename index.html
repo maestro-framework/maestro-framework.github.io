@@ -107,7 +107,7 @@
         <p>
           The popularity of developing applications with a serverless approach
           is relatively new. The term “serverless“ seems to imply that servers
-          are not involved in an application's architecture. But that's not
+          are not involved in an application's architecture, but that's not
           accurate. The reason for the term “serverless“ is not because there's
           an absence of servers, but because the control of the servers has been
           abstracted away and made the responsibility of the cloud provider. So
@@ -118,20 +118,18 @@
 
         <p>
           Besides being a bit of a misnomer, the term “serverless“ is also a bit
-          overloaded. It can refer to several ideas. One of these is what is
-          known as Function as a Service, or FaaS.
+          overloaded. It encompasses a few different ideas. One of these is what
+          is known as Function as a Service (FaaS), or serverless functions.
         </p>
 
         <h3>2.1 FaaS</h3>
 
         <p>
-          FaaS makes use of application code comprising functions deployed on
-          containers managed by a cloud provider. The distinction with FaaS is
-          that said containers are provisioned in response to events. Spinning
-          up only when needed allows an organization to pay only for actual use
-          of the resources which can lead to a reduction in cost. Also, flexible
-          provisioning facilitates scaling up and down according to demand. FaaS
-          is so prevalent that it is often equated with the term “serverless“
+          Serverless functions are meant to be small pieces of application code
+          that are provisioned in response to some event. This facilitates
+          scaling up and down according to demand and only paying for the
+          resources that are used. FaaS is so prevalent in serverless
+          architectures that it is often equated with the term “serverless“
           itself.
         </p>
 
@@ -147,56 +145,39 @@
           </figcaption>
         </figure>
 
-        <p>
-          From here on, when we discuss “serverless”, we will be specifically
-          referring to FaaS. We'll also be limiting our discussion to a specific
-          cloud provider, Amazon Web Services (AWS), as it is by far the most
-          popular provider at this time.
-        </p>
-
         <h3>2.2 AWS Lambda</h3>
 
         <p>
-          Amazon’s FaaS offering is known as AWS Lambda. AWS Lambdas are small
+          We'll be limiting our discussion to a specific cloud provider, Amazon
+          Web Services (AWS), as it is by far the most popular provider at this
+          time.
+        </p>
+
+        <p>
+          Amazon’s FaaS offering is known as AWS Lambda. Lambdas are small
           applications or ‘functions’ of up to 250 MB deployed on containers
           that support runtimes in seven languages [<a
             href="#reference_2"
             class="reference"
             >2</a
           >]. The Lambdas can be invoked by many AWS services including other
-          Lambdas. They have a limited execution time maxing out at 15 minutes,
-          and any state associated with the execution is lost.
-        </p>
-
-        <p>
-          When invoked, a container is “spun up” when needed which has
-          historically taken hundreds of milliseconds for a container that
-          hasn’t already been operating. Hence the notion of a “cold start”
-          meaning that the first invocation of a given Lambda required a period
-          of extended latency. AWS has recently offered a feature to address
-          this “cold start” through a sub 100 millisecond spin up of certain
-          function containers. The drawback of this new feature is an added
-          cost, so it doesn’t seem to be a great fit for use with all Lambdas in
-          a workflow since users of AWS Lambda are already charged for execution
-          time in 100 ms increments.
+          Lambdas. They have a limited execution of 15 minutes,
+          and any state associated with the execution is then lost.
         </p>
 
         <h3>2.3 Serverless Patterns</h3>
 
         <p>
-          In the short time since the release of AWS Lambda, there have not yet
-          been developed a set of broadly accepted best practices. This can be
-          challenging since those new to the field must seemingly start from
-          scratch. However, common patterns can be derived from continual work
-          with serverless architectures.
+          As serverless development is still relatively new, best practices have
+          yet to be firmly established. However, there are helpful patterns that
+          have emerged as developers continue to work with serverless.
         </p>
 
         <p>
-          For example, due to a “cold start”, a Lambda may initially be
-          unavailable; a request that demands a quick response may not receive
-          it. To address this issue, there is a pattern called the Function
-          Warmer, which keeps the Lambda available. Patterns for working with
-          serverless can be grouped into five categories [<a
+          For example, when a Lambda is initially invoked, its container will
+          have to be spun up, usually taking a few hundred milliseconds.
+          This is often referred to as a “cold start”. To address this issue, there is a pattern
+          called the Function Warmer, which keeps the Lambda's container available for further invocations. Patterns for working with serverless can be grouped into five categories [<a
             href="#reference_3"
             class="reference"
             >3</a
