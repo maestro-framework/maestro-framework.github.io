@@ -63,11 +63,19 @@ main > section {
 }
 
 blockquote {
-  background: var(--color-grey);
-  border-left: 1rem solid #ccc;
-  color: var(--color-maestro-red);
+  background: var(--color-dark-grey);
+  border-left: 1rem solid var(--color-maestro-red);
+  color: var(--color-light-grey);
+  line-height: 2rem;
   margin: 1.5rem 1rem;
   padding: 0.5rem;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+blockquote footer {
+  font-style: normal;
 }
 
 blockquote:before {
