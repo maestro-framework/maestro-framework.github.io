@@ -238,12 +238,11 @@
         </p>
 
         <p>
-          Presumably, the ‘Manager’ Lambda would receive an input indicating
-          which type of resource to provision and for whom. How would the
-          ‘Manager’ respond if the input was somehow malformed perhaps
-          indicating a non-existing resource type or non-existent ‘Requester’?
-          An error could occur leading to the ‘Manager’ failing. Unhandled, the
-          failure could send the entire workflow to a screeching halt.
+          Let's assume the ‘Manager’ Lambda will receive an input that contains
+          information about the resource being requested. What happens if that
+          input is somehow malformed? An error could occur leading to the
+          ‘Manager’ failing. Some form of error handling could prevent this, but
+          should the ‘Manager’ validate its own input?
         </p>
 
         <figure>
@@ -251,15 +250,15 @@
             src="assets/images/workflow/validation.png"
             alt="Invalid input"
           />
-          <figcaption>What if there’s an invalid input?</figcaption>
+          <figcaption>
+            We need to consider how to handle an invalid input
+          </figcaption>
         </figure>
 
         <p>
-          Some form of error handling could prevent such an unfortunate
-          occurrence, but should the ‘Manager’ validate its own input? It would
-          be reasonable that a component performing a single responsibility of
-          validating input could both provide a clear separation of concerns and
-          prevent the ‘Manager’ from failing.
+          We could introduce a component that has the single responsibility of
+          validating input. This would provide a clear separation of concerns
+          and would prevent the ‘Manager’ from failing.
         </p>
 
         <p>
