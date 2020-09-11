@@ -126,11 +126,14 @@
 
         <p>
           Serverless functions are meant to be small pieces of application code
-          that are provisioned in response to some event. This facilitates
-          scaling up and down according to demand and only paying for the
-          resources that are used. FaaS is so prevalent in serverless
-          architectures that it is often equated with the term “serverless“
-          itself.
+          that are provisioned in response to some event. Once the event fires,
+          a container is spun up in which the function will execute. After
+          execution, the container will remain idle for a short amount of time
+          in case there are further invocations of the function. If not, the
+          container is torn down. This facilitates scaling up and down according
+          to demand and only paying for the resources that are used. FaaS is so
+          prevalent in serverless architectures that it is often equated with
+          the term “serverless“ itself.
         </p>
 
         <figure>
@@ -154,15 +157,14 @@
         </p>
 
         <p>
-          Amazon’s FaaS offering is known as AWS Lambda. Lambdas are small
-          applications or ‘functions’ of up to 250 MB deployed on containers
-          that support runtimes in seven languages [<a
+          Amazon’s FaaS offering is known as AWS Lambda. Lambdas are deployed on
+          containers that support runtimes in seven languages [<a
             href="#reference_2"
             class="reference"
             >2</a
-          >]. The Lambdas can be invoked by many AWS services including other
-          Lambdas. They have a limited execution of 15 minutes,
-          and any state associated with the execution is then lost.
+          >]. Lambdas can be invoked by many AWS services including other
+          Lambdas. They have a limited execution of 15 minutes, and any state
+          associated with the execution is then lost.
         </p>
 
         <h3>2.3 Serverless Patterns</h3>
@@ -175,9 +177,11 @@
 
         <p>
           For example, when a Lambda is initially invoked, its container will
-          have to be spun up, usually taking a few hundred milliseconds.
-          This is often referred to as a “cold start”. To address this issue, there is a pattern
-          called the Function Warmer, which keeps the Lambda's container available for further invocations. Patterns for working with serverless can be grouped into five categories [<a
+          have to be spun up, usually taking a few hundred milliseconds. This is
+          often referred to as a “cold start”. To address this issue, there is a
+          pattern called the Function Warmer, which keeps the Lambda's container
+          available for further invocations. Patterns for working with
+          serverless can be grouped into five categories [<a
             href="#reference_3"
             class="reference"
             >3</a
@@ -193,8 +197,7 @@
         </ul>
 
         <p>
-          We'll turn our focus to the grouping of serverless patterns around
-          ‘Orchestration’.
+          We'll be focusing our attention on this last group of patterns: Orchestration.
         </p>
 
         <h2 id="orchestration">3. Orchestration</h2>
