@@ -343,6 +343,14 @@ h3 {
   margin: 50px auto;
 }
 
+#case-study figcaption::before {
+  border-top: 1px solid #9d9ea3;
+  content: "";
+  display: block;
+  margin: 0 auto 10px;
+  width: 50%;
+}
+
 #case-study figcaption {
   color: #9d9ea3;
   font-style: italic;
