@@ -179,7 +179,7 @@ pre code {
 }
 
 code {
-  color: #777;
+  color: #9d9ea3;
   font-family: "Fira Code", monospace;
   font-size: 1rem;
 }
@@ -394,6 +394,39 @@ h3 {
 #orchestration-grouping {
   font-weight: 500;
   color: var(--color-maestro-red);
+}
+
+#commands-table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#commands-table thead tr {
+    background-color: #9d9ea3;
+    color: #313133
+/*    border-bottom: 3px solid #9d9ea3;*/
+}
+
+/*#commands-table th:nth-child(n+2),*/
+#commands-table td:nth-child(n+2) {
+    border-left: 3px solid #9d9ea3;
+}
+
+#commands-table tbody tr {
+    background-color: #313133;
+}
+
+#commands-table tbody tr:nth-child(odd) {
+    background-color: #696a6e;
+}
+
+#commands-table tbody tr:nth-child(n+2) {
+    border-top: 3px solid #9d9ea3;
+}
+
+#commands-table th,
+#commands-table td {
+    padding: 10px;
 }
 
 /* ---------------------------------
