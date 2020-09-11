@@ -1,5 +1,25 @@
 /* ---------------------------------
 
+                colors
+
+--------------------------------- */
+
+:root {
+    --color-black: #1e1d20;
+    --color-dark-grey: #313133;
+    --color-grey: #696a6e;
+    --color-light-grey: #9d9ea3;
+    --color-white: #f5f7ff;
+    --color-maestro-red: #900c3f;
+
+    /* aliases */
+    --color-dark-gray: var(--color-dark-grey);
+    --color-gray: var(--color-grey);
+    --color-light-gray: var(--color-light-grey);
+}
+
+/* ---------------------------------
+
                 general
 
 ------------------------------------ */
