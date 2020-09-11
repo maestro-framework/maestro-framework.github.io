@@ -22,8 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const getWindowWidth = () => window.innerWidth;
   const isNarrowScreen = () => getWindowWidth() < 1100;
 
-  const logos = [...document.querySelectorAll(".logo-links img")]
-    .map((logo) => logo.id.split("-")[0]);
+  const logos = [...document.querySelectorAll(".logo-links img")].map(
+    (logo) => logo.id.split("-")[0]
+  );
 
   const snakeCaseify = (text) => text.toLowerCase().split(" ").join("-");
 
