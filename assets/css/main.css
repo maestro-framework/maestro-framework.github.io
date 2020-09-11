@@ -25,7 +25,7 @@
 ------------------------------------ */
 
 body {
-  background-color: #1e1d20;
+  background-color: var(--color-black);
   color: #f5f7ff;
   font-family: Roboto, sans-serif;
 }
@@ -177,7 +177,7 @@ code {
 }
 
 code.dark {
-  border: 15px solid #313133;
+  border: 15px solid var(--color-dark-grey);
   border-radius: 1rem;
   padding: 0.5vh 1vw;
 }
@@ -224,7 +224,7 @@ nav#site-navigation a {
 
 header {
   background-color: #f5f7ff;
-  color: #313133;
+  color: var(--color-dark-grey);
   height: 100vh;
 }
 
@@ -461,7 +461,7 @@ h3 {
 
 #our-team {
   background-color: #9d9ea3;
-  color: #313133;
+  color: var(--color-dark-grey);
   margin-top: 100px;
   padding-bottom: 25px;
 }
