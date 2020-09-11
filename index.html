@@ -92,7 +92,7 @@
           apps that use Step Functions can be tedious and error-prone. Maestro
           prioritizes speed and developer productivity by automating this
           process so that the developer’s focus stays on developing their
-          application's business logic.
+          application’s business logic.
         </p>
 
         <p>
@@ -107,11 +107,11 @@
         <p>
           The popularity of developing applications with a serverless approach
           is relatively new. The term “serverless“ seems to imply that servers
-          are not involved in an application's architecture, but that's not
-          accurate. The reason for the term “serverless“ is not because there's
+          are not involved in an application’s architecture, but that’s not
+          accurate. The reason for the term “serverless“ is not because there’s
           an absence of servers, but because the control of the servers has been
           abstracted away and made the responsibility of the cloud provider. So
-          from the perspective of the developer, there's less need to worry
+          from the perspective of the developer, there’s less need to worry
           about maintaining and scaling servers, effectively making their
           architecture serverless.
         </p>
@@ -151,7 +151,7 @@
         <h3>2.2 AWS Lambda</h3>
 
         <p>
-          We'll be limiting our discussion to a specific cloud provider, Amazon
+          We’ll be limiting our discussion to a specific cloud provider, Amazon
           Web Services (AWS), as it is by far the most popular provider at this
           time.
         </p>
@@ -179,7 +179,7 @@
           For example, when a Lambda is initially invoked, its container will
           have to be spun up, usually taking a few hundred milliseconds. This is
           often referred to as a “cold start”. To address this issue, there is a
-          pattern called the Function Warmer, which keeps the Lambda's container
+          pattern called the Function Warmer, which keeps the Lambda’s container
           available for further invocations. Patterns for working with
           serverless can be grouped into five categories [<a
             href="#reference_3"
@@ -197,7 +197,7 @@
         </ul>
 
         <p>
-          We'll be focusing our attention on this last group of patterns:
+          We’ll be focusing our attention on this last group of patterns:
           Orchestration.
         </p>
 
@@ -210,8 +210,8 @@
         <h3>3.1 Orchestration Patterns</h3>
 
         <p>
-          To visualize what serverless orchestration might look like, let's
-          consider a hypothetical situation. Let's say that we've been assigned
+          To visualize what serverless orchestration might look like, let’s
+          consider a hypothetical situation. Let’s say that we’ve been assigned
           a project to create an internal application for our company. The app
           will allow an employee to send a request to their manager, asking that
           a certain resource be provisioned. If the manager approves, the
@@ -231,14 +231,14 @@
         </figure>
 
         <p>
-          Let's say that the workflow can be implemented by representing each
+          Let’s say that the workflow can be implemented by representing each
           component as a Lambda. The work of each Lambda must then be
           orchestrated to ensure that the workflow executes in a meaningful way.
           How will we make sure this workflow proceeds as desired?
         </p>
 
         <p>
-          Let's assume the ‘Manager’ Lambda will receive an input that contains
+          Let’s assume the ‘Manager’ Lambda will receive an input that contains
           information about the resource being requested. What happens if that
           input is somehow malformed? An error could occur leading to the
           ‘Manager’ failing. Some form of error handling could prevent this, but
@@ -1135,7 +1135,7 @@
           machine is a simple process. Create a new Maestro project, optionally
           edit the state machine template, and then type one command to deploy
           the state machine and any Lambda functions it includes. One could say
-          that it's as easy as 1, 2, 3.
+          that it’s as easy as 1, 2, 3.
         </p>
 
         <figure>
