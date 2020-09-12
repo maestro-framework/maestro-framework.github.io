@@ -282,7 +282,7 @@
 
         <p>
           Next, we need to determine how to properly branch based on the
-          ‘Manager’ Lambda's output.
+          ‘Manager’ Lambda’s output.
         </p>
 
         <figure>
@@ -295,14 +295,14 @@
         </figure>
 
         <p>
-          There's another pattern we could use called the ‘Router’, which simply
+          There’s another pattern we could use called the ‘Router’, which simply
           distributes the execution based on payload [<a
             href="#reference_3"
             class="reference"
             >3</a
           >]. Since the ‘Manager’ Lambda can invoke other Lambdas, we can
           implement the ‘Router’ pattern by placing the branching logic there.
-          Because we've now written orchestration logic alongside business
+          Because we’ve now written orchestration logic alongside business
           logic, the ‘Manager’ has become a bit ‘fat’.
         </p>
 
@@ -318,7 +318,7 @@
         </figure>
 
         <p>
-          Now that we've taken care of branching, an attempt to provision the
+          Now that we’ve taken care of branching, an attempt to provision the
           desired resource can be made. However, the provisioning of a resource
           may be risky. What if the attempt fails for some reason?
         </p>
@@ -333,14 +333,14 @@
         </figure>
 
         <p>
-          We'd like to prevent the employee from having to repeat their request
+          We’d like to prevent the employee from having to repeat their request
           such that the workflow has to start over. To address this, we could
-          once again apply the ‘Router’ pattern. This time, we'll add logic to
+          once again apply the ‘Router’ pattern. This time, we’ll add logic to
           the ‘Manager’ so that it monitors the output of the ‘Provisioner’. If
           the ‘Manager’ detects that the provisioning has failed, we can have it
           invoke the ‘Provisioner’ again. But how many retries do we want to
           allow? How quickly do we want to retry? This is further orchestration
-          logic that we'll have to write into the ‘Manager’, making it even
+          logic that we’ll have to write into the ‘Manager’, making it even
           fatter.
         </p>
 
@@ -402,7 +402,7 @@
         </figure>
 
         <p>
-          By implementing the application in this way, we're able to orchestrate
+          By implementing the application in this way, we’re able to orchestrate
           error handling, retry, and branching all in one place. When the
           business logic needs to be modified, the orchestration logic can
           likely stay the same. This can be quite valuable for a new application
@@ -412,7 +412,7 @@
         <p>
           So how would we go about extracting an orchestration layer? Creating
           and maintaining custom logic would require considerable overhead.
-          Let's explore another pattern called the ‘State Machine’ [<a
+          Let’s explore another pattern called the ‘State Machine’ [<a
             href="#reference_3"
             class="reference"
             >3</a
@@ -1300,7 +1300,7 @@
               <td>
                 <p>
                   Fetches the Maestro default templates from git and installs
-                  themon the user's local machine.
+                  themon the user’s local machine.
                 </p>
               </td>
             </tr>
