@@ -451,20 +451,37 @@
 
         <p>
           It’s important to note that a state machine is not a physical device
-          but an abstract concept. In practice, state machines are all about
-          inputs, outputs, transitions, and state. Implementing our
-          orchestration layer as a state machine ends up meeting our needs
-          nicely. It just so happens that AWS has a State Machine as a Service offering called AWS
-          Step Functions.
+          but an abstract concept. A state machine is all about inputs, outputs,
+          transitions, and state, making it an ideal candidate for an
+          orchestration layer. But how would we go about implementing a state
+          machine? It just so happens that AWS offers a “State Machine as a
+          Service” called AWS Step Functions.
         </p>
 
         <h2 id="aws-step-functions">4. AWS Step Functions</h2>
 
         <p>
-          Step Functions are the AWS version of an orchestration layer utilizing
-          state machines to manage transitions between phases in a serverless
-          application [<a href="#reference_5" class="reference">5</a>].
+          Here's how Amazon describes AWS Step Functions [<a
+            href="#reference_5"
+            class="reference"
+            >5</a
+          >]…
         </p>
+
+        <blockquote
+          cite="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html"
+        >
+          <p>
+            “AWS Step Functions is a web service that enables you to coordinate
+            the components of distributed applications and microservices using
+            visual workflows. You build applications from individual components
+            that each perform a discrete function, or task, allowing you to
+            scale and <span class="highlight">change applications quickly</span>.”
+          </p>
+          <footer>
+            AWS Documentation, <cite>What is AWS Step Functions?</cite>
+          </footer>
+        </blockquote>
 
         <figure>
           <img
@@ -475,20 +492,16 @@
           <figcaption>AWS Step Functions</figcaption>
         </figure>
 
+        <p>
+          To create a state machine with Step Functions, we'll need to use a
+          JSON-based langague called Amazon States Language (ASL).
+        </p>
+
         <h3>4.1 Amazon States Language</h3>
 
         <p>
-          We can implement Step Functions with the help of a declarative
-          language AWS created specifically for defining state machines: Amazon
-          States Language (ASL). ASL is written in a JSON format where each step
-          of a workflow is defined as a state corresponding to one of several
-          types such as ‘Choice’, ‘Task, ‘Wait, and ‘Error’.
-        </p>
-
-        <p>
-          All state machines have a required field called ‘StartAt’ which
-          designates the state where execution will begin. A ‘States’ field
-          specifies the states associated with a given workflow.
+          Let's first look at a “Hello World” state machine definition to
+          familiarize ourselves with ASL.
         </p>
 
         <figure>
