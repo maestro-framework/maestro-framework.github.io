@@ -141,7 +141,6 @@
             src="assets/images/serverless-poll.svg"
             alt="58% of developers in one poll respond that serverless to them is FaaS"
             title="Serverless Poll"
-            id="poll"
           />
           <figcaption>
             A recent poll asking developers how they view the term “serverless“
@@ -225,6 +224,7 @@
             src="assets/images/workflow/overview.png"
             alt="Initial components in workflow derived from task"
             title="Thin workflow"
+            class="example-workflow"
           />
           <figcaption>
             Example of a serverless workflow with multiple Lambdas
@@ -250,6 +250,7 @@
           <img
             src="assets/images/workflow/validation.png"
             alt="Invalid input"
+            class="example-workflow"
           />
           <figcaption>
             We need to consider how to handle an invalid input
@@ -274,6 +275,7 @@
             src="assets/images/workflow/validator.png"
             alt="Inserting a proxy lambda in front of the Manager component"
             title="Proxy Lambda"
+            class="example-workflow"
           />
           <figcaption>
             Using the ‘Proxy’ pattern for validating input
@@ -290,6 +292,7 @@
             src="assets/images/workflow/branching-logic.png"
             alt="Branching step after the Manager makes a decision"
             title="Branching"
+            class="example-workflow"
           />
           <figcaption>How will we implement branching logic?</figcaption>
         </figure>
@@ -311,6 +314,7 @@
             src="assets/images/workflow/fat-manager.png"
             alt="Workflow with the Fat Manager Lambda"
             title="Fat Manager"
+            class="example-workflow"
           />
           <figcaption>
             ‘Manager’ Lambda is now fat with orchestration logic
@@ -328,6 +332,7 @@
             src="assets/images/workflow/provisioning-fail.png"
             alt="Failure depicted on the Provisioner component"
             title="Failed Provisioner"
+            class="example-workflow"
           />
           <figcaption>The provisioning step fails...</figcaption>
         </figure>
@@ -349,6 +354,7 @@
             src="assets/images/workflow/fatter-manager.png"
             alt="Addition of retry to the Fat Manager Orchertator Lambda"
             title="Fat Manager with Retry"
+            class="example-workflow"
           />
           <figcaption>The ‘Manager’ Lambda is even fatter</figcaption>
         </figure>
@@ -367,6 +373,7 @@
           <img
             src="assets/images/workflow/everything.png"
             alt="Overloaded Workflow"
+            class="example-workflow"
           />
           <figcaption>Workflow overloaded with orchestration logic</figcaption>
         </figure>
@@ -395,6 +402,7 @@
             src="assets/images/workflow/orchestration-layer.png"
             alt="Diagram of only the orchestration layer in a workflow"
             title="Orchestration Layer"
+            class="example-workflow"
           />
           <figcaption>
             An orchestration layer abstracted from the workflow

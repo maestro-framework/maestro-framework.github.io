@@ -135,12 +135,12 @@ img {
 }
 
 #case-study img {
-  max-width: 45%;
+  max-width: 80%;
   height: auto;
 }
 
-#case-study #poll {
-  max-width: 60%;
+#case-study img.example-workflow {
+  max-width: 45%;
 }
 
 .flex {
