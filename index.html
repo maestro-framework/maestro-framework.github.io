@@ -468,7 +468,7 @@
             href="#reference_5"
             class="reference"
             >5</a
-          >]…
+          >].
         </p>
 
         <blockquote
@@ -515,7 +515,6 @@
             <pre>
               <code class="js dark">
 {
-  "Comment": "A Hello World example of the Amazon States Language",
   "StartAt": "Hello World",
   "States": {
     "Hello World": {
@@ -533,33 +532,38 @@
               title="Hello World ASL "
             />
           </div>
-          <figcaption>A “Hello World” state machine written in ASL</figcaption>
+          <figcaption>
+            A state machine definition with a visual that is displayed in the
+            AWS Console
+          </figcaption>
         </figure>
 
         <p>
-          A state with a type of ‘Task’ will perform the task associated with
-          the ‘Resource’ field, and the above-depicted state machine represents
-          an AWS Lambda as a resource. The state will not terminate until the
-          resource returns at which point the ‘End’ field indicates the next
-          step. An end value of ‘true’ indicates that once the state is
-          complete, the workflow itself must terminate.
+          There are two required fields for all state machines:
+          <code>StartAt</code> and <code>States</code>. The
+          <code>StartAt</code> field simply designates which state will begin
+          execution, whereas the <code>States</code> field is a list of all
+          possible states. Once a valid definition is entered in the AWS
+          Console, a visual that represents the state machine will be displayed.
         </p>
 
         <p>
-          While the Step Functions language, ASL, is somewhat abstract, AWS
-          facilitates concretely visualizing workflows through representations
-          of an ASL definition available in the AWS console. Not only can the
-          sequence of a workflow be visualized, but if the resources are
-          properly defined, the state machine can be executed in the console
-          with the transitions visualized as the various components execute. The
-          visualization is strictly a representation of the ASL definition
-          provided, so no development can be done visually, but the
-          visualization is informative.
+          In this simple example, we only have one state,
+          <code>Hello World</code>. We can see that this state is of type
+          <code>Task</code> and is referencing a Lambda function. However, there
+          are other types of states that exist to help orchestrate the workflow.
+          For instance, there is a <code>Choice</code> state, which is used for
+          branching logic. There is a <code>Wait</code> state that will simply
+          pause execution for some specified amount of time. There are others as
+          well, but we're justing wanting to point out that Step Functions
+          provides these different types of states to help facilitate the
+          workflow you are wanting to accomplish.
         </p>
 
         <p>
-          The relatively complex workflow described earlier can be represented
-          in ASL and deployed with Step Functions.
+          Let's return to our earlier example of an employee requesting approval
+          for a resource to be provisioned. We'll now implement this workflow
+          with Step Functions.
         </p>
 
         <figure>
@@ -586,13 +590,17 @@
               alt="Visualization of example workflow in AWS Console"
             />
           </div>
-          <figcaption>Example Workflow written in ASL</figcaption>
+          <figcaption>
+            Earlier example now implemented with AWS Step Functions
+          </figcaption>
         </figure>
 
         <p>
-          In the workflow, each step represents a state which may or may not be
-          associated with a resource. Therefore, a state can be given a single
-          responsibility like that of branching. A determination of the
+          This state machine is orchestrating several states, four of which are
+          lambdas. And let's look at a couple of these states a little more
+          closely. In the workflow, each step represents a state which may or
+          may not be associated with a resource. Therefore, a state can be given
+          a single responsibility like that of branching. A determination of the
           subsequent state is made based on the input received from the output
           of the previous state in the workflow.
         </p>
