@@ -5,17 +5,17 @@
 --------------------------------- */
 
 :root {
-    --color-black: #1e1d20;
-    --color-dark-grey: #313133;
-    --color-grey: #696a6e;
-    --color-light-grey: #9d9ea3;
-    --color-white: #f5f7ff;
-    --color-maestro-red: #900c3f;
+  --color-black: #1e1d20;
+  --color-dark-grey: #313133;
+  --color-grey: #696a6e;
+  --color-light-grey: #9d9ea3;
+  --color-white: #f5f7ff;
+  --color-maestro-red: #900c3f;
 
-    /* aliases */
-    --color-dark-gray: var(--color-dark-grey);
-    --color-gray: var(--color-grey);
-    --color-light-gray: var(--color-light-grey);
+  /* aliases */
+  --color-dark-gray: var(--color-dark-grey);
+  --color-gray: var(--color-grey);
+  --color-light-gray: var(--color-light-grey);
 }
 
 /* ---------------------------------
@@ -397,36 +397,36 @@ h3 {
 }
 
 #commands-table {
-    table-layout: fixed;
-    border-collapse: collapse;
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
 #commands-table thead tr {
-    background-color: #9d9ea3;
-    color: #313133
-/*    border-bottom: 3px solid #9d9ea3;*/
+  background-color: #9d9ea3;
+  color: #313133;
+  /*    border-bottom: 3px solid #9d9ea3;*/
 }
 
 /*#commands-table th:nth-child(n+2),*/
-#commands-table td:nth-child(n+2) {
-    border-left: 3px solid #9d9ea3;
+#commands-table td:nth-child(n + 2) {
+  border-left: 3px solid #9d9ea3;
 }
 
 #commands-table tbody tr {
-    background-color: #313133;
+  background-color: #313133;
 }
 
 #commands-table tbody tr:nth-child(odd) {
-    background-color: #696a6e;
+  background-color: #696a6e;
 }
 
-#commands-table tbody tr:nth-child(n+2) {
-    border-top: 3px solid #9d9ea3;
+#commands-table tbody tr:nth-child(n + 2) {
+  border-top: 3px solid #9d9ea3;
 }
 
 #commands-table th,
 #commands-table td {
-    padding: 10px;
+  padding: 10px;
 }
 
 /* ---------------------------------

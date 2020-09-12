@@ -264,8 +264,8 @@
             class="reference"
             >3</a
           >]. The ‘Proxy’ is a Lambda that sits between two other Lambdas and
-          invokes the second one when appropriate. In this case, it would help
-          handle invalid inputs.
+          invokes the second one when appropriate. In this case, we could insert
+          a ‘Proxy’ Lambda called ‘Validator’ to help handle invalid inputs.
         </p>
 
         <figure>
@@ -302,7 +302,7 @@
           >]. Since the ‘Manager’ Lambda has the ability to invoke other
           Lambdas, we can implement the ‘Router’ pattern by placing the
           branching logic there. Because we've now written orchestration logic
-          alongside business logic, the ‘Manager’ has become a bit bloated.
+          alongside business logic, the ‘Manager’ has become a bit ‘fat’.
         </p>
 
         <figure>
@@ -312,7 +312,7 @@
             title="Fat Manager"
           />
           <figcaption>
-            ‘Manager’ Lambda bloated with orchestration logic
+            ‘Manager’ Lambda is now fat with orchestration logic
           </figcaption>
         </figure>
 
@@ -336,10 +336,11 @@
           such that the workflow has to start over. To address this, we could
           once again apply the ‘Router’ pattern. This time, we'll add logic to
           the ‘Manager’ so that it monitors the output of the ‘Provisioner’. If
-          the ‘Manager’ detects that the provisioning failed, we can have it
+          the ‘Manager’ detects that the provisioning has failed, we can have it
           invoke the ‘Provisioner’ again. But how many retries do we want to
           allow? How quickly do we want to retry? This is further orchestration
-          logic that we'll have to write into the ‘Manager’.
+          logic that we'll have to write into the ‘Manager’, making it even
+          fatter.
         </p>
 
         <figure>
@@ -348,17 +349,17 @@
             alt="Addition of retry to the Fat Manager Orchertator Lambda"
             title="Fat Manager with Retry"
           />
-          <figcaption>The ‘Manager’ Lambda bloated even further</figcaption>
+          <figcaption>The ‘Manager’ Lambda is even fatter</figcaption>
         </figure>
 
         <p>
           Do any limitations exist with this implementation? The probability of
-          the Lambda surpassing the execution limit is now increased if the
-          ‘Manager’ monitors the ‘Provisioner’ during extended retries. Delayed
-          provisioning may cause the ‘Manager’ to terminate before determining
-          if a retry was necessary. Further, with the orchestration logic of the
-          ‘Manager’ written alongside the business logic, the component is
-          overloaded resulting in poor separation of concerns.
+          the Lambda surpassing its execution limit is now increased if the
+          ‘Manager’ monitors the ‘Provisioner’ and there are multiple retries.
+          Delayed provisioning may cause the ‘Manager’ to terminate before
+          determining if a retry was necessary. Further, with the orchestration
+          logic of the ‘Manager’ written alongside the business logic, the
+          component is overloaded resulting in poor separation of concerns.
         </p>
 
         <figure>
@@ -426,7 +427,9 @@
             application as a mixture of your inputs, the states that your
             application can be in, and the transitions between those states."
           </p>
-          <footer>Rowan Udell, <cite>Serverless Chats Podcast – Episode #16</cite></footer>
+          <footer>
+            Rowan Udell, <cite>Serverless Chats Podcast – Episode #16</cite>
+          </footer>
         </blockquote>
 
         <p>
@@ -1152,7 +1155,7 @@
         <figure>
           <img
             src="assets/images/step-functions-console/console-diagram-7.gif"
-            style="max-height: 50vh"
+            style="max-height: 50vh;"
             alt="deploying with maestro"
           />
           <figcaption>Deploying with Maestro</figcaption>
@@ -1306,7 +1309,8 @@
           </tbody>
         </table>
 
-        <p><!--
+        <p>
+          <!--
           Given that templates can provide a useful mechanism for developing
           with Step Functions, Maestro interacts with an external template
           repository through the
@@ -1375,7 +1379,10 @@
           are included to indicate their destruction.
         </p>
 
--->        <h3>6.2 Challenges</h3>
+-->
+        </p>
+
+        <h3>6.2 Challenges</h3>
 
         <p>
           One may now understand the value of working with a framework like
