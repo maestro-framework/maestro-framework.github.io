@@ -642,23 +642,13 @@
         </figure>
 
         <p>
-          Even though the visualization represents business and orchestration
-          steps in one place, the business logic lies far from the state
-          machine. The ‘Resource’ field of the ‘Task’ state represents the
-          location of the components where the business logic is defined while
-          the ASL represents the orchestration logic in a single place.
-        </p>
-
-        <p>
-          Another feature of Step Functions is retry. It’s difficult to express
-          how challenging it is to implement retry without it. Part of the
-          challenge is the lack of a shared state when dealing with Lambda and
-          auditability of execution in real-time. When working with Step
-          Functions, however, there is an ‘Error’ state which has a field for
-          ‘Retry’. The developer simply indicates the type of error to retry as
-          well as details like interval retry attempts, and max attempts. Some
-          of these features are difficult to reconcile outside of a state
-          machine as there is no higher-order notion of a singular workflow.
+          If we look more closely at the state called <code>Provisioner</code>,
+          we see how one might implement retry logic. <code>Task</code> states
+          have an optional field called <code>Retry</code> that will
+          specify which types of errors to retry, how many seconds to wait in
+          between, as well as a backoff rate and maximum number of attempts.
+          It's useful to be able to put this orchestration concern here,
+          instead of writing some custom retry logic alongside business logic.
         </p>
 
         <figure>
