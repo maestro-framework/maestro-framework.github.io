@@ -593,62 +593,11 @@
         </figure>
 
         <p>
-          This state machine is orchestrating several states, four of which are
-          lambdas. And let's look at a couple of these states a little more
-          closely. In the workflow, each step represents a state which may or
-          may not be associated with a resource. Therefore, a state can be given
-          a single responsibility like that of branching. A determination of the
-          subsequent state is made based on the input received from the output
-          of the previous state in the workflow.
-        </p>
-
-        <figure>
-          <div class="flex">
-            <pre>
-              <code class="js dark">
-"ManagerChoice": {
-  "Type": "Choice",
-  "Choices": [
-    {
-      "Variable": "$.decision",
-      "StringEquals": "accept",
-      "Next": "Provisioner"
-    },
-    {
-      "Variable": "$.decision",
-      "StringEquals": "accept",
-      "Next": "Provisioner"
-    }
-  ]
-},
-              </code>
-            </pre>
-          </div>
-          <figcaption>ASL of ManagerChoice State</figcaption>
-        </figure>
-
-        <p>
-          For example, the ‘ManagerChoice’ state is of type ‘Choice’ which is
-          the ASL designated state type for branching; no Lambda is associated.
-          The output of the ‘Manager’ state provides input to the
-          ‘ManagerChoice’ state, and, based on acceptance or denial, the
-          workflow can proceed to either the ‘Notifier’ or the ‘Provisioner’.
-          Understanding the technical reference to the previous output and
-          comparing factors for determining the next step requires familiarity
-          with ASL, yet the ability to make such an assessment is amongst the
-          facilities ASL provides.
-        </p>
-
-        <p>
-          The salient point is that a separation is made between those states
-          that are introduced only for purposes of orchestration and states
-          performing tasks associated with the business logic of an application.
           Even though the visualization represents business and orchestration
           steps in one place, the business logic lies far from the state
           machine. The ‘Resource’ field of the ‘Task’ state represents the
           location of the components where the business logic is defined while
-          the ASL represents the orchestration logic in a single place. True
-          separation.
+          the ASL represents the orchestration logic in a single place.
         </p>
 
         <p>
