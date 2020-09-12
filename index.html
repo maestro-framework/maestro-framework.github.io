@@ -644,11 +644,11 @@
         <p>
           If we look more closely at the state called <code>Provisioner</code>,
           we see how one might implement retry logic. <code>Task</code> states
-          have an optional field called <code>Retry</code> that will
-          specify which types of errors to retry, how many seconds to wait in
-          between, as well as a backoff rate and maximum number of attempts.
-          It's useful to be able to put this orchestration concern here,
-          instead of writing some custom retry logic alongside business logic.
+          have an optional field called <code>Retry</code> that will specify
+          which types of errors to retry, how many seconds to wait in between,
+          as well as a backoff rate and maximum number of attempts. It's useful
+          to be able to put this orchestration concern here, instead of writing
+          some custom retry logic alongside business logic.
         </p>
 
         <figure>
@@ -677,12 +677,9 @@
         <h3>4.2 Execution Event History</h3>
 
         <p>
-          To delve a bit more into the benefit of a singular workflow, consider
-          the execution history mentioned earlier. The execution history
-          accompanies the visualization of a workflow execution in the console
-          and is interactive. Inputs and outputs of the transitions between
-          states are displayed, and when a failed state is apparent, the
-          execution history can be consulted to audit the failure.
+          Once a state machine has executed, using the AWS Console, we're able
+          to access an interactive execution event history. This allows us to
+          audit the transitions between states in one, unified place.
         </p>
 
         <figure>
@@ -694,8 +691,10 @@
         </figure>
 
         <p>
-          Also, by executing the workflow, a developer can see the outputs of
-          executing each component in a toolbar.
+          Additionally, the visual workflow will be color coded to help us
+          quickly remember the outcome of each state for that execution. This
+          interface is updated in real time, which can be helpful for viewing the
+          status of longer-running state machines.
         </p>
 
         <figure>
