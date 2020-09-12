@@ -295,15 +295,15 @@
         </figure>
 
         <p>
-          There's another pattern we could use called the the ‘Router’, which
-          simply distributes the execution based on payload [<a
+          There's another pattern we could use called the ‘Router’, which simply
+          distributes the execution based on payload [<a
             href="#reference_3"
             class="reference"
             >3</a
-          >]. Since the ‘Manager’ Lambda has the ability to invoke other
-          Lambdas, we can implement the ‘Router’ pattern by placing the
-          branching logic there. Because we've now written orchestration logic
-          alongside business logic, the ‘Manager’ has become a bit ‘fat’.
+          >]. Since the ‘Manager’ Lambda can invoke other Lambdas, we can
+          implement the ‘Router’ pattern by placing the branching logic there.
+          Because we've now written orchestration logic alongside business
+          logic, the ‘Manager’ has become a bit ‘fat’.
         </p>
 
         <figure>
