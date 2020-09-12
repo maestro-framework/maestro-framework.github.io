@@ -421,6 +421,14 @@
 
         <h3>3.2 The State Machine Pattern</h3>
 
+        <p>
+          Rowan Udell, a guest on the Serverless Chats Podcast [<a
+            href="#reference_4"
+            class="reference"
+            >4</a
+          >], provides a helpful description of a state machine.
+        </p>
+
         <blockquote cite="https://www.serverlesschats.com/16/">
           <p>
             "State machines are really just a mathematical way of modeling an
@@ -434,23 +442,12 @@
         </blockquote>
 
         <p>
-          A state machine stores a given state at a given time [<a
-            href="#reference_4"
-            class="reference"
-            >4</a
-          >]. In a workflow, a state machine represents the state of the
-          workflow at a given step. The state of a step is conditional on input,
-          and the output determines the next state. It’s important to note that
-          it’s not a physical device but an abstract concept; in practice, state
-          machines are all about inputs, outputs, transitions, and state. Sounds
-          like orchestration.
-        </p>
-
-        <p>
-          Simply put, AWS Lambdas lack persistent state, so introducing
-          something to provide state between Lambda executions is quite
-          intuitive. AWS provides a service that utilizes state machines called
-          AWS Step Functions.
+          It’s important to note that a state machine is not a physical device
+          but an abstract concept. In practice, state machines are all about
+          inputs, outputs, transitions, and state. Implementing our
+          orchestration layer as a state machine ends up meeting our needs
+          nicely. AWS provides a service that utilizes state machines called AWS
+          Step Functions.
         </p>
 
         <h2 id="aws-step-functions">4. AWS Step Functions</h2>
