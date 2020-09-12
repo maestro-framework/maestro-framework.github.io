@@ -189,7 +189,7 @@ code {
 }
 
 code.dark {
-  border: 15px solid var(--color-dark-grey);
+  border: 2px solid var(--color-maestro-red);
   border-radius: 1rem;
   padding: 0.5vh 1vw;
 }
