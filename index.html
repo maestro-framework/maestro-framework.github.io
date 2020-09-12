@@ -460,8 +460,6 @@
 
         <h2 id="aws-step-functions">4. AWS Step Functions</h2>
 
-        <h3>4.1 What are Step Functions?</h3>
-
         <p>
           Step Functions are the AWS version of an orchestration layer utilizing
           state machines to manage transitions between phases in a serverless
@@ -476,6 +474,8 @@
           />
           <figcaption>AWS Step Functions</figcaption>
         </figure>
+
+        <h3>4.1 Amazon States Language</h3>
 
         <p>
           We can implement Step Functions with the help of a declarative
@@ -662,6 +662,8 @@
           <figcaption>Provisioner state showing retry logic in ASL</figcaption>
         </figure>
 
+        <h3>4.2 Execution Event History</h3>
+
         <p>
           To delve a bit more into the benefit of a singular workflow, consider
           the execution history mentioned earlier. The execution history
@@ -692,8 +694,10 @@
           <figcaption>An executed state machine in the AWS Console</figcaption>
         </figure>
 
-        <h3>4.2 Challenges of Step Functions</h3>
-        <h4>4.2.1 ASL</h4>
+        <h3>4.3 Benefits</h3>
+
+        <h2 id="problems">5. Problems</h2>
+        <h3>5.1 Programming Model</h3>
 
         <p>
           One of the common complaints with Step Functions is that ASL is not
@@ -732,7 +736,7 @@
           convenience while for new practitioners it may prove a necessity.
         </p>
 
-        <h4>4.2.2 Deployment</h4>
+        <h3>5.2 Deployment</h3>
 
         <p>
           Another challenge arises in an area that isn’t unique to Step
@@ -955,7 +959,7 @@
           could be deleted, possibly losing valuable execution data.
         </p>
 
-        <h3>4.3 AWS Tools</h3>
+        <h2 id="existing-solutions">6. Existing Solutions</h2>
 
         <p>
           To understand the tools that currently exist to facilitate
@@ -1008,8 +1012,6 @@
           toward a particular language will often opt for the SDK approach.
         </p>
 
-        <h2 id="existing-solutions">5. Existing Solutions</h2>
-
         <p>
           The frameworks of concern for this consideration are those that allow
           the deployment of Step Functions. Many excellent frameworks exist for
@@ -1017,7 +1019,7 @@
           outside the scope of this discussion.
         </p>
 
-        <h3>5.1 Serverless Framework</h3>
+        <h3>6.1 Serverless Framework</h3>
 
         <p>
           One popular framework is the aptly named Serverless Framework [<a
@@ -1061,7 +1063,7 @@
           use of dependencies can hinder otherwise light applications.
         </p>
 
-        <h3>5.2 AWS SAM</h3>
+        <h3>6.2 AWS SAM</h3>
 
         <p>
           Another framework that deals with Step Functions was created by AWS:
@@ -1100,7 +1102,7 @@
           for Step Functions was added as an afterthought.
         </p>
 
-        <h3>5.3 Step</h3>
+        <h3>6.3 Step</h3>
 
         <p>
           What about more purpose-built frameworks? Unfortunately, there aren’t
@@ -1133,7 +1135,7 @@
           workflows using Step Functions.
         </p>
 
-        <h2 id="maestro">6. Maestro</h2>
+        <h2 id="maestro">7. Maestro</h2>
 
         <p>
           Maestro is an open-source Node.js framework for AWS Step Functions
@@ -1177,7 +1179,7 @@
           performed in as little as 2 seconds.
         </p>
 
-        <h3>6.1 Commands</h3>
+        <h3>7.1 Commands</h3>
 
         <table id="commands-table">
           <thead>
@@ -1388,7 +1390,7 @@
 -->
         </p>
 
-        <h3>6.2 Challenges</h3>
+        <h3>7.2 Challenges</h3>
 
         <p>
           One may now understand the value of working with a framework like
@@ -1396,7 +1398,7 @@
           challenges along the way.
         </p>
 
-        <h4>6.2.1 AWS IAM</h4>
+        <h4>7.2.1 AWS IAM</h4>
 
         <p>
           One source of difficulty was dealing with IAM [<a
@@ -1469,7 +1471,7 @@
           achieved.
         </p>
 
-        <h4>6.2.2 Asynchronicity</h4>
+        <h4>7.2.2 Asynchronicity</h4>
 
         <p>
           Discussing the challenge of creating a Lambda or state machine with
@@ -1494,7 +1496,7 @@
           implemented. The result is a lightning-fast framework.
         </p>
 
-        <h4>6.2.3 Domain</h4>
+        <h4>7.2.3 Domain</h4>
 
         <p>
           Serverless orchestration is a very niche topic. Although AWS Lambda is
@@ -1507,15 +1509,13 @@
           provide a framework in this space.
         </p>
 
-        <h3>6.3 Future Work</h3>
+        <h3>7.3 Future Work</h3>
 
         <p>
           As with most endeavors, not all that was desired could be accomplished
           from the outset. Here are a few aspirations that are left for future
           work.
         </p>
-
-        <h4>6.3.1 ASL</h4>
 
         <p>
           Ultimately, a framework that works with ASL could be benefited by
@@ -1527,16 +1527,12 @@
           ASL, in effect, mirroring common procedural coding would be helpful.
         </p>
 
-        <h4>6.3.2 Logging</h4>
-
         <p>
           Another possible future addition would be integration with the host
           logging system. More robust logging is helpful in the event something
           goes wrong with the deployment of an individual component or an entire
           workflow.
         </p>
-
-        <h4>6.3.3 Versioning</h4>
 
         <p>
           Further, if a premise of Maestro is allowing rapid iteration on
@@ -1547,8 +1543,6 @@
           workflow would be persisted and easily accessible every time a
           workflow was newly deployed.
         </p>
-
-        <h4>6.3.4 Redeploy Command</h4>
 
         <p>
           Which brings to mind another consideration left for the future: a
@@ -1562,8 +1556,6 @@
           components.
         </p>
 
-        <h4>6.3.5 Other AWS Services</h4>
-
         <p>
           As clearly outlined, the current focus of Maestro is the ever-popular
           AWS Lambdas. While much can be achieved, and often is, strictly using
@@ -1572,8 +1564,6 @@
           integrating further AWS services into Maestro would amplify its
           potential.
         </p>
-
-        <h4>6.3.6 Per-Project Configuration</h4>
 
         <p>
           Currently, the Maestro configuration depends on a single configuration
@@ -1585,7 +1575,7 @@
         </p>
 
         <section id="references">
-          <h2>7. References</h2>
+          <h2>8. References</h2>
 
           <ol>
             <li id="reference_1">
