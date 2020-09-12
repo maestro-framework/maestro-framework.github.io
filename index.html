@@ -568,18 +568,68 @@
             <pre>
               <code class="js dark">
 {
-  "Comment": "State machine orchestration pattern",
   "StartAt": "Requester",
   "States": {
-    "Requester": {…},
-    "Validator": {…},
-    "Manager": {…},
-    "ManagerChoice": {…},
-    "Provisioner": {…},
-    "AccessGranter": {…},
-    "Notifier": {…}
+    "Requester": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_requester",
+      "Next": "Validator"
+    },
+    "Validator": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_validator",
+      "Next": "Manager",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.errorInfo",
+          "Next": "Notifier"
+        }
+      ]
+    },
+    "Manager": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_manager",
+      "Next": "ManagerChoice"
+    },
+    "ManagerChoice": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.decision",
+          "StringEquals": "accept",
+          "Next": "Provisioner"
+        }
+      ],
+      "Default": "Notifier"
+    },
+    "Provisioner": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_provisioner",
+      "Next": "Notifier",
+      "Retry": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "IntervalSeconds": 2,
+          "BackoffRate": 1.5,
+          "MaxAttempts": 5
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.errorInfo",
+          "Next": "Notifier"
+        }
+      ]
+    },
+    "Notifier": {
+      "Type": "Pass",
+      "End": true
+    }
   }
 }
+
               </code>
             </pre>
             <img
