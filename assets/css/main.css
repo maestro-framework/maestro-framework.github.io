@@ -395,7 +395,8 @@ h3 {
   font-weight: 300;
 }
 
-#orchestration-grouping {
+.highlight {
+  font-style: italic;
   font-weight: 500;
   color: var(--color-maestro-red);
 }
