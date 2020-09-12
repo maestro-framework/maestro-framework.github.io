@@ -139,6 +139,10 @@ img {
   height: auto;
 }
 
+#case-study #poll {
+  max-width: 60%;
+}
+
 .flex {
   display: flex;
   flex-flow: row wrap;
