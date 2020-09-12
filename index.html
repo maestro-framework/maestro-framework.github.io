@@ -203,15 +203,15 @@
 
         <h2 id="orchestration">3. Orchestration</h2>
         <p>
-          Serverless orchestration is the act of managing the
-          workflow between multiple serverless resources. To visualize what
-          this might look like, let’s consider a
-          hypothetical situation. Let’s say that we’ve been assigned a project
-          to create an internal application for our company. The app will allow
-          an employee to send a request to their manager, asking that a certain
-          resource be provisioned. If the manager approves, the resource is
-          provisioned and the employee is granted access. Otherwise, the
-          employee is notified that their request has been denied.
+          Serverless orchestration is the act of managing the workflow between
+          multiple serverless resources. To visualize what this might look like,
+          let’s consider a hypothetical situation. Let’s say that we’ve been
+          assigned a project to create an internal application for our company.
+          The app will allow an employee to send a request to their manager,
+          asking that a certain resource be provisioned. If the manager
+          approves, the resource is provisioned and the employee is granted
+          access. Otherwise, the employee is notified that their request has
+          been denied.
         </p>
 
         <figure>
@@ -495,9 +495,10 @@
 
         <p>
           Step Functions are designed to contain an application's orchestration
-          logic, helping to maintain a separation of concerns. To create a state
-          machine with Step Functions, we'll need to use the JSON-based langague
-          called Amazon States Language (ASL).
+          logic. This helps us to maintain the separation of concerns that we
+          mentioned earlier. To create a state machine with Step Functions,
+          we'll need to use the JSON-based langague called Amazon States
+          Language (ASL).
         </p>
 
         <h3>4.1 Amazon States Language</h3>
@@ -545,16 +546,10 @@
         </p>
 
         <p>
-          In this simple example, we only have one state,
-          <code>Hello World</code>. We can see that this state is of type
-          <code>Task</code> and is referencing a Lambda function. However, there
-          are other types of states that exist to help orchestrate the workflow.
-          For instance, there is a <code>Choice</code> state, which is used for
-          branching logic. There is a <code>Wait</code> state that will simply
-          pause execution for some specified amount of time. There are others as
-          well, but we're justing wanting to point out that Step Functions
-          provides these different types of states to help facilitate the
-          workflow you are wanting to accomplish.
+          The only state in this simple example is a <code>Task</code> state
+          that is representing a Lambda function. Besides <code>Task</code>,
+          there are several other state types that can be used to help
+          orchestrate the workflow.
         </p>
 
         <p>
@@ -599,9 +594,13 @@
           "Variable": "$.decision",
           "StringEquals": "accept",
           "Next": "Provisioner"
+        },
+        {
+          "Variable": "$.decision",
+          "StringEquals": "deny",
+          "Next": "Notifier"
         }
-      ],
-      "Default": "Notifier"
+      ]
     },
     "Provisioner": {
       "Type": "Task",
