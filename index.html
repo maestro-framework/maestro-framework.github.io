@@ -992,23 +992,23 @@
         <h2 id="existing-solutions">6. Existing Solutions</h2>
 
         <p>
-          To understand the tools that currently exist to facilitate
-          development, it’s helpful to understand a bit about the AWS solutions
-          on which those tools are built.
+          A framework for deploying to AWS will typically be built using one of two
+          AWS tools. Let's first understand a bit about these tools before
+          examining any specific frameworks.
         </p>
 
         <p>
-          One such AWS solution is called AWS CloudFormation [<a
+          The first one we'll look at is called AWS CloudFormation [<a
             href="#reference_8"
             class="reference"
             >8</a
-          >]; it’s an AWS offering that allows creating a configuration file
-          containing all of a serverless application’s resources for deployment.
-          The entire offering is referred to as Infrastructure as Code.
-          Frameworks that interact with CloudFormation often guide a developer
-          through a process of creating framework-specific files. The file is
-          then compiled down to CloudFormation and the whole stack is deployed
-          at once.
+          >]. CloudFormation allows us to create a config file that will contain
+          all the resources we're wanting to deploy. A config file like this is
+          also known as Infrastructure as Code. With this approach, a framework
+          will guide us through a process of creating framework-specific files
+          that are then compiled to a CloudFormation config file. The whole
+          stack can then be deployed using this file. Frameworks that aim to be
+          more general purpose often take the CloudFormation approach.
         </p>
 
         <figure>
@@ -1020,12 +1020,14 @@
         </figure>
 
         <p>
-          The other common tool is AWS Software Development Kits, or SDKs [<a
+          The other tool is the AWS Software Development Kit (SDK) [<a
             href="#reference_9"
             class="reference"
             >9</a
-          >], which are APIs that allow a developer to work directly with
-          individual resources from their language of choice.
+          >]. This is a collection of APIs that allow us to work directly with
+          individual resources from our language of choice. Frameworks geared
+          toward a specific use case or a particular language are usually built
+          with the SDK.
         </p>
 
         <figure>
@@ -1034,36 +1036,19 @@
         </figure>
 
         <p>
-          Essentially, any framework in this space will use one of these two
-          tools. However, it seems the design philosophy of the framework will
-          often inform which of these tools will be employed. Frameworks that
-          aim to be general-purpose tools will typically take the CloudFormation
-          approach while frameworks for specific use cases or that are geared
-          toward a particular language will often opt for the SDK approach.
-        </p>
-
-        <p>
-          The frameworks of concern for this consideration are those that allow
-          the deployment of Step Functions. Many excellent frameworks exist for
-          certain use cases but don’t include Step Functions, so they lie
-          outside the scope of this discussion.
+          Let's now examine specific frameworks, keeping in mind that we'll only
+          be considering those that support Step Functions.
         </p>
 
         <h3>6.1 Serverless Framework</h3>
 
         <p>
-          One popular framework is the aptly named Serverless Framework [<a
+          The aptly named Serverless Framework [<a
             href="#reference_10"
             class="reference"
             >10</a
-          >]; it’s the dominant player in this space. The approach to deployment
-          taken by Serverless Framework is through compilation to
-          CloudFormation, and it can be considered a general-purpose tool.
-          Regarding Step Functions, a plugin is provided that allows the
-          inclusion of Step Functions in a deployment. Also, since
-          CloudFormation is used, the teardown of the entire stack can be
-          performed in the CloudFormation console, yet one cannot tear down from
-          within the framework.
+          >] is the dominant player in this space. Serverless Framework is a
+          more general purpose tool and uses CloudFormation under the hood.
         </p>
 
         <figure>
@@ -1075,34 +1060,39 @@
         </figure>
 
         <p>
-          One positive feature of Serverless Framework is that it supports
-          multiple runtimes. Also, it automatically creates the permissions that
-          are needed for the resources in an application’s infrastructure. Plus,
-          having mentioned the value of templates, it does provide some simple
-          ASL templates.
+          Pros:
         </p>
 
+        <ul>
+          <li>Supports multiple runtimes</li>
+          <li>Required permissions are automatically generated</li>
+          <li>Has some ASL templates</li>
+        </ul>
+
         <p>
-          A drawback of Serverless Framework is that its templates require
-          manual configuration of resources the state machine is meant to
-          orchestrate. Further, the state machine definition must be written in
-          YAML to accommodate Serverless Framework’s conventions. Imagine, ASL
-          is written in JSON which must then be converted to YAML. How tedious.
-          Finally, the general-purpose functionality that Serverless Framework
-          provides comes at a dependency cost of 535 node modules. Such heavy
-          use of dependencies can hinder otherwise light applications.
+          Cons:
         </p>
+
+        <ul>
+          <li>
+            The templates have empty resource fields and must be filled out
+            manually
+          </li>
+          <li>ASL must be written in YAML</li>
+          <li>535 <code>node</code> dependencies</li>
+        </ul>
 
         <h3>6.2 AWS SAM</h3>
 
         <p>
-          Another framework that deals with Step Functions was created by AWS:
-          the Serverless Application Model or SAM [<a
+          AWS Serverless Application Model (SAM) [<a
             href="#reference_11"
             class="reference"
             >11</a
-          >]. SAM added support for Step Functions just a few months before this
-          writing.
+          >] started providing support for Step Functions just a few months
+          before this writing. It is similar to Serverless Framework in that it
+          is also a more general purpose tool and takes the CloudFormation
+          approach.
         </p>
 
         <figure>
@@ -1110,39 +1100,42 @@
           <figcaption>AWS SAM</figcaption>
         </figure>
 
-        <p>
-          SAM is similar to Serverless Framework both in being a general-purpose
-          tool and deploying through CloudFormation. Likewise, it supports
-          multiple runtimes and automatically generates the required permissions
-          for resources. Unlike Serverless Framework, a working state machine
-          can be deployed straight from the command line using a template; there
-          is no need to make manual configurations.
-        </p>
+        <p>Pros:</p>
+
+        <ul>
+          <li>Supports multiple runtimes</li>
+          <li>Required permissions are automatically generated</li>
+          <li>
+            Can set up a new project directory and deploy a working state
+            machine all from CLI
+          </li>
+        </ul>
+
+        <p>Cons:</p>
+
+        <ul>
+          <li>Only one state machine template</li>
+          <li>Relatively lengthy deployment time (took us about 3 minutes)</li>
+          <li>Doesn't seem to be a command to tear down what was deployed</li>
+        </ul>
 
         <p>
-          However, only one template is offered, and deployment time is rather
-          lengthy, taking a couple of minutes. Additionally, there are several
-          prompts to which a user must respond during the deployment.
-          Unfortunately, once deployed, no single command easily tears down.
-        </p>
-
-        <p>
-          As discussed, Serverless Framework and SAM are both general-purpose
-          tools, and neither was designed with Step Functions in mind. Support
-          for Step Functions was added as an afterthought.
+          Serverless Framework and SAM are both more general purpose tools, and
+          neither of them were designed with Step Functions in mind. They both
+          later added support for Step Functions in the event that an app just
+          happens to use them.
         </p>
 
         <h3>6.3 Step</h3>
 
         <p>
-          What about more purpose-built frameworks? Unfortunately, there aren’t
-          many designed with Step Functions in mind. One called Step does happen
+          What about more purpose-built frameworks? There don't seem to be many
+          specifically designed for Step Functions. One called Step does happen
           to be Step Functions centric and was built by Coinbase [<a
             href="#reference_12"
             class="reference"
             >12</a
-          >]. Step allows the user to create a state machine with a higher-level
-          language, namely Go.
+          >].
         </p>
 
         <figure>
@@ -1150,19 +1143,31 @@
           <figcaption>Step</figcaption>
         </figure>
 
-        <p>
-          However, adoption of Step, apparently, hasn’t been very broad.
-          Coinbase appears to be one of the only users of its framework. A
-          non-Coinbase practitioner may encounter difficulty configuring it.
-          Understandably, the development status of the framework is listed as
-          Beta. Further, a development drawback is that Step is not able to
-          create a new state machine but only modify an existing one.
-        </p>
+        <p>Pros:</p>
+
+        <ul>
+          <li>Purpose-built for working with Step Functions</li>
+          <li>
+            Allows the user to construct the state machine definition in a
+            higher level language (Go)
+          </li>
+        </ul>
+
+        <p>Cons:</p>
+
+        <ul>
+          <li>Only supports Go</li>
+          <li>Development state is Beta</li>
+          <li>Does not create state machine, only modifies existing one</li>
+        </ul>
 
         <p>
-          After surveying existing solutions, consider Maestro, a purpose-built,
-          lightweight framework that allows the developer to quickly iterate on
-          workflows using Step Functions.
+          Coinbase seems to be one of the only users of their framework. In
+          fact, the development status of the framework is listed as Beta. An
+          additional drawback is that Step is not able to create a new state
+          machine but can only modify an existing one, which can be a hindrance
+          to the developer who is wanting to quickly iterate on their work but
+          has to manually create a mock state machine first.
         </p>
 
         <h2 id="maestro">7. Maestro</h2>
