@@ -191,16 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleNavColors = () => {
-    const onHeader = isOnHeader("menu");
-    const onTeam = isOnTeamSection("menu");
-    const onMain = !(onHeader || onTeam);
-    const isWideScreen = !isNarrowScreen();
-
-    if (isWideScreen && !onMain && topNavVisible) {
-      styleNavColors("#313133", "#900c3f", "#9d9ea3");
-    } else {
-      styleNavColors("#696a6e", "#f5f7ff", "#900c3f");
-    }
+    styleNavColors("#313133", "#f5f7ff", "#900c3f");
   };
 
   const showNav = () => {
