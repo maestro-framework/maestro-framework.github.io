@@ -733,39 +733,79 @@
 
         <p>
           One of the common complaints with Step Functions is that ASL is not
-          very intuitive. It’s a JSON based language that’s optimized for
-          machines rather than humans [<a href="#reference_6" class="reference"
-            >6</a
-          >]. And some state machines can get quite complex with dozens or even
-          hundreds of states.
+          very intuitive.
+        </p>
+
+        <blockquote
+          cite="https://www.serverless.com/aws-step-functions#drawbacks"
+        >
+          <p>
+            Amazon States Language is quite complex; its syntax is based on JSON
+            and therefore
+            <span class="highlight">optimized for machine readability</span>
+            instead of readability by humans.
+          </p>
+          <footer>
+            Article from
+            <cite
+              >Serverless Framework [<a href="#reference_6" class="reference"
+                >6</a
+              >]
+            </cite>
+          </footer>
+        </blockquote>
+
+        <p>
+          Imagine creating a state machine with dozens or even hundreds of
+          states.
+        </p>
+
+        <blockquote
+          cite="https://research.chalmers.se/publication/508147/file/508147_Fulltext.pdf"
+        >
+          <p>
+            “ ‘…
+            <span class="highlight"
+              >Nobody wants to write JSON format for a state machine that has
+              hundreds of states</span
+            >.’ -Interviewee 1
+          </p>
+          <p>
+            There is an expectation that, in the future, higher-level
+            abstractions will be developed and current technologies, such as
+            Lambda and Step Functions, will become mere deployment platforms,
+            which are
+            <span class="highlight">not intended to be programmed directly</span
+            >.”
+          </p>
+          <footer>
+            Philipp Leitner et al. –
+            <cite
+              >Paper from Chalmers University of Technology [<a
+                href="#reference_1"
+                class="reference"
+                >1</a
+              >]</cite
+            >
+          </footer>
+        </blockquote>
+
+        <p>
+          There are several tools that attempt to provide higher-level
+          abstractions that compile down to ASL. However, none has been widely
+          adopted and there is still unsettled debate regarding the
+          characteristics of these tools [<a
+            href="reference_7"
+            class="reference"
+            >7</a
+          >].
         </p>
 
         <p>
-          The awkwardness of ASL is not restricted to the structure and syntax
-          of the language but is also due to its declarative nature. A developer
-          may have some familiarity with declarative programming having worked
-          with SQL, but it’s unlikely one has frequently used a declarative
-          paradigm to orchestrate components.
-        </p>
-
-        <p>
-          Tools exist to try to provide a higher-level abstraction that compiles
-          down to ASL, but these are not widely adopted as of yet and there is
-          still unsettled debate regarding the characteristics of these tools.
-          Therefore, attempting to provide this proposed layer of abstraction at
-          this stage of Step Functions’ life-cycle may prove to be folly.
-        </p>
-
-        <p>
-          Considering the reality of developer use of Step Functions in the
-          current climate, an effective measure to alleviate the pain of working
-          with ASL could be another proposition: use templates.
-        </p>
-
-        <p>
-          A template models the prospective workflow providing, at least, a
-          useful starting point. For the experienced practitioner, it’s a nice
-          convenience while for new practitioners it may prove a necessity.
+          It seems that, for now, the most effective way to alleviate the pain
+          of working with ASL is to use templates. This at least provides a
+          useful starting point for beginners and is a nice convenience for
+          those who are more familiar with the language.
         </p>
 
         <h3>5.2 Deployment</h3>
@@ -1001,9 +1041,9 @@
 
         <p>
           One such AWS solution is called AWS CloudFormation [<a
-            href="#reference_7"
+            href="#reference_8"
             class="reference"
-            >7</a
+            >8</a
           >]; it’s an AWS offering that allows creating a configuration file
           containing all of a serverless application’s resources for deployment.
           The entire offering is referred to as Infrastructure as Code.
@@ -1023,9 +1063,9 @@
 
         <p>
           The other common tool is AWS Software Development Kits, or SDKs [<a
-            href="#reference_8"
+            href="#reference_9"
             class="reference"
-            >8</a
+            >9</a
           >], which are APIs that allow a developer to work directly with
           individual resources from their language of choice.
         </p>
@@ -1055,9 +1095,9 @@
 
         <p>
           One popular framework is the aptly named Serverless Framework [<a
-            href="#reference_9"
+            href="#reference_10"
             class="reference"
-            >9</a
+            >10</a
           >]; it’s the dominant player in this space. The approach to deployment
           taken by Serverless Framework is through compilation to
           CloudFormation, and it can be considered a general-purpose tool.
@@ -1100,9 +1140,9 @@
         <p>
           Another framework that deals with Step Functions was created by AWS:
           the Serverless Application Model or SAM [<a
-            href="#reference_10"
+            href="#reference_11"
             class="reference"
-            >10</a
+            >11</a
           >]. SAM added support for Step Functions just a few months before this
           writing.
         </p>
@@ -1140,9 +1180,9 @@
           What about more purpose-built frameworks? Unfortunately, there aren’t
           many designed with Step Functions in mind. One called Step does happen
           to be Step Functions centric and was built by Coinbase [<a
-            href="#reference_11"
+            href="#reference_12"
             class="reference"
-            >11</a
+            >12</a
           >]. Step allows the user to create a state machine with a higher-level
           language, namely Go.
         </p>
@@ -1426,9 +1466,9 @@
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_12"
+            href="#reference_13"
             class="reference"
-            >12</a
+            >13</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1513,7 +1553,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_13" class="reference">13</a>]. To
+          synchronous [<a href="#reference_14" class="reference">14</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
@@ -1643,40 +1683,48 @@
               >
             </li>
             <li id="reference_7">
+              <a
+                target="_blank"
+                href="https://acloud.guru/series/serverlessconf-nyc-2019/view/yaml-better?_hsenc=p2ANqtz-8NTIqitxWIiUw-zP8PduvB33SIKeFTL96OW8aFES-aovT2WN3ULwZm_cXSRpmntdO4cF6Z"
+                >YAML Is Better than Your Favorite Language: Fightin' words
+                about Infrastructure as code | Ben Kehoe</a
+              >
+            </li>
+            <li id="reference_8">
               <a target="_blank" href="https://aws.amazon.com/cloudformation/"
                 >AWS Cloud Formation</a
               >
             </li>
-            <li id="reference_8">
+            <li id="reference_9">
               <a
                 target="_blank"
                 href="https://aws.amazon.com/getting-started/tools-sdks/"
                 >Start building with SDKs and tools</a
               >
             </li>
-            <li id="reference_9">
+            <li id="reference_10">
               <a target="_blank" href="https://www.serverless.com/"
                 >Serverless Framework</a
               >
             </li>
-            <li id="reference_10">
+            <li id="reference_11">
               <a target="_blank" href="https://aws.amazon.com/serverless/sam/"
                 >AWS Serverless Application Model</a
               >
             </li>
-            <li id="reference_11">
+            <li id="reference_12">
               <a target="_blank" href="https://github.com/coinbase/step"
                 >Step</a
               >
             </li>
-            <li id="reference_12">
+            <li id="reference_13">
               <a
                 target="_blank"
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_13">
+            <li id="reference_14">
               <a
                 target="_blank"
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"
