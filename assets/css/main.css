@@ -293,7 +293,7 @@ header figure span {
 }
 
 #nav-logo {
-  margin: 0 0 35px 20px;
+  margin: 0 0 50px 20px;
   width: 150px;
 }
 
@@ -512,7 +512,7 @@ h3 {
 
 #our-team {
   background-color: var(--color-light-grey);
-  color: var(--color-dark-grey);
+  color: var(--color-black);
   margin-top: 100px;
   padding-bottom: 25px;
 }

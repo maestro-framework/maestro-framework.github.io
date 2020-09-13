@@ -191,7 +191,16 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleNavColors = () => {
-    styleNavColors("#313133", "#f5f7ff", "#900c3f");
+    const onHeader = isOnHeader("menu");
+    const onTeam = isOnTeamSection("menu");
+    const onMain = !(onHeader || onTeam);
+    const isWideScreen = !isNarrowScreen();
+
+    if (isWideScreen && !onMain && topNavVisible) {
+      styleNavColors("#9d9ea3", "#f5f7ff", "#900c3f");
+    } else {
+      styleNavColors("#696a6e", "#f5f7ff", "#900c3f");
+    }
   };
 
   const showNav = () => {
