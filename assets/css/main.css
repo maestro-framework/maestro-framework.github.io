@@ -568,7 +568,6 @@ h3 {
 
 #our-team .individual li img {
   background-color: var(--color-white);
-  border: 1px solid var(--color-white);
   border-radius: 25px;
   padding: 2px;
   margin-top: 10px;
@@ -577,7 +576,6 @@ h3 {
 
 #our-team .individual li img:hover {
   background-color: var(--color-maestro-red);
-  border: 1px solid var(--color-maestro-red);
 }
 
 #our-team .individual li {
