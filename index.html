@@ -37,9 +37,9 @@
   <body>
     <div class="logo-links">
       <img
-        src="assets/images/logos/maestro/mark-on-light.png"
+        src="assets/images/menu-on-light.png"
         alt="Maestro logo"
-        id="maestro-logo"
+        id="menu-logo"
       />
       <a href="https://github.com/maestro-framework/maestro" target="_blank">
         <img
@@ -138,7 +138,7 @@
 
         <figure>
           <img
-            src="assets/images/serverless-poll.png"
+            src="assets/images/serverless-poll.svg"
             alt="58% of developers in one poll respond that serverless to them is FaaS"
             title="Serverless Poll"
           />
@@ -167,6 +167,11 @@
           associated with the execution is then lost.
         </p>
 
+        <figure>
+          <img src="assets/images/logos/aws/lambda.png" alt="AWS Lambda Logo" title="Lambda">
+          <figcaption>AWS Lambda</figcaption>
+        </figure>
+
         <h3>2.3 Serverless Patterns</h3>
 
         <p>
@@ -193,7 +198,7 @@
           <li>Event Management</li>
           <li>Communication</li>
           <li>Authorization</li>
-          <li id="orchestration-grouping">Orchestration</li>
+          <li class="highlight">Orchestration</li>
         </ul>
 
         <p>
@@ -203,20 +208,15 @@
 
         <h2 id="orchestration">3. Orchestration</h2>
         <p>
-          Serverless orchestration, in a nutshell, is the act of managing the
-          workflow between multiple serverless resources.
-        </p>
-
-        <h3>3.1 Orchestration Patterns</h3>
-
-        <p>
-          To visualize what serverless orchestration might look like, let’s
-          consider a hypothetical situation. Let’s say that we’ve been assigned
-          a project to create an internal application for our company. The app
-          will allow an employee to send a request to their manager, asking that
-          a certain resource be provisioned. If the manager approves, the
-          resource is provisioned and the employee is granted access. Otherwise,
-          the employee is notified that their request has been denied.
+          Serverless orchestration is the act of managing the workflow between
+          multiple serverless resources. To visualize what this might look like,
+          let’s consider a hypothetical situation. Let’s say that we’ve been
+          assigned a project to create an internal application for our company.
+          The app will allow an employee to send a request to their manager,
+          asking that a certain resource be provisioned. If the manager
+          approves, the resource is provisioned and the employee is granted
+          access. Otherwise, the employee is notified that their request has
+          been denied.
         </p>
 
         <figure>
@@ -224,6 +224,7 @@
             src="assets/images/workflow/overview.png"
             alt="Initial components in workflow derived from task"
             title="Thin workflow"
+            class="example-workflow"
           />
           <figcaption>
             Example of a serverless workflow with multiple Lambdas
@@ -249,11 +250,14 @@
           <img
             src="assets/images/workflow/validation.png"
             alt="Invalid input"
+            class="example-workflow"
           />
           <figcaption>
             We need to consider how to handle an invalid input
           </figcaption>
         </figure>
+
+        <h3>3.1 Orchestration Patterns</h3>
 
         <p>
           We could introduce a component that has the single responsibility of
@@ -264,8 +268,8 @@
             class="reference"
             >3</a
           >]. The ‘Proxy’ is a Lambda that sits between two other Lambdas and
-          invokes the second one when appropriate. In this case, it would help
-          handle invalid inputs.
+          invokes the second one when appropriate. In this case, we could insert
+          a ‘Proxy’ Lambda called ‘Validator’ to help handle invalid inputs.
         </p>
 
         <figure>
@@ -273,6 +277,7 @@
             src="assets/images/workflow/validator.png"
             alt="Inserting a proxy lambda in front of the Manager component"
             title="Proxy Lambda"
+            class="example-workflow"
           />
           <figcaption>
             Using the ‘Proxy’ pattern for validating input
@@ -281,7 +286,7 @@
 
         <p>
           Next, we need to determine how to properly branch based on the
-          ‘Manager’ Lambda's output.
+          ‘Manager’ Lambda’s output.
         </p>
 
         <figure>
@@ -289,20 +294,21 @@
             src="assets/images/workflow/branching-logic.png"
             alt="Branching step after the Manager makes a decision"
             title="Branching"
+            class="example-workflow"
           />
           <figcaption>How will we implement branching logic?</figcaption>
         </figure>
 
         <p>
-          There's another pattern we could use called the the ‘Router’, which
-          simply distributes the execution based on payload [<a
+          There’s another pattern we could use called the ‘Router’, which simply
+          distributes the execution based on payload [<a
             href="#reference_3"
             class="reference"
             >3</a
-          >]. Since the ‘Manager’ Lambda has the ability to invoke other
-          Lambdas, we can implement the ‘Router’ pattern by placing the
-          branching logic there. Because we've now written orchestration logic
-          alongside business logic, the ‘Manager’ has become a bit bloated.
+          >]. Since the ‘Manager’ Lambda can invoke other Lambdas, we can
+          implement the ‘Router’ pattern by placing the branching logic there.
+          Because we’ve now written orchestration logic alongside business
+          logic, the ‘Manager’ has become a bit ‘fat’.
         </p>
 
         <figure>
@@ -310,14 +316,15 @@
             src="assets/images/workflow/fat-manager.png"
             alt="Workflow with the Fat Manager Lambda"
             title="Fat Manager"
+            class="example-workflow"
           />
           <figcaption>
-            ‘Manager’ Lambda bloated with orchestration logic
+            ‘Manager’ Lambda is now fat with orchestration logic
           </figcaption>
         </figure>
 
         <p>
-          Now that we've taken care of branching, an attempt to provision the
+          Now that we’ve taken care of branching, an attempt to provision the
           desired resource can be made. However, the provisioning of a resource
           may be risky. What if the attempt fails for some reason?
         </p>
@@ -327,19 +334,21 @@
             src="assets/images/workflow/provisioning-fail.png"
             alt="Failure depicted on the Provisioner component"
             title="Failed Provisioner"
+            class="example-workflow"
           />
-          <figcaption>The provisioning step fails...</figcaption>
+          <figcaption>The provisioning step fails…</figcaption>
         </figure>
 
         <p>
-          We'd like to prevent the employee from having to repeat their request
+          We’d like to prevent the employee from having to repeat their request
           such that the workflow has to start over. To address this, we could
-          once again apply the ‘Router’ pattern. This time, we'll add logic to
+          once again apply the ‘Router’ pattern. This time, we’ll add logic to
           the ‘Manager’ so that it monitors the output of the ‘Provisioner’. If
-          the ‘Manager’ detects that the provisioning failed, we can have it
+          the ‘Manager’ detects that the provisioning has failed, we can have it
           invoke the ‘Provisioner’ again. But how many retries do we want to
           allow? How quickly do we want to retry? This is further orchestration
-          logic that we'll have to write into the ‘Manager’.
+          logic that we’ll have to write into the ‘Manager’, making it even
+          fatter.
         </p>
 
         <figure>
@@ -347,31 +356,33 @@
             src="assets/images/workflow/fatter-manager.png"
             alt="Addition of retry to the Fat Manager Orchertator Lambda"
             title="Fat Manager with Retry"
+            class="example-workflow"
           />
-          <figcaption>The ‘Manager’ Lambda bloated even further</figcaption>
+          <figcaption>The ‘Manager’ Lambda is even fatter</figcaption>
         </figure>
 
         <p>
           Do any limitations exist with this implementation? The probability of
-          the Lambda surpassing the execution limit is now increased if the
-          ‘Manager’ monitors the ‘Provisioner’ during extended retries. Delayed
-          provisioning may cause the ‘Manager’ to terminate before determining
-          if a retry was necessary. Further, with the orchestration logic of the
-          ‘Manager’ written alongside the business logic, the component is
-          overloaded resulting in poor separation of concerns.
+          the Lambda surpassing its execution limit is now increased if the
+          ‘Manager’ monitors the ‘Provisioner’ and there are multiple retries.
+          Delayed provisioning may cause the ‘Manager’ to terminate before
+          determining if a retry was necessary. Further, with the orchestration
+          logic of the ‘Manager’ written alongside the business logic, the
+          component is overloaded resulting in poor separation of concerns.
         </p>
 
         <figure>
           <img
             src="assets/images/workflow/everything.png"
             alt="Overloaded Workflow"
+            class="example-workflow"
           />
           <figcaption>Workflow overloaded with orchestration logic</figcaption>
         </figure>
 
         <p>
-          The consequences of not separating concerns would be felt every time it’s
-          necessary to iterate on the workflow. Business logic as well as
+          The consequences of not separating concerns would be felt every time
+          it’s necessary to iterate on the workflow. Business logic as well as
           orchestration logic may need to be evaluated and adapted for the
           application to grow.
         </p>
@@ -383,10 +394,9 @@
         </p>
 
         <p>
-          Why not extract out an entire orchestration layer? The result
-          would be a thin workflow of strictly business logic resembling the
-          original workflow. The orchestration logic would be entirely on its
-          own.
+          Why not extract out an entire orchestration layer? The result would be
+          a thin workflow of strictly business logic resembling the original
+          workflow. The orchestration logic would be entirely on its own.
         </p>
 
         <figure>
@@ -394,6 +404,7 @@
             src="assets/images/workflow/orchestration-layer.png"
             alt="Diagram of only the orchestration layer in a workflow"
             title="Orchestration Layer"
+            class="example-workflow"
           />
           <figcaption>
             An orchestration layer abstracted from the workflow
@@ -401,43 +412,82 @@
         </figure>
 
         <p>
-          By implementing the application in this way, we're able to orchestrate
+          By implementing the application in this way, we’re able to orchestrate
           error handling, retry, and branching all in one place. When the
           business logic needs to be modified, the orchestration logic can
           likely stay the same. This can be quite valuable for a new application
           or one that simply hasn’t reached a stable state.
         </p>
 
+        <p>
+          So how would we go about extracting an orchestration layer? Creating
+          and maintaining custom logic would require considerable overhead.
+          Let’s explore another pattern called the ‘State Machine’ [<a
+            href="#reference_3"
+            class="reference"
+            >3</a
+          >] to see whether it might be suitable for our needs.
+        </p>
+
         <h3>3.2 The State Machine Pattern</h3>
 
         <p>
-          How then does one abstract away an orchestration layer? Rolling a
-          custom web of orchestration related components would require
-          considerable overhead. However, another common orchestration pattern
-          fits orchestration quite well: state machines.
-        </p>
-
-        <p>
-          A state machine stores a given state at a given time [<a
+          Rowan Udell, a guest on the Serverless Chats Podcast [<a
             href="#reference_4"
             class="reference"
             >4</a
-          >]. In a workflow, a state machine represents the state of the
-          workflow at a given step. The state of a step is conditional on input,
-          and the output determines the next state. It’s important to note that
-          it’s not a physical device but an abstract concept; in practice, state
-          machines are all about inputs, outputs, transitions, and state. Sounds
-          like orchestration.
+          >], provides a helpful description of a state machine.
         </p>
 
+        <blockquote cite="https://www.serverlesschats.com/16/">
+          <p>
+            "State machines are really just a mathematical way of modeling an
+            application.…[With state machines,] you can describe your
+            application as a mixture of your
+            <span class="highlight">inputs</span>, the
+            <span class="highlight">states</span> that your application can be
+            in, and the <span class="highlight">transitions</span> between those
+            states."
+          </p>
+          <footer>
+            Rowan Udell, <cite>Serverless Chats Podcast – Episode #16</cite>
+          </footer>
+        </blockquote>
+
         <p>
-          Simply put, AWS Lambdas lack persistent state, so introducing
-          something to provide state between Lambda executions is quite
-          intuitive. AWS provides a service that utilizes state machines called
-          AWS Step Functions.
+          It’s important to note that a state machine is not a physical device
+          but an abstract concept. A state machine is all about inputs, outputs,
+          transitions, and state, making it an ideal candidate for an
+          orchestration layer. But how would we go about implementing a state
+          machine? It just so happens that AWS offers a “State Machine as a
+          Service” called AWS Step Functions.
         </p>
 
         <h2 id="aws-step-functions">4. AWS Step Functions</h2>
+
+        <p>
+          Here's how Amazon describes AWS Step Functions [<a
+            href="#reference_5"
+            class="reference"
+            >5</a
+          >].
+        </p>
+
+        <blockquote
+          cite="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html"
+        >
+          <p>
+            “AWS Step Functions is a web service that enables you to coordinate
+            the components of distributed applications and microservices using
+            visual workflows. You build applications from individual components
+            that each perform a discrete function, or task, allowing you to
+            scale and
+            <span class="highlight">change applications quickly</span>.”
+          </p>
+          <footer>
+            AWS Documentation, <cite>What is AWS Step Functions?</cite>
+          </footer>
+        </blockquote>
 
         <figure>
           <img
@@ -448,26 +498,19 @@
           <figcaption>AWS Step Functions</figcaption>
         </figure>
 
-        <h3>4.1 Defining Step Functions</h3>
-
         <p>
-          Step Functions are the AWS version of an orchestration layer utilizing
-          state machines to manage transitions between phases in a serverless
-          application [<a href="#reference_5" class="reference">5</a>].
+          Step Functions are designed to contain an application's orchestration
+          logic. This helps us to maintain the separation of concerns that we
+          mentioned earlier. To create a state machine with Step Functions,
+          we'll need to use the JSON-based langague called Amazon States
+          Language (ASL).
         </p>
 
-        <p>
-          We can implement Step Functions with the help of a declarative
-          language AWS created specifically for defining state machines: Amazon
-          States Language (ASL). ASL is written in a JSON format where each step
-          of a workflow is defined as a state corresponding to one of several
-          types such as ‘Choice’, ‘Task, ‘Wait, and ‘Error’.
-        </p>
+        <h3>4.1 Amazon States Language</h3>
 
         <p>
-          All state machines have a required field called ‘StartAt’ which
-          designates the state where execution will begin. A ‘States’ field
-          specifies the states associated with a given workflow.
+          Let's first look at a “Hello World” state machine definition to
+          familiarize ourselves with ASL.
         </p>
 
         <figure>
@@ -475,7 +518,6 @@
             <pre>
               <code class="js dark">
 {
-  "Comment": "A Hello World example of the Amazon States Language",
   "StartAt": "Hello World",
   "States": {
     "Hello World": {
@@ -493,33 +535,32 @@
               title="Hello World ASL "
             />
           </div>
-          <figcaption>A “Hello World” state machine written in ASL</figcaption>
+          <figcaption>
+            A state machine definition with a visual that is displayed in the
+            AWS Console
+          </figcaption>
         </figure>
 
         <p>
-          A state with a type of ‘Task’ will perform the task associated with
-          the ‘Resource’ field, and the above-depicted state machine represents
-          an AWS Lambda as a resource. The state will not terminate until the
-          resource returns at which point the ‘End’ field indicates the next
-          step. An end value of ‘true’ indicates that once the state is
-          complete, the workflow itself must terminate.
+          There are two required fields for all state machines:
+          <code>StartAt</code> and <code>States</code>. The
+          <code>StartAt</code> field simply designates which state will begin
+          execution, whereas the <code>States</code> field is a list of all
+          possible states. Once a valid definition is entered in the AWS
+          Console, a visual that represents the state machine will be displayed.
         </p>
 
         <p>
-          While the Step Functions language, ASL, is somewhat abstract, AWS
-          facilitates concretely visualizing workflows through representations
-          of an ASL definition available in the AWS console. Not only can the
-          sequence of a workflow be visualized, but if the resources are
-          properly defined, the state machine can be executed in the console
-          with the transitions visualized as the various components execute. The
-          visualization is strictly a representation of the ASL definition
-          provided, so no development can be done visually, but the
-          visualization is informative.
+          The only state in this simple example is a <code>Task</code> state
+          that is representing a Lambda function. Besides <code>Task</code>,
+          there are several other state types that can be used to help
+          orchestrate the workflow.
         </p>
 
         <p>
-          The relatively complex workflow described earlier can be represented
-          in ASL and deployed with Step Functions.
+          Let's return to our earlier example of an employee requesting approval
+          for a resource to be provisioned. We'll now implement this workflow
+          with Step Functions.
         </p>
 
         <figure>
@@ -527,18 +568,72 @@
             <pre>
               <code class="js dark">
 {
-  "Comment": "State machine orchestration pattern",
   "StartAt": "Requester",
   "States": {
-    "Requester": {...},
-    "Validator": {...},
-    "Manager": {...},
-    "ManagerChoice": {...},
-    "Provisioner": {...},
-    "AccessGranter": {...},
-    "Notifier": {...}
+    "Requester": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_requester",
+      "Next": "Validator"
+    },
+    "Validator": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_validator",
+      "Next": "Manager",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.errorInfo",
+          "Next": "Notifier"
+        }
+      ]
+    },
+    "Manager": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_manager",
+      "Next": "ManagerChoice"
+    },
+    "ManagerChoice": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.decision",
+          "StringEquals": "accept",
+          "Next": "Provisioner"
+        },
+        {
+          "Variable": "$.decision",
+          "StringEquals": "deny",
+          "Next": "Notifier"
+        }
+      ]
+    },
+    "Provisioner": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_provisioner",
+      "Next": "Notifier",
+      "Retry": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "IntervalSeconds": 2,
+          "BackoffRate": 1.5,
+          "MaxAttempts": 5
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.errorInfo",
+          "Next": "Notifier"
+        }
+      ]
+    },
+    "Notifier": {
+      "Type": "Pass",
+      "End": true
+    }
   }
 }
+
               </code>
             </pre>
             <img
@@ -546,76 +641,19 @@
               alt="Visualization of example workflow in AWS Console"
             />
           </div>
-          <figcaption>Example Workflow written in ASL</figcaption>
+          <figcaption>
+            Earlier example now implemented with AWS Step Functions
+          </figcaption>
         </figure>
 
         <p>
-          In the workflow, each step represents a state which may or may not be
-          associated with a resource. Therefore, a state can be given a single
-          responsibility like that of branching. A determination of the
-          subsequent state is made based on the input received from the output
-          of the previous state in the workflow.
-        </p>
-
-        <figure>
-          <div class="flex">
-            <pre>
-              <code class="js dark">
-"ManagerChoice": {
-  "Type": "Choice",
-  "Choices": [
-    {
-      "Variable": "$.decision",
-      "StringEquals": "accept",
-      "Next": "Provisioner"
-    },
-    {
-      "Variable": "$.decision",
-      "StringEquals": "accept",
-      "Next": "Provisioner"
-    }
-  ]
-},
-              </code>
-            </pre>
-          </div>
-          <figcaption>ASL of ManagerChoice State</figcaption>
-        </figure>
-
-        <p>
-          For example, the ‘ManagerChoice’ state is of type ‘Choice’ which is
-          the ASL designated state type for branching; no Lambda is associated.
-          The output of the ‘Manager’ state provides input to the
-          ‘ManagerChoice’ state, and, based on acceptance or denial, the
-          workflow can proceed to either the ‘Notifier’ or the ‘Provisioner’.
-          Understanding the technical reference to the previous output and
-          comparing factors for determining the next step requires familiarity
-          with ASL, yet the ability to make such an assessment is amongst the
-          facilities ASL provides.
-        </p>
-
-        <p>
-          The salient point is that a separation is made between those states
-          that are introduced only for purposes of orchestration and states
-          performing tasks associated with the business logic of an application.
-          Even though the visualization represents business and orchestration
-          steps in one place, the business logic lies far from the state
-          machine. The ‘Resource’ field of the ‘Task’ state represents the
-          location of the components where the business logic is defined while
-          the ASL represents the orchestration logic in a single place. True
-          separation.
-        </p>
-
-        <p>
-          Another feature of Step Functions is retry. It’s difficult to express
-          how challenging it is to implement retry without it. Part of the
-          challenge is the lack of a shared state when dealing with Lambda and
-          auditability of execution in real-time. When working with Step
-          Functions, however, there is an ‘Error’ state which has a field for
-          ‘Retry’. The developer simply indicates the type of error to retry as
-          well as details like interval retry attempts, and max attempts. Some
-          of these features are difficult to reconcile outside of a state
-          machine as there is no higher-order notion of a singular workflow.
+          If we look more closely at the state called <code>Provisioner</code>,
+          we see how one might implement retry logic. <code>Task</code> states
+          have an optional field called <code>Retry</code> that will specify
+          which types of errors to retry, how many seconds to wait in between,
+          as well as a backoff rate and maximum number of attempts. It's useful
+          to be able to put this orchestration concern here, instead of writing
+          some custom retry logic alongside business logic.
         </p>
 
         <figure>
@@ -641,13 +679,12 @@
           <figcaption>Provisioner state showing retry logic in ASL</figcaption>
         </figure>
 
+        <h3>4.2 Execution Event History</h3>
+
         <p>
-          To delve a bit more into the benefit of a singular workflow, consider
-          the execution history mentioned earlier. The execution history
-          accompanies the visualization of a workflow execution in the console
-          and is interactive. Inputs and outputs of the transitions between
-          states are displayed, and when a failed state is apparent, the
-          execution history can be consulted to audit the failure.
+          Once a state machine has executed, using the AWS Console, we're able
+          to access an interactive execution event history. This allows us to
+          audit the transitions between states in one, unified place.
         </p>
 
         <figure>
@@ -659,8 +696,10 @@
         </figure>
 
         <p>
-          Also, by executing the workflow, a developer can see the outputs of
-          executing each component in a toolbar.
+          Additionally, the visual workflow will be color coded to help us
+          quickly remember the outcome of each state for that execution. This
+          interface is updated in real time, which can be helpful for viewing
+          the status of longer-running state machines.
         </p>
 
         <figure>
@@ -671,47 +710,101 @@
           <figcaption>An executed state machine in the AWS Console</figcaption>
         </figure>
 
-        <h3>4.2 Challenges of Step Functions</h3>
-        <h4>4.2.1 ASL</h4>
+        <p>
+          The core purpose of AWS Step Functions is to provide an orchestration
+          layer, preventing us from having to somehow choreograph our
+          application's resources. Step Functions also provides many built-in
+          features, such as unified logs and visual workflows that can help when
+          needing to audit executions.
+        </p>
+
+        <p>
+          Despite these benefits, there are some challenges that arise when
+          choosing to develop with Step Functions. Let's examine some of these
+          problems.
+        </p>
+
+        <h2 id="problems">5. Problems</h2>
+        <h3>5.1 Programming Model</h3>
 
         <p>
           One of the common complaints with Step Functions is that ASL is not
-          very intuitive. It’s a JSON based language that’s optimized for
-          machines rather than humans [<a href="#reference_6" class="reference"
-            >6</a
-          >]. And some state machines can get quite complex with dozens or even
-          hundreds of states.
+          very intuitive.
+        </p>
+
+        <blockquote
+          cite="https://www.serverless.com/aws-step-functions#drawbacks"
+        >
+          <p>
+            Amazon States Language is quite complex; its syntax is based on JSON
+            and therefore
+            <span class="highlight">optimized for machine readability</span>
+            instead of readability by humans.
+          </p>
+          <footer>
+            Article from
+            <cite
+              >Serverless Framework [<a href="#reference_6" class="reference"
+                >6</a
+              >]
+            </cite>
+          </footer>
+        </blockquote>
+
+        <p>
+          Imagine creating a state machine with dozens or even hundreds of
+          states.
+        </p>
+
+        <blockquote
+          cite="https://research.chalmers.se/publication/508147/file/508147_Fulltext.pdf"
+        >
+          <p>
+            “ ‘…
+            <span class="highlight"
+              >Nobody wants to write JSON format for a state machine that has
+              hundreds of states</span
+            >.’ -Interviewee 1
+          </p>
+          <p>
+            There is an expectation that, in the future, higher-level
+            abstractions will be developed and current technologies, such as
+            Lambda and Step Functions, will become mere deployment platforms,
+            which are
+            <span class="highlight">not intended to be programmed directly</span
+            >.”
+          </p>
+          <footer>
+            Philipp Leitner et al. –
+            <cite
+              >Paper from Chalmers University of Technology [<a
+                href="#reference_1"
+                class="reference"
+                >1</a
+              >]</cite
+            >
+          </footer>
+        </blockquote>
+
+        <p>
+          There are several tools that attempt to provide higher-level
+          abstractions that compile down to ASL. However, none has been widely
+          adopted and there is still unsettled debate regarding the
+          characteristics of these tools [<a
+            href="reference_7"
+            class="reference"
+            >7</a
+          >].
         </p>
 
         <p>
-          The awkwardness of ASL is not restricted to the structure and syntax
-          of the language but is also due to its declarative nature. A developer
-          may have some familiarity with declarative programming having worked
-          with SQL, but it’s unlikely one has frequently used a declarative
-          paradigm to orchestrate components.
+          It seems that, for now, the most effective way to alleviate the pain
+          of working with ASL is to use templates. This at least provides a
+          useful starting point for beginners and is a nice convenience for
+          those who are more familiar with the language.
         </p>
 
-        <p>
-          Tools exist to try to provide a higher-level abstraction that compiles
-          down to ASL, but these are not widely adopted as of yet and there is
-          still unsettled debate regarding the characteristics of these tools.
-          Therefore, attempting to provide this proposed layer of abstraction at
-          this stage of Step Functions’ life-cycle may prove to be folly.
-        </p>
-
-        <p>
-          Considering the reality of developer use of Step Functions in the
-          current climate, an effective measure to alleviate the pain of working
-          with ASL could be another proposition: use templates.
-        </p>
-
-        <p>
-          A template models the prospective workflow providing, at least, a
-          useful starting point. For the experienced practitioner, it’s a nice
-          convenience while for new practitioners it may prove a necessity.
-        </p>
-
-        <h4>4.2.2 Deployment</h4>
+        <h3>5.2 Deployment</h3>
 
         <p>
           Another challenge arises in an area that isn’t unique to Step
@@ -934,7 +1027,7 @@
           could be deleted, possibly losing valuable execution data.
         </p>
 
-        <h3>4.3 AWS Tools</h3>
+        <h2 id="existing-solutions">6. Existing Solutions</h2>
 
         <p>
           To understand the tools that currently exist to facilitate
@@ -944,9 +1037,9 @@
 
         <p>
           One such AWS solution is called AWS CloudFormation [<a
-            href="#reference_7"
+            href="#reference_8"
             class="reference"
-            >7</a
+            >8</a
           >]; it’s an AWS offering that allows creating a configuration file
           containing all of a serverless application’s resources for deployment.
           The entire offering is referred to as Infrastructure as Code.
@@ -966,9 +1059,9 @@
 
         <p>
           The other common tool is AWS Software Development Kits, or SDKs [<a
-            href="#reference_8"
+            href="#reference_9"
             class="reference"
-            >8</a
+            >9</a
           >], which are APIs that allow a developer to work directly with
           individual resources from their language of choice.
         </p>
@@ -987,8 +1080,6 @@
           toward a particular language will often opt for the SDK approach.
         </p>
 
-        <h2 id="existing-solutions">5. Existing Solutions</h2>
-
         <p>
           The frameworks of concern for this consideration are those that allow
           the deployment of Step Functions. Many excellent frameworks exist for
@@ -996,13 +1087,13 @@
           outside the scope of this discussion.
         </p>
 
-        <h3>5.1 Serverless Framework</h3>
+        <h3>6.1 Serverless Framework</h3>
 
         <p>
           One popular framework is the aptly named Serverless Framework [<a
-            href="#reference_9"
+            href="#reference_10"
             class="reference"
-            >9</a
+            >10</a
           >]; it’s the dominant player in this space. The approach to deployment
           taken by Serverless Framework is through compilation to
           CloudFormation, and it can be considered a general-purpose tool.
@@ -1040,14 +1131,14 @@
           use of dependencies can hinder otherwise light applications.
         </p>
 
-        <h3>5.2 AWS SAM</h3>
+        <h3>6.2 AWS SAM</h3>
 
         <p>
           Another framework that deals with Step Functions was created by AWS:
           the Serverless Application Model or SAM [<a
-            href="#reference_10"
+            href="#reference_11"
             class="reference"
-            >10</a
+            >11</a
           >]. SAM added support for Step Functions just a few months before this
           writing.
         </p>
@@ -1079,15 +1170,15 @@
           for Step Functions was added as an afterthought.
         </p>
 
-        <h3>5.3 Step</h3>
+        <h3>6.3 Step</h3>
 
         <p>
           What about more purpose-built frameworks? Unfortunately, there aren’t
           many designed with Step Functions in mind. One called Step does happen
           to be Step Functions centric and was built by Coinbase [<a
-            href="#reference_11"
+            href="#reference_12"
             class="reference"
-            >11</a
+            >12</a
           >]. Step allows the user to create a state machine with a higher-level
           language, namely Go.
         </p>
@@ -1112,15 +1203,7 @@
           workflows using Step Functions.
         </p>
 
-        <h2 id="maestro">6. Maestro</h2>
-
-        <figure>
-          <img
-            src="assets/images/logos/maestro/mark-on-dark.png"
-            alt="Maestro logo"
-          />
-          <figcaption>Maestro</figcaption>
-        </figure>
+        <h2 id="maestro">7. Maestro</h2>
 
         <p>
           Maestro is an open-source Node.js framework for AWS Step Functions
@@ -1140,7 +1223,7 @@
         <figure>
           <img
             src="assets/images/step-functions-console/console-diagram-7.gif"
-            style="max-height: 50vh"
+            style="max-height: 50vh;"
             alt="deploying with maestro"
           />
           <figcaption>Deploying with Maestro</figcaption>
@@ -1156,7 +1239,7 @@
           performed in as little as 2 seconds.
         </p>
 
-        <h3>6.1 Commands</h3>
+        <h3>7.1 Commands</h3>
 
         <table id="commands-table">
           <thead>
@@ -1287,14 +1370,15 @@
               <td>
                 <p>
                   Fetches the Maestro default templates from git and installs
-                  themon the user's local machine.
+                  themon the user’s local machine.
                 </p>
               </td>
             </tr>
           </tbody>
         </table>
 
-        <p><!--
+        <p>
+          <!--
           Given that templates can provide a useful mechanism for developing
           with Step Functions, Maestro interacts with an external template
           repository through the
@@ -1363,7 +1447,10 @@
           are included to indicate their destruction.
         </p>
 
--->        <h3>6.2 Challenges</h3>
+-->
+        </p>
+
+        <h3>7.2 Challenges</h3>
 
         <p>
           One may now understand the value of working with a framework like
@@ -1371,13 +1458,13 @@
           challenges along the way.
         </p>
 
-        <h4>6.2.1 AWS IAM</h4>
+        <h4>7.2.1 AWS IAM</h4>
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_12"
+            href="#reference_13"
             class="reference"
-            >12</a
+            >13</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1444,7 +1531,7 @@
           achieved.
         </p>
 
-        <h4>6.2.2 Asynchronicity</h4>
+        <h4>7.2.2 Asynchronicity</h4>
 
         <p>
           Discussing the challenge of creating a Lambda or state machine with
@@ -1462,14 +1549,14 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_13" class="reference">13</a>]. To
+          synchronous [<a href="#reference_14" class="reference">14</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
           implemented. The result is a lightning-fast framework.
         </p>
 
-        <h4>6.2.3 Domain</h4>
+        <h4>7.2.3 Domain</h4>
 
         <p>
           Serverless orchestration is a very niche topic. Although AWS Lambda is
@@ -1482,15 +1569,13 @@
           provide a framework in this space.
         </p>
 
-        <h3>6.3 Future Work</h3>
+        <h3>7.3 Future Work</h3>
 
         <p>
           As with most endeavors, not all that was desired could be accomplished
           from the outset. Here are a few aspirations that are left for future
           work.
         </p>
-
-        <h4>6.3.1 ASL</h4>
 
         <p>
           Ultimately, a framework that works with ASL could be benefited by
@@ -1502,16 +1587,12 @@
           ASL, in effect, mirroring common procedural coding would be helpful.
         </p>
 
-        <h4>6.3.2 Logging</h4>
-
         <p>
           Another possible future addition would be integration with the host
           logging system. More robust logging is helpful in the event something
           goes wrong with the deployment of an individual component or an entire
           workflow.
         </p>
-
-        <h4>6.3.3 Versioning</h4>
 
         <p>
           Further, if a premise of Maestro is allowing rapid iteration on
@@ -1522,8 +1603,6 @@
           workflow would be persisted and easily accessible every time a
           workflow was newly deployed.
         </p>
-
-        <h4>6.3.4 Redeploy Command</h4>
 
         <p>
           Which brings to mind another consideration left for the future: a
@@ -1537,8 +1616,6 @@
           components.
         </p>
 
-        <h4>6.3.5 Other AWS Services</h4>
-
         <p>
           As clearly outlined, the current focus of Maestro is the ever-popular
           AWS Lambdas. While much can be achieved, and often is, strictly using
@@ -1547,8 +1624,6 @@
           integrating further AWS services into Maestro would amplify its
           potential.
         </p>
-
-        <h4>6.3.6 Per-Project Configuration</h4>
 
         <p>
           Currently, the Maestro configuration depends on a single configuration
@@ -1560,7 +1635,7 @@
         </p>
 
         <section id="references">
-          <h2>7. References</h2>
+          <h2>8. References</h2>
 
           <ol>
             <li id="reference_1">
@@ -1604,40 +1679,48 @@
               >
             </li>
             <li id="reference_7">
+              <a
+                target="_blank"
+                href="https://acloud.guru/series/serverlessconf-nyc-2019/view/yaml-better?_hsenc=p2ANqtz-8NTIqitxWIiUw-zP8PduvB33SIKeFTL96OW8aFES-aovT2WN3ULwZm_cXSRpmntdO4cF6Z"
+                >YAML Is Better than Your Favorite Language: Fightin' words
+                about Infrastructure as code | Ben Kehoe</a
+              >
+            </li>
+            <li id="reference_8">
               <a target="_blank" href="https://aws.amazon.com/cloudformation/"
                 >AWS Cloud Formation</a
               >
             </li>
-            <li id="reference_8">
+            <li id="reference_9">
               <a
                 target="_blank"
                 href="https://aws.amazon.com/getting-started/tools-sdks/"
                 >Start building with SDKs and tools</a
               >
             </li>
-            <li id="reference_9">
+            <li id="reference_10">
               <a target="_blank" href="https://www.serverless.com/"
                 >Serverless Framework</a
               >
             </li>
-            <li id="reference_10">
+            <li id="reference_11">
               <a target="_blank" href="https://aws.amazon.com/serverless/sam/"
                 >AWS Serverless Application Model</a
               >
             </li>
-            <li id="reference_11">
+            <li id="reference_12">
               <a target="_blank" href="https://github.com/coinbase/step"
                 >Step</a
               >
             </li>
-            <li id="reference_12">
+            <li id="reference_13">
               <a
                 target="_blank"
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_13">
+            <li id="reference_14">
               <a
                 target="_blank"
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"

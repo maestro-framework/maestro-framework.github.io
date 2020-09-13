@@ -5,17 +5,17 @@
 --------------------------------- */
 
 :root {
-    --color-black: #1e1d20;
-    --color-dark-grey: #313133;
-    --color-grey: #696a6e;
-    --color-light-grey: #9d9ea3;
-    --color-white: #f5f7ff;
-    --color-maestro-red: #900c3f;
+  --color-black: #1e1d20;
+  --color-dark-grey: #313133;
+  --color-grey: #696a6e;
+  --color-light-grey: #9d9ea3;
+  --color-white: #f5f7ff;
+  --color-maestro-red: #900c3f;
 
-    /* aliases */
-    --color-dark-gray: var(--color-dark-grey);
-    --color-gray: var(--color-grey);
-    --color-light-gray: var(--color-light-grey);
+  /* aliases */
+  --color-dark-gray: var(--color-dark-grey);
+  --color-gray: var(--color-grey);
+  --color-light-gray: var(--color-light-grey);
 }
 
 /* ---------------------------------
@@ -63,11 +63,19 @@ main > section {
 }
 
 blockquote {
-  background: var(--color-grey);
-  border-left: 1rem solid #ccc;
-  color: var(--color-maestro-red);
+  background: var(--color-dark-grey);
+  border-left: 1rem solid var(--color-maestro-red);
+  color: var(--color-light-grey);
+  line-height: 2rem;
   margin: 1.5rem 1rem;
   padding: 0.5rem;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+blockquote footer {
+  font-style: normal;
 }
 
 blockquote:before {
@@ -109,7 +117,7 @@ img {
   max-width: 800px;
 }
 
-#maestro-logo {
+#menu-logo {
   cursor: pointer;
   width: 50px;
   position: fixed;
@@ -127,8 +135,12 @@ img {
 }
 
 #case-study img {
-  max-width: 45%;
+  max-width: 80%;
   height: auto;
+}
+
+#case-study img.example-workflow {
+  max-width: 45%;
 }
 
 .flex {
@@ -177,7 +189,7 @@ code {
 }
 
 code.dark {
-  border: 15px solid var(--color-dark-grey);
+  border: 2px solid var(--color-maestro-red);
   border-radius: 1rem;
   padding: 0.5vh 1vw;
 }
@@ -266,8 +278,11 @@ header figure span {
 ------------------------------------ */
 
 #case-study nav {
+  border-right: 1px solid var(--color-light-grey);
   display: none;
   left: 1rem;
+  padding-left: 10px;
+  padding-right: 25px;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
@@ -276,8 +291,9 @@ header figure span {
 #case-study nav li {
   color: var(--color-light-grey);
   font-size: 2rem;
-  list-style: circle;
-  margin-bottom: 5vh;
+  list-style: none;
+  margin-bottom: 3vh;
+  padding-left: 10px;
 }
 
 #case-study nav li:last-of-type {
@@ -289,9 +305,8 @@ header figure span {
   font-family: Rift, sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
-  margin-left: 1rem;
   text-decoration: none;
-  vertical-align: 0.4rem;
+  vertical-align: 0.05rem;
 }
 
 #case-study nav a:hover {
@@ -383,42 +398,43 @@ h3 {
   font-weight: 300;
 }
 
-#orchestration-grouping {
+.highlight {
+  font-style: italic;
   font-weight: 500;
   color: var(--color-maestro-red);
 }
 
 #commands-table {
-    table-layout: fixed;
-    border-collapse: collapse;
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
 #commands-table thead tr {
-    background-color: #9d9ea3;
-    color: #313133
-/*    border-bottom: 3px solid #9d9ea3;*/
+  background-color: #9d9ea3;
+  color: #313133;
+  /*    border-bottom: 3px solid #9d9ea3;*/
 }
 
 /*#commands-table th:nth-child(n+2),*/
-#commands-table td:nth-child(n+2) {
-    border-left: 3px solid #9d9ea3;
+#commands-table td:nth-child(n + 2) {
+  border-left: 3px solid #9d9ea3;
 }
 
 #commands-table tbody tr {
-    background-color: #313133;
+  background-color: #313133;
 }
 
 #commands-table tbody tr:nth-child(odd) {
-    background-color: #696a6e;
+  background-color: #696a6e;
 }
 
-#commands-table tbody tr:nth-child(n+2) {
-    border-top: 3px solid #9d9ea3;
+#commands-table tbody tr:nth-child(n + 2) {
+  border-top: 3px solid #9d9ea3;
 }
 
 #commands-table th,
 #commands-table td {
-    padding: 10px;
+  padding: 10px;
 }
 
 /* ---------------------------------
@@ -494,7 +510,7 @@ h3 {
 
 #our-team {
   background-color: var(--color-light-grey);
-  color: var(--color-dark-grey);
+  color: var(--color-black);
   margin-top: 100px;
   padding-bottom: 25px;
 }
@@ -550,7 +566,6 @@ h3 {
 
 #our-team .individual li img {
   background-color: var(--color-white);
-  border: 1px solid var(--color-white);
   border-radius: 25px;
   padding: 2px;
   margin-top: 10px;
@@ -559,7 +574,6 @@ h3 {
 
 #our-team .individual li img:hover {
   background-color: var(--color-maestro-red);
-  border: 1px solid var(--color-maestro-red);
 }
 
 #our-team .individual li {
@@ -711,7 +725,7 @@ small {
 
   /* Logos */
 
-  #maestro-logo {
+  #menu-logo {
     width: 40px;
     top: 18px;
     right: 21px;
@@ -900,7 +914,7 @@ small {
 }
 
 @media (max-width: 400px) {
-  #maestro-logo {
+  #menu-logo {
     width: 33px;
     right: 15px;
   }
