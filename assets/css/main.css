@@ -117,7 +117,7 @@ img {
   max-width: 800px;
 }
 
-#maestro-logo {
+#menu-logo {
   cursor: pointer;
   width: 50px;
   position: fixed;
@@ -290,6 +290,11 @@ header figure span {
   font-size: 2rem;
   list-style: circle;
   margin-bottom: 5vh;
+}
+
+#nav-logo {
+  margin: 0 0 35px 20px;
+  width: 150px;
 }
 
 #case-study nav li:last-of-type {
@@ -724,7 +729,7 @@ small {
 
   /* Logos */
 
-  #maestro-logo {
+  #menu-logo {
     width: 40px;
     top: 18px;
     right: 21px;

@@ -1,7 +1,7 @@
 /* global document, window, hljs, $ */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const maestroLogo = document.querySelector("#maestro-logo");
+  const menu = document.querySelector("#menu-logo");
   const nav = document.querySelector("nav");
   const navLinks = document.querySelectorAll("#site-navigation a");
   const main = document.querySelector("main");
@@ -79,6 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const logoUrls = {
+    menuWhite: "assets/images/menu-on-dark.png",
+    menuBlack: "assets/images/menu-on-light.png",
     maestroWhite: "assets/images/logos/maestro/mark-on-dark.png",
     maestroBlack: "assets/images/logos/maestro/mark-on-light.png",
     githubWhite: "assets/images/icons/github_white.png",
@@ -189,8 +191,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleNavColors = () => {
-    const onHeader = isOnHeader("maestro");
-    const onTeam = isOnTeamSection("maestro");
+    const onHeader = isOnHeader("menu");
+    const onTeam = isOnTeamSection("menu");
     const onMain = !(onHeader || onTeam);
     const isWideScreen = !isNarrowScreen();
 
@@ -251,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  maestroLogo.addEventListener("click", handleNavDisplay);
+  menu.addEventListener("click", handleNavDisplay);
   main.addEventListener("mouseenter", hideNav);
   ourTeam.addEventListener("mouseenter", hideNav);
   header.addEventListener("mouseenter", hideNav);
