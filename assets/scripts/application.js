@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isWideScreen = !isNarrowScreen();
 
     if (isWideScreen && !onMain && topNavVisible) {
-      styleNavColors("#9d9ea3", "#f5f7ff", "#900c3f");
+      styleNavColors("#9d9ea3", "#1e1d20", "#900c3f");
     } else {
       styleNavColors("#696a6e", "#f5f7ff", "#900c3f");
     }
