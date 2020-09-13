@@ -42,7 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }, {});
 
   const highlightSection = (li, a) => {
-    li.style.listStyle = "disc";
+    li.style.listStyle =
+      "url('assets/images/logos/maestro/small-mark-on-dark.png";
     li.style.fontWeight = "bold";
     li.style.color = "#900c3f";
     a.style.color = "#900c3f";

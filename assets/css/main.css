@@ -278,8 +278,11 @@ header figure span {
 ------------------------------------ */
 
 #case-study nav {
+  border-right: 1px solid var(--color-light-grey);
   display: none;
   left: 1rem;
+  padding-left: 10px;
+  padding-right: 25px;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
@@ -288,13 +291,9 @@ header figure span {
 #case-study nav li {
   color: var(--color-light-grey);
   font-size: 2rem;
-  list-style: circle;
+  list-style: none;
   margin-bottom: 3vh;
-}
-
-#nav-logo {
-  margin: -300px 0 100px 20px;
-  width: 150px;
+  padding-left: 10px;
 }
 
 #case-study nav li:last-of-type {
@@ -306,9 +305,8 @@ header figure span {
   font-family: Rift, sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
-  margin-left: 1rem;
   text-decoration: none;
-  vertical-align: 0.4rem;
+  vertical-align: 0.05rem;
 }
 
 #case-study nav a:hover {
