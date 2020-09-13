@@ -168,7 +168,11 @@
         </p>
 
         <figure>
-          <img src="assets/images/logos/aws/lambda.png" alt="AWS Lambda Logo" title="Lambda">
+          <img
+            src="assets/images/logos/aws/lambda.png"
+            alt="AWS Lambda Logo"
+            title="Lambda"
+          />
           <figcaption>AWS Lambda</figcaption>
         </figure>
 
@@ -502,7 +506,7 @@
           Step Functions are designed to contain an application's orchestration
           logic. This helps us to maintain the separation of concerns that we
           mentioned earlier. To create a state machine with Step Functions,
-          we'll need to use the JSON-based langague called Amazon States
+          we'll need to use the JSON-based language called Amazon States
           Language (ASL).
         </p>
 
@@ -553,8 +557,8 @@
         <p>
           The only state in this simple example is a <code>Task</code> state
           that is representing a Lambda function. Besides <code>Task</code>,
-          there are several other state types that can be used to help
-          orchestrate the workflow.
+          several other state types can be used to help orchestrate the
+          workflow.
         </p>
 
         <p>
@@ -651,9 +655,9 @@
           we see how one might implement retry logic. <code>Task</code> states
           have an optional field called <code>Retry</code> that will specify
           which types of errors to retry, how many seconds to wait in between,
-          as well as a backoff rate and maximum number of attempts. It's useful
-          to be able to put this orchestration concern here, instead of writing
-          some custom retry logic alongside business logic.
+          as well as a backoff rate and a maximum number of attempts. It's
+          useful to be able to put this orchestration concern here, instead of
+          writing some custom retry logic alongside business logic.
         </p>
 
         <figure>
@@ -696,9 +700,9 @@
         </figure>
 
         <p>
-          Additionally, the visual workflow will be color coded to help us
+          Additionally, the visual workflow will be color-coded to help us
           quickly remember the outcome of each state for that execution. This
-          interface is updated in real time, which can be helpful for viewing
+          interface is updated in real-time, which can be helpful when viewing
           the status of longer-running state machines.
         </p>
 
@@ -719,9 +723,8 @@
         </p>
 
         <p>
-          Despite these benefits, there are some challenges that arise when
-          choosing to develop with Step Functions. Let's examine some of these
-          problems.
+          Despite these benefits, some challenges arise when choosing to develop
+          with Step Functions. Let's examine some of these problems.
         </p>
 
         <h2 id="problems">5. Problems</h2>
@@ -787,14 +790,10 @@
         </blockquote>
 
         <p>
-          There are several tools that attempt to provide higher-level
-          abstractions that compile down to ASL. However, none has been widely
-          adopted and there is still unsettled debate regarding the
-          characteristics of these tools [<a
-            href="reference_7"
-            class="reference"
-            >7</a
-          >].
+          Several tools attempt to provide higher-level abstractions that
+          compile down to ASL. However, none has been widely adopted and there
+          is still unsettled debate regarding the characteristics of these tools
+          [<a href="reference_7" class="reference">7</a>].
         </p>
 
         <p>
