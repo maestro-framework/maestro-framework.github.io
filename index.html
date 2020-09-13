@@ -812,53 +812,45 @@
         <h3>5.2 Deployment</h3>
 
         <p>
-          Another challenge arises in an area that isn’t unique to Step
-          Functions: deploying to AWS. This is a notorious area of concern for
-          developers that have to interface with a broad spectrum of AWS
-          services to put their applications on the cloud.
+          The AWS Management Console's tagline is “Everything you need to access
+          and manage the AWS cloud — in one web interface.” [<a href=""
+            >NUMBER</a
+          >]
         </p>
 
-        <p>
-          Since Step Functions is an orchestration layer, many components may be
-          integrated with a single state machine and need to be deployed in
-          parallel. In some cases, components may represent AWS services outside
-          of and including Lambdas. Even a single state machine orchestrating a
-          single Lambda component represents at least 2 separate AWS services.
-        </p>
+        <figure>
+          <img
+            src="assets/images/logos/aws/management-console.png"
+            alt="AWS Management Console"
+          />
+          <figcaption>AWS Management Console</figcaption>
+        </figure>
 
         <p>
-          Each deployed component, including the state machine itself, needs to
-          be accompanied by an appropriate region and account number for a
-          successful deployment. Further, proper permissions must be configured.
-        </p>
-
-        <p>
-          Further, there are individual interfaces for each service, so
-          configuration on AWS cannot be performed in a single, shared location.
-          Manual pre-deployment configuration, especially in the AWS console,
-          can prove tedious and error-prone.
-        </p>
-
-        <p>
-          Consider the process of creating the example workflow previously
-          discussed using the AWS Console.
+          Let's look at the steps involved to deploy and tear down our example
+          workflow using only the AWS Management Console.
         </p>
 
         <figure>
           <img
             src="assets/images/hazy-diagrams/full.png"
-            alt="Resources to be provisioned manually"
+            alt="Resources to be deployed manually"
           />
-          <figcaption>Resources to be provisioned</figcaption>
+          <figcaption>Resources to be deployed</figcaption>
         </figure>
 
         <p>
-          There are seven steps to go through to create a state machine. Several
-          of the steps comprise tedious clicking around the console rather than
-          intellectual challenges. However, a couple of steps could cause real
-          trouble. For example, step 4 in the accompanying diagram is where ASL
-          needs to be provided to create a state machine.
+          To deploy our state machine, we'll need to:
         </p>
+
+        <ul>
+          <li>Navigate to the Step Functions console</li>
+          <li>Select state machine</li>
+          <li>Select create state machine</li>
+          <li>Provide ASL definition</li>
+          <li>Conditionally modify the definition</li>
+          <li>Provide valid Amazon Resource Names (ARNs)</li>
+        </ul>
 
         <figure>
           <img
@@ -869,27 +861,19 @@
         </figure>
 
         <p>
-          If a developer is familiar with ASL and knows what they want to
-          create, this could take several minutes even when some elements of the
-          code have been provided (as with a template). For a developer
-          unfamiliar with ASL, properly integrating ASL could take several
-          hours.
-        </p>
-
-        <p>
           After providing and modifying ASL, a developer may attempt to save the
           state machine to create other components of the application. It makes
           sense to create the orchestration layer first as it serves as a map
-          for integrating components during development. Unfortunately, to the
-          developer’s chagrin, they may run into an error if they don’t provide
-          a valid ARN (Amazon Resource Name) for all associated state machine
-          components. Most developers who aren’t familiar with writing a valid
-          ARN would solve the error by navigating to the Lambda console,
-          creating all of the necessary Lambdas while the Step Functions console
-          remains open, and copying/pasting the ARNs of the created Lambdas into
-          the state machine definition. For the experienced AWS developer, it’s
-          possible to write a valid ARN for each component, but it’s another
-          layer of tedium which requires exactitude to get right.
+          for integrating components during development. Unfortunately, they may
+          run into an error if they don’t provide a valid ARN (Amazon Resource
+          Name) for all associated state machine components. Most developers who
+          aren’t familiar with writing a valid ARN would solve the error by
+          navigating to the Lambda console, creating all of the necessary
+          Lambdas while the Step Functions console remains open, and
+          copying/pasting the ARNs of the created Lambdas into the state machine
+          definition. For the experienced AWS developer, it’s possible to write
+          a valid ARN for each component, but it’s another layer of tedium which
+          requires exactitude to get right.
         </p>
 
         <figure>
@@ -955,22 +939,16 @@
         </p>
 
         <p>
-          A question to note regarding developing in the AWS console is whether
-          it would mirror the typical development workflow of a software
-          engineer who customarily works in a familiar local environment and
-          later deploys? Would a developer not prefer opening all application
-          files in their local text editor and deploying through a single
-          interface?
-        </p>
-
-        <p>
-          What if a developer implements the components locally? There are tools
-          like the AWS SDK and AWS CLI that allow the developer to create an
-          interface between a local machine and the AWS cloud. Writing the
-          necessary orchestration code and business logic using either or both
-          of those tools takes time to learn, and deploying the components to
-          AWS continues to pose configuration challenges like those previously
-          mentioned.
+          While it's true that the Management Console provides everything needed
+          for managing Another challenge area is deploying is deploying and
+          managing serverless resources. pointing clicking, reloading of screen
+          has to be done in a certain order. each service has different
+          interface. state machines typically orchestrating many services, so
+          each of these including state machine has own interface. Each service
+          must be configured with correct region, account number, must be
+          assigned IAM roles with the proper permissions. Might have to navigate
+          through already existing services that are a part of other
+          workflows/applicaitons.
         </p>
 
         <figure>
@@ -982,26 +960,6 @@
             The AWS Console has a separate interface for each service
           </figcaption>
         </figure>
-
-        <p>
-          Whether implementing components in disparate AWS consoles or locally
-          with the AWS SDK or AWS CLI, speed of development would certainly be
-          impacted at least while getting accustomed to AWS development. There
-          is a formidable learning curve.
-        </p>
-
-        <p>
-          It’s easy to imagine why certain aspects of deployment could benefit
-          from automation. Indeed, several frameworks aim to help the developer
-          perform deployment related tasks.
-        </p>
-
-        <p>
-          It’s unlikely that the first version of an application will be the
-          version that stands the test of time, and for the application to
-          evolve, old versions need to be torn down. This is especially true
-          when working in a new, unfamiliar environment.
-        </p>
 
         <p>
           Tearing down in the AWS Console isn’t challenging. It’s just tedious.
@@ -1028,8 +986,7 @@
           Clicking around to delete the example workflow in IAM, Step Functions,
           and Lamda interfaces take some 30 steps. Deletion is a risky business,
           and selecting the wrong component to delete anywhere along the way
-          requires attention; one must go slowly. Otherwise, the wrong component
-          could be deleted, possibly losing valuable execution data.
+          requires attention; one must go slowly.
         </p>
 
         <h2 id="existing-solutions">6. Existing Solutions</h2>
