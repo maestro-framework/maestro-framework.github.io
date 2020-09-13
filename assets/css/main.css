@@ -289,11 +289,11 @@ header figure span {
   color: var(--color-light-grey);
   font-size: 2rem;
   list-style: circle;
-  margin-bottom: 5vh;
+  margin-bottom: 3vh;
 }
 
 #nav-logo {
-  margin: 0 0 50px 20px;
+  margin: -300px 0 100px 20px;
   width: 150px;
 }
 
