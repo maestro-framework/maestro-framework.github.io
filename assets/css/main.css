@@ -918,7 +918,7 @@ small {
 }
 
 @media (max-width: 400px) {
-  #maestro-logo {
+  #menu-logo {
     width: 33px;
     right: 15px;
   }
