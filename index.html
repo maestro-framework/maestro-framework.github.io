@@ -470,7 +470,7 @@
         <h2 id="aws-step-functions">4. AWS Step Functions</h2>
 
         <p>
-          Here's how Amazon describes AWS Step Functions [<a
+          Here’s how Amazon describes AWS Step Functions [<a
             href="#reference_5"
             class="reference"
             >5</a
@@ -503,17 +503,17 @@
         </figure>
 
         <p>
-          Step Functions are designed to contain an application's orchestration
+          Step Functions are designed to contain an application’s orchestration
           logic. This helps us to maintain the separation of concerns that we
           mentioned earlier. To create a state machine with Step Functions,
-          we'll need to use the JSON-based language called Amazon States
+          we’ll need to use the JSON-based language called Amazon States
           Language (ASL).
         </p>
 
         <h3>4.1 Amazon States Language</h3>
 
         <p>
-          Let's first look at a “Hello World” state machine definition to
+          Let’s first look at a “Hello World” state machine definition to
           familiarize ourselves with ASL.
         </p>
 
@@ -563,8 +563,8 @@
         </p>
 
         <p>
-          Let's return to our earlier example of an employee requesting approval
-          for a resource to be provisioned. We'll now implement this workflow
+          Let’s return to our earlier example of an employee requesting approval
+          for a resource to be provisioned. We’ll now implement this workflow
           with Step Functions.
         </p>
 
@@ -648,7 +648,7 @@
           we see how one might implement retry logic. <code>Task</code> states
           have an optional field called <code>Retry</code> that will specify
           which types of errors to retry, how many seconds to wait in between,
-          as well as a backoff rate and a maximum number of attempts. It's
+          as well as a backoff rate and a maximum number of attempts. It’s
           useful to be able to put this orchestration concern here, instead of
           writing some custom retry logic alongside business logic.
         </p>
@@ -683,7 +683,7 @@
 
         <p>
           Once a state machine has executed, using the AWS Management Console,
-          we're able to access an interactive execution event history. This
+          we’re able to access an interactive execution event history. This
           allows us to audit the transitions between states in one, unified
           place.
         </p>
@@ -718,14 +718,14 @@
         <p>
           The core purpose of AWS Step Functions is to provide an orchestration
           layer, preventing us from having to somehow choreograph our
-          application's resources. Step Functions also provides many built-in
+          application’s resources. Step Functions also provides many built-in
           features, such as unified logs and visual workflows that can help when
           needing to audit executions.
         </p>
 
         <p>
           Despite these benefits, some challenges arise when choosing to develop
-          with Step Functions. Let's examine some of these problems.
+          with Step Functions. Let’s examine some of these problems.
         </p>
 
         <h2 id="problems">5. Problems</h2>
@@ -1031,12 +1031,12 @@
 
         <p>
           A framework for deploying to AWS will typically be built using one of
-          two AWS tools. Let's first understand a bit about these tools before
+          two AWS tools. Let’s first understand a bit about these tools before
           examining any specific frameworks.
         </p>
 
         <p>
-          The first one we'll look at is called AWS CloudFormation [<a
+          The first one we’ll look at is called AWS CloudFormation [<a
             href="#reference_8"
             class="reference"
             >8</a
@@ -1072,7 +1072,7 @@
         </figure>
 
         <p>
-          Let's now examine some specific frameworks, keeping in mind that we'll
+          Let’s now examine some specific frameworks, keeping in mind that we’ll
           only be considering those that support Step Functions.
         </p>
 
@@ -1106,7 +1106,7 @@
 
         <p>
           There are some common state machine templates available at the bottom
-          of the plugin's <code>README</code> [<a
+          of the plugin’s <code>README</code> [<a
             href="#reference_12"
             class="reference"
             >12</a
@@ -1147,7 +1147,7 @@
         </p>
 
         <p>
-          It's important to note that neither Serverless Framework nor SAM was
+          It’s important to note that neither Serverless Framework nor SAM was
           designed with Step Functions in mind. They both later added support
           for Step Functions for apps that happens to use them. And because of
           their general-purpose nature, these frameworks carry around a lot of
@@ -1158,7 +1158,7 @@
 
         <p>
           What about more purpose-built frameworks that use the SDK?
-          Unfortunately, there don't seem to be many specifically designed for
+          Unfortunately, there don’t seem to be many specifically designed for
           Step Functions. There is one built by Coinbase called Step, which is
           “a framework for building, testing, and deploying AWS Step Functions
           and Lambda”. [<a href="#reference_15" class="reference">15</a>].
@@ -1592,7 +1592,7 @@
               <a
                 target="_blank"
                 href="https://acloud.guru/series/serverlessconf-nyc-2019/view/yaml-better?_hsenc=p2ANqtz-8NTIqitxWIiUw-zP8PduvB33SIKeFTL96OW8aFES-aovT2WN3ULwZm_cXSRpmntdO4cF6Z"
-                >YAML Is Better than Your Favorite Language: Fightin' words
+                >YAML Is Better than Your Favorite Language: Fightin’ words
                 about Infrastructure as code | Ben Kehoe</a
               >
             </li>
