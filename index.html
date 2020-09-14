@@ -1105,20 +1105,21 @@
           of the plugin's <code>README</code> [(check)REFERENCE]. While this is
           helpful, it would be nice to be able to create a new project based on
           a certain template without having to copy and paste from the
-          <code>README</code>. Also, in order to accommodate Serverless Framework’s conventions, the state machine must be written in YAML. This is unfortunate since ASL is a JSON-based language.
+          <code>README</code>. Also, in order to accommodate Serverless
+          Framework’s conventions, the state machine must be written in YAML.
+          This is unfortunate since ASL is a JSON-based language.
         </p>
 
         <h3>6.2 AWS SAM</h3>
 
         <p>
+          Amazon provides its own framework for serverless deployment called the
           AWS Serverless Application Model (SAM) [<a
             href="#reference_11"
             class="reference"
             >11</a
-          >] started providing support for Step Functions just a few months
-          before this writing. It is similar to Serverless Framework in that it
-          is also a more general purpose tool and takes the CloudFormation
-          approach.
+          >]. SAM started providing support for Step Functions just a few months
+          before this writing.
         </p>
 
         <figure>
@@ -1126,24 +1127,16 @@
           <figcaption>AWS SAM</figcaption>
         </figure>
 
-        <p>Pros:</p>
-
-        <ul>
-          <li>Supports multiple runtimes</li>
-          <li>Required permissions are automatically generated</li>
-          <li>
-            Can set up a new project directory and deploy a working state
-            machine all from CLI
-          </li>
-        </ul>
-
-        <p>Cons:</p>
-
-        <ul>
-          <li>Only one state machine template</li>
-          <li>Relatively lengthy deployment time (took us about 3 minutes)</li>
-          <li>Doesn't seem to be a command to tear down what was deployed</li>
-        </ul>
+        <p>
+          Unlike Serverless Framework, a working state machine can be deployed
+          from a template, without having to make any manual configurations – it
+          can all be done straight from the CLI. However, there is only one
+          template that is offered and it has a relatively lengthy deployment
+          time, taking about three minutes. There are also several prompts that
+          the user must respond to during this process. Once deployed, there
+          doesn’t seem to be a command that just as easily tears down, so that
+          must be done manually.
+        </p>
 
         <p>
           It's important to note that neiter Serverless Framework nor SAM were
