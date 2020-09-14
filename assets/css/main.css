@@ -554,6 +554,7 @@ h3 {
 }
 
 #our-team li > img {
+  border: 2px solid var(--color-maestro-red);
   border-radius: 100%;
   margin: 0 auto 20px;
   width: 15vw;
