@@ -1105,12 +1105,15 @@
 
         <p>
           There are some common state machine templates available at the bottom
-          of the plugin's <code>README</code> [(check)REFERENCE]. While this is
-          helpful, it would be nice to be able to create a new project based on
-          a certain template without having to copy and paste from the
-          <code>README</code>. Also, to accommodate Serverless Framework’s
-          conventions, the state machine must be written in YAML. This is
-          unfortunate since ASL is a JSON-based language.
+          of the plugin's <code>README</code> [<a
+            href="#reference_12"
+            class="reference"
+            >12</a
+          >]. While this is helpful, it would be nice to be able to create a new
+          project based on a certain template without having to copy and paste
+          from the <code>README</code>. Also, to accommodate Serverless
+          Framework’s conventions, the state machine must be written in YAML.
+          This is unfortunate since ASL is a JSON-based language.
         </p>
 
         <h3>6.2 AWS SAM</h3>
@@ -1118,9 +1121,9 @@
         <p>
           Amazon provides a framework for serverless deployment called the AWS
           Serverless Application Model (SAM) [<a
-            href="#reference_12"
+            href="#reference_13"
             class="reference"
-            >12</a
+            >13</a
           >]. SAM started providing support for Step Functions just a few months
           before this writing.
         </p>
@@ -1156,7 +1159,7 @@
           Unfortunately, there don't seem to be many specifically designed for
           Step Functions. There is one built by Coinbase called Step, which is
           “a framework for building, testing, and deploying AWS Step Functions
-          and Lambda”. [<a href="#reference_13" class="reference">13</a>].
+          and Lambda”. [<a href="#reference_14" class="reference">14</a>].
         </p>
 
         <figure>
@@ -1367,9 +1370,9 @@
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_14"
+            href="#reference_15"
             class="reference"
-            >14</a
+            >15</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1454,7 +1457,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_15" class="reference">15</a>]. To
+          synchronous [<a href="#reference_16" class="reference">16</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
@@ -1616,23 +1619,30 @@
               >
             </li>
             <li id="reference_12">
+              <a
+                target="_blank"
+                href="https://github.com/serverless-operations/serverless-step-functions#how-to-split-up-state-machines-into-files"
+                >Step Functions plugin for Serverless Framework</a
+              >
+            </li>
+            <li id="reference_13">
               <a target="_blank" href="https://aws.amazon.com/serverless/sam/"
                 >AWS Serverless Application Model</a
               >
             </li>
-            <li id="reference_13">
+            <li id="reference_14">
               <a target="_blank" href="https://github.com/coinbase/step"
                 >Step</a
               >
             </li>
-            <li id="reference_14">
+            <li id="reference_15">
               <a
                 target="_blank"
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_15">
+            <li id="reference_16">
               <a
                 target="_blank"
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"
