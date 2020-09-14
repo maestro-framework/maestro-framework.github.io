@@ -413,26 +413,9 @@ h3 {
   text-align: left;
 }
 
-/*#commands-table thead tr {
-  background-color: var(--color-light-grey);
-  color: var(--color-dark-grey);
-}*/
-
-/*#commands-table td:nth-child(n + 2) {
-  border-left: 3px solid var(--color-light-grey);
-}*/
-
 #commands-table td:nth-child(n + 2) {
   margin-left: 20px;
 }
-
-/*#commands-table tbody tr {
-  background-color: var(--color-dark-grey);
-}*/
-
-/*#commands-table tbody tr:nth-child(odd) {
-  background-color: var(--color-grey);
-}*/
 
 #commands-table tbody tr {
   border-top: 2px solid var(--color-light-grey);
