@@ -16,20 +16,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Torrel Moseley, Zac Klammer, John Isom" />
     <title>Maestro</title>
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="assets/images/logos/maestro/mark-on-light-square.png"
+      href="assets/images/logos/maestro/favicon.png"
     />
-    <link rel="stylesheet" href="assets/css/reset.css" />
-    <link rel="stylesheet" href="assets/css/fonts.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/dark.min.css"
       charset="utf-8"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/scripts/application.js"></script>
@@ -168,7 +167,11 @@
         </p>
 
         <figure>
-          <img src="assets/images/logos/aws/lambda.png" alt="AWS Lambda Logo" title="Lambda">
+          <img
+            src="assets/images/logos/aws/lambda.png"
+            alt="AWS Lambda Logo"
+            title="Lambda"
+          />
           <figcaption>AWS Lambda</figcaption>
         </figure>
 
@@ -308,7 +311,8 @@
           >]. Since the ‘Manager’ Lambda can invoke other Lambdas, we can
           implement the ‘Router’ pattern by placing the branching logic there.
           Because we’ve now written orchestration logic alongside business
-          logic, the ‘Manager’ has become a bit ‘fat’.
+          logic, we’ll affectionately refer to the ‘Manager’ as the ‘Fat
+          Manager’.
         </p>
 
         <figure>
@@ -466,7 +470,7 @@
         <h2 id="aws-step-functions">4. AWS Step Functions</h2>
 
         <p>
-          Here's how Amazon describes AWS Step Functions [<a
+          Here’s how Amazon describes AWS Step Functions [<a
             href="#reference_5"
             class="reference"
             >5</a
@@ -499,17 +503,17 @@
         </figure>
 
         <p>
-          Step Functions are designed to contain an application's orchestration
+          Step Functions are designed to contain an application’s orchestration
           logic. This helps us to maintain the separation of concerns that we
           mentioned earlier. To create a state machine with Step Functions,
-          we'll need to use the JSON-based langague called Amazon States
+          we’ll need to use the JSON-based language called Amazon States
           Language (ASL).
         </p>
 
         <h3>4.1 Amazon States Language</h3>
 
         <p>
-          Let's first look at a “Hello World” state machine definition to
+          Let’s first look at a “Hello World” state machine definition to
           familiarize ourselves with ASL.
         </p>
 
@@ -537,7 +541,7 @@
           </div>
           <figcaption>
             A state machine definition with a visual that is displayed in the
-            AWS Console
+            AWS Management Console
           </figcaption>
         </figure>
 
@@ -547,19 +551,20 @@
           <code>StartAt</code> field simply designates which state will begin
           execution, whereas the <code>States</code> field is a list of all
           possible states. Once a valid definition is entered in the AWS
-          Console, a visual that represents the state machine will be displayed.
+          Management Console, a visual that represents the state machine will be
+          displayed.
         </p>
 
         <p>
           The only state in this simple example is a <code>Task</code> state
           that is representing a Lambda function. Besides <code>Task</code>,
-          there are several other state types that can be used to help
-          orchestrate the workflow.
+          several other state types can be used to help orchestrate the
+          workflow.
         </p>
 
         <p>
-          Let's return to our earlier example of an employee requesting approval
-          for a resource to be provisioned. We'll now implement this workflow
+          Let’s return to our earlier example of an employee requesting approval
+          for a resource to be provisioned. We’ll now implement this workflow
           with Step Functions.
         </p>
 
@@ -573,19 +578,7 @@
     "Requester": {
       "Type": "Task",
       "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_requester",
-      "Next": "Validator"
-    },
-    "Validator": {
-      "Type": "Task",
-      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_validator",
-      "Next": "Manager",
-      "Catch": [
-        {
-          "ErrorEquals": ["States.ALL"],
-          "ResultPath": "$.errorInfo",
-          "Next": "Notifier"
-        }
-      ]
+      "Next": "Manager"
     },
     "Manager": {
       "Type": "Task",
@@ -610,7 +603,7 @@
     "Provisioner": {
       "Type": "Task",
       "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_provisioner",
-      "Next": "Notifier",
+      "Next": "AccessGranter",
       "Retry": [
         {
           "ErrorEquals": ["States.ALL"],
@@ -627,6 +620,10 @@
         }
       ]
     },
+    "AccessGranter": {
+      "Type": "Pass",
+      "Next": "Notifier"
+    },
     "Notifier": {
       "Type": "Pass",
       "End": true
@@ -638,7 +635,7 @@
             </pre>
             <img
               src="assets/images/step-functions-console/example-workflow.png"
-              alt="Visualization of example workflow in AWS Console"
+              alt="Visualization of example workflow in AWS Management Console"
             />
           </div>
           <figcaption>
@@ -651,15 +648,16 @@
           we see how one might implement retry logic. <code>Task</code> states
           have an optional field called <code>Retry</code> that will specify
           which types of errors to retry, how many seconds to wait in between,
-          as well as a backoff rate and maximum number of attempts. It's useful
-          to be able to put this orchestration concern here, instead of writing
-          some custom retry logic alongside business logic.
+          as well as a backoff rate and a maximum number of attempts. It’s
+          useful to be able to put this orchestration concern here, instead of
+          writing some custom retry logic alongside business logic.
         </p>
 
         <figure>
           <div class="flex">
             <pre>
               <code class="js dark">
+//…
 "Provisioner": {
   "Type": "Task",
   "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:provisioner",
@@ -671,8 +669,10 @@
       "BackoffRate": 1.5,
       "MaxAttempts": 5
     }
-  ]
+  ],
+  //…
 },
+
               </code>
             </pre>
           </div>
@@ -682,9 +682,10 @@
         <h3>4.2 Execution Event History</h3>
 
         <p>
-          Once a state machine has executed, using the AWS Console, we're able
-          to access an interactive execution event history. This allows us to
-          audit the transitions between states in one, unified place.
+          Once a state machine has executed, using the AWS Management Console,
+          we’re able to access an interactive execution event history. This
+          allows us to audit the transitions between states in one, unified
+          place.
         </p>
 
         <figure>
@@ -692,36 +693,39 @@
             src="assets/images/step-functions-console/logs.png"
             alt="Execution event history"
           />
-          <figcaption>Execution Event History in the AWS Console</figcaption>
+          <figcaption>
+            Execution Event History in the AWS Management Console
+          </figcaption>
         </figure>
 
         <p>
-          Additionally, the visual workflow will be color coded to help us
+          Additionally, the visual workflow will be color-coded to help us
           quickly remember the outcome of each state for that execution. This
-          interface is updated in real time, which can be helpful for viewing
+          interface is updated in real-time, which can be helpful when viewing
           the status of longer-running state machines.
         </p>
 
         <figure>
           <img
             src="assets/images/step-functions-console/execution.png"
-            alt="Visualization of an executed state machine in the AWS Console"
+            alt="Visualization of an executing state machine in the AWS Management Console"
           />
-          <figcaption>An executed state machine in the AWS Console</figcaption>
+          <figcaption>
+            An executing state machine in the AWS Management Console
+          </figcaption>
         </figure>
 
         <p>
           The core purpose of AWS Step Functions is to provide an orchestration
           layer, preventing us from having to somehow choreograph our
-          application's resources. Step Functions also provides many built-in
+          application’s resources. Step Functions also provides many built-in
           features, such as unified logs and visual workflows that can help when
           needing to audit executions.
         </p>
 
         <p>
-          Despite these benefits, there are some challenges that arise when
-          choosing to develop with Step Functions. Let's examine some of these
-          problems.
+          Despite these benefits, some challenges arise when choosing to develop
+          with Step Functions. Let’s examine some of these problems.
         </p>
 
         <h2 id="problems">5. Problems</h2>
@@ -787,14 +791,10 @@
         </blockquote>
 
         <p>
-          There are several tools that attempt to provide higher-level
-          abstractions that compile down to ASL. However, none has been widely
-          adopted and there is still unsettled debate regarding the
-          characteristics of these tools [<a
-            href="reference_7"
-            class="reference"
-            >7</a
-          >].
+          Several tools attempt to provide higher-level abstractions that
+          compile down to ASL. However, none has been widely adopted and there
+          is still unsettled debate regarding the characteristics of these tools
+          [<a href="reference_7" class="reference">7</a>].
         </p>
 
         <p>
@@ -1030,23 +1030,21 @@
         <h2 id="existing-solutions">6. Existing Solutions</h2>
 
         <p>
-          To understand the tools that currently exist to facilitate
-          development, it’s helpful to understand a bit about the AWS solutions
-          on which those tools are built.
+          A framework for deploying to AWS will typically be built using one of
+          two AWS tools. Let’s first understand a bit about these tools before
+          examining any specific frameworks.
         </p>
 
         <p>
-          One such AWS solution is called AWS CloudFormation [<a
+          The first one we’ll look at is called AWS CloudFormation [<a
             href="#reference_8"
             class="reference"
             >8</a
-          >]; it’s an AWS offering that allows creating a configuration file
-          containing all of a serverless application’s resources for deployment.
-          The entire offering is referred to as Infrastructure as Code.
-          Frameworks that interact with CloudFormation often guide a developer
-          through a process of creating framework-specific files. The file is
-          then compiled down to CloudFormation and the whole stack is deployed
-          at once.
+          >]. With this approach, a framework can guide us through a process of
+          creating framework-specific files that are then compiled to a single
+          CloudFormation config file. All our serverless resources can then be
+          deployed using this file. Frameworks that aim to be more
+          general-purpose often take the CloudFormation approach.
         </p>
 
         <figure>
@@ -1058,12 +1056,14 @@
         </figure>
 
         <p>
-          The other common tool is AWS Software Development Kits, or SDKs [<a
+          The other tool is the AWS Software Development Kit (SDK) [<a
             href="#reference_9"
             class="reference"
             >9</a
-          >], which are APIs that allow a developer to work directly with
-          individual resources from their language of choice.
+          >]. This is a collection of APIs that allow us to work directly with
+          individual resources from our language of choice. Frameworks geared
+          toward a specific use case or a particular language are usually built
+          with the SDK.
         </p>
 
         <figure>
@@ -1072,36 +1072,19 @@
         </figure>
 
         <p>
-          Essentially, any framework in this space will use one of these two
-          tools. However, it seems the design philosophy of the framework will
-          often inform which of these tools will be employed. Frameworks that
-          aim to be general-purpose tools will typically take the CloudFormation
-          approach while frameworks for specific use cases or that are geared
-          toward a particular language will often opt for the SDK approach.
-        </p>
-
-        <p>
-          The frameworks of concern for this consideration are those that allow
-          the deployment of Step Functions. Many excellent frameworks exist for
-          certain use cases but don’t include Step Functions, so they lie
-          outside the scope of this discussion.
+          Let’s now examine some specific frameworks, keeping in mind that we’ll
+          only be considering those that support Step Functions.
         </p>
 
         <h3>6.1 Serverless Framework</h3>
 
         <p>
-          One popular framework is the aptly named Serverless Framework [<a
+          The aptly named Serverless Framework [<a
             href="#reference_10"
             class="reference"
             >10</a
-          >]; it’s the dominant player in this space. The approach to deployment
-          taken by Serverless Framework is through compilation to
-          CloudFormation, and it can be considered a general-purpose tool.
-          Regarding Step Functions, a plugin is provided that allows the
-          inclusion of Step Functions in a deployment. Also, since
-          CloudFormation is used, the teardown of the entire stack can be
-          performed in the CloudFormation console, yet one cannot tear down from
-          within the framework.
+          >] is the dominant player in this space. It supports deployment to
+          many cloud providers and in several different languages.
         </p>
 
         <figure>
@@ -1113,34 +1096,38 @@
         </figure>
 
         <p>
-          One positive feature of Serverless Framework is that it supports
-          multiple runtimes. Also, it automatically creates the permissions that
-          are needed for the resources in an application’s infrastructure. Plus,
-          having mentioned the value of templates, it does provide some simple
-          ASL templates.
+          Serverless Framework has an active community that has created over two
+          thousand open-source plugins [<a
+            href="#reference_11"
+            class="reference"
+            >11</a
+          >]. One of these plugins enables support for Step Functions.
         </p>
 
         <p>
-          A drawback of Serverless Framework is that its templates require
-          manual configuration of resources the state machine is meant to
-          orchestrate. Further, the state machine definition must be written in
-          YAML to accommodate Serverless Framework’s conventions. Imagine, ASL
-          is written in JSON which must then be converted to YAML. How tedious.
-          Finally, the general-purpose functionality that Serverless Framework
-          provides comes at a dependency cost of 535 node modules. Such heavy
-          use of dependencies can hinder otherwise light applications.
+          There are some common state machine templates available at the bottom
+          of the plugin’s <code>README</code> [<a
+            href="#reference_12"
+            class="reference"
+            >12</a
+          >]. While this is helpful, it would be nice to be able to create a new
+          project based on a certain template without having to copy and paste
+          from the <code>README</code>. Also, to accommodate Serverless
+          Framework’s conventions, the state machine must be written in YAML.
+          This is unfortunate since ASL is a JSON-based language.
         </p>
 
         <h3>6.2 AWS SAM</h3>
 
         <p>
-          Another framework that deals with Step Functions was created by AWS:
-          the Serverless Application Model or SAM [<a
-            href="#reference_11"
+          Amazon provides a framework for serverless deployment called the AWS
+          Serverless Application Model (SAM) [<a
+            href="#reference_13"
             class="reference"
-            >11</a
-          >]. SAM added support for Step Functions just a few months before this
-          writing.
+            >13</a
+          >]. SAM started providing support for Step Functions just a few months
+          before this writing [<a href="#reference_14" class="reference">14</a
+          >].
         </p>
 
         <figure>
@@ -1149,38 +1136,32 @@
         </figure>
 
         <p>
-          SAM is similar to Serverless Framework both in being a general-purpose
-          tool and deploying through CloudFormation. Likewise, it supports
-          multiple runtimes and automatically generates the required permissions
-          for resources. Unlike Serverless Framework, a working state machine
-          can be deployed straight from the command line using a template; there
-          is no need to make manual configurations.
+          Unlike Serverless Framework, a working state machine can be deployed
+          from a template, without having to make any manual configurations – it
+          can all be done straight from the CLI. However, there is only one
+          template that is offered and it has a relatively lengthy deployment
+          time, taking about three minutes. There are also several prompts that
+          the user must respond to during this process. Once deployed, there
+          doesn’t seem to be a command that just as easily tears down, so that
+          must be done manually.
         </p>
 
         <p>
-          However, only one template is offered, and deployment time is rather
-          lengthy, taking a couple of minutes. Additionally, there are several
-          prompts to which a user must respond during the deployment.
-          Unfortunately, once deployed, no single command easily tears down.
-        </p>
-
-        <p>
-          As discussed, Serverless Framework and SAM are both general-purpose
-          tools, and neither was designed with Step Functions in mind. Support
-          for Step Functions was added as an afterthought.
+          It’s important to note that neither Serverless Framework nor SAM was
+          designed with Step Functions in mind. They both later added support
+          for Step Functions for apps that happens to use them. And because of
+          their general-purpose nature, these frameworks carry around a lot of
+          tooling, which may be unnecessary and bulky for simpler workflows.
         </p>
 
         <h3>6.3 Step</h3>
 
         <p>
-          What about more purpose-built frameworks? Unfortunately, there aren’t
-          many designed with Step Functions in mind. One called Step does happen
-          to be Step Functions centric and was built by Coinbase [<a
-            href="#reference_12"
-            class="reference"
-            >12</a
-          >]. Step allows the user to create a state machine with a higher-level
-          language, namely Go.
+          What about more purpose-built frameworks that use the SDK?
+          Unfortunately, there don’t seem to be many specifically designed for
+          Step Functions. There is one built by Coinbase called Step, which is
+          “a framework for building, testing, and deploying AWS Step Functions
+          and Lambda”. [<a href="#reference_15" class="reference">15</a>].
         </p>
 
         <figure>
@@ -1189,18 +1170,20 @@
         </figure>
 
         <p>
-          However, adoption of Step, apparently, hasn’t been very broad.
-          Coinbase appears to be one of the only users of its framework. A
-          non-Coinbase practitioner may encounter difficulty configuring it.
-          Understandably, the development status of the framework is listed as
-          Beta. Further, a development drawback is that Step is not able to
-          create a new state machine but only modify an existing one.
+          Step allows the user to construct a state machine definition with a
+          higher-level language, namely Go. However, Coinbase seems to be one of
+          the only users of their framework. Indeed, the development status of
+          the framework is listed as Beta. An additional drawback is that Step
+          is not able to create a new state machine but can only modify an
+          existing one. This can be a hindrance to the developer who is wanting
+          to quickly iterate on their work but has to manually create a mock
+          state machine first.
         </p>
 
         <p>
-          After surveying existing solutions, consider Maestro, a purpose-built,
-          lightweight framework that allows the developer to quickly iterate on
-          workflows using Step Functions.
+          While the above solutions provide some helpful ways to manage Step
+          Functions, we found them lacking in some important areas. Because of
+          this, we decided to build Maestro.
         </p>
 
         <h2 id="maestro">7. Maestro</h2>
@@ -1377,79 +1360,6 @@
           </tbody>
         </table>
 
-        <p>
-          <!--
-          Given that templates can provide a useful mechanism for developing
-          with Step Functions, Maestro interacts with an external template
-          repository through the
-          <code class="command language-plaintext">maestro get-templates</code>
-          command that creates a local version of the repo locally. Maestro
-          stays light by separating the template repository which can then be
-          utilized independently. Separation also provides a future basis for
-          middleware to add templates. Included in the repository are several
-          templates deemed foundational by AWS. However, the Maestro philosophy
-          is, ‘Bring Your Own Template’, and any template placed in the local
-          repository will be included for creation by the
-          <code class="command language-plaintext">new</code> command.
-        </p>
-
-        <p>
-          Since the configuration of Lambda and Step Functions can be
-          cumbersome, a convenience method for configuring a practitioner’s AWS
-          region and account number is provided (
-          <code class="command language-plaintext">maestro config</code>). The
-          pertinent account information is made available to any maestro project
-          and automatically included for the deployment of resources that would
-          otherwise require manual configuration.
-        </p>
-
-        <p>
-          Once a user’s local environment has been configured, a new project can
-          be created with
-          <code class="command language-plaintext">maestro new</code>. As
-          Maestro is template oriented, the user is prompted to select from a
-          list of templates from which to base the new project; otherwise, a
-          skeleton will be provided. Creating the new project locally allows a
-          developer to access the project files with their preferred text
-          editor. No longer is one restricted to mind-numbingly clicking around
-          the AWS console.
-        </p>
-
-        <p>
-          The
-          <code class="command language-plaintext">maestro deploy</code> command
-          is the mechanism through which a practitioner’s local code is made
-          available on AWS servers. A deployment ensures the creation of IAM
-          roles that allow Lambda and Step Functions to operate in AWS,
-          attaching policies that allow resources with a given role to perform
-          tasks, creation of Lambdas associated with the project, and creation
-          of the Step Functions state machine. The creation of resources like
-          the Lambdas and state machine takes place concurrently such that
-          deployment is faster. If the roles associated with deployment already
-          exist in an AWS account, deployment takes about 3 seconds, and even a
-          deployment that requires creating the roles takes only around 15
-          seconds.
-        </p>
-
-        <p>
-          Development requires not only deploying code and auditing its
-          execution on AWS but starting over with as few artifacts as possible
-          when necessary. Tearing down in the AWS console requires navigating
-          various interfaces hoping to identify every resource that was
-          associated with a workflow. Missing just one could result in conflicts
-          in future deployments and fees associated with lingering artifacts.
-          <code class="command language-plaintext">maestro teardown</code>
-          allows the developer to remove all resources associated with a project
-          in one command. Like deploying, tearing down is extremely fast,
-          running in about 2 seconds. Flags allow the developer to distinguish
-          just which resources to tear down in the event the intent is not to
-          tear down everything. For instance, roles are left behind unless flags
-          are included to indicate their destruction.
-        </p>
-
--->
-        </p>
-
         <h3>7.2 Challenges</h3>
 
         <p>
@@ -1462,9 +1372,9 @@
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_13"
+            href="#reference_16"
             class="reference"
-            >13</a
+            >16</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1549,7 +1459,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_14" class="reference">14</a>]. To
+          synchronous [<a href="#reference_17" class="reference">17</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
@@ -1682,7 +1592,7 @@
               <a
                 target="_blank"
                 href="https://acloud.guru/series/serverlessconf-nyc-2019/view/yaml-better?_hsenc=p2ANqtz-8NTIqitxWIiUw-zP8PduvB33SIKeFTL96OW8aFES-aovT2WN3ULwZm_cXSRpmntdO4cF6Z"
-                >YAML Is Better than Your Favorite Language: Fightin' words
+                >YAML Is Better than Your Favorite Language: Fightin’ words
                 about Infrastructure as code | Ben Kehoe</a
               >
             </li>
@@ -1704,23 +1614,44 @@
               >
             </li>
             <li id="reference_11">
+              <a
+                target="_blank"
+                href="https://www.serverless.com/learn/comparisons/"
+                >Serverless Framework Comparisons</a
+              >
+            </li>
+            <li id="reference_12">
+              <a
+                target="_blank"
+                href="https://github.com/serverless-operations/serverless-step-functions#how-to-split-up-state-machines-into-files"
+                >Step Functions plugin for Serverless Framework</a
+              >
+            </li>
+            <li id="reference_13">
               <a target="_blank" href="https://aws.amazon.com/serverless/sam/"
                 >AWS Serverless Application Model</a
               >
             </li>
-            <li id="reference_12">
+            <li id="reference_14">
+              <a
+                target="_blank"
+                href="https://aws.amazon.com/about-aws/whats-new/2020/05/aws-sam-adds-support-for-aws-step-functions/"
+                >AWS SAM adds support for Step Functions</a
+              >
+            </li>
+            <li id="reference_15">
               <a target="_blank" href="https://github.com/coinbase/step"
                 >Step</a
               >
             </li>
-            <li id="reference_13">
+            <li id="reference_16">
               <a
                 target="_blank"
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_14">
+            <li id="reference_17">
               <a
                 target="_blank"
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"
@@ -1804,11 +1735,22 @@
                 >What is AWS?</a
               >
             </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=bEB0zDHXXG4&feature=youtu.be"
+                target="_blank"
+                >Youtube tutorial for deploying with Serverless Framework</a
+              >
+            </li>
           </ol>
         </section>
       </section>
     </main>
     <section id="our-team">
+      <img
+        src="assets/images/logos/maestro/mark-on-light.png"
+        alt="Maestro logo"
+      />
       <h1>Our Team</h1>
       <p>
         We are looking for opportunities. If you liked what you saw and want to
@@ -1816,10 +1758,11 @@
       </p>
       <ul>
         <li class="individual">
-          <img
-            src="assets/images/team/torrel_moseley.jpg"
-            alt="Torrel Moseley"
-          />
+          <a href="https://t-monius.github.io/" target="_blank"
+            ><img
+              src="assets/images/team/torrel_moseley.jpg"
+              alt="Torrel Moseley"
+          /></a>
           <h3>Torrel Moseley</h3>
           <p>NYC &amp; Denver</p>
           <ul class="social-icons">
@@ -1845,7 +1788,9 @@
           </ul>
         </li>
         <li class="individual">
-          <img src="assets/images/team/zac_klammer.jpg" alt="Zac Klammer" />
+          <a href="https://zklamm.github.io/" target="_blank">
+            <img src="assets/images/team/zac_klammer.jpg" alt="Zac Klammer" />
+          </a>
           <h3>Zac Klammer</h3>
           <p>Corpus Christi, TX</p>
           <ul class="social-icons">
@@ -1871,10 +1816,11 @@
           </ul>
         </li>
         <li class="individual">
-          <img
-            src="assets/images/team/john_isom.jpg"
-            alt="Picture of John Isom"
-          />
+          <a href="https://johnisom.dev/" target="_blank">
+            <img
+              src="assets/images/team/john_isom.jpg"
+              alt="Picture of John Isom"
+          /></a>
           <h3>John Isom</h3>
 
           <p>NYC & Salt Lake City</p>
