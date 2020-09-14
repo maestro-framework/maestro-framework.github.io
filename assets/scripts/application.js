@@ -82,12 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoUrls = {
     menuWhite: "assets/images/menu-on-dark.png",
     menuBlack: "assets/images/menu-on-light.png",
-    maestroWhite: "assets/images/logos/maestro/mark-on-dark.png",
-    maestroBlack: "assets/images/logos/maestro/mark-on-light.png",
     githubWhite: "assets/images/icons/github_white.png",
     githubBlack: "assets/images/icons/github_black.png",
-    mediumWhite: "assets/images/icons/medium_white.png",
-    mediumBlack: "assets/images/icons/medium_black.png",
   };
 
   const isOnHeader = (logo) => {

@@ -1,3 +1,5 @@
+@import url("reset.css");
+
 /* ---------------------------------
 
                 colors
@@ -137,10 +139,6 @@ img {
 #case-study img {
   max-width: 80%;
   height: auto;
-}
-
-#case-study img.example-workflow {
-  max-width: 45%;
 }
 
 .flex {
@@ -512,14 +510,18 @@ h3 {
   background-color: var(--color-light-grey);
   color: var(--color-black);
   margin-top: 100px;
+  padding-top: 20px;
   padding-bottom: 25px;
 }
 
+#our-team > img {
+  margin: 10px auto;
+}
+
 #our-team h1 {
-  padding-top: 100px;
-  margin-bottom: 30px;
   text-align: center;
   line-height: 4rem;
+  margin-bottom: 20px;
 }
 
 #our-team > p {
@@ -633,10 +635,6 @@ small {
   #flowchart {
     max-width: 100%;
     height: auto;
-  }
-
-  #our-team h1 {
-    padding-top: 70px;
   }
 
   #case-study img {
@@ -824,10 +822,6 @@ small {
   }
 
   /* Our Team */
-
-  #our-team h1 {
-    padding-top: 60px;
-  }
 
   #our-team > p {
     font-size: 1rem;
