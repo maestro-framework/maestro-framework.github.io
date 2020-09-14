@@ -139,10 +139,6 @@ img {
   height: auto;
 }
 
-#case-study img.example-workflow {
-  max-width: 45%;
-}
-
 .flex {
   display: flex;
   flex-flow: row wrap;
