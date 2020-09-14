@@ -1039,13 +1039,11 @@
             href="#reference_8"
             class="reference"
             >8</a
-          >]. CloudFormation allows us to create a config file that will contain
-          all the resources we're wanting to deploy. A config file like this is
-          also known as Infrastructure as Code. With this approach, a framework
-          will guide us through a process of creating framework-specific files
-          that are then compiled to a CloudFormation config file. The whole
-          stack can then be deployed using this file. Frameworks that aim to be
-          more general purpose often take the CloudFormation approach.
+          >]. With this approach, a framework can guide us through a process of
+          creating framework-specific files that are then compiled to a single
+          CloudFormation config file. All our serverless resources can then be
+          deployed using this file. Frameworks that aim to be more general
+          purpose often take the CloudFormation approach.
         </p>
 
         <figure>
@@ -1073,8 +1071,8 @@
         </figure>
 
         <p>
-          Let's now examine specific frameworks, keeping in mind that we'll only
-          be considering those that support Step Functions.
+          Let's now examine some specific frameworks, keeping in mind that we'll
+          only be considering those that support Step Functions.
         </p>
 
         <h3>6.1 Serverless Framework</h3>
@@ -1157,18 +1155,21 @@
         </ul>
 
         <p>
-          Serverless Framework and SAM are both more general purpose tools, and
-          neither of them were designed with Step Functions in mind. They both
-          later added support for Step Functions in the event that an app just
-          happens to use them.
+          It's important to note that neiter Serverless Framework nor SAM were
+          designed with Step Functions in mind. They both later added support
+          for Step Functions in the event that an app happens to use them. And
+          because of their general purpose nature, these frameworks carry around
+          a lot of tooling, which may be unnecessary and bulky for simpler
+          workflows.
         </p>
 
         <h3>6.3 Step</h3>
 
         <p>
-          What about more purpose-built frameworks? There don't seem to be many
-          specifically designed for Step Functions. One called Step does happen
-          to be Step Functions centric and was built by Coinbase [<a
+          What about more purpose-built frameworks that use the SDK? Unfortunately, there don't
+          seem to be many specifically designed for Step Functions. There is one
+          built by Coinbase called Step, which is “a framework for building,
+          testing, and deploying AWS Step Functions and Lambda”. [<a
             href="#reference_12"
             class="reference"
             >12</a
@@ -1202,7 +1203,7 @@
           Coinbase seems to be one of the only users of their framework. In
           fact, the development status of the framework is listed as Beta. An
           additional drawback is that Step is not able to create a new state
-          machine but can only modify an existing one, which can be a hindrance
+          machine but can only modify an existing one. This can be a hindrance
           to the developer who is wanting to quickly iterate on their work but
           has to manually create a mock state machine first.
         </p>
