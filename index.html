@@ -187,8 +187,8 @@
           For example, when a Lambda is initially invoked, its container will
           have to be spun up, usually taking a few hundred milliseconds. This is
           often referred to as a “cold start”. To address this issue, there is a
-          pattern called the ‘Function Warmer’, which keeps the Lambda’s container
-          available for further invocations. Patterns for working with
+          pattern called the ‘Function Warmer’, which keeps the Lambda’s
+          container available for further invocations. Patterns for working with
           serverless can be grouped into five categories [<a
             href="#reference_3"
             class="reference"
@@ -323,7 +323,7 @@
             class="example-workflow"
           />
           <figcaption>
-            ‘Manager’ Lambda is now fat with orchestration logic
+            The ‘Manager’ Lambda now contains orchestration logic
           </figcaption>
         </figure>
 
@@ -362,7 +362,9 @@
             title="Fat Manager with Retry"
             class="example-workflow"
           />
-          <figcaption>The ‘Manager’ Lambda is even fatter</figcaption>
+          <figcaption>
+            The ‘Manager’ Lambda with even more orchestration responsibility
+          </figcaption>
         </figure>
 
         <p>
@@ -372,7 +374,7 @@
           Delayed provisioning may cause the ‘Manager’ to terminate before
           determining if a retry was necessary. Further, with the orchestration
           logic of the ‘Manager’ written alongside the business logic, the
-          component is overloaded resulting in poor separation of concerns.
+          component is overloaded resulting in a poor separation of concerns.
         </p>
 
         <figure>
@@ -849,7 +851,7 @@
           Although the Management Console touts itself as “one web interface”,
           each of the AWS services has a different flavor of that interface with
           distinct concepts and interactions. Each service must be configured
-          with the correct region and account number, and must be assigned
+          with the correct region and account number and must be assigned
           security roles with the proper execution permissions. Also, an account
           that contains multiple applications will list all services of the same
           kind alongside one another, mingling the resources of separate
@@ -868,16 +870,15 @@
 
         <p>
           What would it look like if we decided to tear down our state machine
-          and its associated Lambdas? It would basically be the same error-prone
-          process, but in reverse order. This is not condusive to quickly
-          devloping a new workflow that requires frequent iteration.
+          and its associated Lambdas? It would be a similar, error-prone process
+          but in reverse order. This is not conducive to quickly developing a
+          new workflow that requires frequent iteration.
         </p>
 
         <p>
           The manual tedium of deploying to the AWS cloud using only the
           Management Console is a process that should be automated. Fortunately,
-          there are several serverless deployment frameworks that aim to do just
-          that.
+          several serverless deployment frameworks aim to do just that.
         </p>
 
         <h2 id="existing-solutions">6. Existing Solutions</h2>
@@ -1076,7 +1077,7 @@
         </p>
 
         <p>
-          In addition to it’s ease of use, Maestro also has robust manual (man)
+          In addition to its ease of use, Maestro also has robust manual (man)
           pages which contribute to its ease of use. A new project can be
           quickly and easily created with the
           <code class="command language-plaintext">maestro new</code> command.
@@ -1117,8 +1118,8 @@
 
                 <p>
                   If the user simply presses <code>&lt;return&gt;</code>at the
-                  prompt or enters an invalid input, the new project is created
-                  without influence ofa template.
+                  prompt or enters invalid input, the new project is created
+                  without the influence of a template.
                 </p>
               </td>
             </tr>
@@ -1137,7 +1138,7 @@
                   <code>definition.asl.json</code> and all lambda functions
                   defined in the <code>lambdas/</code> directory. If you do not
                   have the necessary Maestro IAM roles, running this command
-                  will automatically create themforyou as part of the
+                  will automatically create them for you as part of the
                   deployment.
                 </p>
 
