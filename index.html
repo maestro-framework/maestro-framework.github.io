@@ -578,19 +578,7 @@
     "Requester": {
       "Type": "Task",
       "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_requester",
-      "Next": "Validator"
-    },
-    "Validator": {
-      "Type": "Task",
-      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_validator",
-      "Next": "Manager",
-      "Catch": [
-        {
-          "ErrorEquals": ["States.ALL"],
-          "ResultPath": "$.errorInfo",
-          "Next": "Notifier"
-        }
-      ]
+      "Next": "Manager"
     },
     "Manager": {
       "Type": "Task",
@@ -615,7 +603,7 @@
     "Provisioner": {
       "Type": "Task",
       "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_provisioner",
-      "Next": "Notifier",
+      "Next": "AccessGranter",
       "Retry": [
         {
           "ErrorEquals": ["States.ALL"],
@@ -631,6 +619,10 @@
           "Next": "Notifier"
         }
       ]
+    },
+    "AccessGranter": {
+      "Type": "Pass",
+      "Next": "Notifier"
     },
     "Notifier": {
       "Type": "Pass",
@@ -665,6 +657,7 @@
           <div class="flex">
             <pre>
               <code class="js dark">
+//…
 "Provisioner": {
   "Type": "Task",
   "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:provisioner",
@@ -676,8 +669,10 @@
       "BackoffRate": 1.5,
       "MaxAttempts": 5
     }
-  ]
+  ],
+  //…
 },
+
               </code>
             </pre>
           </div>
