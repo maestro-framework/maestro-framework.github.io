@@ -822,8 +822,8 @@
         </figure>
 
         <p>
-          Let's look at the steps involved to deploy and tear down our example
-          workflow using only the AWS Management Console.
+          Let's look at the steps involved to deploy our example workflow using
+          only the AWS Management Console.
         </p>
 
         <figure>
@@ -836,59 +836,24 @@
           </figcaption>
         </figure>
 
-        <!-- <p>
-          After providing and modifying ASL, a developer may attempt to save the
-          state machine to create other components of the application. It makes
-          sense to create the orchestration layer first as it serves as a map
-          for integrating components during development. Unfortunately, they may
-          run into an error if they don’t provide a valid ARN (Amazon Resource
-          Name) for all associated state machine components. Most developers who
-          aren’t familiar with writing a valid ARN would solve the error by
-          navigating to the Lambda console, creating all of the necessary
-          Lambdas while the Step Functions console remains open, and
-          copying/pasting the ARNs of the created Lambdas into the state machine
-          definition. For the experienced AWS developer, it’s possible to write
-          a valid ARN for each component, but it’s another layer of tedium which
-          requires exactitude to get right.
+        <p>
+          The Management Console indeed provides everything needed for managing
+          the AWS cloud. But it also requires extensive configuration and
+          navigation – pointing, clicking, reloading of the screen, often in a
+          rigid order. The three Lambdas in our workflow all have to go through
+          the same tedious process. Imagine if our example had included ten or
+          more Lambdas.
         </p>
 
         <p>
-          What does navigating to the Lambda console and creating the pertinent
-          Lambdas look like? It’s another series of five steps the most
-          difficult of which is providing the business logic for the Lambda
-          (represented by the third step in the following diagram).
-        </p>
-
-        <p>
-          The difficulty regarding the AWS console is that every step, large and
-          small, needs to be performed for each Lambda.
-        </p>
-
-        <p>
-          After each lambda has been created, only then can the state machine be
-          saved.
-        </p>
-
-        <p>
-          Adding these five steps for each of the four Lambdas in our example
-          workflow plus those required to create the state machine totals 28
-          steps. The time required to accomplish these steps with existing
-          business logic and a template for the ASL would vary between several
-          minutes and several hours depending on the developer’s skill working
-          with the console.
-        </p>
- -->
-        <p>
-          While it's true that the Management Console provides everything needed
-          for managing Another challenge area is deploying is deploying and
-          managing serverless resources. pointing clicking, reloading of screen
-          has to be done in a certain order. each service has different
-          interface. state machines typically orchestrating many services, so
-          each of these including state machine has own interface. Each service
-          must be configured with correct region, account number, must be
-          assigned IAM roles with the proper permissions. Might have to navigate
-          through already existing services that are a part of other
-          workflows/applicaitons.
+          Although the Management Console touts itself as “one web interface”,
+          each of the AWS services has a different flavor of that interface with
+          distinct concepts and interactions. Each service must be configured
+          with the correct region and account number, and must be assigned
+          security roles with the proper execution permissions. Also, an account
+          that contains multiple applications will list all services of the same
+          kind alongside one another, mingling the resources of separate
+          applications together.
         </p>
 
         <figure>
@@ -897,28 +862,22 @@
             alt="The AWS Console has many interfaces"
           />
           <figcaption>
-            The AWS Console has a separate interface for each service
+            The AWS Management Console encapsulates several different services
           </figcaption>
         </figure>
 
         <p>
-          Tearing down in the AWS Console isn’t challenging. It’s just tedious.
-          It mainly involves:
+          What would it look like if we decided to tear down our state machine
+          and its associated Lambdas? It would basically be the same error-prone
+          process, but in reverse order. This is not condusive to quickly
+          devloping a new workflow that requires frequent iteration.
         </p>
 
-        <ul id="deletion-steps">
-          <li>Navigating to a service</li>
-          <li>Clicking around a bit</li>
-          <li>Selecting a resource</li>
-          <li>Deleting</li>
-          <li>Confirming</li>
-        </ul>
-
         <p>
-          Clicking around to delete the example workflow in IAM, Step Functions,
-          and Lamda interfaces take some 30 steps. Deletion is a risky business,
-          and selecting the wrong component to delete anywhere along the way
-          requires attention; one must go slowly.
+          The manual tedium of deploying to the AWS cloud using only the
+          Management Console is a process that should be automated. Fortunately,
+          there are several serverless deployment frameworks that aim to do just
+          that.
         </p>
 
         <h2 id="existing-solutions">6. Existing Solutions</h2>
