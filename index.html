@@ -1125,7 +1125,8 @@
             class="reference"
             >13</a
           >]. SAM started providing support for Step Functions just a few months
-          before this writing.
+          before this writing [<a href="#reference_14" class="reference">14</a
+          >].
         </p>
 
         <figure>
@@ -1159,7 +1160,7 @@
           Unfortunately, there don't seem to be many specifically designed for
           Step Functions. There is one built by Coinbase called Step, which is
           “a framework for building, testing, and deploying AWS Step Functions
-          and Lambda”. [<a href="#reference_14" class="reference">14</a>].
+          and Lambda”. [<a href="#reference_15" class="reference">15</a>].
         </p>
 
         <figure>
@@ -1370,9 +1371,9 @@
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_15"
+            href="#reference_16"
             class="reference"
-            >15</a
+            >16</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1457,7 +1458,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_16" class="reference">16</a>]. To
+          synchronous [<a href="#reference_17" class="reference">17</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
@@ -1631,18 +1632,25 @@
               >
             </li>
             <li id="reference_14">
+              <a
+                target="_blank"
+                href="https://aws.amazon.com/about-aws/whats-new/2020/05/aws-sam-adds-support-for-aws-step-functions/"
+                >AWS SAM adds support for Step Functions</a
+              >
+            </li>
+            <li id="reference_15">
               <a target="_blank" href="https://github.com/coinbase/step"
                 >Step</a
               >
             </li>
-            <li id="reference_15">
+            <li id="reference_16">
               <a
                 target="_blank"
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_16">
+            <li id="reference_17">
               <a
                 target="_blank"
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"
