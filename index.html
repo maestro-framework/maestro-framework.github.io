@@ -1042,8 +1042,8 @@
           >]. With this approach, a framework can guide us through a process of
           creating framework-specific files that are then compiled to a single
           CloudFormation config file. All our serverless resources can then be
-          deployed using this file. Frameworks that aim to be more general
-          purpose often take the CloudFormation approach.
+          deployed using this file. Frameworks that aim to be more
+          general-purpose often take the CloudFormation approach.
         </p>
 
         <figure>
@@ -1095,9 +1095,9 @@
         </figure>
 
         <p>
-          There is an active community of Serverless Framework users that has
-          created over two thousand open-source plugins [REFERENCE]. One of
-          these plugins enables support for Step Functions.
+          Serverless Framework has an active community that has created over two
+          thousand open-source plugins [REFERENCE]. One of these plugins enables
+          support for Step Functions.
         </p>
 
         <p>
@@ -1105,16 +1105,16 @@
           of the plugin's <code>README</code> [(check)REFERENCE]. While this is
           helpful, it would be nice to be able to create a new project based on
           a certain template without having to copy and paste from the
-          <code>README</code>. Also, in order to accommodate Serverless
-          Framework’s conventions, the state machine must be written in YAML.
-          This is unfortunate since ASL is a JSON-based language.
+          <code>README</code>. Also, to accommodate Serverless Framework’s
+          conventions, the state machine must be written in YAML. This is
+          unfortunate since ASL is a JSON-based language.
         </p>
 
         <h3>6.2 AWS SAM</h3>
 
         <p>
-          Amazon provides its own framework for serverless deployment called the
-          AWS Serverless Application Model (SAM) [<a
+          Amazon provides a framework for serverless deployment called the AWS
+          Serverless Application Model (SAM) [<a
             href="#reference_11"
             class="reference"
             >11</a
@@ -1139,12 +1139,11 @@
         </p>
 
         <p>
-          It's important to note that neiter Serverless Framework nor SAM were
+          It's important to note that neither Serverless Framework nor SAM was
           designed with Step Functions in mind. They both later added support
-          for Step Functions in the event that an app happens to use them. And
-          because of their general purpose nature, these frameworks carry around
-          a lot of tooling, which may be unnecessary and bulky for simpler
-          workflows.
+          for Step Functions for apps that happens to use them. And because of
+          their general-purpose nature, these frameworks carry around a lot of
+          tooling, which may be unnecessary and bulky for simpler workflows.
         </p>
 
         <h3>6.3 Step</h3>
