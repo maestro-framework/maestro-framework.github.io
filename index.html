@@ -1095,27 +1095,18 @@
         </figure>
 
         <p>
-          Pros:
+          There is an active community of Serverless Framework users that has
+          created over two thousand open-source plugins [REFERENCE]. One of
+          these plugins enables support for Step Functions.
         </p>
-
-        <ul>
-          <li>Supports multiple runtimes</li>
-          <li>Required permissions are automatically generated</li>
-          <li>Has some ASL templates</li>
-        </ul>
 
         <p>
-          Cons:
+          There are some common state machine templates available at the bottom
+          of the plugin's <code>README</code> [(check)REFERENCE]. While this is
+          helpful, it would be nice to be able to create a new project based on
+          a certain template without having to copy and paste from the
+          <code>README</code>. Also, in order to accommodate Serverless Framework’s conventions, the state machine must be written in YAML. This is unfortunate since ASL is a JSON-based language.
         </p>
-
-        <ul>
-          <li>
-            The templates have empty resource fields and must be filled out
-            manually
-          </li>
-          <li>ASL must be written in YAML</li>
-          <li>535 <code>node</code> dependencies</li>
-        </ul>
 
         <h3>6.2 AWS SAM</h3>
 
