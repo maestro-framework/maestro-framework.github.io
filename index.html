@@ -808,8 +808,10 @@
 
         <p>
           The AWS Management Console's tagline is “Everything you need to access
-          and manage the AWS cloud — in one web interface.” [<a href=""
-            >NUMBER</a
+          and manage the AWS cloud — in one web interface.” [<a
+            href="reference_8"
+            class="reference"
+            >8</a
           >]
         </p>
 
@@ -831,7 +833,9 @@
             src="assets/images/hazy-diagrams/full.png"
             alt="Resources to be deployed manually"
           />
-          <figcaption>Deploying our example workflow with the AWS Management Console</figcaption>
+          <figcaption>
+            Deploying our example workflow with the AWS Management Console
+          </figcaption>
         </figure>
 
         <p>
@@ -929,9 +933,9 @@
 
         <p>
           The first one we’ll look at is called AWS CloudFormation [<a
-            href="#reference_8"
+            href="#reference_9"
             class="reference"
-            >8</a
+            >9</a
           >]. With this approach, a framework can guide us through a process of
           creating framework-specific files that are then compiled to a single
           CloudFormation config file. All our serverless resources can then be
@@ -949,9 +953,9 @@
 
         <p>
           The other tool is the AWS Software Development Kit (SDK) [<a
-            href="#reference_9"
+            href="#reference_10"
             class="reference"
-            >9</a
+            >10</a
           >]. This is a collection of APIs that allow us to work directly with
           individual resources from our language of choice. Frameworks geared
           toward a specific use case or a particular language are usually built
@@ -972,9 +976,9 @@
 
         <p>
           The aptly named Serverless Framework [<a
-            href="#reference_10"
+            href="#reference_11"
             class="reference"
-            >10</a
+            >11</a
           >] is the dominant player in this space. It supports deployment to
           many cloud providers and in several different languages.
         </p>
@@ -990,18 +994,18 @@
         <p>
           Serverless Framework has an active community that has created over two
           thousand open-source plugins [<a
-            href="#reference_11"
+            href="#reference_12"
             class="reference"
-            >11</a
+            >12</a
           >]. One of these plugins enables support for Step Functions.
         </p>
 
         <p>
           There are some common state machine templates available at the bottom
           of the plugin’s <code>README</code> [<a
-            href="#reference_12"
+            href="#reference_13"
             class="reference"
-            >12</a
+            >13</a
           >]. While this is helpful, it would be nice to be able to create a new
           project based on a certain template without having to copy and paste
           from the <code>README</code>. Also, to accommodate Serverless
@@ -1014,11 +1018,11 @@
         <p>
           Amazon provides a framework for serverless deployment called the AWS
           Serverless Application Model (SAM) [<a
-            href="#reference_13"
+            href="#reference_14"
             class="reference"
-            >13</a
+            >14</a
           >]. SAM started providing support for Step Functions just a few months
-          before this writing [<a href="#reference_14" class="reference">14</a
+          before this writing [<a href="#reference_15" class="reference">15</a
           >].
         </p>
 
@@ -1053,7 +1057,7 @@
           Unfortunately, there don’t seem to be many specifically designed for
           Step Functions. There is one built by Coinbase called Step, which is
           “a framework for building, testing, and deploying AWS Step Functions
-          and Lambda”. [<a href="#reference_15" class="reference">15</a>].
+          and Lambda”. [<a href="#reference_16" class="reference">16</a>].
         </p>
 
         <figure>
@@ -1264,9 +1268,9 @@
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_16"
+            href="#reference_17"
             class="reference"
-            >16</a
+            >17</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1351,7 +1355,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_17" class="reference">17</a>]. To
+          synchronous [<a href="#reference_18" class="reference">18</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
@@ -1489,61 +1493,66 @@
               >
             </li>
             <li id="reference_8">
+              <a target="_blank" href="https://aws.amazon.com/console/"
+                >AWS Management Console</a
+              >
+            </li>
+            <li id="reference_9">
               <a target="_blank" href="https://aws.amazon.com/cloudformation/"
                 >AWS Cloud Formation</a
               >
             </li>
-            <li id="reference_9">
+            <li id="reference_10">
               <a
                 target="_blank"
                 href="https://aws.amazon.com/getting-started/tools-sdks/"
                 >Start building with SDKs and tools</a
               >
             </li>
-            <li id="reference_10">
+            <li id="reference_11">
               <a target="_blank" href="https://www.serverless.com/"
                 >Serverless Framework</a
               >
             </li>
-            <li id="reference_11">
+            <li id="reference_12">
               <a
                 target="_blank"
                 href="https://www.serverless.com/learn/comparisons/"
                 >Serverless Framework Comparisons</a
               >
             </li>
-            <li id="reference_12">
+            <li id="reference_13">
               <a
                 target="_blank"
                 href="https://github.com/serverless-operations/serverless-step-functions#how-to-split-up-state-machines-into-files"
                 >Step Functions plugin for Serverless Framework</a
               >
             </li>
-            <li id="reference_13">
+            <li id="reference_14">
               <a target="_blank" href="https://aws.amazon.com/serverless/sam/"
                 >AWS Serverless Application Model</a
               >
             </li>
-            <li id="reference_14">
+            <li id="reference_15">
               <a
                 target="_blank"
                 href="https://aws.amazon.com/about-aws/whats-new/2020/05/aws-sam-adds-support-for-aws-step-functions/"
                 >AWS SAM adds support for Step Functions</a
               >
             </li>
-            <li id="reference_15">
+            <li id="reference_16">
               <a target="_blank" href="https://github.com/coinbase/step"
                 >Step</a
               >
             </li>
-            <li id="reference_16">
+            <li id="reference_17">
               <a
                 target="_blank"
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_17">
+            <li id="reference_18">
               <a
                 target="_blank"
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"
