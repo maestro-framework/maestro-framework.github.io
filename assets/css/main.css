@@ -405,27 +405,20 @@ h3 {
 #commands-table {
   table-layout: fixed;
   border-collapse: collapse;
+  margin: 50px 0;
 }
 
-#commands-table thead tr {
-  background-color: var(--color-light-grey);
-  color: var(--color-dark-grey);
+#commands-table thead {
+  font-size: 1.2rem;
+  text-align: left;
 }
 
 #commands-table td:nth-child(n + 2) {
-  border-left: 3px solid var(--color-light-grey);
+  margin-left: 20px;
 }
 
 #commands-table tbody tr {
-  background-color: var(--color-dark-grey);
-}
-
-#commands-table tbody tr:nth-child(odd) {
-  background-color: var(--color-grey);
-}
-
-#commands-table tbody tr:nth-child(n + 2) {
-  border-top: 3px solid var(--color-light-grey);
+  border-top: 2px solid var(--color-light-grey);
 }
 
 #commands-table th,
