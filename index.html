@@ -831,28 +831,7 @@
             src="assets/images/hazy-diagrams/full.png"
             alt="Resources to be deployed manually"
           />
-          <figcaption>Resources to be deployed</figcaption>
-        </figure>
-
-        <p>
-          To deploy our state machine, we'll need to:
-        </p>
-
-        <ul>
-          <li>Navigate to the Step Functions console</li>
-          <li>Select state machine</li>
-          <li>Select create state machine</li>
-          <li>Provide ASL definition</li>
-          <li>Conditionally modify the definition</li>
-          <li>Provide valid Amazon Resource Names (ARNs)</li>
-        </ul>
-
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-1.gif"
-            alt="gif of steps to create the state machine"
-          />
-          <figcaption>Steps to create the state machine</figcaption>
+          <figcaption>Deploying our example workflow with the AWS Management Console</figcaption>
         </figure>
 
         <p>
@@ -871,14 +850,6 @@
           requires exactitude to get right.
         </p>
 
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-4.gif"
-            alt="State machine creation failing"
-          />
-          <figcaption>State machine creation failing</figcaption>
-        </figure>
-
         <p>
           What does navigating to the Lambda console and creating the pertinent
           Lambdas look like? It’s another series of five steps the most
@@ -886,43 +857,15 @@
           (represented by the third step in the following diagram).
         </p>
 
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-3.gif"
-            alt="Steps for creating a single Lambda function"
-          />
-          <figcaption>
-            Step to create a Lambda function in the AWS Console
-          </figcaption>
-        </figure>
-
         <p>
           The difficulty regarding the AWS console is that every step, large and
           small, needs to be performed for each Lambda.
         </p>
 
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-2.gif"
-            alt="Creating all 4 lambda functions"
-          />
-          <figcaption>
-            Step to create a Lambda function in the AWS Console
-          </figcaption>
-        </figure>
-
         <p>
           After each lambda has been created, only then can the state machine be
           saved.
         </p>
-
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-5.gif"
-            alt="finishing up the state machine"
-          />
-          <figcaption>Finishing up the state machine</figcaption>
-        </figure>
 
         <p>
           Adding these five steps for each of the four Lambdas in our example
@@ -968,14 +911,6 @@
           <li>Deleting</li>
           <li>Confirming</li>
         </ul>
-
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-6.gif"
-            alt="deleting each resource one-at-a-time"
-          />
-          <figcaption>Deleting each resource one-at-a-time</figcaption>
-        </figure>
 
         <p>
           Clicking around to delete the example workflow in IAM, Step Functions,
