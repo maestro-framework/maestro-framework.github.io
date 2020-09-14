@@ -16,19 +16,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Torrel Moseley, Zac Klammer, John Isom" />
     <title>Maestro</title>
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="assets/images/logos/maestro/favicon.png"
     />
-    <link rel="stylesheet" href="assets/css/fonts.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/dark.min.css"
       charset="utf-8"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/scripts/application.js"></script>
@@ -999,8 +999,8 @@
           >]. With this approach, a framework can guide us through a process of
           creating framework-specific files that are then compiled to a single
           CloudFormation config file. All our serverless resources can then be
-          deployed using this file. Frameworks that aim to be more general
-          purpose often take the CloudFormation approach.
+          deployed using this file. Frameworks that aim to be more
+          general-purpose often take the CloudFormation approach.
         </p>
 
         <figure>
@@ -1039,8 +1039,8 @@
             href="#reference_10"
             class="reference"
             >10</a
-          >] is the dominant player in this space. Serverless Framework is a
-          more general purpose tool and uses CloudFormation under the hood.
+          >] is the dominant player in this space. It supports deployment to
+          many cloud providers and in several different languages.
         </p>
 
         <figure>
@@ -1052,39 +1052,31 @@
         </figure>
 
         <p>
-          Pros:
+          Serverless Framework has an active community that has created over two
+          thousand open-source plugins [REFERENCE]. One of these plugins enables
+          support for Step Functions.
         </p>
-
-        <ul>
-          <li>Supports multiple runtimes</li>
-          <li>Required permissions are automatically generated</li>
-          <li>Has some ASL templates</li>
-        </ul>
 
         <p>
-          Cons:
+          There are some common state machine templates available at the bottom
+          of the plugin's <code>README</code> [(check)REFERENCE]. While this is
+          helpful, it would be nice to be able to create a new project based on
+          a certain template without having to copy and paste from the
+          <code>README</code>. Also, to accommodate Serverless Framework’s
+          conventions, the state machine must be written in YAML. This is
+          unfortunate since ASL is a JSON-based language.
         </p>
-
-        <ul>
-          <li>
-            The templates have empty resource fields and must be filled out
-            manually
-          </li>
-          <li>ASL must be written in YAML</li>
-          <li>535 <code>node</code> dependencies</li>
-        </ul>
 
         <h3>6.2 AWS SAM</h3>
 
         <p>
-          AWS Serverless Application Model (SAM) [<a
+          Amazon provides a framework for serverless deployment called the AWS
+          Serverless Application Model (SAM) [<a
             href="#reference_11"
             class="reference"
             >11</a
-          >] started providing support for Step Functions just a few months
-          before this writing. It is similar to Serverless Framework in that it
-          is also a more general purpose tool and takes the CloudFormation
-          approach.
+          >]. SAM started providing support for Step Functions just a few months
+          before this writing.
         </p>
 
         <figure>
@@ -1092,45 +1084,33 @@
           <figcaption>AWS SAM</figcaption>
         </figure>
 
-        <p>Pros:</p>
-
-        <ul>
-          <li>Supports multiple runtimes</li>
-          <li>Required permissions are automatically generated</li>
-          <li>
-            Can set up a new project directory and deploy a working state
-            machine all from CLI
-          </li>
-        </ul>
-
-        <p>Cons:</p>
-
-        <ul>
-          <li>Only one state machine template</li>
-          <li>Relatively lengthy deployment time (took us about 3 minutes)</li>
-          <li>Doesn't seem to be a command to tear down what was deployed</li>
-        </ul>
+        <p>
+          Unlike Serverless Framework, a working state machine can be deployed
+          from a template, without having to make any manual configurations – it
+          can all be done straight from the CLI. However, there is only one
+          template that is offered and it has a relatively lengthy deployment
+          time, taking about three minutes. There are also several prompts that
+          the user must respond to during this process. Once deployed, there
+          doesn’t seem to be a command that just as easily tears down, so that
+          must be done manually.
+        </p>
 
         <p>
-          It's important to note that neiter Serverless Framework nor SAM were
+          It's important to note that neither Serverless Framework nor SAM was
           designed with Step Functions in mind. They both later added support
-          for Step Functions in the event that an app happens to use them. And
-          because of their general purpose nature, these frameworks carry around
-          a lot of tooling, which may be unnecessary and bulky for simpler
-          workflows.
+          for Step Functions for apps that happens to use them. And because of
+          their general-purpose nature, these frameworks carry around a lot of
+          tooling, which may be unnecessary and bulky for simpler workflows.
         </p>
 
         <h3>6.3 Step</h3>
 
         <p>
-          What about more purpose-built frameworks that use the SDK? Unfortunately, there don't
-          seem to be many specifically designed for Step Functions. There is one
-          built by Coinbase called Step, which is “a framework for building,
-          testing, and deploying AWS Step Functions and Lambda”. [<a
-            href="#reference_12"
-            class="reference"
-            >12</a
-          >].
+          What about more purpose-built frameworks that use the SDK?
+          Unfortunately, there don't seem to be many specifically designed for
+          Step Functions. There is one built by Coinbase called Step, which is
+          “a framework for building, testing, and deploying AWS Step Functions
+          and Lambda”. [<a href="#reference_12" class="reference">12</a>].
         </p>
 
         <figure>
@@ -1138,31 +1118,21 @@
           <figcaption>Step</figcaption>
         </figure>
 
-        <p>Pros:</p>
-
-        <ul>
-          <li>Purpose-built for working with Step Functions</li>
-          <li>
-            Allows the user to construct the state machine definition in a
-            higher level language (Go)
-          </li>
-        </ul>
-
-        <p>Cons:</p>
-
-        <ul>
-          <li>Only supports Go</li>
-          <li>Development state is Beta</li>
-          <li>Does not create state machine, only modifies existing one</li>
-        </ul>
+        <p>
+          Step allows the user to construct a state machine definition with a
+          higher-level language, namely Go. However, Coinbase seems to be one of
+          the only users of their framework. In fact, the development status of
+          the framework is listed as Beta. An additional drawback is that Step
+          is not able to create a new state machine but can only modify an
+          existing one. This can be a hindrance to the developer who is wanting
+          to quickly iterate on their work but has to manually create a mock
+          state machine first.
+        </p>
 
         <p>
-          Coinbase seems to be one of the only users of their framework. In
-          fact, the development status of the framework is listed as Beta. An
-          additional drawback is that Step is not able to create a new state
-          machine but can only modify an existing one. This can be a hindrance
-          to the developer who is wanting to quickly iterate on their work but
-          has to manually create a mock state machine first.
+          While the above solutions provide some helpful ways to manage Step
+          Functions, we found them lacking in some important areas. Because of
+          this, we decided to build Maestro.
         </p>
 
         <h2 id="maestro">7. Maestro</h2>
@@ -1716,10 +1686,11 @@
       </p>
       <ul>
         <li class="individual">
-          <img
-            src="assets/images/team/torrel_moseley.jpg"
-            alt="Torrel Moseley"
-          />
+          <a href="https://t-monius.github.io/" target="_blank"
+            ><img
+              src="assets/images/team/torrel_moseley.jpg"
+              alt="Torrel Moseley"
+          /></a>
           <h3>Torrel Moseley</h3>
           <p>NYC &amp; Denver</p>
           <ul class="social-icons">
@@ -1745,7 +1716,9 @@
           </ul>
         </li>
         <li class="individual">
-          <img src="assets/images/team/zac_klammer.jpg" alt="Zac Klammer" />
+          <a href="https://zklamm.github.io/" target="_blank">
+            <img src="assets/images/team/zac_klammer.jpg" alt="Zac Klammer" />
+          </a>
           <h3>Zac Klammer</h3>
           <p>Corpus Christi, TX</p>
           <ul class="social-icons">
@@ -1771,10 +1744,11 @@
           </ul>
         </li>
         <li class="individual">
-          <img
-            src="assets/images/team/john_isom.jpg"
-            alt="Picture of John Isom"
-          />
+          <a href="https://johnisom.dev/" target="_blank">
+            <img
+              src="assets/images/team/john_isom.jpg"
+              alt="Picture of John Isom"
+          /></a>
           <h3>John Isom</h3>
 
           <p>NYC & Salt Lake City</p>
