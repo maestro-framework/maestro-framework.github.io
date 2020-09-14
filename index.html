@@ -311,7 +311,8 @@
           >]. Since the ‘Manager’ Lambda can invoke other Lambdas, we can
           implement the ‘Router’ pattern by placing the branching logic there.
           Because we’ve now written orchestration logic alongside business
-          logic, the ‘Manager’ has become a bit ‘fat’.
+          logic, we’ll affectionately refer to the ‘Manager’ as the ‘Fat
+          Manager’.
         </p>
 
         <figure>
@@ -469,7 +470,7 @@
         <h2 id="aws-step-functions">4. AWS Step Functions</h2>
 
         <p>
-          Here's how Amazon describes AWS Step Functions [<a
+          Here’s how Amazon describes AWS Step Functions [<a
             href="#reference_5"
             class="reference"
             >5</a
@@ -502,17 +503,17 @@
         </figure>
 
         <p>
-          Step Functions are designed to contain an application's orchestration
+          Step Functions are designed to contain an application’s orchestration
           logic. This helps us to maintain the separation of concerns that we
           mentioned earlier. To create a state machine with Step Functions,
-          we'll need to use the JSON-based language called Amazon States
+          we’ll need to use the JSON-based language called Amazon States
           Language (ASL).
         </p>
 
         <h3>4.1 Amazon States Language</h3>
 
         <p>
-          Let's first look at a “Hello World” state machine definition to
+          Let’s first look at a “Hello World” state machine definition to
           familiarize ourselves with ASL.
         </p>
 
@@ -562,8 +563,8 @@
         </p>
 
         <p>
-          Let's return to our earlier example of an employee requesting approval
-          for a resource to be provisioned. We'll now implement this workflow
+          Let’s return to our earlier example of an employee requesting approval
+          for a resource to be provisioned. We’ll now implement this workflow
           with Step Functions.
         </p>
 
@@ -647,7 +648,7 @@
           we see how one might implement retry logic. <code>Task</code> states
           have an optional field called <code>Retry</code> that will specify
           which types of errors to retry, how many seconds to wait in between,
-          as well as a backoff rate and a maximum number of attempts. It's
+          as well as a backoff rate and a maximum number of attempts. It’s
           useful to be able to put this orchestration concern here, instead of
           writing some custom retry logic alongside business logic.
         </p>
@@ -682,7 +683,7 @@
 
         <p>
           Once a state machine has executed, using the AWS Management Console,
-          we're able to access an interactive execution event history. This
+          we’re able to access an interactive execution event history. This
           allows us to audit the transitions between states in one, unified
           place.
         </p>
@@ -717,14 +718,14 @@
         <p>
           The core purpose of AWS Step Functions is to provide an orchestration
           layer, preventing us from having to somehow choreograph our
-          application's resources. Step Functions also provides many built-in
+          application’s resources. Step Functions also provides many built-in
           features, such as unified logs and visual workflows that can help when
           needing to audit executions.
         </p>
 
         <p>
           Despite these benefits, some challenges arise when choosing to develop
-          with Step Functions. Let's examine some of these problems.
+          with Step Functions. Let’s examine some of these problems.
         </p>
 
         <h2 id="problems">5. Problems</h2>
@@ -987,12 +988,12 @@
 
         <p>
           A framework for deploying to AWS will typically be built using one of
-          two AWS tools. Let's first understand a bit about these tools before
+          two AWS tools. Let’s first understand a bit about these tools before
           examining any specific frameworks.
         </p>
 
         <p>
-          The first one we'll look at is called AWS CloudFormation [<a
+          The first one we’ll look at is called AWS CloudFormation [<a
             href="#reference_8"
             class="reference"
             >8</a
@@ -1028,7 +1029,7 @@
         </figure>
 
         <p>
-          Let's now examine some specific frameworks, keeping in mind that we'll
+          Let’s now examine some specific frameworks, keeping in mind that we’ll
           only be considering those that support Step Functions.
         </p>
 
@@ -1053,18 +1054,24 @@
 
         <p>
           Serverless Framework has an active community that has created over two
-          thousand open-source plugins [REFERENCE]. One of these plugins enables
-          support for Step Functions.
+          thousand open-source plugins [<a
+            href="#reference_11"
+            class="reference"
+            >11</a
+          >]. One of these plugins enables support for Step Functions.
         </p>
 
         <p>
           There are some common state machine templates available at the bottom
-          of the plugin's <code>README</code> [(check)REFERENCE]. While this is
-          helpful, it would be nice to be able to create a new project based on
-          a certain template without having to copy and paste from the
-          <code>README</code>. Also, to accommodate Serverless Framework’s
-          conventions, the state machine must be written in YAML. This is
-          unfortunate since ASL is a JSON-based language.
+          of the plugin’s <code>README</code> [<a
+            href="#reference_12"
+            class="reference"
+            >12</a
+          >]. While this is helpful, it would be nice to be able to create a new
+          project based on a certain template without having to copy and paste
+          from the <code>README</code>. Also, to accommodate Serverless
+          Framework’s conventions, the state machine must be written in YAML.
+          This is unfortunate since ASL is a JSON-based language.
         </p>
 
         <h3>6.2 AWS SAM</h3>
@@ -1072,11 +1079,12 @@
         <p>
           Amazon provides a framework for serverless deployment called the AWS
           Serverless Application Model (SAM) [<a
-            href="#reference_11"
+            href="#reference_13"
             class="reference"
-            >11</a
+            >13</a
           >]. SAM started providing support for Step Functions just a few months
-          before this writing.
+          before this writing [<a href="#reference_14" class="reference">14</a
+          >].
         </p>
 
         <figure>
@@ -1096,7 +1104,7 @@
         </p>
 
         <p>
-          It's important to note that neither Serverless Framework nor SAM was
+          It’s important to note that neither Serverless Framework nor SAM was
           designed with Step Functions in mind. They both later added support
           for Step Functions for apps that happens to use them. And because of
           their general-purpose nature, these frameworks carry around a lot of
@@ -1107,10 +1115,10 @@
 
         <p>
           What about more purpose-built frameworks that use the SDK?
-          Unfortunately, there don't seem to be many specifically designed for
+          Unfortunately, there don’t seem to be many specifically designed for
           Step Functions. There is one built by Coinbase called Step, which is
           “a framework for building, testing, and deploying AWS Step Functions
-          and Lambda”. [<a href="#reference_12" class="reference">12</a>].
+          and Lambda”. [<a href="#reference_15" class="reference">15</a>].
         </p>
 
         <figure>
@@ -1121,7 +1129,7 @@
         <p>
           Step allows the user to construct a state machine definition with a
           higher-level language, namely Go. However, Coinbase seems to be one of
-          the only users of their framework. In fact, the development status of
+          the only users of their framework. Indeed, the development status of
           the framework is listed as Beta. An additional drawback is that Step
           is not able to create a new state machine but can only modify an
           existing one. This can be a hindrance to the developer who is wanting
@@ -1321,9 +1329,9 @@
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_13"
+            href="#reference_16"
             class="reference"
-            >13</a
+            >16</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1408,7 +1416,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_14" class="reference">14</a>]. To
+          synchronous [<a href="#reference_17" class="reference">17</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
@@ -1541,7 +1549,7 @@
               <a
                 target="_blank"
                 href="https://acloud.guru/series/serverlessconf-nyc-2019/view/yaml-better?_hsenc=p2ANqtz-8NTIqitxWIiUw-zP8PduvB33SIKeFTL96OW8aFES-aovT2WN3ULwZm_cXSRpmntdO4cF6Z"
-                >YAML Is Better than Your Favorite Language: Fightin' words
+                >YAML Is Better than Your Favorite Language: Fightin’ words
                 about Infrastructure as code | Ben Kehoe</a
               >
             </li>
@@ -1563,23 +1571,44 @@
               >
             </li>
             <li id="reference_11">
+              <a
+                target="_blank"
+                href="https://www.serverless.com/learn/comparisons/"
+                >Serverless Framework Comparisons</a
+              >
+            </li>
+            <li id="reference_12">
+              <a
+                target="_blank"
+                href="https://github.com/serverless-operations/serverless-step-functions#how-to-split-up-state-machines-into-files"
+                >Step Functions plugin for Serverless Framework</a
+              >
+            </li>
+            <li id="reference_13">
               <a target="_blank" href="https://aws.amazon.com/serverless/sam/"
                 >AWS Serverless Application Model</a
               >
             </li>
-            <li id="reference_12">
+            <li id="reference_14">
+              <a
+                target="_blank"
+                href="https://aws.amazon.com/about-aws/whats-new/2020/05/aws-sam-adds-support-for-aws-step-functions/"
+                >AWS SAM adds support for Step Functions</a
+              >
+            </li>
+            <li id="reference_15">
               <a target="_blank" href="https://github.com/coinbase/step"
                 >Step</a
               >
             </li>
-            <li id="reference_13">
+            <li id="reference_16">
               <a
                 target="_blank"
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_14">
+            <li id="reference_17">
               <a
                 target="_blank"
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"
