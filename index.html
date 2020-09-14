@@ -1096,8 +1096,11 @@
 
         <p>
           Serverless Framework has an active community that has created over two
-          thousand open-source plugins [REFERENCE]. One of these plugins enables
-          support for Step Functions.
+          thousand open-source plugins [<a
+            href="#reference_11"
+            class="reference"
+            >11</a
+          >]. One of these plugins enables support for Step Functions.
         </p>
 
         <p>
@@ -1115,9 +1118,9 @@
         <p>
           Amazon provides a framework for serverless deployment called the AWS
           Serverless Application Model (SAM) [<a
-            href="#reference_11"
+            href="#reference_12"
             class="reference"
-            >11</a
+            >12</a
           >]. SAM started providing support for Step Functions just a few months
           before this writing.
         </p>
@@ -1153,7 +1156,7 @@
           Unfortunately, there don't seem to be many specifically designed for
           Step Functions. There is one built by Coinbase called Step, which is
           “a framework for building, testing, and deploying AWS Step Functions
-          and Lambda”. [<a href="#reference_12" class="reference">12</a>].
+          and Lambda”. [<a href="#reference_13" class="reference">13</a>].
         </p>
 
         <figure>
@@ -1364,9 +1367,9 @@
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_13"
+            href="#reference_14"
             class="reference"
-            >13</a
+            >14</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1451,7 +1454,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_14" class="reference">14</a>]. To
+          synchronous [<a href="#reference_15" class="reference">15</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
@@ -1606,23 +1609,30 @@
               >
             </li>
             <li id="reference_11">
+              <a
+                target="_blank"
+                href="https://www.serverless.com/learn/comparisons/"
+                >Serverless Framework Comparisons</a
+              >
+            </li>
+            <li id="reference_12">
               <a target="_blank" href="https://aws.amazon.com/serverless/sam/"
                 >AWS Serverless Application Model</a
               >
             </li>
-            <li id="reference_12">
+            <li id="reference_13">
               <a target="_blank" href="https://github.com/coinbase/step"
                 >Step</a
               >
             </li>
-            <li id="reference_13">
+            <li id="reference_14">
               <a
                 target="_blank"
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_14">
+            <li id="reference_15">
               <a
                 target="_blank"
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"
