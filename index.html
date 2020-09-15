@@ -187,8 +187,8 @@
           For example, when a Lambda is initially invoked, its container will
           have to be spun up, usually taking a few hundred milliseconds. This is
           often referred to as a “cold start”. To address this issue, there is a
-          pattern called the Function Warmer, which keeps the Lambda’s container
-          available for further invocations. Patterns for working with
+          pattern called the ‘Function Warmer’, which keeps the Lambda’s
+          container available for further invocations. Patterns for working with
           serverless can be grouped into five categories [<a
             href="#reference_3"
             class="reference"
@@ -323,7 +323,7 @@
             class="example-workflow"
           />
           <figcaption>
-            ‘Manager’ Lambda is now fat with orchestration logic
+            The ‘Manager’ Lambda now contains orchestration logic
           </figcaption>
         </figure>
 
@@ -358,11 +358,13 @@
         <figure>
           <img
             src="assets/images/workflow/fatter-manager.png"
-            alt="Addition of retry to the Fat Manager Orchestrator Lambda"
+            alt="Addition of retry to the Fat Manager Lambda"
             title="Fat Manager with Retry"
             class="example-workflow"
           />
-          <figcaption>The ‘Manager’ Lambda is even fatter</figcaption>
+          <figcaption>
+            The ‘Manager’ Lambda with even more orchestration responsibility
+          </figcaption>
         </figure>
 
         <p>
@@ -372,7 +374,7 @@
           Delayed provisioning may cause the ‘Manager’ to terminate before
           determining if a retry was necessary. Further, with the orchestration
           logic of the ‘Manager’ written alongside the business logic, the
-          component is overloaded resulting in poor separation of concerns.
+          component is overloaded resulting in a poor separation of concerns.
         </p>
 
         <figure>
@@ -426,7 +428,7 @@
         <p>
           So how would we go about extracting an orchestration layer? Creating
           and maintaining custom logic would require considerable overhead.
-          Let’s explore another pattern called the ‘State Machine’ [<a
+          Let’s look at another pattern called the ‘State Machine’ [<a
             href="#reference_3"
             class="reference"
             >3</a
@@ -434,14 +436,6 @@
         </p>
 
         <h3>3.2 The State Machine Pattern</h3>
-
-        <p>
-          Rowan Udell, a guest on the Serverless Chats Podcast [<a
-            href="#reference_4"
-            class="reference"
-            >4</a
-          >], provides a helpful description of a state machine.
-        </p>
 
         <blockquote cite="https://www.serverlesschats.com/16/">
           <p>
@@ -454,7 +448,14 @@
             states."
           </p>
           <footer>
-            Rowan Udell, <cite>Serverless Chats Podcast – Episode #16</cite>
+            Rowan Udell,
+            <cite
+              >Serverless Chats Podcast – Episode #16 [<a
+                href="#reference_4"
+                class="reference"
+                >4</a
+              >]</cite
+            >
           </footer>
         </blockquote>
 
@@ -469,14 +470,6 @@
 
         <h2 id="aws-step-functions">4. AWS Step Functions</h2>
 
-        <p>
-          Here’s how Amazon describes AWS Step Functions [<a
-            href="#reference_5"
-            class="reference"
-            >5</a
-          >].
-        </p>
-
         <blockquote
           cite="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html"
         >
@@ -489,7 +482,14 @@
             <span class="highlight">change applications quickly</span>.”
           </p>
           <footer>
-            AWS Documentation, <cite>What is AWS Step Functions?</cite>
+            AWS Documentation,
+            <cite
+              >What is AWS Step Functions? [<a
+                href="#reference_5"
+                class="reference"
+                >5</a
+              >]</cite
+            >
           </footer>
         </blockquote>
 
@@ -807,52 +807,25 @@
         <h3>5.2 Deployment</h3>
 
         <p>
-          Another challenge arises in an area that isn’t unique to Step
-          Functions: deploying to AWS. This is a notorious area of concern for
-          developers that have to interface with a broad spectrum of AWS
-          services to put their applications on the cloud.
-        </p>
-
-        <p>
-          Since Step Functions is an orchestration layer, many components may be
-          integrated with a single state machine and need to be deployed in
-          parallel. In some cases, components may represent AWS services outside
-          of and including Lambdas. Even a single state machine orchestrating a
-          single Lambda component represents at least 2 separate AWS services.
-        </p>
-
-        <p>
-          Each deployed component, including the state machine itself, needs to
-          be accompanied by an appropriate region and account number for a
-          successful deployment. Further, proper permissions must be configured.
-        </p>
-
-        <p>
-          Further, there are individual interfaces for each service, so
-          configuration on AWS cannot be performed in a single, shared location.
-          Manual pre-deployment configuration, especially in the AWS console,
-          can prove tedious and error-prone.
-        </p>
-
-        <p>
-          Consider the process of creating the example workflow previously
-          discussed using the AWS Console.
+          The AWS Management Console’s tagline is “Everything you need to access
+          and manage the AWS cloud — in one web interface.” [<a
+            href="reference_8"
+            class="reference"
+            >8</a
+          >]
         </p>
 
         <figure>
           <img
-            src="assets/images/hazy-diagrams/full.png"
-            alt="Resources to be provisioned manually"
+            src="assets/images/logos/aws/management-console.png"
+            alt="AWS Management Console"
           />
-          <figcaption>Resources to be provisioned</figcaption>
+          <figcaption>AWS Management Console</figcaption>
         </figure>
 
         <p>
-          There are seven steps to go through to create a state machine. Several
-          of the steps comprise tedious clicking around the console rather than
-          intellectual challenges. However, a couple of steps could cause real
-          trouble. For example, step 4 in the accompanying diagram is where ASL
-          needs to be provided to create a state machine.
+          Let’s look at the steps involved to deploy our example workflow using
+          only the AWS Management Console.
         </p>
 
         <figure>
@@ -860,112 +833,29 @@
             src="assets/images/hazy-diagrams/full.png"
             alt="Resources to be deployed manually"
           />
-          <figcaption>Steps to create the state machine</figcaption>
-        </figure>
-
-        <p>
-          If a developer is familiar with ASL and knows what they want to
-          create, this could take several minutes even when some elements of the
-          code have been provided (as with a template). For a developer
-          unfamiliar with ASL, properly integrating ASL could take several
-          hours.
-        </p>
-
-        <p>
-          After providing and modifying ASL, a developer may attempt to save the
-          state machine to create other components of the application. It makes
-          sense to create the orchestration layer first as it serves as a map
-          for integrating components during development. Unfortunately, to the
-          developer’s chagrin, they may run into an error if they don’t provide
-          a valid ARN (Amazon Resource Name) for all associated state machine
-          components. Most developers who aren’t familiar with writing a valid
-          ARN would solve the error by navigating to the Lambda console,
-          creating all of the necessary Lambdas while the Step Functions console
-          remains open, and copying/pasting the ARNs of the created Lambdas into
-          the state machine definition. For the experienced AWS developer, it’s
-          possible to write a valid ARN for each component, but it’s another
-          layer of tedium which requires exactitude to get right.
-        </p>
-
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-4.gif"
-            alt="State machine creation failing"
-          />
-          <figcaption>State machine creation failing</figcaption>
-        </figure>
-
-        <p>
-          What does navigating to the Lambda console and creating the pertinent
-          Lambdas look like? It’s another series of five steps the most
-          difficult of which is providing the business logic for the Lambda
-          (represented by the third step in the following diagram).
-        </p>
-
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-3.gif"
-            alt="Steps for creating a single Lambda function"
-          />
           <figcaption>
-            Step to create a Lambda function in the AWS Console
+            Deploying our example workflow with the AWS Management Console
           </figcaption>
         </figure>
 
         <p>
-          The difficulty regarding the AWS console is that every step, large and
-          small, needs to be performed for each Lambda.
-        </p>
-
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-2.gif"
-            alt="Creating all 4 lambda functions"
-          />
-          <figcaption>
-            Step to create a Lambda function in the AWS Console
-          </figcaption>
-        </figure>
-
-        <p>
-          After each lambda has been created, only then can the state machine be
-          saved.
-        </p>
-
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-5.gif"
-            alt="finishing up the state machine"
-          />
-          <figcaption>Finishing up the state machine</figcaption>
-        </figure>
-
-        <p>
-          Adding these five steps for each of the four Lambdas in our example
-          workflow plus those required to create the state machine totals 28
-          steps. The time required to accomplish these steps with existing
-          business logic and a template for the ASL would vary between several
-          minutes and several hours depending on the developer’s skill working
-          with the console.
+          The Management Console indeed provides everything needed for managing
+          the AWS cloud. But it also requires extensive configuration and
+          navigation – pointing, clicking, reloading of the screen, often in a
+          rigid order. The three Lambdas in our workflow all have to go through
+          the same tedious process. Imagine if our example had included ten or
+          more Lambdas.
         </p>
 
         <p>
-          A question to note regarding developing in the AWS console is whether
-          it would mirror the typical development workflow of a software
-          engineer who customarily works in a familiar local environment and
-          later deploys? Would a developer not prefer opening all application
-          files in their local text editor and deploying through a single
-          interface?
-        </p>
-
-        <p>
-          What if a developer implements the components locally? There are tools
-          like the AWS SDK and AWS CLI that allow the developer to create an
-          interface between a local machine and the AWS cloud. Writing the
-          necessary orchestration code and business logic using either or both
-          of those tools takes time to learn, and deploying the components to
-          AWS continues to pose configuration challenges like those previously
-          mentioned.
+          Although the Management Console touts itself as “one web interface”,
+          each of the AWS services has a different flavor of that interface with
+          distinct concepts and interactions. Each service must be configured
+          with the correct region and account number and must be assigned
+          security roles with the proper execution permissions. Also, an account
+          that contains multiple applications will list all services of the same
+          kind alongside one another, mingling the resources of separate
+          applications together.
         </p>
 
         <figure>
@@ -974,56 +864,21 @@
             alt="The AWS Console has many interfaces"
           />
           <figcaption>
-            The AWS Console has a separate interface for each service
+            The AWS Management Console encapsulates several different services
           </figcaption>
         </figure>
 
         <p>
-          Whether implementing components in disparate AWS consoles or locally
-          with the AWS SDK or AWS CLI, speed of development would certainly be
-          impacted at least while getting accustomed to AWS development. There
-          is a formidable learning curve.
+          What would it look like if we decided to tear down our state machine
+          and its associated Lambdas? It would be a similar, error-prone process
+          but in reverse order. This is not conducive to quickly developing a
+          new workflow that requires frequent iteration.
         </p>
 
         <p>
-          It’s easy to imagine why certain aspects of deployment could benefit
-          from automation. Indeed, several frameworks aim to help the developer
-          perform deployment related tasks.
-        </p>
-
-        <p>
-          It’s unlikely that the first version of an application will be the
-          version that stands the test of time, and for the application to
-          evolve, old versions need to be torn down. This is especially true
-          when working in a new, unfamiliar environment.
-        </p>
-
-        <p>
-          Tearing down in the AWS Console isn’t challenging. It’s just tedious.
-          It mainly involves:
-        </p>
-
-        <ul id="deletion-steps">
-          <li>Navigating to a service</li>
-          <li>Clicking around a bit</li>
-          <li>Selecting a resource</li>
-          <li>Deleting</li>
-          <li>Confirming</li>
-        </ul>
-
-        <figure>
-          <img
-            src="assets/images/step-functions-console/console-diagram-6.gif"
-            alt="deleting each resource one-at-a-time"
-          />
-          <figcaption>Deleting each resource one-at-a-time</figcaption>
-        </figure>
-
-        <p>
-          Clicking around to delete the example workflow in IAM, Step Functions,
-          and Lamda interfaces take some 30 steps. Deletion is a risky business,
-          and selecting the wrong component to delete anywhere along the way
-          requires attention; one must go slowly.
+          The manual tedium of deploying to the AWS cloud using only the
+          Management Console is a process that should be automated. Fortunately,
+          several serverless deployment frameworks aim to do just that.
         </p>
 
         <h2 id="existing-solutions">6. Existing Solutions</h2>
@@ -1036,9 +891,9 @@
 
         <p>
           The first one we’ll look at is called AWS CloudFormation [<a
-            href="#reference_8"
+            href="#reference_9"
             class="reference"
-            >8</a
+            >9</a
           >]. With this approach, a framework can guide us through a process of
           creating framework-specific files that are then compiled to a single
           CloudFormation config file. All our serverless resources can then be
@@ -1056,9 +911,9 @@
 
         <p>
           The other tool is the AWS Software Development Kit (SDK) [<a
-            href="#reference_9"
+            href="#reference_10"
             class="reference"
-            >9</a
+            >10</a
           >]. This is a collection of APIs that allow us to work directly with
           individual resources from our language of choice. Frameworks geared
           toward a specific use case or a particular language are usually built
@@ -1079,9 +934,9 @@
 
         <p>
           The aptly named Serverless Framework [<a
-            href="#reference_10"
+            href="#reference_11"
             class="reference"
-            >10</a
+            >11</a
           >] is the dominant player in this space. It supports deployment to
           many cloud providers and in several different languages.
         </p>
@@ -1097,18 +952,18 @@
         <p>
           Serverless Framework has an active community that has created over two
           thousand open-source plugins [<a
-            href="#reference_11"
+            href="#reference_12"
             class="reference"
-            >11</a
+            >12</a
           >]. One of these plugins enables support for Step Functions.
         </p>
 
         <p>
           There are some common state machine templates available at the bottom
           of the plugin’s <code>README</code> [<a
-            href="#reference_12"
+            href="#reference_13"
             class="reference"
-            >12</a
+            >13</a
           >]. While this is helpful, it would be nice to be able to create a new
           project based on a certain template without having to copy and paste
           from the <code>README</code>. Also, to accommodate Serverless
@@ -1121,11 +976,11 @@
         <p>
           Amazon provides a framework for serverless deployment called the AWS
           Serverless Application Model (SAM) [<a
-            href="#reference_13"
+            href="#reference_14"
             class="reference"
-            >13</a
+            >14</a
           >]. SAM started providing support for Step Functions just a few months
-          before this writing [<a href="#reference_14" class="reference">14</a
+          before this writing [<a href="#reference_15" class="reference">15</a
           >].
         </p>
 
@@ -1135,7 +990,7 @@
         </figure>
 
         <p>
-          Unlike Serverless Framework, a working state machine can be deployed
+          Unlike Serverless Framework, SAM can deploy a working state machine
           from a template, without having to make any manual configurations – it
           can all be done straight from the CLI. However, there is only one
           template that is offered and it has a relatively lengthy deployment
@@ -1148,7 +1003,7 @@
         <p>
           It’s important to note that neither Serverless Framework nor SAM was
           designed with Step Functions in mind. They both later added support
-          for Step Functions for apps that happens to use them. And because of
+          for Step Functions for apps that happen to use them. And because of
           their general-purpose nature, these frameworks carry around a lot of
           tooling, which may be unnecessary and bulky for simpler workflows.
         </p>
@@ -1160,7 +1015,7 @@
           Unfortunately, there don’t seem to be many specifically designed for
           Step Functions. There is one built by Coinbase called Step, which is
           “a framework for building, testing, and deploying AWS Step Functions
-          and Lambda”. [<a href="#reference_15" class="reference">15</a>].
+          and Lambda”. [<a href="#reference_16" class="reference">16</a>].
         </p>
 
         <figure>
@@ -1205,7 +1060,7 @@
         <figure>
           <img
             src="assets/images/step-functions-console/console-diagram-7.gif"
-            style="max-height: 50vh"
+            style="max-height: 50vh;"
             alt="deploying with maestro"
           />
           <figcaption>Deploying with Maestro</figcaption>
@@ -1213,7 +1068,7 @@
 
         <p>
           If you look back to the figure under section 5.2 that shows the steps
-          required to deploy a workflow using the AWS console, you'll notice
+          required to deploy a workflow using the AWS console, you’ll notice
           quite a stark difference. What took 24 steps across all resources
           takes just 3 with Maestro, all in the comfort of your own terminal.
           And when considering the 2-3 min deployment time of AWS SAM, the
@@ -1222,7 +1077,7 @@
         </p>
 
         <p>
-          In addition to it's ease of use, Maestro also has robust manual (man)
+          In addition to its ease of use, Maestro also has robust manual (man)
           pages which contribute to its ease of use. A new project can be
           quickly and easily created with the
           <code class="command language-plaintext">maestro new</code> command.
@@ -1263,8 +1118,8 @@
 
                 <p>
                   If the user simply presses <code>&lt;return&gt;</code>at the
-                  prompt or enters an invalid input, the new project is created
-                  without influence ofa template.
+                  prompt or enters invalid input, the new project is created
+                  without the influence of a template.
                 </p>
               </td>
             </tr>
@@ -1283,7 +1138,7 @@
                   <code>definition.asl.json</code> and all lambda functions
                   defined in the <code>lambdas/</code> directory. If you do not
                   have the necessary Maestro IAM roles, running this command
-                  will automatically create themforyou as part of the
+                  will automatically create them for you as part of the
                   deployment.
                 </p>
 
@@ -1384,9 +1239,9 @@
 
         <p>
           One source of difficulty was dealing with IAM [<a
-            href="#reference_16"
+            href="#reference_17"
             class="reference"
-            >16</a
+            >17</a
           >]. IAM is the AWS service that allows for the creation of roles that
           can operate within the AWS environment and perform tasks stipulated by
           associated permissions and policies. Authorization is often a
@@ -1471,7 +1326,7 @@
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_17" class="reference">17</a>]. To
+          synchronous [<a href="#reference_18" class="reference">18</a>]. To
           achieve relevant concurrency in creating resources, a mixture of
           ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
@@ -1609,61 +1464,66 @@
               >
             </li>
             <li id="reference_8">
+              <a target="_blank" href="https://aws.amazon.com/console/"
+                >AWS Management Console</a
+              >
+            </li>
+            <li id="reference_9">
               <a target="_blank" href="https://aws.amazon.com/cloudformation/"
                 >AWS Cloud Formation</a
               >
             </li>
-            <li id="reference_9">
+            <li id="reference_10">
               <a
                 target="_blank"
                 href="https://aws.amazon.com/getting-started/tools-sdks/"
                 >Start building with SDKs and tools</a
               >
             </li>
-            <li id="reference_10">
+            <li id="reference_11">
               <a target="_blank" href="https://www.serverless.com/"
                 >Serverless Framework</a
               >
             </li>
-            <li id="reference_11">
+            <li id="reference_12">
               <a
                 target="_blank"
                 href="https://www.serverless.com/learn/comparisons/"
                 >Serverless Framework Comparisons</a
               >
             </li>
-            <li id="reference_12">
+            <li id="reference_13">
               <a
                 target="_blank"
                 href="https://github.com/serverless-operations/serverless-step-functions#how-to-split-up-state-machines-into-files"
                 >Step Functions plugin for Serverless Framework</a
               >
             </li>
-            <li id="reference_13">
+            <li id="reference_14">
               <a target="_blank" href="https://aws.amazon.com/serverless/sam/"
                 >AWS Serverless Application Model</a
               >
             </li>
-            <li id="reference_14">
+            <li id="reference_15">
               <a
                 target="_blank"
                 href="https://aws.amazon.com/about-aws/whats-new/2020/05/aws-sam-adds-support-for-aws-step-functions/"
                 >AWS SAM adds support for Step Functions</a
               >
             </li>
-            <li id="reference_15">
+            <li id="reference_16">
               <a target="_blank" href="https://github.com/coinbase/step"
                 >Step</a
               >
             </li>
-            <li id="reference_16">
+            <li id="reference_17">
               <a
                 target="_blank"
                 href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
                 >What is IAM?</a
               >
             </li>
-            <li id="reference_17">
+            <li id="reference_18">
               <a
                 target="_blank"
                 href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"
