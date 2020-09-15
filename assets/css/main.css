@@ -911,15 +911,14 @@ small {
 
   td {
     position: relative;
-    padding-left: 40%;
+    margin-top: 30px;
   }
 
   td::before {
     position: absolute;
     width: 35%;
-    top: 6px;
-    left: 6px;
-    padding-right: 10px;
+    top: -20px;
+    font-weight: bold;
     white-space: nowrap;
   }
 
