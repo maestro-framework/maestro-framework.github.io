@@ -402,27 +402,27 @@ h3 {
   color: var(--color-maestro-red);
 }
 
-#commands-table {
+table {
   table-layout: fixed;
   border-collapse: collapse;
   margin: 50px 0;
 }
 
-#commands-table thead {
+thead {
   font-size: 1.2rem;
   text-align: left;
 }
 
-#commands-table td:nth-child(n + 2) {
+td:nth-child(n + 2) {
   margin-left: 20px;
 }
 
-#commands-table tbody tr {
+tbody tr {
   border-top: 2px solid var(--color-light-grey);
 }
 
-#commands-table th,
-#commands-table td {
+th,
+td {
   padding: 10px;
 }
 
@@ -871,6 +871,64 @@ small {
 
   #case-study img {
     max-width: 75vw;
+  }
+
+  table {
+    table-layout: auto;
+  }
+
+  td:nth-child(n + 2) {
+    margin-left: 0px;
+  }
+
+  tbody tr {
+    border-top: none;
+  }
+
+  tbody tr:nth-child(n + 2) {
+    border-top: 2px solid var(--color-light-grey);
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+
+  table,
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td {
+    position: relative;
+    padding-left: 40%;
+  }
+
+  td::before {
+    position: absolute;
+    width: 35%;
+    top: 6px;
+    left: 6px;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  td:nth-of-type(1)::before {
+    content: "Command";
+  }
+
+  td:nth-of-type(2)::before {
+    content: "Description";
   }
 
   #our-team .individual ul {
