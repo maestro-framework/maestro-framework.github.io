@@ -531,9 +531,14 @@
 {
   "StartAt": "Hello World",
   "States": {
-    "Hello World": {
+    "Hello": {
       "Type": "Task",
-      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:WORKFLOW_NAME_hello",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:hello",
+      "Next": "World"
+    },
+    "World": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:world",
       "End": true
     }
   }
@@ -541,6 +546,7 @@
               </code>
             </pre>
             <img
+              class="maestro-border"
               src="assets/images/step-functions-console/hello-world.png"
               alt="Example of the ASL of a workflow for a Hello World Application"
               title="Hello World ASL "
@@ -553,7 +559,7 @@
         </figure>
 
         <p>
-          There are two required fields for all state machines:
+          There are two top-level fields required for all state machines:
           <code>StartAt</code> and <code>States</code>. The
           <code>StartAt</code> field simply designates which state will begin
           execution, whereas the <code>States</code> field is a list of all
@@ -563,10 +569,37 @@
         </p>
 
         <p>
-          The only state in this simple example is a <code>Task</code> state
-          that is representing a Lambda function. Besides <code>Task</code>,
-          several other state types can be used to help orchestrate the
-          workflow.
+          A state‘s type dictates the additional attributes that the state can
+          have. There are eight different state types given to us by ASL.
+        </p>
+
+        <ul>
+          <li><code>Task</code></li>
+          <li><code>Parallel</code></li>
+          <li><code>Map</code></li>
+          <li><code>Pass</code></li>
+          <li><code>Wait</code></li>
+          <li><code>Choice</code></li>
+          <li><code>Succeed</code></li>
+          <li><code>Fail</code></li>
+        </ul>
+
+        <p>
+          The <code>Task</code> type allows a state to reference a Lambda
+          function. This is done by setting the state‘s
+          <code>Resource</code> field to the Lambda‘s Amazon Resource Name
+          (ARN). We see that the “Hello World” example has two
+          <code>Task</code> states: <code>Hello</code> and <code>World</code>,
+          each of which points to a different Lambda. When
+          <code>Hello</code> returns, its output is passed as input to the next
+          (and last) step in the execution, <code>World</code>.
+        </p>
+
+        <p>
+          The other state types do not map to Lambda functions but help with
+          workflow orchestration. For example, the <code>Choice</code> state
+          enables branching logic and the <code>Wait</code> state will pause
+          execution for some specified amount of time.
         </p>
 
         <p>
@@ -651,13 +684,15 @@
         </figure>
 
         <p>
-          If we look more closely at the state called <code>Provisioner</code>,
-          we see how one might implement retry logic. <code>Task</code> states
-          have an optional field called <code>Retry</code> that will specify
-          which types of errors to retry, how many seconds to wait in between,
-          as well as a backoff rate and a maximum number of attempts. It’s
-          useful to be able to put this orchestration concern here, instead of
-          writing some custom retry logic alongside business logic.
+          One of the states, <code>Provisioner</code>, is mapped to the Lambda
+          that handles resource provisioning. Looking more closely at this
+          state, we see how one might implement retry logic.
+          <code>Task</code> states have an optional field called
+          <code>Retry</code> that will specify which types of errors to retry,
+          how many seconds to wait in between, as well as a backoff rate and a
+          maximum number of attempts. It’s useful to be able to put this
+          orchestration concern here, instead of writing some custom retry logic
+          alongside business logic.
         </p>
 
         <figure>
@@ -728,8 +763,8 @@
           The core purpose of AWS Step Functions is to provide an orchestration
           layer, preventing us from having to somehow choreograph our
           application’s resources. Step Functions also provides many built-in
-          features, such as unified logs and visual workflows that can help when
-          needing to audit executions.
+          features, such as eight state types, unified logs, and visual
+          workflows that can help when needing to audit executions.
         </p>
 
         <p>
@@ -1621,6 +1656,11 @@
                 href="https://www.youtube.com/watch?v=bEB0zDHXXG4&feature=youtu.be"
                 target="_blank"
                 >Youtube tutorial for deploying with Serverless Framework</a
+              >
+            </li>
+            <li>
+              <a href="https://states-language.net/spec.html"
+                >Amazon States Language Specification</a
               >
             </li>
           </ol>
