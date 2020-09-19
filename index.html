@@ -1342,15 +1342,15 @@
           to create the Lambdas and Step Functions state machines that depend on
           those roles, we still ran into problems regarding the roles
           availability. This is because in order to attach a role to an AWS
-          resource, the role must first propagate to every AWS data center, which
-          can take upwards of 15 seconds. If one were to try to attach a role to
-          a Lambda before the role had a chance to fully propagate, the role
-          would not attach and would instead throw back a cryptic error message.
-          Unfortunately, there is not simple way to determine whether a role is
-          ready for attachment or not. As of the time of this writing (Fall
-          2020), the best way to determine that is to try to attach the role to
-          a resource (such as a Lambda) and see if the cryptic error message is
-          thrown back.
+          resource, the role must first propagate to every AWS data center,
+          which can take upwards of 15 seconds. If one were to try to attach a
+          role to a Lambda before the role had a chance to fully propagate, the
+          role would not attach and would instead throw back a cryptic error
+          message. Unfortunately, there is not simple way to determine whether a
+          role is ready for attachment or not. As of the time of this writing
+          (Fall 2020), the best way to determine that is to try to attach the
+          role to a resource (such as a Lambda) and see if the cryptic error
+          message is thrown back.
         </p>
 
         <p>
@@ -1366,23 +1366,26 @@
         <h4>7.2.2 Asynchronicity</h4>
 
         <p>
-          Creating multiple AWS resources that depend on one another in deployment
-          touches on an overarching challenge that would need to be reconciled
-          in developing Maestro: asynchronicity. Maestro offers quick deployment
-          thanks to concurrent creation and deployment of resources which
-          requires navigating numerous issues related to synchronicity.
+          Creating multiple AWS resources that depend on one another in
+          deployment touches on an overarching challenge that would need to be
+          reconciled in developing Maestro: asynchronicity. Maestro offers quick
+          deployment thanks to concurrent creation and deployment of resources
+          which requires navigating numerous issues related to synchronicity.
         </p>
 
         <p>
-          A helpful pattern that allowed us to work with asynchronous
-          functions and Promises was the ‘async/await’ pattern. This allowed
-          certain actions to be treated synchronously in an asynchronous context. However, the Maestro
-          philosophy was not to completely remove Promise chains by dogmatically
-          applying the ‘async/await’ pattern everywhere possible. Overuse of the
-          pattern can cause code to be slow by essentially making every step
-          synchronous [<a href="#reference_18" class="reference">18</a>]. To
-          achieve relevant concurrency in creating resources, a mixture of
-          ‘Promise chains’, ‘async/await’, and
+          A helpful pattern that allowed us to work with asynchronous functions
+          and Promises was the ‘async/await’ pattern. This allowed certain
+          actions to be treated synchronously in an asynchronous context.
+          However, the Maestro philosophy was not to completely remove Promise
+          chains by dogmatically applying the ‘async/await’ pattern everywhere
+          possible. Overuse of the pattern can cause code to be slow by
+          essentially making every step synchronous [<a
+            href="#reference_18"
+            class="reference"
+            >18</a
+          >]. To achieve relevant concurrency in creating resources, a mixture
+          of ‘Promise chains’, ‘async/await’, and
           <code class="command language-plaintext">Promise.all</code> was
           implemented. The result is a lightning-fast framework.
         </p>
@@ -1408,15 +1411,19 @@
           work.
         </p>
 
+        <h4>7.3.1 ASL Wrapper</h4>
+
         <p>
           Ultimately, a framework that works with ASL could be benefited by
           abstracting away the awkward language. As was previously described,
           the objective of Maestro is to facilitate working with ASL through
           templates. However, no set of templates can be comprehensive, and any
           developer working extensively with Step Functions will eventually
-          require writing ASL. Having an ASL ‘wrapper’ to imperatively write
-          ASL, in effect, mirroring common procedural coding would be helpful.
+          require writing ASL. Having an ASL ‘wrapper’ to imperatively write ASL
+          in native JavaScript would be helpful.
         </p>
+
+        <h4>7.3.2 Logging</h4>
 
         <p>
           Another possible future addition would be integration with the host
@@ -1425,15 +1432,19 @@
           workflow.
         </p>
 
+        <h4>7.3.3 Versioning</h4>
+
         <p>
-          Further, if a premise of Maestro is allowing rapid iteration on
+          Becuase the premise of Maestro is to allow rapid iteration on
           workflows, versioning comes into view. Much consideration must go into
           determining the point at which a workflow is ready for production, and
           due to innumerable circumstances, a team may resolve to look back at
           some previous version of their application. Ideally, a version of the
           workflow would be persisted and easily accessible every time a
-          workflow was newly deployed.
+          workflow was deployed.
         </p>
+
+        <h4>7.3.4 Redeploy Command</h4>
 
         <p>
           Which brings to mind another consideration left for the future: a
@@ -1444,25 +1455,27 @@
           then re-deploying could look back at a snapshot of the workflow to
           determine what changed and then re-deploy accordingly. This would help
           preserve artifacts in AWS that provide auditability of long-standing
-          components.
+          components as well as reduce load on the network.
         </p>
 
+        <h4>7.3.5 Multiple AWS Services</h4>
+
         <p>
-          As clearly outlined, the current focus of Maestro is the ever-popular
-          AWS Lambdas. While much can be achieved, and often is, strictly using
+          The focus of Maestro is AWS Lambdas, but that doesn’t have to be the
+          case. While much can be achieved, and often is, strictly using
           Lambdas, other services offer a broader range of development
-          possibilities. Having encountered a starting point for development,
-          integrating further AWS services into Maestro would amplify its
-          potential.
+          possibilities. Integrating further AWS services into Maestro would
+          amplify its potential.
         </p>
 
+        <h4>7.3.6. Per-Project Configuration</h4>
+
         <p>
-          Currently, the Maestro configuration depends on a single configuration
-          file referenced in numerous projects. It would be beneficial to have a
-          unique config file for each project allowing deployment in various
-          regions and even to different AWS accounts. On a similar note, a
-          developer may use different Node.js runtimes, so support for various
-          versions could be added.
+          Currently, Maestro only uses a single global configuration file. It
+          would be beneficial to have a unique config file for each project
+          allowing deployment in various regions and even to different AWS
+          accounts. On a similar note, a developer may wish to use different
+          Node.js&reg; runtimes, so support for various versions could be added.
         </p>
 
         <section id="references">
