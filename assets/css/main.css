@@ -109,7 +109,7 @@ sup a:hover {
 
 /* ---------------------------------
 
-               images
+            images/videos
 
 ------------------------------------ */
 
@@ -138,6 +138,11 @@ img {
 
 #case-study img {
   max-width: 80%;
+  height: auto;
+}
+
+#case-study video {
+  max-width: 100%;
   height: auto;
 }
 
