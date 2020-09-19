@@ -1126,9 +1126,9 @@
           </video>
           <figcaption>Using the AWS Console</figcaption>
         </figure>
-        
+
         <p>Now, the same steps but using Maestro:</p>
-        
+
         <figure>
           <video controls>
             <source src="assets/videos/using-maestro.mp4" type="video/mp4" />
@@ -1136,7 +1136,9 @@
           </video>
           <aside>
             <small>
-              Note that it is not necessary to navigate through the console when using Maestro. We did so in this video just to demonstrate that the resources were deployed to AWS and worked as expected.
+              Note that it is not necessary to navigate through the console when
+              using Maestro. We did so in this video just to demonstrate that
+              the resources were deployed to AWS and worked as expected.
             </small>
           </aside>
           <figcaption>Using Maestro</figcaption>
@@ -1147,19 +1149,14 @@
           stark one. What took 24 steps across all resources to create the
           workflow (not to mention deleting) takes just 3 with Maestro, all in
           the comfort of your own terminal. And when considering the 2-3 min
-          deployment time of AWS SAM, the 3-step, 3-second deployment time of
-          Maestro is unbeatable and wildly refreshing to work with.
+          deployment time of AWS SAM, the 3-step, 3-second deployment time and
+          1-step, 2-second teardown time of Maestro is unbeatable and wildly
+          refreshing to work with.
         </p>
 
         <p>
-          In addition to its ease of use, Maestro also has robust manual (man)
-          pages which contribute to its ease of use. A new project can be
-          quickly and easily created with the
-          <code class="command language-plaintext">maestro new</code> command.
-          Further, speed is prioritized as Maestro allows rapid deployment in
-          just 3 seconds, enabling quickly bootstrapping a new project or
-          iterating on an existing one. Teardown can just as quickly be
-          performed in as little as 2 seconds.
+          In addition to its lightning-fast deploys and teardowns, Maestro has
+          robust manual (man) and inline help (discussed in the table below)
         </p>
 
         <h3>7.1 Commands</h3>
