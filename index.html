@@ -1342,7 +1342,7 @@
           to create the Lambdas and Step Functions state machines that depend on
           those roles, we still ran into problems regarding the roles
           availability. This is because in order to attach a role to an AWS
-          service, the role must first propagate to every AWS data center, which
+          resource, the role must first propagate to every AWS data center, which
           can take upwards of 15 seconds. If one were to try to attach a role to
           a Lambda before the role had a chance to fully propagate, the role
           would not attach and would instead throw back a cryptic error message.
@@ -1355,7 +1355,7 @@
 
         <p>
           Therefore, to create Lambdas and state machines with associated roles,
-          we resolved to implement retry when attaching a role to a service.
+          we resolved to implement retry when attaching a role to a resource.
           Built-in retry does not exist in the AWS SDK, so we created our own
           robust and general-purpose retry function that handles the number of
           attempts and the backoff rate between subsequent attempts. The retry,
