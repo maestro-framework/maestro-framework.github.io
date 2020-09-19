@@ -1111,28 +1111,44 @@
         </figure>
 
         <p>
-          To fully demonstrate the power of Maestro, consider this short video
-          that shows the creation and deployment of a new project with Maesro,
-          demonstrates that all the resources were sucessfuly deployed to AWS,
-          and showing what it looks like to tear down with Maestro:
+          To fully demonstrate the power of Maestro, first consider this short
+          video that shows in detail the steps requried to deploy our example
+          workflow using just the AWS Console:
         </p>
 
+        <figure>
+          <video controls>
+            <source
+              src="assets/videos/using-aws-console.mp4"
+              type="video/mp4"
+            />
+            A video of using the AWS Console to deploy a workflow.
+          </video>
+          <figcaption>Using the AWS Console</figcaption>
+        </figure>
+        
+        <p>Now, the same steps but using Maestro:</p>
+        
         <figure>
           <video controls>
             <source src="assets/videos/using-maestro.mp4" type="video/mp4" />
             A video of using maestro to deploy a workflow.
           </video>
+          <aside>
+            <small>
+              Note that it is not necessary to navigate through the console when using Maestro. We did so in this video just to demonstrate that the resources were deployed to AWS and worked as expected.
+            </small>
+          </aside>
           <figcaption>Using Maestro</figcaption>
         </figure>
 
         <p>
-          If you look back to the figure under section 5.2 that shows the steps
-          required to deploy a workflow using the AWS console, you’ll notice
-          quite a stark difference. What took 24 steps across all resources
-          takes just 3 with Maestro, all in the comfort of your own terminal.
-          And when considering the 2-3 min deployment time of AWS SAM, the
-          3-step, 3-second deployment time of Maestro is unbeatable and wildly
-          refreshing to work with.
+          The difference between using the AWS Console vs Maestro is quite a
+          stark one. What took 24 steps across all resources to create the
+          workflow (not to mention deleting) takes just 3 with Maestro, all in
+          the comfort of your own terminal. And when considering the 2-3 min
+          deployment time of AWS SAM, the 3-step, 3-second deployment time of
+          Maestro is unbeatable and wildly refreshing to work with.
         </p>
 
         <p>
