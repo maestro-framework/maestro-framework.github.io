@@ -1302,82 +1302,65 @@
         <h3>7.2 Challenges</h3>
 
         <p>
-          One may now understand the value of working with a framework like
-          Maestro, but, as with other projects, there were development
-          challenges along the way.
+          While we were building the Maestro framework, we came across a few
+          challenges along the way, which we will now discuss.
         </p>
 
         <h4>7.2.1 AWS IAM</h4>
 
         <p>
-          One source of difficulty was dealing with IAM [<a
+          One source of difficulty was dealing with AWS IAM [<a
             href="#reference_17"
             class="reference"
             >17</a
-          >]. IAM is the AWS service that allows for the creation of roles that
-          can operate within the AWS environment and perform tasks stipulated by
-          associated permissions and policies. Authorization is often a
+          >]. IAM is the AWS service that manages the creation of, deletion of,
+          and management of roles, permissions, and policies that dictate what
+          specific AWS services are allowed to do. Authorization is often a
           challenge in most programming environments, and AWS is no exception.
         </p>
 
         <p>
-          For those inexperienced with IAM, the initial challenge is determining
-          what set of permissions and policies must be provided to allow each
-          component to execute properly. One would imagine that clear
-          documentation regarding which permissions and policies allow execution
-          of a given task would be a major priority, but such mapping of
-          permission and policy capabilities is not forthcoming.
+          The first challenge that we, the Maestro team, ran into when working
+          with AWS IAM was determining what set of permissions and policies must
+          be provided to allow each component to execute properly. One would
+          imagine that clear documentation regarding which permissions and
+          policies allow execution of a given task would be easy to find, but
+          that was not our experience.
         </p>
 
         <p>
-          To initially determine which basic capabilities the components in a
-          standard Lambda-centric workflow required, the Maestro team created
-          some mock components and observed which policies AWS attached by
-          default. Later, a composite of these policies was applied to Maestro
-          Lambdas.
+          To determine which basic capabilities the components in a standard
+          Lambda-centric workflow required, we manually created some mock
+          components and observed which policies AWS attached by default. This
+          gave us a starting point for determining exactly which policies the
+          Lambdas and Step Functions that Maestro deploys needs.
         </p>
 
         <p>
-          Assuming that roles can be created and have the proper permissions
-          with appropriate policies attached, sequencing the creation of
-          services such that the roles and policies are accessible before
-          attempting to associate them with a service comprises a subsequent
-          challenge. Notice, the Maestro team established the creation of roles
-          with policies but took for granted that those roles would be
-          accessible to other services whence created.
-        </p>
-
-        <p>
-          Role creation synchronously preceded any attempt to create subsequent
-          resources that needed those roles, but confirming the creation of a
-          role in IAM did not indicate the availability of the role for
-          association with another service. Further, the most straightforward
-          mechanism for determining a role’s availability in another service
-          requires attempting to associate it with that service from within the
-          other service. Simply accessing IAM to determine if the role exists
-          says little regarding whether its existence has propagated to other
-          services.
+          The second challenge regarding IAM that we ran into was the
+          propagation of roles. While Maestro creates roles before it attempts
+          to create the Lambdas and Step Functions state machines that depend on
+          those roles, we still ran into problems regarding the roles
+          availability. This is because in order to attach a role to an AWS
+          service, the role must first propagate to every AWS data center, which
+          can take upwards of 15 seconds. If one were to try to attach a role to
+          a Lambda before the role had a chance to fully propagate, the role
+          would not attach and would instead throw back a cryptic error message.
+          Unfortunately, there is not simple way to determine whether a role is
+          ready for attachment or not. As of the time of this writing (Fall
+          2020), the best way to determine that is to try to attach the role to
+          a resource (such as a Lambda) and see if the cryptic error message is
+          thrown back.
         </p>
 
         <p>
           Therefore, to create Lambdas and state machines with associated roles,
-          the Maestro team resolved to implement retry in the chain of role
-          creation and subsequent creation of services. Built-in retry does
-          exist in SDKs, but such retry is for atomic retry of a service
-          interaction, not the retry of the business logic of an inter-service
-          framework. In other words, if creating a role in IAM failed, there
-          would be an AWS means of retrying that interaction, but since the
-          current problem is not a failed role creation but its propagation to
-          other services, the Maestro team had to roll its own retry.
-        </p>
-
-        <p>
-          The retry process was fraught with further challenges since the error
-          messages of unsuccessful attempts to attach a policy to a Lambda or
-          state machine were quite cryptic. The AWS documentation for role
-          association was not as robust as the team would have hoped, but in the
-          end, retry with appropriate initial sleep and backoff rates was
-          achieved.
+          we resolved to implement retry when attaching a role to a service.
+          Built-in retry does not exist in the AWS SDK, so we created our own
+          robust and general-purpose retry function that handles the number of
+          attempts and the backoff rate between subsequent attempts. The retry,
+          in combination with an initial sleep period and tuned backoff rate,
+          solved this challenge and made Maestro even more robust than before.
         </p>
 
         <h4>7.2.2 Asynchronicity</h4>
@@ -1414,8 +1397,8 @@
           common approaches required extensive, in-depth inquiry. Further, AWS
           Step Functions offers many benefits but is not broadly used; as a
           result, few frameworks or solutions exist to provide insight into
-          development. Therefore, the Maestro team had to be quite innovative to
-          provide a framework in this space.
+          development. Therefore, we had to be quite innovative to provide a
+          framework in this space.
         </p>
 
         <h3>7.3 Future Work</h3>
