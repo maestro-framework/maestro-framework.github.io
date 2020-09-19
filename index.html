@@ -1366,8 +1366,7 @@
         <h4>7.2.2 Asynchronicity</h4>
 
         <p>
-          Discussing the challenge of creating a Lambda or state machine with
-          the ability to properly interact with AWS depending on another service
+          Creating multiple AWS resources that depend on one another in deployment
           touches on an overarching challenge that would need to be reconciled
           in developing Maestro: asynchronicity. Maestro offers quick deployment
           thanks to concurrent creation and deployment of resources which
@@ -1375,9 +1374,9 @@
         </p>
 
         <p>
-          A helpful pattern that allowed the team to work with asynchronous
+          A helpful pattern that allowed us to work with asynchronous
           functions and Promises was the ‘async/await’ pattern. This allowed
-          certain actions to be treated synchronously. However, the Maestro
+          certain actions to be treated synchronously in an asynchronous context. However, the Maestro
           philosophy was not to completely remove Promise chains by dogmatically
           applying the ‘async/await’ pattern everywhere possible. Overuse of the
           pattern can cause code to be slow by essentially making every step
