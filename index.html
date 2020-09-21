@@ -75,7 +75,7 @@
     <main>
       <!-- for linkedin featured section -->
       <img
-        style="display: none"
+        style="display: none;"
         src="assets/images/logos/maestro/mark-on-light.png"
       />
       <!-- normal content now resumes -->
@@ -1104,7 +1104,7 @@
         <figure>
           <img
             src="assets/images/step-functions-console/console-diagram-7.gif"
-            style="max-height: 50vh"
+            style="max-height: 50vh;"
             alt="deploying with maestro"
           />
           <figcaption>Steps of deploying with Maestro</figcaption>
@@ -1112,7 +1112,7 @@
 
         <p>
           To fully demonstrate the power of Maestro, first consider this short
-          video that shows in detail the steps requried to deploy our example
+          video that shows in detail the steps required to deploy our example
           workflow using just the AWS Console:
         </p>
 
@@ -1340,13 +1340,13 @@
           The second challenge regarding IAM that we ran into was the
           propagation of roles. While Maestro creates roles before it attempts
           to create the Lambdas and Step Functions state machines that depend on
-          those roles, we still ran into problems regarding the roles
+          those roles, we still ran into problems regarding the roles‘
           availability. This is because in order to attach a role to an AWS
           resource, the role must first propagate to every AWS data center,
           which can take upwards of 15 seconds. If one were to try to attach a
           role to a Lambda before the role had a chance to fully propagate, the
           role would not attach and would instead throw back a cryptic error
-          message. Unfortunately, there is not simple way to determine whether a
+          message. Unfortunately, there is no simple way to determine whether a
           role is ready for attachment or not. As of the time of this writing
           (Fall 2020), the best way to determine that is to try to attach the
           role to a resource (such as a Lambda) and see if the cryptic error
@@ -1435,7 +1435,7 @@
         <h4>7.3.3 Versioning</h4>
 
         <p>
-          Becuase the premise of Maestro is to allow rapid iteration on
+          Because the premise of Maestro is to allow rapid iteration on
           workflows, versioning comes into view. Much consideration must go into
           determining the point at which a workflow is ready for production, and
           due to innumerable circumstances, a team may resolve to look back at
