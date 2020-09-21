@@ -158,9 +158,14 @@ img {
   margin: 0;
 }
 
-.maestro-border {
+.maestro-border, #maestro-cli {
   border: 3px solid var(--color-maestro-red);
   border-radius: 25px;
+}
+
+#maestro-cli {
+  background-color: #1a181e;
+  padding: 10px;
 }
 
 /* ---------------------------------
