@@ -165,6 +165,48 @@ img {
 
 /* ---------------------------------
 
+            slideshows
+
+------------------------------------ */
+
+.slideshow {
+  position: relative;
+}
+
+.slideshow .prevbutton::after,
+.slideshow .nextbutton::after {
+  font-size: 70px;
+  line-height: 0;
+  text-align: center;
+  color: var(--color-light-grey);
+  height: 70px;
+  position: absolute;
+  top: calc(50% - 35px);
+  width: 50px;
+}
+
+.slideshow .prevbutton::after {
+  content: "<";
+  left: 0;
+}
+
+.slideshow .nextbutton::after {
+  content: ">";
+  right: 0;
+}
+
+.slideshow .prevbutton:hover::after,
+.slideshow .nextbutton:hover::after {
+  color: var(--color-grey);
+  cursor: pointer;
+}
+
+.slideshow .slideshow-items > :nth-child(n+2) {
+  display: none;
+}
+
+/* ---------------------------------
+
                code
 
 ------------------------------------ */
