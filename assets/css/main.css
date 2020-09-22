@@ -676,7 +676,7 @@ small {
   }
 
   #case-study img {
-    max-width: 70vw;
+    max-width: 100%;
   }
 
   /* Site Nav */
@@ -810,10 +810,6 @@ small {
     word-wrap: break-word;
   }
 
-  #case-study img {
-    max-width: 65vw;
-  }
-
   /* Our Team */
 
   #our-team > p {
@@ -903,19 +899,11 @@ small {
   #our-team li > img {
     width: 30vw;
   }
-
-  #case-study img {
-    max-width: 70vw;
-  }
 }
 
 @media (max-width: 500px) {
   #home p {
     font-size: 2.1rem;
-  }
-
-  #case-study img {
-    max-width: 100%;
   }
 
   table {
