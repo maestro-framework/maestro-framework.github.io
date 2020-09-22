@@ -918,7 +918,7 @@ small {
   }
 
   #case-study img {
-    max-width: 75vw;
+    max-width: 100%;
   }
 
   table {
@@ -1044,10 +1044,6 @@ small {
 
   nav#case-study-mobile {
     margin-top: 1.75vh;
-  }
-
-  #case-study img {
-    max-width: 80vw;
   }
 
   #our-team {
