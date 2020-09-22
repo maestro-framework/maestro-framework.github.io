@@ -173,31 +173,28 @@ img {
   position: relative;
 }
 
-.slideshow .prev-button::after,
-.slideshow .next-button::after {
-  font-size: 70px;
-  line-height: 0;
-  text-align: center;
-  color: var(--color-light-grey);
-  height: 70px;
+.slideshow .prev-button,
+.slideshow .next-button {
+  fill: var(--color-light-grey);
   position: absolute;
-  top: calc(50% - 35px);
-  width: 50px;
+  top: 43%;
+  width: 5%;
 }
 
-.slideshow .prev-button::after {
-  content: "<";
+/* Positioning is taken care of in the JavaScript. */
+/*
+.slideshow .prev-button {
   left: 0;
 }
 
-.slideshow .next-button::after {
-  content: ">";
+.slideshow .next-button {
   right: 0;
 }
+*/
 
-.slideshow .prev-button:hover::after,
-.slideshow .next-button:hover::after {
-  color: var(--color-grey);
+.slideshow .prev-button:hover,
+.slideshow .next-button:hover {
+  fill: var(--color-grey);
   cursor: pointer;
 }
 

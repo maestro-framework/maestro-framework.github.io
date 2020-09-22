@@ -6,26 +6,20 @@ const makeVisible = (elem) => {
   elem.style.display = "";
 };
 
-const makeSlideshowButton = (type, parent) => {
-  const button = document.createElement("div");
-
-  button.classList.add(`${type}-button`);
-  parent.appendChild(button);
-
-  return button;
-};
-
 const main = () => {
   const slideshow = document.getElementById("console-slideshow");
   const slides = slideshow.getElementsByClassName("slideshow-items")[0]
     .children;
-  const prevButton = makeSlideshowButton("prev", slideshow);
-  const nextButton = makeSlideshowButton("next", slideshow);
+  const prevButton = slideshow.getElementsByClassName("prev-button")[0];
+  const nextButton = slideshow.getElementsByClassName("next-button")[0];
   let visibleIdx = 0;
 
   for (let i = 1; i < slides.length; i += 1) {
     makeInvisible(slides[i]);
   }
+
+  makeVisible(prevButton);
+  makeVisible(nextButton);
 
   const handlePreviousClick = () => {
     makeInvisible(slides[visibleIdx]);
