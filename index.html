@@ -32,6 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/scripts/application.js"></script>
+    <script src="assets/scripts/slideshow.js"></script>
   </head>
   <body>
     <div class="logo-links">
@@ -75,7 +76,7 @@
     <main>
       <!-- for linkedin featured section -->
       <img
-        style="display: none;"
+        style="display: none"
         src="assets/images/logos/maestro/mark-on-light.png"
       />
       <!-- normal content now resumes -->
@@ -1104,27 +1105,881 @@
         <figure>
           <img
             src="assets/images/step-functions-console/console-diagram-7.gif"
-            style="max-height: 50vh;"
+            style="max-height: 50vh"
             alt="deploying with maestro"
           />
           <figcaption>Steps of deploying with Maestro</figcaption>
         </figure>
 
         <p>
-          To fully demonstrate the power of Maestro, first consider this short
-          video that shows in detail the steps required to deploy our example
-          workflow using just the AWS Console:
+          To fully demonstrate the power of Maestro, first consider this
+          slideshow that shows in detail the steps requried to deploy our
+          example workflow using just the AWS Console:
         </p>
 
-        <figure>
-          <video controls>
-            <source
-              src="assets/videos/using-aws-console.mp4"
-              type="video/mp4"
-            />
-            A video of using the AWS Console to deploy a workflow.
-          </video>
-          <figcaption>Using the AWS Console</figcaption>
+        <figure id="console-slideshow" class="slideshow">
+          <!-- <div class="prev-button"></div> -->
+          <!-- <div class="next-button"></div> -->
+          <noscript>
+            <aside>
+              <small>
+                To view an interactive slideshow, you must enable JavaScript.
+              </small>
+            </aside>
+          </noscript>
+          <div class="slideshow-items">
+            <figure>
+              <img
+                src="assets/images/console-slideshow/01.png"
+                alt="Screenshot of the AWS Console and opening the “Services” dropdown"
+              />
+              <figcaption>
+                1: Screenshot of the AWS Console and opening the “Services”
+                dropdown
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/02.png"
+                alt="Screenshot of the “Services” dropdown menu and clicking the “Step Functions” hyperlink"
+              />
+              <figcaption>
+                2: Screenshot of the “Services” dropdown menu and clicking the
+                “Step Functions” hyperlink
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/03.png"
+                alt="Screenshot of opening sidebar"
+              />
+              <figcaption>3: Screenshot of opening sidebar</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/04.png"
+                alt="Screenshot of selecting “State machines”"
+              />
+              <figcaption>4: Screenshot of selecting “State machines”</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/05.png"
+                alt="Screenshot of clicking the “Create state machine” button"
+              />
+              <figcaption>
+                5: Screenshot of clicking the “Create state machine” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/06.png"
+                alt="Screenshot of opening the “Services” dropdown"
+              />
+              <figcaption>
+                6: Screenshot of opening the “Services” dropdown
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/07.png"
+                alt="Screenshot of opening the “Lambda” page in a new tab (by control-clicking the hyperlink)"
+              />
+              <figcaption>
+                7: Screenshot of opening the “Lambda” page in a new tab (by
+                control-clicking the hyperlink)
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/08.png"
+                alt="Screenshot of navigating back to the “Step Functions“ tab"
+              />
+              <figcaption>
+                8: Screenshot of navigating back to the “Step Functions“ tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/09.png"
+                alt="Screenshot of the state machine definition editor"
+              />
+              <figcaption>
+                9: Screenshot of the state machine definition editor
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/10.png"
+                alt="Screenshot of incremental edit of state machine definition"
+              />
+              <figcaption>
+                10: Screenshot of incremental edit of state machine definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/11.png"
+                alt="Screenshot of incremental edit of state machine definition"
+              />
+              <figcaption>
+                11: Screenshot of incremental edit of state machine definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/12.png"
+                alt="Screenshot of incremental edit of state machine definition"
+              />
+              <figcaption>
+                12: Screenshot of incremental edit of state machine definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/13.png"
+                alt="Screenshot of incremental edit of state machine definition"
+              />
+              <figcaption>
+                13: Screenshot of incremental edit of state machine definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/14.png"
+                alt="Screenshot of incremental edit of state machine definition"
+              />
+              <figcaption>
+                14: Screenshot of incremental edit of state machine definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/15.png"
+                alt="Screenshot of incremental edit of state machine definition and clicking the “Next” button"
+              />
+              <figcaption>
+                15: Screenshot of incremental edit of state machine definition and
+                clicking the “Next” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/16.png"
+                alt="Screenshot of: 1) error thrown upon attempted save; and 2) navigating to the “Lambda” tab"
+              />
+              <figcaption>
+                16: Screenshot of: 1) error thrown upon attempted save; and 2)
+                navigating to the “Lambda” tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/17.png"
+                alt="Screenshot of clicking the “Create function” button"
+              />
+              <figcaption>
+                17: Screenshot of clicking the “Create function” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/18.png"
+                alt="Screenshot of filling out a “Function name” form field"
+              />
+              <figcaption>
+                18: Screenshot of filling out a “Function name” form field
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/19.png"
+                alt="Screenshot of selecting the runtime by using a select form field"
+              />
+              <figcaption>
+                19: Screenshot of selecting the runtime by using a select form field
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/20.png"
+                alt="Screenshot of selecting the runtime by using a select form field"
+              />
+              <figcaption>
+                20: Screenshot of selecting the runtime by using a select form field
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/21.png"
+                alt="Screenshot of clicking the “Create function” button"
+              />
+              <figcaption>
+                21: Screenshot of clicking the “Create function” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/22.png"
+                alt="Screenshot of scrolling down to view the function code"
+              />
+              <figcaption>
+                22: Screenshot of scrolling down to view the function code
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/23.png"
+                alt="Screenshot of edit to the function code"
+              />
+              <figcaption>23: Screenshot of edit to the function code</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/24.png"
+                alt="Screenshot of edit to the function code and clicking the “Save” button"
+              />
+              <figcaption>
+                24: Screenshot of edit to the function code and clicking the “Save”
+                button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/25.png"
+                alt="Screenshot of copying the arn"
+              />
+              <figcaption>25: Screenshot of copying the arn</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/26.png"
+                alt="Screenshot of: 1) copying the arn; and 2) navigating to the “Step Functions“ tab"
+              />
+              <figcaption>
+                26: Screenshot of: 1) copying the arn; and 2) navigating to the
+                “Step Functions“ tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/27.png"
+                alt="Screenshot of scrolling the view of the state machine definition"
+              />
+              <figcaption>
+                27: Screenshot of scrolling the view of the state machine definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/28.png"
+                alt="Screenshot of pasting the arn into the definition"
+              />
+              <figcaption>
+                28: Screenshot of pasting the arn into the definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/29.png"
+                alt="Screenshot of navigating to the “Lambda” tab"
+              />
+              <figcaption>
+                29: Screenshot of navigating to the “Lambda” tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/30.png"
+                alt="Screenshot of navigating to the “Functions” page by clicking a hyperlink"
+              />
+              <figcaption>
+                30: Screenshot of navigating to the “Functions” page by clicking a
+                hyperlink
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/31.png"
+                alt="Screenshot of: 1) noticing the new function is listed among the existing functions; and 2) clicking the “Create function” button"
+              />
+              <figcaption>
+                31: Screenshot of: 1) noticing the new function is listed among the
+                existing functions; and 2) clicking the “Create function” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/32.png"
+                alt="Screenshot of filling out all the form fields and clicking the “Create function” button"
+              />
+              <figcaption>
+                32: Screenshot of filling out all the form fields and clicking the
+                “Create function” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/33.png"
+                alt="Screenshot of scrolling down to view the function code"
+              />
+              <figcaption>
+                33: Screenshot of scrolling down to view the function code
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/34.png"
+                alt="Screenshot of edit to the function code and clicking the “Save” button"
+              />
+              <figcaption>
+                34: Screenshot of edit to the function code and clicking the “Save”
+                button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/35.png"
+                alt="Screenshot of copying the arn"
+              />
+              <figcaption>35: Screenshot of copying the arn</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/36.png"
+                alt="Screenshot of: 1) copying the arn; and 2) navigating to the “Step Functions“ tab"
+              />
+              <figcaption>
+                36: Screenshot of: 1) copying the arn; and 2) navigating to the
+                “Step Functions“ tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/37.png"
+                alt="Screenshot of pasting the arn into the definition"
+              />
+              <figcaption>
+                37: Screenshot of pasting the arn into the definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/38.png"
+                alt="Screenshot of navigating to the “Lambda” tab"
+              />
+              <figcaption>
+                38: Screenshot of navigating to the “Lambda” tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/39.png"
+                alt="Screenshot of navigating to the “Functions” page by clicking a hyperlink"
+              />
+              <figcaption>
+                39: Screenshot of navigating to the “Functions” page by clicking a
+                hyperlink
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/40.png"
+                alt="Screenshot of: 1) noticing the new function is listed among the existing functions; and 2) clicking the “Create function” button"
+              />
+              <figcaption>
+                40: Screenshot of: 1) noticing the new function is listed among the
+                existing functions; and 2) clicking the “Create function” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/41.png"
+                alt="Screenshot of filling out all the form fields and clicking the “Create function” button"
+              />
+              <figcaption>
+                41: Screenshot of filling out all the form fields and clicking the
+                “Create function” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/42.png"
+                alt="Screenshot of waiting for the form to submit"
+              />
+              <figcaption>
+                42: Screenshot of waiting for the form to submit
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/43.png"
+                alt="Screenshot of scrolling down to view the function code"
+              />
+              <figcaption>
+                43: Screenshot of scrolling down to view the function code
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/44.png"
+                alt="Screenshot of edit to the function code and clicking the “Save” button"
+              />
+              <figcaption>
+                44: Screenshot of edit to the function code and clicking the “Save”
+                button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/45.png"
+                alt="Screenshot of copying the arn"
+              />
+              <figcaption>45: Screenshot of copying the arn</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/46.png"
+                alt="Screenshot of: 1) copying the arn; and 2) navigating to the “Step Functions“ tab"
+              />
+              <figcaption>
+                46: Screenshot of: 1) copying the arn; and 2) navigating to the
+                “Step Functions“ tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/47.png"
+                alt="Screenshot of pasting the arn into the definition"
+              />
+              <figcaption>
+                47: Screenshot of pasting the arn into the definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/48.png"
+                alt="Screenshot of scrolling the view of the state machine definition"
+              />
+              <figcaption>
+                48: Screenshot of scrolling the view of the state machine definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/49.png"
+                alt="Screenshot of: 1) noticing that another arn needs to be provided; and 2) navigating to the “Lambda” tab"
+              />
+              <figcaption>
+                49: Screenshot of: 1) noticing that another arn needs to be
+                provided; and 2) navigating to the “Lambda” tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/50.png"
+                alt="Screenshot of navigating to the “Functions” page by clicking a hyperlink"
+              />
+              <figcaption>
+                50: Screenshot of navigating to the “Functions” page by clicking a
+                hyperlink
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/51.png"
+                alt="Screenshot of: 1) noticing the new function is listed among the existing functions; and 2) clicking the “Create function” button"
+              />
+              <figcaption>
+                51: Screenshot of: 1) noticing the new function is listed among the
+                existing functions; and 2) clicking the “Create function” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/52.png"
+                alt="Screenshot of filling out all the form fields and clicking the “Create function” button"
+              />
+              <figcaption>
+                52: Screenshot of filling out all the form fields and clicking the
+                “Create function” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/53.png"
+                alt="Screenshot of waiting for the form to submit"
+              />
+              <figcaption>
+                53: Screenshot of waiting for the form to submit
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/54.png"
+                alt="Screenshot of scrolling down to view the function code"
+              />
+              <figcaption>
+                54: Screenshot of scrolling down to view the function code
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/55.png"
+                alt="Screenshot of edit to the function code and clicking the “Save” button"
+              />
+              <figcaption>
+                55: Screenshot of edit to the function code and clicking the “Save”
+                button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/56.png"
+                alt="Screenshot of copying the arn"
+              />
+              <figcaption>56: Screenshot of copying the arn</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/57.png"
+                alt="Screenshot of: 1) copying the arn; and 2) navigating to the “Step Functions“ tab"
+              />
+              <figcaption>
+                57: Screenshot of: 1) copying the arn; and 2) navigating to the
+                “Step Functions“ tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/58.png"
+                alt="Screenshot of pasting the arn into the definition"
+              />
+              <figcaption>
+                58: Screenshot of pasting the arn into the definition
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/59.png"
+                alt="Screenshot of clicking the “Next” button"
+              />
+              <figcaption>59: Screenshot of clicking the “Next” button</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/60.png"
+                alt="Screenshot of: 1) filling out a “State machine name” form field; and 2) scrolling the view downwards"
+              />
+              <figcaption>
+                60: Screenshot of: 1) filling out a “State machine name” form field;
+                and 2) scrolling the view downwards
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/61.png"
+                alt="Screenshot of clicking the “Create state machine” button and waiting for the form to submit"
+              />
+              <figcaption>
+                61: Screenshot of clicking the “Create state machine” button and
+                waiting for the form to submit
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/62.png"
+                alt="Screenshot of clicking the “Definition” tab (webpage UI tab, not browser tab)"
+              />
+              <figcaption>
+                62: Screenshot of clicking the “Definition” tab (webpage UI tab, not
+                browser tab)
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/63.png"
+                alt="Screenshot of state machine definition"
+              />
+              <figcaption>63: Screenshot of state machine definition</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/64.png"
+                alt="Screenshot of clicking the “Executions” tab (webpage UI tab, not browser tab)"
+              />
+              <figcaption>
+                64: Screenshot of clicking the “Executions” tab (webpage UI tab, not
+                browser tab)
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/65.png"
+                alt="Screenshot of clicking the “Start execution” button"
+              />
+              <figcaption>
+                65: Screenshot of clicking the “Start execution” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/66.png"
+                alt="Screenshot of execution input text field"
+              />
+              <figcaption>66: Screenshot of execution input text field</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/67.png"
+                alt="Screenshot of edit to input text and clicking the “Start execution” button"
+              />
+              <figcaption>
+                67: Screenshot of edit to input text and clicking the “Start
+                execution” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/68.png"
+                alt="Screenshot of execution in progress"
+              />
+              <figcaption>68: Screenshot of execution in progress</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/69.png"
+                alt="Screenshot of execution completed"
+              />
+              <figcaption>69: Screenshot of execution completed</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/70.png"
+                alt="Screenshot of scrolling view downwards"
+              />
+              <figcaption>70: Screenshot of scrolling view downwards</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/71.png"
+                alt="Screenshot of expanding an “Execution event history” log row by clicking the triangular expansion button"
+              />
+              <figcaption>
+                71: Screenshot of expanding an “Execution event history” log row by
+                clicking the triangular expansion button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/72.png"
+                alt="Screenshot of scrolling view downwards"
+              />
+              <figcaption>72: Screenshot of scrolling view downwards</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/73.png"
+                alt="Screenshot of more expanded “Execution event history” log rows and scrolling view to top of the web page"
+              />
+              <figcaption>
+                73: Screenshot of more expanded “Execution event history” log rows
+                and scrolling view to top of the web page
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/74.png"
+                alt="Screenshot of clicking on a step in the visual workflow"
+              />
+              <figcaption>
+                74: Screenshot of clicking on a step in the visual workflow
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/75.png"
+                alt="Screenshot of input and output associated with the step and clicking on an additional step in the visual workflow"
+              />
+              <figcaption>
+                75: Screenshot of input and output associated with the step and
+                clicking on an additional step in the visual workflow
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/76.png"
+                alt="Screenshot of input and output associated with the step"
+              />
+              <figcaption>
+                76: Screenshot of input and output associated with the step
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/77.png"
+                alt="Screenshot of clicking on the “State machines” breadcrumb navigation link"
+              />
+              <figcaption>
+                77: Screenshot of clicking on the “State machines” breadcrumb
+                navigation link
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/78.png"
+                alt="Screenshot of selecting the state machine and clicking the “Delete” button"
+              />
+              <figcaption>
+                78: Screenshot of selecting the state machine and clicking the
+                “Delete” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/79.png"
+                alt="Screenshot of clicking the “Delete state machine” button on a confirmation popup dialog"
+              />
+              <figcaption>
+                79: Screenshot of clicking the “Delete state machine” button on a
+                confirmation popup dialog
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/80.png"
+                alt="Screenshot of: 1) noticing that the status of the state machine now says “Deleting”; and 2) navigating to the “Lambda” browser tab"
+              />
+              <figcaption>
+                80: Screenshot of: 1) noticing that the status of the state machine
+                now says “Deleting”; and 2) navigating to the “Lambda” browser
+                tab
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/81.png"
+                alt="Screenshot of: 1) selecting a function resource; and 2) clicking on the “Actions” dropdown menu"
+              />
+              <figcaption>
+                81: Screenshot of: 1) selecting a function resource; and 2) clicking
+                on the “Actions” dropdown menu
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/82.png"
+                alt="Screenshot of clicking the “Delete” option from the dropdown menu"
+              />
+              <figcaption>
+                82: Screenshot of clicking the “Delete” option from the dropdown
+                menu
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/83.png"
+                alt="Screenshot of clicking the “Delete” button on a confirmation popup dialog"
+              />
+              <figcaption>
+                83: Screenshot of clicking the “Delete” button on a confirmation
+                popup dialog
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/84.png"
+                alt="Screenshot of going through all the deletion steps for the next function"
+              />
+              <figcaption>
+                84: Screenshot of going through all the deletion steps for the next
+                function
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/85.png"
+                alt="Screenshot of going through all the deletion steps for the next function"
+              />
+              <figcaption>
+                85: Screenshot of going through all the deletion steps for the next
+                function
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/86.png"
+                alt="Screenshot of going through all the deletion steps for the next function"
+              />
+              <figcaption>
+                86: Screenshot of going through all the deletion steps for the next
+                function
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/87.png"
+                alt="Screenshot of opening the “Services” dropdown"
+              />
+              <figcaption>
+                87: Screenshot of opening the “Services” dropdown
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/88.png"
+                alt="Screenshot of the “Services” dropdown menu and clicking the “IAM” hyperlink"
+              />
+              <figcaption>
+                88: Screenshot of the “Services” dropdown menu and clicking the
+                “IAM” hyperlink
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/89.png"
+                alt="Screenshot of clicking the “Roles” hyperlink on the sidebar"
+              />
+              <figcaption>
+                89: Screenshot of clicking the “Roles” hyperlink on the sidebar
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/90.png"
+                alt="Screenshot of selecting the roles to be deleted"
+              />
+              <figcaption>
+                90: Screenshot of selecting the roles to be deleted
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/91.png"
+                alt="Screenshot of clicking the “Delete role” button"
+              />
+              <figcaption>
+                91: Screenshot of clicking the “Delete role” button
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/92.png"
+                alt="Screenshot of clicking the “Yes, delete” button on a confirmation popup dialog"
+              />
+              <figcaption>
+                92: Screenshot of clicking the “Yes, delete” button on a
+                confirmation popup dialog
+              </figcaption>
+            </figure>
+            <figure>
+              <img
+                src="assets/images/console-slideshow/93.png"
+                alt="Screenshot of all remaining IAM roles"
+              />
+              <figcaption>93: Screenshot of all remaining IAM roles</figcaption>
+            </figure>
+          </div>
         </figure>
 
         <p>Now, the same steps but using Maestro:</p>
@@ -1340,13 +2195,13 @@
           The second challenge regarding IAM that we ran into was the
           propagation of roles. While Maestro creates roles before it attempts
           to create the Lambdas and Step Functions state machines that depend on
-          those roles, we still ran into problems regarding the roles‘
+          those roles, we still ran into problems regarding the roles
           availability. This is because in order to attach a role to an AWS
           resource, the role must first propagate to every AWS data center,
           which can take upwards of 15 seconds. If one were to try to attach a
           role to a Lambda before the role had a chance to fully propagate, the
           role would not attach and would instead throw back a cryptic error
-          message. Unfortunately, there is no simple way to determine whether a
+          message. Unfortunately, there is not simple way to determine whether a
           role is ready for attachment or not. As of the time of this writing
           (Fall 2020), the best way to determine that is to try to attach the
           role to a resource (such as a Lambda) and see if the cryptic error
@@ -1435,7 +2290,7 @@
         <h4>7.3.3 Versioning</h4>
 
         <p>
-          Because the premise of Maestro is to allow rapid iteration on
+          Becuase the premise of Maestro is to allow rapid iteration on
           workflows, versioning comes into view. Much consideration must go into
           determining the point at which a workflow is ready for production, and
           due to innumerable circumstances, a team may resolve to look back at
@@ -1750,7 +2605,7 @@
             </li>
             <li>
               <a
-                href="https://www.linkedin.com/in/zac-klammer/"
+                href="https://www.linkedin.com/in/zac-klammer-b4b7741b/"
                 target="_blank"
                 ><img
                   src="assets/images/icons/linkedin_icon.png"

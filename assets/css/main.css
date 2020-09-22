@@ -165,6 +165,44 @@ img {
 
 /* ---------------------------------
 
+            slideshows
+
+------------------------------------ */
+
+.slideshow {
+  position: relative;
+}
+
+.slideshow .prev-button::after,
+.slideshow .next-button::after {
+  font-size: 70px;
+  line-height: 0;
+  text-align: center;
+  color: var(--color-light-grey);
+  height: 70px;
+  position: absolute;
+  top: calc(50% - 35px);
+  width: 50px;
+}
+
+.slideshow .prev-button::after {
+  content: "<";
+  left: 0;
+}
+
+.slideshow .next-button::after {
+  content: ">";
+  right: 0;
+}
+
+.slideshow .prev-button:hover::after,
+.slideshow .next-button:hover::after {
+  color: var(--color-grey);
+  cursor: pointer;
+}
+
+/* ---------------------------------
+
                code
 
 ------------------------------------ */
