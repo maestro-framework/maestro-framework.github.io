@@ -201,10 +201,6 @@ img {
   cursor: pointer;
 }
 
-.slideshow .slideshow-items > :nth-child(n+2) {
-  display: none;
-}
-
 /* ---------------------------------
 
                code
