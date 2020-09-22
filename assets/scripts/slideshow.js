@@ -45,8 +45,23 @@ const main = () => {
     makeVisible(slides[visibleIdx]);
   };
 
+  const setButtonPositions = () => {
+    const imgWidth = slides[visibleIdx].firstElementChild.clientWidth;
+    const btnWidth = prevButton.clientWidth; // Both buttons are of same width
+    const slideshowWidth = slideshow.clientWidth;
+    const margin = 10;
+
+    const position = (slideshowWidth - imgWidth) / 2 - btnWidth - margin;
+
+    prevButton.style.left = `${position}px`;
+    nextButton.style.right = `${position}px`;
+  };
+
   prevButton.addEventListener("click", handlePreviousClick);
   nextButton.addEventListener("click", handleNextClick);
+  window.addEventListener("resize", setButtonPositions);
+
+  setButtonPositions();
 };
 
 document.addEventListener("DOMContentLoaded", main);
