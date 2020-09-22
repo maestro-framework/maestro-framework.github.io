@@ -173,8 +173,8 @@ img {
   position: relative;
 }
 
-.slideshow .prevbutton::after,
-.slideshow .nextbutton::after {
+.slideshow .prev-button::after,
+.slideshow .next-button::after {
   font-size: 70px;
   line-height: 0;
   text-align: center;
@@ -185,18 +185,18 @@ img {
   width: 50px;
 }
 
-.slideshow .prevbutton::after {
+.slideshow .prev-button::after {
   content: "<";
   left: 0;
 }
 
-.slideshow .nextbutton::after {
+.slideshow .next-button::after {
   content: ">";
   right: 0;
 }
 
-.slideshow .prevbutton:hover::after,
-.slideshow .nextbutton:hover::after {
+.slideshow .prev-button:hover::after,
+.slideshow .next-button:hover::after {
   color: var(--color-grey);
   cursor: pointer;
 }
