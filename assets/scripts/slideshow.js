@@ -1,31 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
+const makeInvisible = (elem) => {
+  elem.style.display = "none";
+};
+
+const makeVisible = (elem) => {
+  elem.style.display = "";
+};
+
+const makeSlideshowButton = (type, parent) => {
+  const button = document.createElement("div");
+
+  button.classList.add(`${type}-button`);
+  parent.appendChild(button);
+
+  return button;
+};
+
+const main = () => {
   const slideshow = document.getElementById("console-slideshow");
   const slides = slideshow.getElementsByClassName("slideshow-items")[0].children;
+  const prevButton = makeSlideshowButton('prev', slideshow);
+  const nextButton = makeSlideshowButton('next', slideshow);
   let visibleIdx = 0;
 
-  const prevButton = document.createElement("div");
-  prevButton.classList.add("prev-button");
-  slideshow.appendChild(prevButton);
+  for (let i = 1; i < slides.length - 1; i += 1) {
+    makeInvisible(slides[i]);
+  }
 
-  const nextButton = document.createElement("div");
-  nextButton.classList.add("next-button");
-  slideshow.appendChild(nextButton);
-
-  const makeInvisible = (elem) => {
-    elem.style.display = "none";
-  };
-
-  const makeVisible = (elem) => {
-    elem.style.display = "";
-  };
-
-  hideAllSlidesButFirst = () => {
-    for (let i = 1; i < slides.length; i += 1) {
-      makeInvisible(slides[i]);
-    }
-  };
-
-  const handlePreviousClick = (e) => {
+  const handlePreviousClick = () => {
 
     makeInvisible(slides[visibleIdx]);
 
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     makeVisible(slides[visibleIdx]);
   };
 
-  const handleNextClick = (e) => {
+  const handleNextClick = () => {
 
     makeInvisible(slides[visibleIdx]);
 
@@ -53,6 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   prevButton.addEventListener("click", handlePreviousClick);
   nextButton.addEventListener("click", handleNextClick);
+};
 
-  hideAllSlidesButFirst();
-});
+document.addEventListener("DOMContentLoaded", main);
