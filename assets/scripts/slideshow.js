@@ -61,7 +61,8 @@ const main = () => {
   nextButton.addEventListener("click", handleNextClick);
   window.addEventListener("resize", setButtonPositions);
 
-  setButtonPositions();
+  // Initialize the button positions once the page loads
+  window.addEventListener("load", setButtonPositions);
 };
 
 document.addEventListener("DOMContentLoaded", main);

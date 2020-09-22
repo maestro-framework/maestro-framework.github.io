@@ -2007,7 +2007,41 @@
           </div>
         </figure>
 
-        <p>Now, the same steps but using Maestro:</p>
+        <p>To recap those 93 slides, here are the 15 major steps to deploy:</p>
+
+        <ol>
+          <li>Navigate to the Step Functions console</li>
+          <li>Select “State Machine”</li>
+          <li>Select “Create State Machine”</li>
+          <li>Provide ASL definition</li>
+          <li>Conditionally modify</li>
+          <li>Navigate to Lambda console</li>
+          <li>Configure Lambda (runtime, name, permissions, etc.)</li>
+          <li>Define Lambda</li>
+          <li>Save Lambda</li>
+          <li>Copy Amazon Resource Name (ARN)</li>
+          <li>Paste valid ARN into state machine definition</li>
+          <li>Repeat steps 6-11 for each Lambda</li>
+          <li>Save state machine definition</li>
+          <li>Navigate to and fill out name, tags, logs, etc.</li>
+          <li>Deploy state machine</li>
+        </ol>
+
+        <p>And here are the 9 major steps to tear down:</p>
+
+        <ol>
+          <li>Navigate to the Step Functions console</li>
+          <li>Click the “Delete” button, confirming any popup</li>
+          <li>Navigate to Lambda console</li>
+          <li>Select a Lambda</li>
+          <li>Click the “Delete” button from the “Actions” drop-down menu</li>
+          <li>Confirm deletion</li>
+          <li>Repeat steps 4-6 for each Lambda</li>
+          <li>Navigate to the IAM console</li>
+          <li>Navigate to “roles”, select the roles, then click the “Delete role” button, confirming any popup</li>
+        </ol>
+
+        <p>Now, the same process but using Maestro:</p>
 
         <figure>
           <video controls>
@@ -2023,6 +2057,20 @@
           </aside>
           <figcaption>Using Maestro</figcaption>
         </figure>
+
+        <p>To recap that video, here are the 3 major steps to deploy:</p>
+
+        <ol>
+          <li>Open your terminal, execute <code class="command language-plaintext">maestro&nbsp;new</code></li>
+          <li>Edit your workflow</li>
+          <li>Execute <code class="command language-plaintext">maestro&nbsp;deploy</code></li>
+        </ol>
+
+        <p>And here is the 1 major step to tear down:</p>
+
+        <ol>
+          <li>Execute <code class="command language-plaintext">maestro&nbsp;teardown</code></li>
+        </ol>
 
         <p>
           The difference between using the AWS Console vs Maestro is quite a

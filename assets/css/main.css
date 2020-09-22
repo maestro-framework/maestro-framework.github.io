@@ -365,6 +365,7 @@ header figure span {
   margin-bottom: 20px;
 }
 
+
 #case-study h1 {
   color: var(--color-maestro-red);
 }
@@ -409,8 +410,15 @@ h3 {
 #case-study li {
   font-size: 1rem;
   line-height: 1.6rem;
-  list-style: disc;
   margin-left: 2rem;
+}
+
+#case-study ul {
+  list-style-type: disc;
+}
+
+#case-study ol {
+  list-style-type: decimal;
 }
 
 #case-study li code {
@@ -522,7 +530,6 @@ td {
 }
 
 #references ol li {
-  list-style: decimal;
   color: var(--color-light-grey);
 }
 
