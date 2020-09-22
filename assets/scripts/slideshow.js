@@ -17,9 +17,10 @@ const makeSlideshowButton = (type, parent) => {
 
 const main = () => {
   const slideshow = document.getElementById("console-slideshow");
-  const slides = slideshow.getElementsByClassName("slideshow-items")[0].children;
-  const prevButton = makeSlideshowButton('prev', slideshow);
-  const nextButton = makeSlideshowButton('next', slideshow);
+  const slides = slideshow.getElementsByClassName("slideshow-items")[0]
+    .children;
+  const prevButton = makeSlideshowButton("prev", slideshow);
+  const nextButton = makeSlideshowButton("next", slideshow);
   let visibleIdx = 0;
 
   for (let i = 1; i < slides.length - 1; i += 1) {
@@ -27,12 +28,11 @@ const main = () => {
   }
 
   const handlePreviousClick = () => {
-
     makeInvisible(slides[visibleIdx]);
 
     if (visibleIdx === 0) {
       visibleIdx = slides.length - 1;
-    } else{
+    } else {
       visibleIdx -= 1;
     }
 
@@ -40,12 +40,11 @@ const main = () => {
   };
 
   const handleNextClick = () => {
-
     makeInvisible(slides[visibleIdx]);
 
     if (visibleIdx === slides.length - 1) {
       visibleIdx = 0;
-    } else{
+    } else {
       visibleIdx += 1;
     }
 
