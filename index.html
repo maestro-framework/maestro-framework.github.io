@@ -2269,11 +2269,11 @@
           propagation of roles. While Maestro creates roles before it attempts
           to create the Lambdas and Step Functions state machines that depend on
           those roles, we still ran into problems regarding the roles’
-          availability. This is because in order to attach a role to an AWS
+          availability. This is because, in order to attach a role to an AWS
           resource, the role must first propagate to every AWS data center,
           which can take upwards of 15 seconds. If one were to try to attach a
           role to a Lambda before the role had a chance to fully propagate, the
-          role would not attach and would instead throw back a cryptic error
+          role would not attach and would instead throw a cryptic error
           message. Unfortunately, there is no simple way to determine whether a
           role is ready for attachment or not. As of the time of this writing
           (Fall 2020), the best way to determine that is to try to attach the
@@ -2383,7 +2383,7 @@
           then re-deploying could look back at a snapshot of the workflow to
           determine what changed and then re-deploy accordingly. This would help
           preserve artifacts in AWS that provide auditability of long-standing
-          components as well as reduce load on the network.
+          components as well as reduce the load on the network.
         </p>
 
         <h4>7.3.5 Multiple AWS Services</h4>
